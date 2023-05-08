@@ -6,17 +6,20 @@ This README would normally document whatever steps are necessary to get your app
 
 * Updated version of Dorad Smartphone app. Built in .Net Maui with SQLite database.
 * Version 0.5
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
 ### How do I get set up? ###
 
 * Summary of set up
 * Configuration - Must open Visual Studio Installer, go in Modify, search for Desktop & Mobile and check the .Net Multi-platform App UI Development option. This will allow to visual studio download all necessary libraries and emulators.
 * Dependencies - NuGet should handle all, but in case something goes wrong search for this:
+	- CommunityToolkit.Mvvm 8.2.0	
+	- SQLiteNetExtensions 2.1.0
+	- sqlite-net-pc 1.8.116
+	- SQLitePCLRaw.provider.dynamic_cdecl 2.1.4
 	
-* Database configuration
-* How to run tests
-* Deployment instructions
+* Database configuration - None for now
+* How to run tests - Download any android emulator and try it out!
+* Deployment instructions - None for now
 
 ### Contribution guidelines ###
 
@@ -26,5 +29,5 @@ This README would normally document whatever steps are necessary to get your app
 
 ### Who do I talk to? ###
 
-* Luiz is the starter of the project, but James is aware of everything too
-* Other community or team contact
+* Luiz is the started, but James is aware of everything too
+* Chat GPT?!
