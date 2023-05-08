@@ -4,15 +4,16 @@ This README would normally document whatever steps are necessary to get your app
 
 ### What is this repository for? ###
 
-* Quick summary
-* Version
+* Updated version of Dorad Smartphone app. Built in .Net Maui with SQLite database.
+* Version 0.5
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
 ### How do I get set up? ###
 
 * Summary of set up
-* Configuration
-* Dependencies
+* Configuration - Must open Visual Studio Installer, go in Modify, search for Desktop & Mobile and check the .Net Multi-platform App UI Development option. This will allow to visual studio download all necessary libraries and emulators.
+* Dependencies - NuGet should handle all, but in case something goes wrong search for this:
+	
 * Database configuration
 * How to run tests
 * Deployment instructions
@@ -25,5 +26,5 @@ This README would normally document whatever steps are necessary to get your app
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
+* Luiz is the starter of the project, but James is aware of everything too
 * Other community or team contact
