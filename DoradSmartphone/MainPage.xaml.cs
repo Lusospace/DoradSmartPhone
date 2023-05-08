@@ -4,10 +4,9 @@ namespace DoradSmartphone;
 
 public partial class MainPage : ContentPage
 {
-    public MainPage(ExerciseViewModel exerciseViewModel)
+    public MainPage()
     {
-        InitializeComponent();
-        BindingContext = exerciseViewModel;        
+        InitializeComponent();            
     }
 }
 

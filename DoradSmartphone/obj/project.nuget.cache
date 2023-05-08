@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KGZOPwP3SrRGEnk8AX3s+sDyEd/QdUn6XUAe4cepu9cbWISek4h+kksAVSZGAccBrDZwi0PHSvxzPdT3kOeCtQ==",
+  "dgSpecHash": "wVXHBr/hpWudSV5BcpvqW8eoHX4FU3GtYEqmM1EK+ItQ9JMPZYIeSBf1FuOPamGoqFZrtunzqhLu9K3TELXMMQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lcosta\\source\\repos\\DoradSmartphone\\DoradSmartphone\\DoradSmartphone.csproj",
+  "projectFilePath": "C:\\Projects\\Dorad\\doradsmartphone\\DoradSmartphone\\DoradSmartphone.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lcosta\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.0\\communitytoolkit.mvvm.8.2.0.nupkg.sha512",
     "C:\\Users\\lcosta\\.nuget\\packages\\googlegson\\2.9.0.1\\googlegson.2.9.0.1.nupkg.sha512",

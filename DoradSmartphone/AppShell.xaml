@@ -4,14 +4,21 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:DoradSmartphone"
+    xmlns:views ="clr-namespace:DoradSmartphone.Views"
+    Shell.NavBarIsVisible="False"
     Shell.FlyoutBehavior="Flyout">
-    
+
+    <ShellContent
+                Title="Home"
+                ContentTemplate="{DataTemplate views:LoadingPage}"
+                Route="LoadingPage" />
+
     <TabBar >
         <Tab Title="Routes" Icon="route.png">
             <ShellContent
-                Title="Home"
-                ContentTemplate="{DataTemplate local:MainPage}"
-                Route="MainPage" />
+                Title="Routes"
+                ContentTemplate="{DataTemplate views:ExercisePage}"
+                Route="ExercisePage" />
         </Tab>
         <Tab Title="Stats" Icon="barchart.png">
             <ShellContent
@@ -32,6 +39,4 @@
                 Route="MainPage" />
         </Tab>
     </TabBar>
-    
-
 </Shell>

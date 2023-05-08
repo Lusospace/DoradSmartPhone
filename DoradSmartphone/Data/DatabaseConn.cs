@@ -7,6 +7,7 @@ namespace DoradSmartphone.Data
     public class DatabaseConn : IRepository
     {
         SQLiteAsyncConnection db;
+        //SQLiteConnection db2;
         public DatabaseConn()
         {
         }

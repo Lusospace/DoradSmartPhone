@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoradSmartphone.Views.ExercisePage"
+             xmlns:model ="clr-namespace:DoradSmartphone.Models"
+             xmlns:viewmodel ="clr-namespace:DoradSmartphone.ViewModels"
+             x:DataType ="viewmodel:ExerciseViewModel"
+             Title="{Binding Title}">
+
+    <Grid ColumnDefinitions="*, *, Auto" ColumnSpacing="5" RowDefinitions="*, Auto">
+        <RefreshView Command="{Binding GetExerciseListCommand}" IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView Grid.ColumnSpan="3" ItemsSource="{Binding Exercises}" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Exercise">
+                        <Grid Padding="10">
+                            <Frame HeightRequest="90">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExerciseViewModel}}, Path=ExerciseDetailsCommand}
+                                        " CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+                                <HorizontalStackLayout Padding="10" Spacing="5">
+                                    <Label Text="{Binding Id}"></Label>
+                                    <Label Text="{Binding Date}"></Label>
+                                </HorizontalStackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <Button Text="Fetch Exercises" Command="{Binding GetExerciseListCommand}" IsEnabled="{Binding IsNotLoading}" Grid.Row="1" Grid.Column="0" Margin="9"></Button>
+    </Grid>
+</ContentPage>
