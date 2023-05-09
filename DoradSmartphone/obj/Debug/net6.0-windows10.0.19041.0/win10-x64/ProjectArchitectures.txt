@@ -1,1 +1,1 @@
-C:\Users\lcosta\source\repos\DoradSmartphone\DoradSmartphone\DoradSmartphone.csproj;x64
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\DoradSmartphone.csproj;x64

@@ -53,9 +53,13 @@
 	  <None Remove="Resources\Images\dashboard.png" />
 	  <None Remove="Resources\Images\glasses.png" />
 	  <None Remove="Resources\Images\home.png" />
+	  <None Remove="Resources\Images\lock.jpg" />
+	  <None Remove="Resources\Images\lusovu.png" />
+	  <None Remove="Resources\Images\lusovu_icon.png" />
 	  <None Remove="Resources\Images\route.png" />
-	  <None Remove="Resources\Images\runer.png" />
+	  <None Remove="Resources\Images\runner.png" />
 	  <None Remove="Resources\Images\shoes.png" />
+	  <None Remove="Resources\Images\user1.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -67,6 +71,18 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\ExerciseDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ExercisePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LoadingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\UserPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

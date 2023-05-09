@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoradSmartphone.Views.LoginPage"
+             xmlns:viewmodel ="clr-namespace:DoradSmartphone.ViewModels"
+             x:DataType = "viewmodel:LoginViewModel"
+             Shell.NavBarIsVisible="False"
+             Title="{Binding Title}">
+    <VerticalStackLayout Spacing="20" Padding="30,0" VerticalOptions="Center">
+
+        <Image
+                Source="lusovu.png"
+                SemanticProperties.Description="See Beyond!"
+                HeightRequest="300"
+                WidthRequest="300"
+                HorizontalOptions="Center"/>
+
+        <VerticalStackLayout Spacing="5">
+            <Label Text="Welcome To Dorad!" FontSize="28" TextColor="RoyalBlue" HorizontalTextAlignment="Center"/>
+            
+        </VerticalStackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Entry x:Name="Username" Placeholder="Enter email" Text="{Binding Username}" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Entry x:Name="Password" Placeholder="Enter Password" IsPassword="True" Text="{Binding Password}" />
+        </StackLayout>
+
+        <Button Text="Sign In" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" Command="{Binding LoginCommand}" />
+
+        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+            <Label Text="Create Account" TextColor="Gray">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding UserCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

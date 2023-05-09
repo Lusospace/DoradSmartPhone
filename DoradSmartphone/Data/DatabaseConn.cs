@@ -7,6 +7,7 @@ namespace DoradSmartphone.Data
     public class DatabaseConn : IRepository
     {
         SQLiteAsyncConnection db;
+        //SQLiteConnection db2;
         public DatabaseConn()
         {
         }
@@ -37,6 +38,12 @@ namespace DoradSmartphone.Data
         {
             await Init();
             return await db.Table<Exercise>().Where(i => i.Id == id).FirstOrDefaultAsync();
+        }
+
+        public async Task<User> GetUserByEmail(string email)
+        {
+            await Init();
+            return await db.Table<User>().Where(u => u.Email== email).FirstOrDefaultAsync();
         }
 
         public async Task<int> SaveItensAsync<T>(T entity) where T : class
