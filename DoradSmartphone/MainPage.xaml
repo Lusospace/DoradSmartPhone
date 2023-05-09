@@ -3,47 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoradSmartphone.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout 
-            Spacing="25" 
-            Padding="30,0" 
-            VerticalOptions="Center">
-
-            <Image
-                Source="netmaui_surf.jpg"
-                SemanticProperties.Description="net.maui surfing!"
-                HeightRequest="150"
-                WidthRequest="150"
-                HorizontalOptions="Center" />
-
-            <VerticalStackLayout>
-                <Label Text="Bem-Vindo" FontSize="28" TextColor="Gray" HorizontalTextAlignment="Center" />
-                <Label Text="Fazer Login na sua conta" FontSize="20" TextColor="Gray" HorizontalTextAlignment="Center" />
-            </VerticalStackLayout>
-
-            <StackLayout Orientation="Horizontal">
-                <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="55" WidthRequest="55" CornerRadius="25">
-                    <Image Source="user1.png" HeightRequest="20" WidthRequest="20"/>
-                </Frame>
-                <Frame HasShadow="True" Padding="0" BorderColor="White" HeightRequest="45" HorizontalOptions="FillAndExpand">
-                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Usuário" Keyboard="Email"/>
-                </Frame>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="55" WidthRequest="55" CornerRadius="25">
-                    <Image Source="lock.jpg" HeightRequest="20" WidthRequest="20"/>
-                </Frame>
-                <Frame HasShadow="True" Padding="0" BorderColor="White" HeightRequest="45" HorizontalOptions="FillAndExpand">
-                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Senha" IsPassword="True" />
-                </Frame>
-            </StackLayout>
-
-            <Button Text="Login" WidthRequest="120" CornerRadius="25" HorizontalOptions="Center" BackgroundColor="BlueViolet" />
-            <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
-                <Label Text="Não tem conta ?" TextColor="Gray"/>
-                <Label Text="Criar conta" TextColor="Gray"/>
-            </StackLayout>
-
-        </VerticalStackLayout>
-    </ScrollView>
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
 </ContentPage>

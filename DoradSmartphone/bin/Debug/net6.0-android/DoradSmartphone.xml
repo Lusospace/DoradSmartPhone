@@ -42,6 +42,7 @@
         <member name="T:DoradSmartphone.ViewModels.LoginViewModel">
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:DoradSmartphone.ViewModels.LoginViewModel.Username">
             <inheritdoc cref="F:DoradSmartphone.ViewModels.LoginViewModel.username"/>
@@ -54,6 +55,34 @@
         </member>
         <member name="P:DoradSmartphone.ViewModels.LoginViewModel.LoginCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.LoginViewModel.Login"/>.</summary>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.LoginViewModel.userCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.LoginViewModel.UserCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.LoginViewModel.UserCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.LoginViewModel.User"/>.</summary>
+        </member>
+        <member name="T:DoradSmartphone.ViewModels.UserViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.UserViewModel.Name">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.UserViewModel.name"/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.UserViewModel.Email">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.UserViewModel.email"/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.UserViewModel.Password">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.UserViewModel.password"/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.UserViewModel.PhoneNumber">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.UserViewModel.phoneNumber"/>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.UserViewModel.createUserCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.UserViewModel.CreateUserCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.UserViewModel.CreateUserCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.UserViewModel.CreateUser"/>.</summary>
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
             <summary>
@@ -78,6 +107,15 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Password">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Password" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Name">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Name" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Email">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Email" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PhoneNumber">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PhoneNumber" generated properties.</summary>
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
             <summary>
@@ -105,6 +143,15 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Password">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Password" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Name">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Name" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Email">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Email" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PhoneNumber">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PhoneNumber" generated properties.</summary>
         </member>
     </members>
 </doc>

@@ -1457,7 +1457,6 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\andro
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\assets\Xamarin.Kotlin.StdLib.Jdk8.dll
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\assets\Xamarin.KotlinX.Coroutines.Android.dll
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\assets\Xamarin.KotlinX.Coroutines.Core.Jvm.dll
-C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\typemaps.x86_64.s
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\typemaps.shared.inc
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\AndroidManifest.xml
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\AndroidManifest.xml
@@ -1466,7 +1465,6 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\andro
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\bin\mono.android.jar
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\static.flag
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\buildid.txt
-C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\environment.x86_64.s
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\src\androidx\activity\ktx\R.java
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\src\androidx\activity\R.java
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\src\androidx\annotation\experimental\R.java
@@ -1937,11 +1935,6 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\andro
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\src\mono\com\google\android\material\textfield\TextInputLayout_OnEndIconChangedListenerImplementor.java
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\src\mono\MonoPackageManager_Resources.java
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\bin\packaged_resources
-C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\compressed_assemblies.x86_64.s
-C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\typemaps.x86_64.o
-C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\environment.x86_64.o
-C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\compressed_assemblies.x86_64.o
-C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\app_shared_libraries\x86_64\libxamarin-app.so
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\bin\classes.dex
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\bin\classes2.dex
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\stamp\_CleanIntermediateIfNeeded.stamp
@@ -1954,3 +1947,10 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\stamp
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\resizetizer\r\drawable\runner.png
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\resizetizer\r\drawable\lusovu.png
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\resizetizer\r\drawable\lusovu_icon.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\typemaps.arm64-v8a.s
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\environment.arm64-v8a.s
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\compressed_assemblies.arm64-v8a.s
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\typemaps.arm64-v8a.o
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\environment.arm64-v8a.o
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\compressed_assemblies.arm64-v8a.o
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\app_shared_libraries\arm64-v8a\libxamarin-app.so

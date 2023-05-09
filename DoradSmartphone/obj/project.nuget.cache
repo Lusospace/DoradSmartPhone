@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "wVXHBr/hpWudSV5BcpvqW8eoHX4FU3GtYEqmM1EK+ItQ9JMPZYIeSBf1FuOPamGoqFZrtunzqhLu9K3TELXMMQ==",
+  "dgSpecHash": "FJIQeg51QnR2omy0aA4719ufGTn1fZqjBnCbEDLt8s6b/Op6NJJzBMkCuQHBAILSBpspu92XtbwiPb2e7R6kRg==",
   "success": true,
   "projectFilePath": "C:\\Projects\\Dorad\\doradsmartphone\\DoradSmartphone\\DoradSmartphone.csproj",
   "expectedPackageFiles": [
@@ -196,8 +196,8 @@
     "C:\\Users\\lcosta\\.nuget\\packages\\microsoft.maui.core.ref.ios\\6.0.548\\microsoft.maui.core.ref.ios.6.0.548.nupkg.sha512",
     "C:\\Users\\lcosta\\.nuget\\packages\\microsoft.ios.ref\\16.1.228\\microsoft.ios.ref.16.1.228.nupkg.sha512",
     "C:\\Users\\lcosta\\.nuget\\packages\\microsoft.maui.controls.ref.ios\\6.0.548\\microsoft.maui.controls.ref.ios.6.0.548.nupkg.sha512",
+    "C:\\Users\\lcosta\\.nuget\\packages\\microsoft.ios.runtime.ios-arm64\\16.1.228\\microsoft.ios.runtime.ios-arm64.16.1.228.nupkg.sha512",
     "C:\\Users\\lcosta\\.nuget\\packages\\microsoft.maui.essentials.runtime.ios\\6.0.548\\microsoft.maui.essentials.runtime.ios.6.0.548.nupkg.sha512",
-    "C:\\Users\\lcosta\\.nuget\\packages\\microsoft.ios.runtime.iossimulator-x64\\16.1.228\\microsoft.ios.runtime.iossimulator-x64.16.1.228.nupkg.sha512",
     "C:\\Users\\lcosta\\.nuget\\packages\\microsoft.maui.core.runtime.ios\\6.0.548\\microsoft.maui.core.runtime.ios.6.0.548.nupkg.sha512",
     "C:\\Users\\lcosta\\.nuget\\packages\\microsoft.maui.controls.ref.maccatalyst\\6.0.548\\microsoft.maui.controls.ref.maccatalyst.6.0.548.nupkg.sha512",
     "C:\\Users\\lcosta\\.nuget\\packages\\microsoft.maccatalyst.runtime.maccatalyst-x64\\16.1.228\\microsoft.maccatalyst.runtime.maccatalyst-x64.16.1.228.nupkg.sha512",

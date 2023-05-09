@@ -10446,7 +10446,7 @@
         }
       }
     },
-    "net6.0-android31.0/iossimulator-x64": {
+    "net6.0-android31.0/ios-arm64": {
       "CommunityToolkit.Mvvm/8.2.0": {
         "type": "package",
         "compile": {
@@ -22460,7 +22460,7 @@
         }
       }
     },
-    "net6.0-ios16.1/iossimulator-x64": {
+    "net6.0-ios16.1/ios-arm64": {
       "CommunityToolkit.Mvvm/8.2.0": {
         "type": "package",
         "compile": {
@@ -31750,7 +31750,7 @@
         }
       }
     },
-    "net6.0-maccatalyst16.1/iossimulator-x64": {
+    "net6.0-maccatalyst16.1/ios-arm64": {
       "CommunityToolkit.Mvvm/8.2.0": {
         "type": "package",
         "compile": {
@@ -41553,7 +41553,7 @@
         }
       }
     },
-    "net6.0-windows10.0.19041/iossimulator-x64": {
+    "net6.0-windows10.0.19041/ios-arm64": {
       "CommunityToolkit.Mvvm/8.2.0": {
         "type": "package",
         "compile": {
@@ -51580,7 +51580,7 @@
             "version": "[16.1.228, 16.1.228]"
           },
           {
-            "name": "Microsoft.iOS.Runtime.iossimulator-x64",
+            "name": "Microsoft.iOS.Runtime.ios-arm64",
             "version": "[16.1.228, 16.1.228]"
           },
           {
@@ -51849,7 +51849,7 @@
       "android-x86": {
         "#import": []
       },
-      "iossimulator-x64": {
+      "ios-arm64": {
         "#import": []
       },
       "maccatalyst-x64": {
