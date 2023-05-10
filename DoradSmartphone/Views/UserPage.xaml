@@ -6,7 +6,7 @@
              x:DataType="viewmodel:UserViewModel"
              Shell.NavBarIsVisible="False"
              Title="{Binding Title}">
-    <VerticalStackLayout Spacing="20" Padding="30,0" VerticalOptions="Center">
+    <VerticalStackLayout Spacing="20" Padding="20,0" VerticalOptions="Center">
 
         <VerticalStackLayout Spacing="5">
             <Label Text="Create User" FontSize="25" TextColor="RoyalBlue" HorizontalTextAlignment="Center"/>

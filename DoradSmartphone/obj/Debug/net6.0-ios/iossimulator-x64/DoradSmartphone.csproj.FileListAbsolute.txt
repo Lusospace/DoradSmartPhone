@@ -486,13 +486,10 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net6.0-ios\iossimula
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net6.0-ios\iossimulator-x64\libicuuc.a
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-debugger-static.a
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-debugger-stub-static.a
-C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-debugger.dylib
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-diagnostics_tracing-static.a
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-diagnostics_tracing-stub-static.a
-C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-diagnostics_tracing.dylib
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-hot_reload-static.a
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-hot_reload-stub-static.a
-C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net6.0-ios\iossimulator-x64\libmono-component-hot_reload.dylib
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net6.0-ios\iossimulator-x64\libmonosgen-2.0.a
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net6.0-ios\iossimulator-x64\libmonosgen-2.0.dylib
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.iOS.registrar.a
@@ -561,3 +558,7 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-ios\iossimula
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-ios\iossimulator-x64\DoradSmartphone.pdb
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-ios\iossimulator-x64\DoradSmartphone.genruntimeconfig.cache
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-ios\iossimulator-x64\ref\DoradSmartphone.dll
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-ios\iossimulator-x64\resizetizer\r\Resources\logout.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-ios\iossimulator-x64\resizetizer\r\Resources\lusovu.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-ios\iossimulator-x64\resizetizer\r\Resources\lusovu_icon.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-ios\iossimulator-x64\resizetizer\r\Resources\runner.png

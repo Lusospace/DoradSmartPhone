@@ -28,20 +28,15 @@ namespace DoradSmartphone.ViewModels
         [RelayCommand]
         async Task Login()
         {
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
-            {
-                await DisplayLoginError();
-            }
-            else
-            {
-                await _loginService.VerifyLogin(username, password);
-                await Shell.Current.GoToAsync($"{nameof(MainPage)}");
-            }
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))            
+                await DisplayLoginError();            
+            else            
+                await _loginService.VerifyLogin(username, password);                
+            
         }
         async Task DisplayLoginError()
         {
-            await Shell.Current.DisplayAlert("Invalid Attempt", "Invalid Username or Password", "Ok");
-            password = string.Empty;
+            await Shell.Current.DisplayAlert("Invalid Attempt", "Invalid Username or Password", "Ok");            
         }
 
         [RelayCommand]

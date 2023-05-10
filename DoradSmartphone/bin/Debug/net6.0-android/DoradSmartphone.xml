@@ -4,6 +4,15 @@
         <name>DoradSmartphone</name>
     </assembly>
     <members>
+        <member name="T:DoradSmartphone.ViewModels.AppShellViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.AppShellViewModel.logoutCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.AppShellViewModel.LogoutCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.AppShellViewModel.LogoutCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.AppShellViewModel.Logout"/>.</summary>
+        </member>
         <member name="T:DoradSmartphone.ViewModels.BaseViewModel">
             <inheritdoc/>
         </member>

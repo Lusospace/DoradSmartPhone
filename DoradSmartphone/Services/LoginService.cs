@@ -1,4 +1,5 @@
 ﻿using DoradSmartphone.Data;
+using DoradSmartphone.Views;
 
 namespace DoradSmartphone.Services
 {
@@ -22,6 +23,11 @@ namespace DoradSmartphone.Services
                 if(user.Password != password)
                 {
                     await DisplayErrorMessage("Wrong password!", "OK");
+                }
+                else
+                {
+                    Preferences.Set("UserLoggedIn", true);
+                    await Shell.Current.GoToAsync($"//{nameof(DashboardPage)}");
                 }               
             }
             catch(Exception ex)

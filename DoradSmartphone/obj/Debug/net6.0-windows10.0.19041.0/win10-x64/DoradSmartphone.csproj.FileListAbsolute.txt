@@ -753,3 +753,7 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-windows10.0.1
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\ProjectArchitectures.txt
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\logout.scale-100.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\lusovu.scale-100.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\lusovu_icon.scale-100.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\runner.scale-100.png

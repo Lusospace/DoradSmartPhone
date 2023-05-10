@@ -23,19 +23,22 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<UserPage>();
-        builder.Services.AddSingleton<LoginPage>();
+        builder.Services.AddSingleton<LoginPage>();        
         builder.Services.AddSingleton<LoadingPage>();
         builder.Services.AddSingleton<ExercisePage>();
+        builder.Services.AddSingleton<DashboardPage>();
         builder.Services.AddTransient<ExerciseDetailsPage>();
 
         builder.Services.AddSingleton<UserService>();
-        builder.Services.AddSingleton<LoginService>();
-        builder.Services.AddSingleton<ExerciseService>();        
+        builder.Services.AddSingleton<LoginService>();        
+        builder.Services.AddSingleton<ExerciseService>();
+        builder.Services.AddSingleton<DashboardService>();
 
         builder.Services.AddSingleton<UserViewModel>();
-        builder.Services.AddSingleton<LoginViewModel>();
+        builder.Services.AddSingleton<LoginViewModel>();        
         builder.Services.AddSingleton<LoadingViewModel>();
         builder.Services.AddSingleton<ExerciseViewModel>();
+        builder.Services.AddSingleton<DashboardViewModel>();
         builder.Services.AddTransient<ExerciseDetailsViewModel>();
 
         return builder.Build();

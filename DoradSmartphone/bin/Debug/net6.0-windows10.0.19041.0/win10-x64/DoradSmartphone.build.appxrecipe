@@ -1027,6 +1027,15 @@
     <AppxPackagedFile Include="C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\lock.scale-100.jpg">
       <PackagePath>lock.scale-100.jpg</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\logout.scale-100.png">
+      <PackagePath>logout.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\lusovu.scale-100.png">
+      <PackagePath>lusovu.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\lusovu_icon.scale-100.png">
+      <PackagePath>lusovu_icon.scale-100.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\netmaui_surf.scale-100.jpg">
       <PackagePath>netmaui_surf.scale-100.jpg</PackagePath>
     </AppxPackagedFile>
@@ -1035,6 +1044,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\runer.scale-100.png">
       <PackagePath>runer.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\runner.scale-100.png">
+      <PackagePath>runner.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\shoes.scale-100.png">
       <PackagePath>shoes.scale-100.png</PackagePath>
