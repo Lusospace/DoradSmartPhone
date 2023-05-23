@@ -11,5 +11,7 @@ namespace DoradSmartphone.Models
         public Speed Speed { get; set; }
         [ManyToOne(CascadeOperations = CascadeOperation.All)]
         public User User { get; set; }
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<Route> Route { get; set; }
     }
 }
