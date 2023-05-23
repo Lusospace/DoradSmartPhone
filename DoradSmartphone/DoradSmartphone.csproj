@@ -54,6 +54,7 @@
 	  <None Remove="Resources\Images\glasses.png" />
 	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\lock.jpg" />
+	  <None Remove="Resources\Images\lusospace.png" />
 	  <None Remove="Resources\Images\lusovu.png" />
 	  <None Remove="Resources\Images\lusovu_icon.png" />
 	  <None Remove="Resources\Images\route.png" />

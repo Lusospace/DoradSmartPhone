@@ -10,7 +10,7 @@
     <VerticalStackLayout Spacing="20" Padding="30,0" VerticalOptions="Center">
 
         <Image
-                Source="{x:Static helpers:Icons.LusoVu}"
+                Source="{x:Static helpers:Icons.Lusospace}"
                 SemanticProperties.Description="See Beyond!"
                 HeightRequest="300"
                 WidthRequest="300"

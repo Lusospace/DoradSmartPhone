@@ -14,5 +14,6 @@ namespace DoradSmartphone.Helpers
         public const string Logout = "logout.png";
         public const string Glasses = "glasses.png";
         public const string Dashboard = "dashboard.png";
+        public const string Lusospace = "lusospace.png";
     }
 }

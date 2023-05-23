@@ -1955,3 +1955,4 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\andro
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\android\compressed_assemblies.x86_64.o
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\app_shared_libraries\x86_64\libxamarin-app.so
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\resizetizer\r\drawable\logout.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-android\resizetizer\r\drawable\lusospace.png

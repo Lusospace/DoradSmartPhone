@@ -17,6 +17,8 @@ namespace DoradSmartphone.Data
                 return;
 
             db = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+
+            Console.WriteLine(Constants.DatabasePath.ToString());
             
             await db.CreateTableAsync<User>();
             await db.CreateTableAsync<Speed>();            
@@ -62,6 +64,6 @@ namespace DoradSmartphone.Data
         {
             await Init();
             return await db.DeleteAsync(entity);
-        }
+        }        
     }
 }
