@@ -45,8 +45,9 @@ namespace DoradSmartphone.ViewModels
                 await DisplayLoginError("Type a phone number", "Ok");
             } else
             {
-                await _userService.SaveUser(name, email, password, phoneNumber);                
-                await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+                var result = await _userService.SaveUser(name, email, password, phoneNumber);
+                if (result)
+                    await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
             }
         }
 

@@ -13,7 +13,7 @@ namespace DoradSmartphone.Services
             _databaseConn = databaseConn;
         }
 
-        public async Task SaveUser(string name, string email, string password, string phoneNumber)
+        public async Task<bool> SaveUser(string name, string email, string password, string phoneNumber)
         {
             var user = new User
             {
@@ -27,10 +27,12 @@ namespace DoradSmartphone.Services
             if(exists is null)
             {
                 await _repository.SaveItensAsync(user);
+                return true;
             }
             else
             {
                 await Shell.Current.DisplayAlert("Error", "Email is already registered!", "Ok");
+                return false;
             }
         }
     }
