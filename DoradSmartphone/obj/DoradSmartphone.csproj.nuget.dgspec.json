@@ -66,6 +66,10 @@
               "target": "Package",
               "version": "[8.2.0, )"
             },
+            "Microsoft.Maui.Controls.Maps": {
+              "target": "Package",
+              "version": "[7.0.86, )"
+            },
             "Microsoft.Maui.Dependencies": {
               "target": "Package",
               "version": "[6.0.548, )",
@@ -79,10 +83,6 @@
             "Microsoft.Maui.Maps": {
               "target": "Package",
               "version": "[7.0.86, )"
-            },
-            "Naxam.Mapbox.Droid": {
-              "target": "Package",
-              "version": "[9.2.0, )"
             },
             "SQLiteNetExtensions": {
               "target": "Package",
@@ -192,6 +192,10 @@
               "target": "Package",
               "version": "[8.2.0, )"
             },
+            "Microsoft.Maui.Controls.Maps": {
+              "target": "Package",
+              "version": "[7.0.86, )"
+            },
             "Microsoft.Maui.Dependencies": {
               "target": "Package",
               "version": "[6.0.548, )",
@@ -294,6 +298,10 @@
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.2.0, )"
+            },
+            "Microsoft.Maui.Controls.Maps": {
+              "target": "Package",
+              "version": "[7.0.86, )"
             },
             "Microsoft.Maui.Dependencies": {
               "target": "Package",
@@ -398,6 +406,10 @@
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.2.0, )"
+            },
+            "Microsoft.Maui.Controls.Maps": {
+              "target": "Package",
+              "version": "[7.0.86, )"
             },
             "Microsoft.Maui.Dependencies": {
               "target": "Package",

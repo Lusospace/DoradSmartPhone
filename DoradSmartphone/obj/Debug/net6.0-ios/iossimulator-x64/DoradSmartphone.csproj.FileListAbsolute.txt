@@ -564,3 +564,4 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-ios\iossimula
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-ios\iossimulator-x64\resizetizer\r\Resources\runner.png
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.Maui.Maps.dll
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-ios\iossimulator-x64\resizetizer\r\Resources\lusospace.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net6.0-ios\iossimulator-x64\Microsoft.Maui.Controls.Maps.dll
