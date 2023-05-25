@@ -7,9 +7,9 @@ namespace DoradSmartphone.Models
     public class Widget : BaseEntity
     {        
         public string Name { get; set; }
-        public int PosX { get; set; }
-        public int PosY { get; set; }
-        [ManyToMany(typeof(WidgetConfigurationWidget))]
+        public string FileName { get; set; }
+
+        [OneToOne(CascadeOperations = CascadeOperation.All)]
         public WidgetConfiguration WidgetConfiguration { get; set; }
     }
 }

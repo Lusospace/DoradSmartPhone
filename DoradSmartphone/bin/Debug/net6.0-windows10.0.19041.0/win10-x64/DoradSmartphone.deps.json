@@ -12,6 +12,7 @@
           "CommunityToolkit.Mvvm": "8.2.0",
           "Microsoft.Maui.Dependencies": "6.0.548",
           "Microsoft.Maui.Extensions": "6.0.548",
+          "Microsoft.Maui.Maps": "7.0.86",
           "Microsoft.Windows.SDK.BuildTools": "10.0.22000.194",
           "SQLiteNetExtensions": "2.1.0",
           "SQLitePCLRaw.provider.dynamic_cdecl": "2.1.4",
@@ -1077,6 +1078,14 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "7.0.70.16"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/1.0.1": {},
       "Microsoft.NETCore.Targets/1.0.1": {},
       "Microsoft.Windows.SDK.BuildTools/10.0.22000.194": {},
@@ -1750,6 +1759,13 @@
       "sha512": "sha512-9nIgbDKaBuy8WVPVaiYamyl8qBCYQc/0Y52Ejj2QBq5thPQq5opZXy6sSq88j0BTmin3mPVuU0Ww4wC5p/1QJA==",
       "path": "microsoft.maui.graphics.win2d.winui.desktop/6.0.501",
       "hashPath": "microsoft.maui.graphics.win2d.winui.desktop.6.0.501.nupkg.sha512"
+    },
+    "Microsoft.Maui.Maps/7.0.86": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gmdeuRjeXt1GD3ko3CtJ7URPDKtVCrbkw5o65im0jhc+z1t2xeMR3uKklXZpXoHG/KqdWbl1p7qN1WI8K+Dbww==",
+      "path": "microsoft.maui.maps/7.0.86",
+      "hashPath": "microsoft.maui.maps.7.0.86.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.0.1": {
       "type": "package",

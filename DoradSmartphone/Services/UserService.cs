@@ -6,11 +6,14 @@ namespace DoradSmartphone.Services
     public class UserService
     {
         public readonly IRepository _repository;
-        public UserService(IRepository repository) {
+        public readonly DatabaseConn _databaseConn;
+        public UserService(IRepository repository, DatabaseConn databaseConn = null)
+        {
             _repository = repository;
+            _databaseConn = databaseConn;
         }
 
-        public async Task SaveUser(string name, string email, string password, string phoneNumber)
+        public async Task<bool> SaveUser(string name, string email, string password, string phoneNumber)
         {
             var user = new User
             {
@@ -19,7 +22,18 @@ namespace DoradSmartphone.Services
                 Password = password,
                 PhoneNumber = phoneNumber
             };
-            await _repository.SaveItensAsync(user);
+
+            var exists = await _databaseConn.GetUserByEmail(email);
+            if(exists is null)
+            {
+                await _repository.SaveItensAsync(user);
+                return true;
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Error", "Email is already registered!", "Ok");
+                return false;
+            }
         }
     }
 }

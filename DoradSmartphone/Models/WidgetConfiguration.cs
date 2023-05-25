@@ -7,10 +7,9 @@ namespace DoradSmartphone.Models
     public class WidgetConfiguration : BaseEntity
 
     {
-        public string Name { get; set; }
-        [ManyToOne(CascadeOperations = CascadeOperation.All)]
-        public User User{ get; set; }
-        [ManyToMany(typeof(WidgetConfigurationWidget))]
-        public List<Widget> Widget { get; set; }
+        public int PosX { get; set; }
+        public int PosY { get; set; }
+        [OneToOne(CascadeOperations = CascadeOperation.All)]
+        public Widget Widget { get; set; }
     }
 }

@@ -211,6 +211,143 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Naxam.Mapbox.Droid/9.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Naxam.Mapbox.Services.Android.Telemetry": "5.0.1",
+          "Naxam.MapboxAccounts.Droid": "0.7.0",
+          "Naxam.MapboxGestures.Droid": "0.7.0",
+          "Naxam.MapboxSdkGeojson.Droid": "5.0.0",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.Droid.targets": {}
+        }
+      },
+      "Naxam.Mapbox.MapboxAndroidCore/2.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.MapboxAndroidCore.targets": {}
+        }
+      },
+      "Naxam.Mapbox.Services.Android.Telemetry/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "GoogleGson": "2.8.6",
+          "Naxam.Mapbox.MapboxAndroidCore": "2.0.1",
+          "Square.OkHttp3": "3.12.3",
+          "Xamarin.AndroidX.Annotation": "1.1.0.9",
+          "Xamarin.AndroidX.Legacy.Support.Core.Utils": "1.0.0.7",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.Services.Android.Telemetry.targets": {}
+        }
+      },
+      "Naxam.MapboxAccounts.Droid/0.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxAccounts.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxAccounts.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxAccounts.Droid.targets": {}
+        }
+      },
+      "Naxam.MapboxGestures.Droid/0.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxGestures.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxGestures.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxGestures.Droid.targets": {}
+        }
+      },
+      "Naxam.MapboxSdkGeojson.Droid/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "GoogleGson": "2.8.6",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxSdkGeojson.Droid.targets": {}
+        }
+      },
       "Newtonsoft.Json/9.0.1": {
         "type": "package",
         "compile": {
@@ -316,6 +453,27 @@
         },
         "runtime": {
           "lib/netstandard2.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        }
+      },
+      "Square.OkHttp3/3.12.3": {
+        "type": "package",
+        "dependencies": {
+          "Square.OkIO": "1.15.0"
+        },
+        "compile": {
+          "lib/monoandroid44/Square.OkHttp3.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/Square.OkHttp3.dll": {}
+        }
+      },
+      "Square.OkIO/1.15.0": {
+        "type": "package",
+        "compile": {
+          "lib/monoandroid44/Square.OkIO.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/Square.OkIO.dll": {}
         }
       },
       "System.Buffers/4.4.0": {
@@ -1891,6 +2049,13 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Window.targets": {}
+        }
+      },
+      "Xamarin.Build.Download/0.10.0": {
+        "type": "package",
+        "build": {
+          "buildTransitive/Xamarin.Build.Download.props": {},
+          "buildTransitive/Xamarin.Build.Download.targets": {}
         }
       },
       "Xamarin.Google.Android.Material/1.6.0": {
@@ -2300,6 +2465,143 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Naxam.Mapbox.Droid/9.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Naxam.Mapbox.Services.Android.Telemetry": "5.0.1",
+          "Naxam.MapboxAccounts.Droid": "0.7.0",
+          "Naxam.MapboxGestures.Droid": "0.7.0",
+          "Naxam.MapboxSdkGeojson.Droid": "5.0.0",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.Droid.targets": {}
+        }
+      },
+      "Naxam.Mapbox.MapboxAndroidCore/2.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.MapboxAndroidCore.targets": {}
+        }
+      },
+      "Naxam.Mapbox.Services.Android.Telemetry/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "GoogleGson": "2.8.6",
+          "Naxam.Mapbox.MapboxAndroidCore": "2.0.1",
+          "Square.OkHttp3": "3.12.3",
+          "Xamarin.AndroidX.Annotation": "1.1.0.9",
+          "Xamarin.AndroidX.Legacy.Support.Core.Utils": "1.0.0.7",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.Services.Android.Telemetry.targets": {}
+        }
+      },
+      "Naxam.MapboxAccounts.Droid/0.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxAccounts.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxAccounts.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxAccounts.Droid.targets": {}
+        }
+      },
+      "Naxam.MapboxGestures.Droid/0.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxGestures.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxGestures.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxGestures.Droid.targets": {}
+        }
+      },
+      "Naxam.MapboxSdkGeojson.Droid/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "GoogleGson": "2.8.6",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxSdkGeojson.Droid.targets": {}
+        }
+      },
       "Newtonsoft.Json/9.0.1": {
         "type": "package",
         "compile": {
@@ -2405,6 +2707,27 @@
         },
         "runtime": {
           "lib/netstandard2.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        }
+      },
+      "Square.OkHttp3/3.12.3": {
+        "type": "package",
+        "dependencies": {
+          "Square.OkIO": "1.15.0"
+        },
+        "compile": {
+          "lib/monoandroid44/Square.OkHttp3.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/Square.OkHttp3.dll": {}
+        }
+      },
+      "Square.OkIO/1.15.0": {
+        "type": "package",
+        "compile": {
+          "lib/monoandroid44/Square.OkIO.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/Square.OkIO.dll": {}
         }
       },
       "System.Buffers/4.4.0": {
@@ -3980,6 +4303,13 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Window.targets": {}
+        }
+      },
+      "Xamarin.Build.Download/0.10.0": {
+        "type": "package",
+        "build": {
+          "buildTransitive/Xamarin.Build.Download.props": {},
+          "buildTransitive/Xamarin.Build.Download.targets": {}
         }
       },
       "Xamarin.Google.Android.Material/1.6.0": {
@@ -4389,6 +4719,143 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Naxam.Mapbox.Droid/9.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Naxam.Mapbox.Services.Android.Telemetry": "5.0.1",
+          "Naxam.MapboxAccounts.Droid": "0.7.0",
+          "Naxam.MapboxGestures.Droid": "0.7.0",
+          "Naxam.MapboxSdkGeojson.Droid": "5.0.0",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.Droid.targets": {}
+        }
+      },
+      "Naxam.Mapbox.MapboxAndroidCore/2.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.MapboxAndroidCore.targets": {}
+        }
+      },
+      "Naxam.Mapbox.Services.Android.Telemetry/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "GoogleGson": "2.8.6",
+          "Naxam.Mapbox.MapboxAndroidCore": "2.0.1",
+          "Square.OkHttp3": "3.12.3",
+          "Xamarin.AndroidX.Annotation": "1.1.0.9",
+          "Xamarin.AndroidX.Legacy.Support.Core.Utils": "1.0.0.7",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.Services.Android.Telemetry.targets": {}
+        }
+      },
+      "Naxam.MapboxAccounts.Droid/0.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxAccounts.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxAccounts.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxAccounts.Droid.targets": {}
+        }
+      },
+      "Naxam.MapboxGestures.Droid/0.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxGestures.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxGestures.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxGestures.Droid.targets": {}
+        }
+      },
+      "Naxam.MapboxSdkGeojson.Droid/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "GoogleGson": "2.8.6",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxSdkGeojson.Droid.targets": {}
+        }
+      },
       "Newtonsoft.Json/9.0.1": {
         "type": "package",
         "compile": {
@@ -4494,6 +4961,27 @@
         },
         "runtime": {
           "lib/netstandard2.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        }
+      },
+      "Square.OkHttp3/3.12.3": {
+        "type": "package",
+        "dependencies": {
+          "Square.OkIO": "1.15.0"
+        },
+        "compile": {
+          "lib/monoandroid44/Square.OkHttp3.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/Square.OkHttp3.dll": {}
+        }
+      },
+      "Square.OkIO/1.15.0": {
+        "type": "package",
+        "compile": {
+          "lib/monoandroid44/Square.OkIO.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/Square.OkIO.dll": {}
         }
       },
       "System.Buffers/4.4.0": {
@@ -6069,6 +6557,13 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Window.targets": {}
+        }
+      },
+      "Xamarin.Build.Download/0.10.0": {
+        "type": "package",
+        "build": {
+          "buildTransitive/Xamarin.Build.Download.props": {},
+          "buildTransitive/Xamarin.Build.Download.targets": {}
         }
       },
       "Xamarin.Google.Android.Material/1.6.0": {
@@ -6478,6 +6973,143 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Naxam.Mapbox.Droid/9.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Naxam.Mapbox.Services.Android.Telemetry": "5.0.1",
+          "Naxam.MapboxAccounts.Droid": "0.7.0",
+          "Naxam.MapboxGestures.Droid": "0.7.0",
+          "Naxam.MapboxSdkGeojson.Droid": "5.0.0",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.Droid.targets": {}
+        }
+      },
+      "Naxam.Mapbox.MapboxAndroidCore/2.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.MapboxAndroidCore.targets": {}
+        }
+      },
+      "Naxam.Mapbox.Services.Android.Telemetry/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "GoogleGson": "2.8.6",
+          "Naxam.Mapbox.MapboxAndroidCore": "2.0.1",
+          "Square.OkHttp3": "3.12.3",
+          "Xamarin.AndroidX.Annotation": "1.1.0.9",
+          "Xamarin.AndroidX.Legacy.Support.Core.Utils": "1.0.0.7",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.Services.Android.Telemetry.targets": {}
+        }
+      },
+      "Naxam.MapboxAccounts.Droid/0.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxAccounts.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxAccounts.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxAccounts.Droid.targets": {}
+        }
+      },
+      "Naxam.MapboxGestures.Droid/0.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxGestures.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxGestures.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxGestures.Droid.targets": {}
+        }
+      },
+      "Naxam.MapboxSdkGeojson.Droid/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "GoogleGson": "2.8.6",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxSdkGeojson.Droid.targets": {}
+        }
+      },
       "Newtonsoft.Json/9.0.1": {
         "type": "package",
         "compile": {
@@ -6583,6 +7215,27 @@
         },
         "runtime": {
           "lib/netstandard2.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        }
+      },
+      "Square.OkHttp3/3.12.3": {
+        "type": "package",
+        "dependencies": {
+          "Square.OkIO": "1.15.0"
+        },
+        "compile": {
+          "lib/monoandroid44/Square.OkHttp3.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/Square.OkHttp3.dll": {}
+        }
+      },
+      "Square.OkIO/1.15.0": {
+        "type": "package",
+        "compile": {
+          "lib/monoandroid44/Square.OkIO.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/Square.OkIO.dll": {}
         }
       },
       "System.Buffers/4.4.0": {
@@ -8158,6 +8811,13 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Window.targets": {}
+        }
+      },
+      "Xamarin.Build.Download/0.10.0": {
+        "type": "package",
+        "build": {
+          "buildTransitive/Xamarin.Build.Download.props": {},
+          "buildTransitive/Xamarin.Build.Download.targets": {}
         }
       },
       "Xamarin.Google.Android.Material/1.6.0": {
@@ -8567,6 +9227,143 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Naxam.Mapbox.Droid/9.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Naxam.Mapbox.Services.Android.Telemetry": "5.0.1",
+          "Naxam.MapboxAccounts.Droid": "0.7.0",
+          "Naxam.MapboxGestures.Droid": "0.7.0",
+          "Naxam.MapboxSdkGeojson.Droid": "5.0.0",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.Droid.targets": {}
+        }
+      },
+      "Naxam.Mapbox.MapboxAndroidCore/2.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.MapboxAndroidCore.targets": {}
+        }
+      },
+      "Naxam.Mapbox.Services.Android.Telemetry/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "GoogleGson": "2.8.6",
+          "Naxam.Mapbox.MapboxAndroidCore": "2.0.1",
+          "Square.OkHttp3": "3.12.3",
+          "Xamarin.AndroidX.Annotation": "1.1.0.9",
+          "Xamarin.AndroidX.Legacy.Support.Core.Utils": "1.0.0.7",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.Services.Android.Telemetry.targets": {}
+        }
+      },
+      "Naxam.MapboxAccounts.Droid/0.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxAccounts.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxAccounts.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxAccounts.Droid.targets": {}
+        }
+      },
+      "Naxam.MapboxGestures.Droid/0.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxGestures.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxGestures.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxGestures.Droid.targets": {}
+        }
+      },
+      "Naxam.MapboxSdkGeojson.Droid/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "GoogleGson": "2.8.6",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxSdkGeojson.Droid.targets": {}
+        }
+      },
       "Newtonsoft.Json/9.0.1": {
         "type": "package",
         "compile": {
@@ -8672,6 +9469,27 @@
         },
         "runtime": {
           "lib/netstandard2.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        }
+      },
+      "Square.OkHttp3/3.12.3": {
+        "type": "package",
+        "dependencies": {
+          "Square.OkIO": "1.15.0"
+        },
+        "compile": {
+          "lib/monoandroid44/Square.OkHttp3.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/Square.OkHttp3.dll": {}
+        }
+      },
+      "Square.OkIO/1.15.0": {
+        "type": "package",
+        "compile": {
+          "lib/monoandroid44/Square.OkIO.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/Square.OkIO.dll": {}
         }
       },
       "System.Buffers/4.4.0": {
@@ -10247,6 +11065,13 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Window.targets": {}
+        }
+      },
+      "Xamarin.Build.Download/0.10.0": {
+        "type": "package",
+        "build": {
+          "buildTransitive/Xamarin.Build.Download.props": {},
+          "buildTransitive/Xamarin.Build.Download.targets": {}
         }
       },
       "Xamarin.Google.Android.Material/1.6.0": {
@@ -10656,6 +11481,143 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Naxam.Mapbox.Droid/9.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Naxam.Mapbox.Services.Android.Telemetry": "5.0.1",
+          "Naxam.MapboxAccounts.Droid": "0.7.0",
+          "Naxam.MapboxGestures.Droid": "0.7.0",
+          "Naxam.MapboxSdkGeojson.Droid": "5.0.0",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.Droid.targets": {}
+        }
+      },
+      "Naxam.Mapbox.MapboxAndroidCore/2.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.MapboxAndroidCore.targets": {}
+        }
+      },
+      "Naxam.Mapbox.Services.Android.Telemetry/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "GoogleGson": "2.8.6",
+          "Naxam.Mapbox.MapboxAndroidCore": "2.0.1",
+          "Square.OkHttp3": "3.12.3",
+          "Xamarin.AndroidX.Annotation": "1.1.0.9",
+          "Xamarin.AndroidX.Legacy.Support.Core.Utils": "1.0.0.7",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.Services.Android.Telemetry.targets": {}
+        }
+      },
+      "Naxam.MapboxAccounts.Droid/0.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxAccounts.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxAccounts.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxAccounts.Droid.targets": {}
+        }
+      },
+      "Naxam.MapboxGestures.Droid/0.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxGestures.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxGestures.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxGestures.Droid.targets": {}
+        }
+      },
+      "Naxam.MapboxSdkGeojson.Droid/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "GoogleGson": "2.8.6",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxSdkGeojson.Droid.targets": {}
+        }
+      },
       "Newtonsoft.Json/9.0.1": {
         "type": "package",
         "compile": {
@@ -10761,6 +11723,27 @@
         },
         "runtime": {
           "lib/netstandard2.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        }
+      },
+      "Square.OkHttp3/3.12.3": {
+        "type": "package",
+        "dependencies": {
+          "Square.OkIO": "1.15.0"
+        },
+        "compile": {
+          "lib/monoandroid44/Square.OkHttp3.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/Square.OkHttp3.dll": {}
+        }
+      },
+      "Square.OkIO/1.15.0": {
+        "type": "package",
+        "compile": {
+          "lib/monoandroid44/Square.OkIO.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/Square.OkIO.dll": {}
         }
       },
       "System.Buffers/4.4.0": {
@@ -12336,6 +13319,13 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Window.targets": {}
+        }
+      },
+      "Xamarin.Build.Download/0.10.0": {
+        "type": "package",
+        "build": {
+          "buildTransitive/Xamarin.Build.Download.props": {},
+          "buildTransitive/Xamarin.Build.Download.targets": {}
         }
       },
       "Xamarin.Google.Android.Material/1.6.0": {
@@ -12745,6 +13735,143 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Naxam.Mapbox.Droid/9.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Naxam.Mapbox.Services.Android.Telemetry": "5.0.1",
+          "Naxam.MapboxAccounts.Droid": "0.7.0",
+          "Naxam.MapboxGestures.Droid": "0.7.0",
+          "Naxam.MapboxSdkGeojson.Droid": "5.0.0",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.Droid.targets": {}
+        }
+      },
+      "Naxam.Mapbox.MapboxAndroidCore/2.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.MapboxAndroidCore.targets": {}
+        }
+      },
+      "Naxam.Mapbox.Services.Android.Telemetry/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "GoogleGson": "2.8.6",
+          "Naxam.Mapbox.MapboxAndroidCore": "2.0.1",
+          "Square.OkHttp3": "3.12.3",
+          "Xamarin.AndroidX.Annotation": "1.1.0.9",
+          "Xamarin.AndroidX.Legacy.Support.Core.Utils": "1.0.0.7",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.Services.Android.Telemetry.targets": {}
+        }
+      },
+      "Naxam.MapboxAccounts.Droid/0.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxAccounts.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxAccounts.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxAccounts.Droid.targets": {}
+        }
+      },
+      "Naxam.MapboxGestures.Droid/0.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxGestures.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxGestures.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxGestures.Droid.targets": {}
+        }
+      },
+      "Naxam.MapboxSdkGeojson.Droid/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "GoogleGson": "2.8.6",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxSdkGeojson.Droid.targets": {}
+        }
+      },
       "Newtonsoft.Json/9.0.1": {
         "type": "package",
         "compile": {
@@ -12850,6 +13977,27 @@
         },
         "runtime": {
           "lib/netstandard2.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        }
+      },
+      "Square.OkHttp3/3.12.3": {
+        "type": "package",
+        "dependencies": {
+          "Square.OkIO": "1.15.0"
+        },
+        "compile": {
+          "lib/monoandroid44/Square.OkHttp3.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/Square.OkHttp3.dll": {}
+        }
+      },
+      "Square.OkIO/1.15.0": {
+        "type": "package",
+        "compile": {
+          "lib/monoandroid44/Square.OkIO.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/Square.OkIO.dll": {}
         }
       },
       "System.Buffers/4.4.0": {
@@ -14425,6 +15573,13 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Window.targets": {}
+        }
+      },
+      "Xamarin.Build.Download/0.10.0": {
+        "type": "package",
+        "build": {
+          "buildTransitive/Xamarin.Build.Download.props": {},
+          "buildTransitive/Xamarin.Build.Download.targets": {}
         }
       },
       "Xamarin.Google.Android.Material/1.6.0": {
@@ -14834,6 +15989,143 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Naxam.Mapbox.Droid/9.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Naxam.Mapbox.Services.Android.Telemetry": "5.0.1",
+          "Naxam.MapboxAccounts.Droid": "0.7.0",
+          "Naxam.MapboxGestures.Droid": "0.7.0",
+          "Naxam.MapboxSdkGeojson.Droid": "5.0.0",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.Droid.targets": {}
+        }
+      },
+      "Naxam.Mapbox.MapboxAndroidCore/2.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.MapboxAndroidCore.targets": {}
+        }
+      },
+      "Naxam.Mapbox.Services.Android.Telemetry/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "GoogleGson": "2.8.6",
+          "Naxam.Mapbox.MapboxAndroidCore": "2.0.1",
+          "Square.OkHttp3": "3.12.3",
+          "Xamarin.AndroidX.Annotation": "1.1.0.9",
+          "Xamarin.AndroidX.Legacy.Support.Core.Utils": "1.0.0.7",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.Mapbox.Services.Android.Telemetry.targets": {}
+        }
+      },
+      "Naxam.MapboxAccounts.Droid/0.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxAccounts.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxAccounts.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxAccounts.Droid.targets": {}
+        }
+      },
+      "Naxam.MapboxGestures.Droid/0.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxGestures.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxGestures.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxGestures.Droid.targets": {}
+        }
+      },
+      "Naxam.MapboxSdkGeojson.Droid/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "GoogleGson": "2.8.6",
+          "Xamarin.Build.Download": "0.10.0"
+        },
+        "compile": {
+          "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.dll": {
+            "related": ".pdb"
+          }
+        },
+        "build": {
+          "build/MonoAndroid90/Naxam.MapboxSdkGeojson.Droid.targets": {}
+        }
+      },
       "Newtonsoft.Json/9.0.1": {
         "type": "package",
         "compile": {
@@ -14939,6 +16231,27 @@
         },
         "runtime": {
           "lib/netstandard2.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        }
+      },
+      "Square.OkHttp3/3.12.3": {
+        "type": "package",
+        "dependencies": {
+          "Square.OkIO": "1.15.0"
+        },
+        "compile": {
+          "lib/monoandroid44/Square.OkHttp3.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/Square.OkHttp3.dll": {}
+        }
+      },
+      "Square.OkIO/1.15.0": {
+        "type": "package",
+        "compile": {
+          "lib/monoandroid44/Square.OkIO.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/Square.OkIO.dll": {}
         }
       },
       "System.Buffers/4.4.0": {
@@ -16514,6 +17827,13 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Window.targets": {}
+        }
+      },
+      "Xamarin.Build.Download/0.10.0": {
+        "type": "package",
+        "build": {
+          "buildTransitive/Xamarin.Build.Download.props": {},
+          "buildTransitive/Xamarin.Build.Download.targets": {}
         }
       },
       "Xamarin.Google.Android.Material/1.6.0": {
@@ -16927,6 +18247,19 @@
         "runtime": {
           "lib/net6.0-ios13.6/Microsoft.Maui.Graphics.dll": {
             "related": ".pdb"
+          }
+        }
+      },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -17918,6 +19251,19 @@
         "runtime": {
           "lib/net6.0-ios13.6/Microsoft.Maui.Graphics.dll": {
             "related": ".pdb"
+          }
+        }
+      },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -19110,6 +20456,19 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/1.0.1": {
         "type": "package",
         "compile": {
@@ -20296,6 +21655,19 @@
         "runtime": {
           "lib/net6.0-ios13.6/Microsoft.Maui.Graphics.dll": {
             "related": ".pdb"
+          }
+        }
+      },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -21488,6 +22860,19 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/1.0.1": {
         "type": "package",
         "compile": {
@@ -22677,6 +24062,19 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/1.0.1": {
         "type": "package",
         "compile": {
@@ -23860,6 +25258,19 @@
         "runtime": {
           "lib/net6.0-ios13.6/Microsoft.Maui.Graphics.dll": {
             "related": ".pdb"
+          }
+        }
+      },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -25049,6 +26460,19 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/1.0.1": {
         "type": "package",
         "compile": {
@@ -26220,6 +27644,19 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/1.0.1": {
         "type": "package",
         "compile": {
@@ -27208,6 +28645,19 @@
         "runtime": {
           "lib/net6.0-maccatalyst13.5/Microsoft.Maui.Graphics.dll": {
             "related": ".pdb"
+          }
+        }
+      },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -28400,6 +29850,19 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/1.0.1": {
         "type": "package",
         "compile": {
@@ -29586,6 +31049,19 @@
         "runtime": {
           "lib/net6.0-maccatalyst13.5/Microsoft.Maui.Graphics.dll": {
             "related": ".pdb"
+          }
+        }
+      },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -30778,6 +32254,19 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/1.0.1": {
         "type": "package",
         "compile": {
@@ -31967,6 +33456,19 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/1.0.1": {
         "type": "package",
         "compile": {
@@ -33153,6 +34655,19 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/1.0.1": {
         "type": "package",
         "compile": {
@@ -34336,6 +35851,19 @@
         "runtime": {
           "lib/net6.0-maccatalyst13.5/Microsoft.Maui.Graphics.dll": {
             "related": ".pdb"
+          }
+        }
+      },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -35558,6 +37086,19 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/1.0.1": {
         "type": "package",
         "compile": {
@@ -36657,6 +38198,19 @@
         "runtime": {
           "lib/net6.0-windows10.0.18362/Microsoft.Maui.Graphics.Win2D.WinUI.Desktop.dll": {
             "related": ".pdb"
+          }
+        }
+      },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -37946,6 +39500,19 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/1.0.1": {
         "type": "package",
         "compile": {
@@ -39229,6 +40796,19 @@
         "runtime": {
           "lib/net6.0-windows10.0.18362/Microsoft.Maui.Graphics.Win2D.WinUI.Desktop.dll": {
             "related": ".pdb"
+          }
+        }
+      },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -40518,6 +42098,19 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/1.0.1": {
         "type": "package",
         "compile": {
@@ -41804,6 +43397,19 @@
           }
         }
       },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/1.0.1": {
         "type": "package",
         "compile": {
@@ -43084,6 +44690,19 @@
         "runtime": {
           "lib/net6.0-windows10.0.18362/Microsoft.Maui.Graphics.Win2D.WinUI.Desktop.dll": {
             "related": ".pdb"
+          }
+        }
+      },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -44370,6 +45989,19 @@
         "runtime": {
           "lib/net6.0-windows10.0.18362/Microsoft.Maui.Graphics.Win2D.WinUI.Desktop.dll": {
             "related": ".pdb"
+          }
+        }
+      },
+      "Microsoft.Maui.Maps/7.0.86": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Maps.dll": {
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -45808,6 +47440,47 @@
         "microsoft.maui.graphics.win2d.winui.desktop.nuspec"
       ]
     },
+    "Microsoft.Maui.Maps/7.0.86": {
+      "sha512": "gmdeuRjeXt1GD3ko3CtJ7URPDKtVCrbkw5o65im0jhc+z1t2xeMR3uKklXZpXoHG/KqdWbl1p7qN1WI8K+Dbww==",
+      "type": "package",
+      "path": "microsoft.maui.maps/7.0.86",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net7.0-android33.0/Microsoft.Maui.Maps.aar",
+        "lib/net7.0-android33.0/Microsoft.Maui.Maps.dll",
+        "lib/net7.0-android33.0/Microsoft.Maui.Maps.pdb",
+        "lib/net7.0-android33.0/Microsoft.Maui.Maps.xml",
+        "lib/net7.0-ios16.1/Microsoft.Maui.Maps.dll",
+        "lib/net7.0-ios16.1/Microsoft.Maui.Maps.pdb",
+        "lib/net7.0-ios16.1/Microsoft.Maui.Maps.xml",
+        "lib/net7.0-maccatalyst16.1/Microsoft.Maui.Maps.dll",
+        "lib/net7.0-maccatalyst16.1/Microsoft.Maui.Maps.pdb",
+        "lib/net7.0-maccatalyst16.1/Microsoft.Maui.Maps.xml",
+        "lib/net7.0-tizen7.0/Microsoft.Maui.Maps.dll",
+        "lib/net7.0-tizen7.0/Microsoft.Maui.Maps.pdb",
+        "lib/net7.0-tizen7.0/Microsoft.Maui.Maps.xml",
+        "lib/net7.0-windows10.0.19041/Microsoft.Maui.Maps.dll",
+        "lib/net7.0-windows10.0.19041/Microsoft.Maui.Maps.pdb",
+        "lib/net7.0-windows10.0.19041/Microsoft.Maui.Maps.xml",
+        "lib/net7.0-windows10.0.20348/Microsoft.Maui.Maps.dll",
+        "lib/net7.0-windows10.0.20348/Microsoft.Maui.Maps.pdb",
+        "lib/net7.0-windows10.0.20348/Microsoft.Maui.Maps.xml",
+        "lib/net7.0/Microsoft.Maui.Maps.dll",
+        "lib/net7.0/Microsoft.Maui.Maps.pdb",
+        "lib/net7.0/Microsoft.Maui.Maps.xml",
+        "lib/netstandard2.0/Microsoft.Maui.Maps.dll",
+        "lib/netstandard2.0/Microsoft.Maui.Maps.pdb",
+        "lib/netstandard2.0/Microsoft.Maui.Maps.xml",
+        "lib/netstandard2.1/Microsoft.Maui.Maps.dll",
+        "lib/netstandard2.1/Microsoft.Maui.Maps.pdb",
+        "lib/netstandard2.1/Microsoft.Maui.Maps.xml",
+        "microsoft.maui.maps.7.0.86.nupkg.sha512",
+        "microsoft.maui.maps.nuspec"
+      ]
+    },
     "Microsoft.NETCore.Platforms/1.0.1": {
       "sha512": "2G6OjjJzwBfNOO8myRV/nFrbTw5iA+DEm0N+qUqhrOmaVtn4pC77h38I1jsXGw5VH55+dPfQsqHD0We9sCl9FQ==",
       "type": "package",
@@ -46589,6 +48262,93 @@
         "tools/x86/GenXbf.dll"
       ]
     },
+    "Naxam.Mapbox.Droid/9.2.0": {
+      "sha512": "G5qnDnoSWPymrDE/HY+FgWDaqiXecs8XCEDesanMy3SoEQ4HD1/zxZImn6C3EcJ9haiFXfm4wAHkKqw/ihLJ/g==",
+      "type": "package",
+      "path": "naxam.mapbox.droid/9.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid90/Naxam.Mapbox.Droid.targets",
+        "lib/monoandroid90/Naxam.Mapbox.Droid.dll",
+        "lib/monoandroid90/Naxam.Mapbox.Droid.pdb",
+        "naxam.mapbox.droid.9.2.0.nupkg.sha512",
+        "naxam.mapbox.droid.nuspec",
+        "proguard/MonoAndroid90/proguard.txt"
+      ]
+    },
+    "Naxam.Mapbox.MapboxAndroidCore/2.0.1": {
+      "sha512": "hEES+9IDGDaKPCgH4qfvJtBZpyggLcJFC5cl3jyHqu4e7x5HlhW/MmVZjVl0LuDYgDm0+w2U+6LDaoOmTsjY9A==",
+      "type": "package",
+      "path": "naxam.mapbox.mapboxandroidcore/2.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid90/Naxam.Mapbox.MapboxAndroidCore.targets",
+        "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.dll",
+        "lib/monoandroid90/Naxam.Mapbox.MapboxAndroidCore.pdb",
+        "naxam.mapbox.mapboxandroidcore.2.0.1.nupkg.sha512",
+        "naxam.mapbox.mapboxandroidcore.nuspec",
+        "proguard/MonoAndroid90/proguard.txt"
+      ]
+    },
+    "Naxam.Mapbox.Services.Android.Telemetry/5.0.1": {
+      "sha512": "OBqP5HazmXmk1evIYASq+o2HXpJCYI25NB72AFF0JsjiyoQvo4/T3pBCwtAo2rEBgr/zKF7rCE5QztBOq1v/Vw==",
+      "type": "package",
+      "path": "naxam.mapbox.services.android.telemetry/5.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid90/Naxam.Mapbox.Services.Android.Telemetry.targets",
+        "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.dll",
+        "lib/monoandroid90/Naxam.Mapbox.Services.Android.Telemetry.pdb",
+        "naxam.mapbox.services.android.telemetry.5.0.1.nupkg.sha512",
+        "naxam.mapbox.services.android.telemetry.nuspec",
+        "proguard/MonoAndroid90/proguard.txt"
+      ]
+    },
+    "Naxam.MapboxAccounts.Droid/0.7.0": {
+      "sha512": "gfOdHLZsIga56X4pG0VGKl4iJEJdqC5Z/Mpc6A/5vNoSp3E9CELn6ORZMfQqaUHo30MTVllsSNmxqW8RE/bzzg==",
+      "type": "package",
+      "path": "naxam.mapboxaccounts.droid/0.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid90/Naxam.MapboxAccounts.Droid.targets",
+        "lib/monoandroid90/Naxam.MapboxAccounts.Droid.dll",
+        "lib/monoandroid90/Naxam.MapboxAccounts.Droid.pdb",
+        "naxam.mapboxaccounts.droid.0.7.0.nupkg.sha512",
+        "naxam.mapboxaccounts.droid.nuspec"
+      ]
+    },
+    "Naxam.MapboxGestures.Droid/0.7.0": {
+      "sha512": "VG2oEMYU7s2FZWsqBZGKueWzj+2jcsvwI8QQjQeXu5Ezlnhdxk7ZkqNVbhUQcG1vk9RquE+sbG/5ucz7o6/oHw==",
+      "type": "package",
+      "path": "naxam.mapboxgestures.droid/0.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid90/Naxam.MapboxGestures.Droid.targets",
+        "lib/monoandroid90/Naxam.MapboxGestures.Droid.dll",
+        "lib/monoandroid90/Naxam.MapboxGestures.Droid.pdb",
+        "naxam.mapboxgestures.droid.0.7.0.nupkg.sha512",
+        "naxam.mapboxgestures.droid.nuspec"
+      ]
+    },
+    "Naxam.MapboxSdkGeojson.Droid/5.0.0": {
+      "sha512": "riDPLncBzisLXcRdQw6v7jgZhb2PNkFT60QSC7kSzzMLnyYJN2beisthy/DRAXVZga3ZzcJRLm5IK4N333bIZg==",
+      "type": "package",
+      "path": "naxam.mapboxsdkgeojson.droid/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid90/Naxam.MapboxSdkGeojson.Droid.targets",
+        "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.dll",
+        "lib/monoandroid90/Naxam.MapboxSdkGeojson.Droid.pdb",
+        "naxam.mapboxsdkgeojson.droid.5.0.0.nupkg.sha512",
+        "naxam.mapboxsdkgeojson.droid.nuspec"
+      ]
+    },
     "Newtonsoft.Json/9.0.1": {
       "sha512": "U82mHQSKaIk+lpSVCbWYKNavmNH1i5xrExDEquU1i6I5pV6UMOqRnJRSlKO3cMPfcpp0RgDY+8jUXHdQ4IfXvw==",
       "type": "package",
@@ -47290,6 +49050,30 @@
         "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll",
         "sqlitepclraw.provider.e_sqlite3.2.0.4.nupkg.sha512",
         "sqlitepclraw.provider.e_sqlite3.nuspec"
+      ]
+    },
+    "Square.OkHttp3/3.12.3": {
+      "sha512": "wQdJgC+pflYr0cccSYv5S0kjq59HRrv2h+szNG9j2iBOwVmISzOnYBbqD16ws4nU9m7XJdrkprGfcSESxPpoHA==",
+      "type": "package",
+      "path": "square.okhttp3/3.12.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid44/Square.OkHttp3.dll",
+        "square.okhttp3.3.12.3.nupkg.sha512",
+        "square.okhttp3.nuspec"
+      ]
+    },
+    "Square.OkIO/1.15.0": {
+      "sha512": "xZLYVsUgr9L7ou8orZvM7GxB8nuqGazlnorXvzgXzcVq76LRPgcegBqwPauSdTCqHYZ3/UpAX1mXtSXoWjZUXA==",
+      "type": "package",
+      "path": "square.okio/1.15.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid44/Square.OkIO.dll",
+        "square.okio.1.15.0.nupkg.sha512",
+        "square.okio.nuspec"
       ]
     },
     "System.Buffers/4.4.0": {
@@ -51100,6 +52884,28 @@
         "xamarin.androidx.window.nuspec"
       ]
     },
+    "Xamarin.Build.Download/0.10.0": {
+      "sha512": "XiQNxx6Jox00O80sJRlZv6jXDZ/r3KC7SMwzQNQcD1gZ+vsZyJH3LcSpdJ5NiZhRrWZlTGNSbooHsOBF7lBOyQ==",
+      "type": "package",
+      "path": "xamarin.build.download/0.10.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "THIRD-PARTY-NOTICE.txt",
+        "build/Microsoft.Win32.Registry.dll",
+        "build/Newtonsoft.Json.dll",
+        "build/Xamarin.Build.Download.dll",
+        "build/Xamarin.Build.Download.props",
+        "build/Xamarin.Build.Download.targets",
+        "buildTransitive/Microsoft.Win32.Registry.dll",
+        "buildTransitive/Newtonsoft.Json.dll",
+        "buildTransitive/Xamarin.Build.Download.dll",
+        "buildTransitive/Xamarin.Build.Download.props",
+        "buildTransitive/Xamarin.Build.Download.targets",
+        "xamarin.build.download.0.10.0.nupkg.sha512",
+        "xamarin.build.download.nuspec"
+      ]
+    },
     "Xamarin.Google.Android.Material/1.6.0": {
       "sha512": "WOr6K1pt1JeYjK3DbBHjBxPIo7ySxK5zwZssjNLTzW1tbaxo92uemr4Wxog1KTzHbzLAFwnjk361HcIs5EyRRQ==",
       "type": "package",
@@ -51318,6 +53124,8 @@
       "CommunityToolkit.Mvvm >= 8.2.0",
       "Microsoft.Maui.Dependencies >= 6.0.548",
       "Microsoft.Maui.Extensions >= 6.0.548",
+      "Microsoft.Maui.Maps >= 7.0.86",
+      "Naxam.Mapbox.Droid >= 9.2.0",
       "SQLiteNetExtensions >= 2.1.0",
       "SQLitePCLRaw.provider.dynamic_cdecl >= 2.1.4",
       "sqlite-net-pcl >= 1.8.116"
@@ -51326,6 +53134,7 @@
       "CommunityToolkit.Mvvm >= 8.2.0",
       "Microsoft.Maui.Dependencies >= 6.0.548",
       "Microsoft.Maui.Extensions >= 6.0.548",
+      "Microsoft.Maui.Maps >= 7.0.86",
       "SQLiteNetExtensions >= 2.1.0",
       "SQLitePCLRaw.provider.dynamic_cdecl >= 2.1.4",
       "System.Runtime.InteropServices.NFloat.Internal >= 6.0.1",
@@ -51335,6 +53144,7 @@
       "CommunityToolkit.Mvvm >= 8.2.0",
       "Microsoft.Maui.Dependencies >= 6.0.548",
       "Microsoft.Maui.Extensions >= 6.0.548",
+      "Microsoft.Maui.Maps >= 7.0.86",
       "SQLiteNetExtensions >= 2.1.0",
       "SQLitePCLRaw.provider.dynamic_cdecl >= 2.1.4",
       "System.Runtime.InteropServices.NFloat.Internal >= 6.0.1",
@@ -51344,6 +53154,7 @@
       "CommunityToolkit.Mvvm >= 8.2.0",
       "Microsoft.Maui.Dependencies >= 6.0.548",
       "Microsoft.Maui.Extensions >= 6.0.548",
+      "Microsoft.Maui.Maps >= 7.0.86",
       "Microsoft.Windows.SDK.BuildTools >= 10.0.22000.194",
       "SQLiteNetExtensions >= 2.1.0",
       "SQLitePCLRaw.provider.dynamic_cdecl >= 2.1.4",
@@ -51426,6 +53237,14 @@
             "target": "Package",
             "version": "[6.0.548, )",
             "autoReferenced": true
+          },
+          "Microsoft.Maui.Maps": {
+            "target": "Package",
+            "version": "[7.0.86, )"
+          },
+          "Naxam.Mapbox.Droid": {
+            "target": "Package",
+            "version": "[9.2.0, )"
           },
           "SQLiteNetExtensions": {
             "target": "Package",
@@ -51545,6 +53364,10 @@
             "version": "[6.0.548, )",
             "autoReferenced": true
           },
+          "Microsoft.Maui.Maps": {
+            "target": "Package",
+            "version": "[7.0.86, )"
+          },
           "SQLiteNetExtensions": {
             "target": "Package",
             "version": "[2.1.0, )"
@@ -51643,6 +53466,10 @@
             "target": "Package",
             "version": "[6.0.548, )",
             "autoReferenced": true
+          },
+          "Microsoft.Maui.Maps": {
+            "target": "Package",
+            "version": "[7.0.86, )"
           },
           "SQLiteNetExtensions": {
             "target": "Package",
@@ -51743,6 +53570,10 @@
             "target": "Package",
             "version": "[6.0.548, )",
             "autoReferenced": true
+          },
+          "Microsoft.Maui.Maps": {
+            "target": "Package",
+            "version": "[7.0.86, )"
           },
           "Microsoft.Windows.SDK.BuildTools": {
             "suppressParent": "All",
