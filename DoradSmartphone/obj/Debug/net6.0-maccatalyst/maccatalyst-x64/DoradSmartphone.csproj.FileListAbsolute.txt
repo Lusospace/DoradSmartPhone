@@ -545,3 +545,5 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-maccatalyst\m
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\lusovu.png
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\lusovu_icon.png
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\runner.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net6.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Maps.dll
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net6.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\lusospace.png

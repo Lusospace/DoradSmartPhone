@@ -76,6 +76,14 @@
               "version": "[6.0.548, )",
               "autoReferenced": true
             },
+            "Microsoft.Maui.Maps": {
+              "target": "Package",
+              "version": "[7.0.86, )"
+            },
+            "Naxam.Mapbox.Droid": {
+              "target": "Package",
+              "version": "[9.2.0, )"
+            },
             "SQLiteNetExtensions": {
               "target": "Package",
               "version": "[2.1.0, )"
@@ -194,6 +202,10 @@
               "version": "[6.0.548, )",
               "autoReferenced": true
             },
+            "Microsoft.Maui.Maps": {
+              "target": "Package",
+              "version": "[7.0.86, )"
+            },
             "SQLiteNetExtensions": {
               "target": "Package",
               "version": "[2.1.0, )"
@@ -292,6 +304,10 @@
               "target": "Package",
               "version": "[6.0.548, )",
               "autoReferenced": true
+            },
+            "Microsoft.Maui.Maps": {
+              "target": "Package",
+              "version": "[7.0.86, )"
             },
             "SQLiteNetExtensions": {
               "target": "Package",
@@ -392,6 +408,10 @@
               "target": "Package",
               "version": "[6.0.548, )",
               "autoReferenced": true
+            },
+            "Microsoft.Maui.Maps": {
+              "target": "Package",
+              "version": "[7.0.86, )"
             },
             "Microsoft.Windows.SDK.BuildTools": {
               "suppressParent": "All",

@@ -12,10 +12,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>DoradSmartphone</ApplicationTitle>
+		<ApplicationTitle>Dorad Smartphone</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.doradsmartphone</ApplicationId>
+		<ApplicationId>com.lusospace.doradsmartphone</ApplicationId>
 		<ApplicationIdGuid>ddc365d3-2347-42fb-9305-9d7d24bef2b2</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -65,6 +65,7 @@
 
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+	  <PackageReference Include="Microsoft.Maui.Maps" Version="7.0.86" />
 	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 	  <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
 	  <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.4" />
@@ -89,6 +90,12 @@
 	  <MauiXaml Update="Views\UserPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-android'">
+	  <PackageReference Include="Naxam.Mapbox.Droid">
+	    <Version>9.2.0</Version>
+	  </PackageReference>
 	</ItemGroup>
 
 </Project>

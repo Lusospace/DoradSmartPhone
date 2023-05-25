@@ -26,7 +26,7 @@ namespace DoradSmartphone.Data
             await db.CreateTableAsync<Widget>();
             await db.CreateTableAsync<Exercise>();
             await db.CreateTableAsync<WidgetConfiguration>();
-            await db.CreateTableAsync<WidgetConfigurationWidget>();
+            await db.CreateTableAsync<WidgetPersonalization>();
         }
 
         public async Task<List<Exercise>> GetItemsAsync()
