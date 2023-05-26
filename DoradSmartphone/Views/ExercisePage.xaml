@@ -2,32 +2,67 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoradSmartphone.Views.ExercisePage"
-             xmlns:model ="clr-namespace:DoradSmartphone.Models"
-             xmlns:viewmodel ="clr-namespace:DoradSmartphone.ViewModels"
+             xmlns:model="clr-namespace:DoradSmartphone.Models"
+             xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
              x:DataType ="viewmodel:ExerciseViewModel"
              Title="{Binding Title}">
 
-    <Grid ColumnDefinitions="*, *, Auto" ColumnSpacing="5" RowDefinitions="*, Auto">
-        <RefreshView Command="{Binding GetExerciseListCommand}" IsRefreshing="{Binding IsRefreshing}">
-            <CollectionView Grid.ColumnSpan="3" ItemsSource="{Binding Exercises}" SelectionMode="None">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Exercise">
-                        <Grid Padding="10">
-                            <Frame HeightRequest="90">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExerciseViewModel}}, Path=ExerciseDetailsCommand}
-                                        " CommandParameter="{Binding .}"></TapGestureRecognizer>
-                                </Frame.GestureRecognizers>
-                                <HorizontalStackLayout Padding="10" Spacing="5">
-                                    <Label Text="{Binding Id}"></Label>
-                                    <Label Text="{Binding Date}"></Label>
-                                </HorizontalStackLayout>
-                            </Frame>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </RefreshView>
-        <Button Text="Fetch Exercises" Command="{Binding GetExerciseListCommand}" IsEnabled="{Binding IsNotLoading}" Grid.Row="1" Grid.Column="0" Margin="9"></Button>
+
+
+
+    <Grid Padding="5" RowSpacing="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <maps:Map Grid.Row="0" x:Name="map" VerticalOptions="Center" Grid.ColumnSpan="2" >
+            <x:Arguments>
+                <MapSpan>
+                    <x:Arguments>
+                        <sensors:Location>
+                            <x:Arguments>
+                                <x:Double>38.744418137669875</x:Double>
+                                <x:Double>-9.128544160596851</x:Double>
+                            </x:Arguments>
+                        </sensors:Location>
+                        <x:Double>0.1</x:Double>
+                        <x:Double>0.1</x:Double>
+                    </x:Arguments>
+                </MapSpan>
+            </x:Arguments>
+        </maps:Map>
+
+        <BoxView Color="Green" Grid.Row="2"/>
+
+        
+        <BoxView Grid.Column="1" Grid.Row="2"
+                 Color="Blue" />
+
+        
+        <BoxView Grid.Row="1"
+                 Color="Teal" />
+        <Label Grid.Row="1"
+               Text="Row 1, Column 0"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+        
+        
+        <BoxView Grid.Row="1"
+                 Grid.Column="1"
+                 Color="Purple" />
+        <Label Grid.Row="1"
+               Grid.Column="1"
+               Text="Row1, Column 1"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
     </Grid>
 </ContentPage>
