@@ -12,18 +12,13 @@
 
 
 
-    <Grid Padding="5" RowSpacing="5">
+    <Grid Padding="5" Margin="5" RowSpacing="5" ColumnSpacing="3">
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*" />
-            <RowDefinition />
-            <RowDefinition Height="100" />
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
 
-        <maps:Map Grid.Row="0" x:Name="map" VerticalOptions="Center" Grid.ColumnSpan="2" >
+        <maps:Map Grid.Row="0" x:Name="map" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="3" HeightRequest="400" IsZoomEnabled="False" IsEnabled="False">
             <x:Arguments>
                 <MapSpan>
                     <x:Arguments>
@@ -33,36 +28,28 @@
                                 <x:Double>-9.128544160596851</x:Double>
                             </x:Arguments>
                         </sensors:Location>
-                        <x:Double>0.1</x:Double>
-                        <x:Double>0.1</x:Double>
+                        <x:Double>0.7</x:Double>
+                        <x:Double>0.7</x:Double>
                     </x:Arguments>
                 </MapSpan>
             </x:Arguments>
         </maps:Map>
 
-        <BoxView Color="Green" Grid.Row="2"/>
-
-        
-        <BoxView Grid.Column="1" Grid.Row="2"
-                 Color="Blue" />
-
-        
-        <BoxView Grid.Row="1"
-                 Color="Teal" />
-        <Label Grid.Row="1"
-               Text="Row 1, Column 0"
-               HorizontalOptions="Center"
-               VerticalOptions="Center" />
-        
-        
-        <BoxView Grid.Row="1"
-                 Grid.Column="1"
-                 Color="Purple" />
-        <Label Grid.Row="1"
-               Grid.Column="1"
-               Text="Row1, Column 1"
-               HorizontalOptions="Center"
-               VerticalOptions="Center" />
-
+        <CarouselView ItemsSource="{Binding Exercises}" Grid.Row="1" PeekAreaInsets="100">
+            <CarouselView.ItemTemplate>
+                <DataTemplate x:DataType="model:Exercise">
+                    <Frame HeightRequest="90" Margin="5">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExerciseViewModel}}, Path=ExerciseDetailsCommand}
+                                            " CommandParameter="{Binding .}"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                        <HorizontalStackLayout Padding="10" Spacing="5" >
+                            <Label Text="{Binding Id}"></Label>
+                            <Label Text="{Binding Date}"></Label>
+                        </HorizontalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
     </Grid>
 </ContentPage>
