@@ -286,3 +286,7 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-ios\iossimula
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-ios\iossimulator-x64\DoradSmartphone.pdb
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-ios\iossimulator-x64\DoradSmartphone.genruntimeconfig.cache
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-ios\iossimulator-x64\ref\DoradSmartphone.dll
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\Plugin.BLE.Abstractions.dll
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\Plugin.BLE.dll
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\ToastProject.dll
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\ToastProject.pdb

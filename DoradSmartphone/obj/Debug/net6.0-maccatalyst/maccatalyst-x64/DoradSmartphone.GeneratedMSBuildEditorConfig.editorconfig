@@ -58,6 +58,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = DoradSmartphone.Views.Exer
 build_metadata.AdditionalFiles.TargetPath = Views\ExercisePage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\ExercisePage.xaml
 
+[C:/Projects/Dorad/doradsmartphone/DoradSmartphone/Views/GlassPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = DoradSmartphone.Views.GlassPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\GlassPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\GlassPage.xaml
+
 [C:/Projects/Dorad/doradsmartphone/DoradSmartphone/Views/LoadingPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = DoradSmartphone.Views.LoadingPage.xaml

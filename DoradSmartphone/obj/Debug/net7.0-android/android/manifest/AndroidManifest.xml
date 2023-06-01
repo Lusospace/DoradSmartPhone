@@ -12,8 +12,15 @@
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.BLUETOOTH" />
+  <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+  <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+  <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+  <uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
   <!-- For targeting v8.3 or greater of the Google Play services SDK -->
   <!-- Required to access the user's location -->
+  <!-- Add this line to your manifest if you want to declare that your app is available to BLE-capable devices only: -->
+  <!-- Request legacy Bluetooth + location permissions on older devices. -->
   <uses-feature android:glEsVersion="0x00020000" android:required="true" />
   <queries>
     <!-- Needs to be explicitly declared on Android R+ -->

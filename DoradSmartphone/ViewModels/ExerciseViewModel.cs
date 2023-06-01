@@ -14,7 +14,6 @@ namespace DoradSmartphone.ViewModels
     {
         private readonly ExerciseService exerciseService;
         
-
         public ObservableCollection<Exercise> Exercises { get; private set; } = new();
         public ExerciseViewModel(ExerciseService exerciseService)
         {

@@ -42,8 +42,8 @@
         <Tab Title="Glasses" Icon="{x:Static helpers:Icons.Glasses}">
             <ShellContent
                 Title="Glasses"
-                ContentTemplate="{DataTemplate local:MainPage}"
-                Route="MainPage"/>
+                ContentTemplate="{DataTemplate views:GlassPage}"
+                Route="GlassPage"/>
         </Tab>
 
         <Tab Title="Avatar" Icon="{x:Static helpers:Icons.Avatar}">

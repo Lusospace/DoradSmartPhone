@@ -2,6 +2,8 @@
 using DoradSmartphone.Services;
 using DoradSmartphone.ViewModels;
 using DoradSmartphone.Views;
+using ToastProject;
+using ToastProject.Platforms;
 
 namespace DoradSmartphone;
 
@@ -22,8 +24,14 @@ public static class MauiProgram
 		builder.Services.AddSingleton<DatabaseConn>();
         builder.Services.AddScoped<IRepository, DatabaseConn>();
 
+        builder.Services.AddSingleton<IMap>(Map.Default);
+        builder.Services.AddSingleton<IToast>((e) => new Toaster());
+        builder.Services.AddSingleton<IGeolocation>(Geolocation.Default);
+        builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);               
+
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<UserPage>();
+        builder.Services.AddSingleton<GlassPage>();
         builder.Services.AddSingleton<LoginPage>();        
         builder.Services.AddSingleton<LoadingPage>();
         builder.Services.AddSingleton<ExercisePage>();
@@ -34,8 +42,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<LoginService>();        
         builder.Services.AddSingleton<ExerciseService>();
         builder.Services.AddSingleton<DashboardService>();
+        builder.Services.AddSingleton<BluetoothLEService>();
 
         builder.Services.AddSingleton<UserViewModel>();
+        builder.Services.AddSingleton<GlassViewModel>();
         builder.Services.AddSingleton<LoginViewModel>();        
         builder.Services.AddSingleton<LoadingViewModel>();
         builder.Services.AddSingleton<ExerciseViewModel>();

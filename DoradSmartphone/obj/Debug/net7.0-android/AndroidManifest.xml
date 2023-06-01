@@ -12,6 +12,11 @@
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.BLUETOOTH" />
+  <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+  <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+  <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+  <uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
   <application android:allowBackup="true" android:icon="@mipmap/appicon" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true" android:name="crc64ae884e02adde98dc.MainApplication" android:label="Dorad Smartphone" android:debuggable="true" android:extractNativeLibs="true">
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDaW6mCTLhn8sDi0yfbpjDqtBLkudQSRKA" />
     <uses-library android:name="org.apache.http.legacy" android:required="false" />
@@ -34,4 +39,6 @@
   </application>
   <!-- For targeting v8.3 or greater of the Google Play services SDK -->
   <!-- Required to access the user's location -->
+  <!--Add this line to your manifest if you want to declare that your app is available to BLE-capable devices only:-->
+  <!-- Request legacy Bluetooth + location permissions on older devices. -->
 </manifest>
