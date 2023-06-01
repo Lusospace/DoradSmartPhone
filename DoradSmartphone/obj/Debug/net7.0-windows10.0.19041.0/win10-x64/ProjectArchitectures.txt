@@ -1,0 +1,2 @@
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\DoradSmartphone.csproj;x64
+C:\Projects\Dorad\doradsmartphone\ToastProject\ToastProject.csproj;neutral
