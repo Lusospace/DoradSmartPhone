@@ -18,7 +18,7 @@
             <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
 
-        <maps:Map Grid.Row="0" x:Name="map" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="3" HeightRequest="400" IsZoomEnabled="False" IsEnabled="False">
+        <maps:Map Grid.Row="0" x:Name="routeMap" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="3" HeightRequest="400" IsZoomEnabled="False" IsEnabled="False">
             <x:Arguments>
                 <MapSpan>
                     <x:Arguments>
