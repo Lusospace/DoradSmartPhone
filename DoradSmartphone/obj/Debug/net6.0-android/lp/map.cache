@@ -5,15 +5,7 @@ Microsoft.Maui.Controls.Xaml.dll
 Microsoft.Maui.dll
 Microsoft.Maui.Essentials.dll
 Microsoft.Maui.Graphics.dll
-Naxam.Mapbox.Droid.dll
-Naxam.Mapbox.MapboxAndroidCore.dll
-Naxam.Mapbox.Services.Android.Telemetry.dll
-Naxam.MapboxAccounts.Droid.dll
-Naxam.MapboxGestures.Droid.dll
-Naxam.MapboxSdkGeojson.Droid.dll
 SQLitePCLRaw.lib.e_sqlite3.android.dll
-Square.OkHttp3.dll
-Square.OkIO.dll
 Xamarin.Android.Glide.Annotations.dll
 Xamarin.Android.Glide.DiskLruCache.dll
 Xamarin.Android.Glide.dll

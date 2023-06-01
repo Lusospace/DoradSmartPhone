@@ -3,7 +3,7 @@ using DoradSmartphone.Models;
 
 namespace DoradSmartphone.ViewModels
 {
-    [QueryProperty(nameof(Exercise), "Training")]
+    [QueryProperty(nameof(Exercise), "Exercise")]
     public partial class ExerciseDetailsViewModel : BaseViewModel
     {
         [ObservableProperty]

@@ -10,6 +10,7 @@
       "DoradSmartphone/1.0": {
         "dependencies": {
           "CommunityToolkit.Mvvm": "8.2.0",
+          "Microsoft.Maui.Controls.Maps": "7.0.86",
           "Microsoft.Maui.Dependencies": "6.0.548",
           "Microsoft.Maui.Extensions": "6.0.548",
           "Microsoft.Maui.Maps": "7.0.86",
@@ -1041,6 +1042,17 @@
           }
         }
       },
+      "Microsoft.Maui.Controls.Maps/7.0.86": {
+        "dependencies": {
+          "Microsoft.Maui.Maps": "7.0.86"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Maui.Controls.Maps.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "7.0.70.16"
+          }
+        }
+      },
       "Microsoft.Maui.Dependencies/6.0.548": {
         "dependencies": {
           "Microsoft.Graphics.Win2D": "1.0.3.1",
@@ -1731,6 +1743,13 @@
       "sha512": "sha512-6G1OcTt88m3MAKHCZsZsxHAZCy9cqMI2UPbm9ypXUUG7sJ92UDfTgWm/FLQAftdZ9ONeYvy9fOMkIbnp+Ov4oA==",
       "path": "microsoft.graphics.win2d/1.0.3.1",
       "hashPath": "microsoft.graphics.win2d.1.0.3.1.nupkg.sha512"
+    },
+    "Microsoft.Maui.Controls.Maps/7.0.86": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JhaaGF8eXjM2N9FAvaWEAcai536wMCmaLQVS+mfSf4akPtFRcyf+acobVPaT/s1VKurvnKRI5+UliPkNm5SGrg==",
+      "path": "microsoft.maui.controls.maps/7.0.86",
+      "hashPath": "microsoft.maui.controls.maps.7.0.86.nupkg.sha512"
     },
     "Microsoft.Maui.Dependencies/6.0.548": {
       "type": "package",

@@ -754,6 +754,9 @@
     <AppxPackagedFile Include="C:\Users\lcosta\.nuget\packages\microsoft.graphics.win2d\1.0.3.1\lib\net5.0-windows10.0.18362.0\Microsoft.Graphics.Canvas.Interop.dll">
       <PackagePath>Microsoft.Graphics.Canvas.Interop.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\lcosta\.nuget\packages\microsoft.maui.controls.maps\7.0.86\lib\netstandard2.1\Microsoft.Maui.Controls.Maps.dll">
+      <PackagePath>Microsoft.Maui.Controls.Maps.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\lcosta\.nuget\packages\microsoft.maui.graphics\6.0.501\lib\net6.0-windows10.0.18362\Microsoft.Maui.Graphics.dll">
       <PackagePath>Microsoft.Maui.Graphics.dll</PackagePath>
     </AppxPackagedFile>

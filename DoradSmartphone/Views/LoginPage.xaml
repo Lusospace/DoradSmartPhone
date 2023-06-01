@@ -18,7 +18,7 @@
 
         <VerticalStackLayout Spacing="5">
             <Label Text="Welcome To Dorad!" FontSize="28" TextColor="RoyalBlue" HorizontalTextAlignment="Center"/>
-            
+
         </VerticalStackLayout>
 
         <StackLayout Orientation="Horizontal">

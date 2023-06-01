@@ -9,13 +9,13 @@
   <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="31" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.INTERNET" />
-  <uses-feature android:glEsVersion="0x00020000" android:required="true" />
-  <uses-feature android:name="android.hardware.wifi" android:required="false" />
-  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-  <!-- Required for CrashReporterJobIntentService on API levels below 25 -->
-  <uses-permission android:name="android.permission.WAKE_LOCK" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <!-- For targeting v8.3 or greater of the Google Play services SDK -->
+  <!-- Required to access the user's location -->
   <application android:name="crc64ae884e02adde98dc.MainApplication" android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="true" android:extractNativeLibs="true" android:icon="@mipmap/appicon" android:label="Dorad Smartphone" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true">
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDaW6mCTLhn8sDi0yfbpjDqtBLkudQSRKA" />
     <activity android:name="crc64ae884e02adde98dc.MainActivity" android:configChanges="density|orientation|smallestScreenSize|screenLayout|screenSize|uiMode" android:exported="true" android:theme="@style/Maui.SplashTheme">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -38,7 +38,5 @@
     </provider>
     <uses-library android:name="androidx.window.extensions" android:required="false" />
     <uses-library android:name="androidx.window.sidecar" android:required="false" />
-    <provider android:name="com.mapbox.android.telemetry.provider.MapboxTelemetryInitProvider" android:authorities="com.lusospace.doradsmartphone.mapboxtelemetryinitprovider" android:exported="false" android:initOrder="100" />
-    <service android:name="com.mapbox.android.telemetry.errors.ErrorReporterJobIntentService" android:permission="android.permission.BIND_JOB_SERVICE" />
   </application>
 </manifest>
