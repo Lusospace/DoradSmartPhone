@@ -16,8 +16,9 @@ public class BluetoothLEService
     public IDevice Device { get; set; }
     public IToast toast;
 
-    public BluetoothLEService()
+    public BluetoothLEService(IToast toast)
     {
+        this.toast = toast;
         BluetoothLE = CrossBluetoothLE.Current;
         Adapter = CrossBluetoothLE.Current.Adapter;
         Adapter.ScanTimeout = 4000;
