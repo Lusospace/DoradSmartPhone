@@ -85,3 +85,9 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = DoradSmartphone.Views.UserPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\UserPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\UserPage.xaml
+
+[C:/Projects/Dorad/doradsmartphone/DoradSmartphone/Views/WidgetPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = DoradSmartphone.Views.WidgetPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\WidgetPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\WidgetPage.xaml

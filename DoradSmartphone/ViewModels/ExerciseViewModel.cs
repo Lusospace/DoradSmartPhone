@@ -18,8 +18,7 @@ namespace DoradSmartphone.ViewModels
         public ExerciseViewModel(ExerciseService exerciseService)
         {
             Title = "Training Routes";
-            this.exerciseService = exerciseService;
-            //_ = GetExerciseList();                                   
+            this.exerciseService = exerciseService;                                            
         }
 
         [ObservableProperty]

@@ -33,10 +33,11 @@ public static class MauiProgram
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<UserPage>();
         builder.Services.AddSingleton<GlassPage>();
-        builder.Services.AddSingleton<LoginPage>();        
+        builder.Services.AddSingleton<LoginPage>();
+        builder.Services.AddSingleton<WidgetPage>();
         builder.Services.AddSingleton<LoadingPage>();
         builder.Services.AddSingleton<ExercisePage>();
-        builder.Services.AddSingleton<DashboardPage>();
+        builder.Services.AddSingleton<DashboardPage>();        
         builder.Services.AddSingleton<ExerciseDetailsPage>();
 
         builder.Services.AddSingleton<UserService>();
@@ -48,7 +49,8 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<UserViewModel>();
         builder.Services.AddSingleton<GlassViewModel>();
-        builder.Services.AddSingleton<LoginViewModel>();        
+        builder.Services.AddSingleton<LoginViewModel>();
+        builder.Services.AddSingleton<WidgetViewModel>();
         builder.Services.AddSingleton<LoadingViewModel>();
         builder.Services.AddTransient<ExerciseViewModel>();
         builder.Services.AddSingleton<DashboardViewModel>();
