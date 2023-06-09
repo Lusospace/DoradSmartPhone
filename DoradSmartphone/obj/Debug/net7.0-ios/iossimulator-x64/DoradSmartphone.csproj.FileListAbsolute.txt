@@ -227,6 +227,7 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimula
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\libxamarin-dotnet.dylib
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\ToastProject.dll
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\ToastProject.pdb
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-ios\iossimulator-x64\build-signature\signature
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-ios\iossimulator-x64\mauiimage.inputs
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-ios\iossimulator-x64\mauifont.inputs
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-ios\iossimulator-x64\mauisplash.inputs

@@ -4,6 +4,18 @@
         <name>DoradSmartphone</name>
     </assembly>
     <members>
+        <member name="T:DoradSmartphone.Platforms.Android.Bluetooth.DiscoverableModeReceiver">
+            <summary>
+            Listen for when the device goes in and out of Bluetooth discoverability
+            mode, and will raise an Event.
+            </summary>
+        </member>
+        <member name="T:DoradSmartphone.Services.Bluetooth.DiscoverableModeReceiverService">
+            <summary>
+            Listen for when the device goes in and out of Bluetooth discoverability
+            mode, and will raise an Event.
+            </summary>
+        </member>
         <member name="T:DoradSmartphone.ViewModels.AppShellViewModel">
             <inheritdoc/>
         </member>
@@ -25,6 +37,21 @@
         <member name="P:DoradSmartphone.ViewModels.BaseViewModel.IsScanning">
             <inheritdoc cref="F:DoradSmartphone.ViewModels.BaseViewModel.isScanning"/>
         </member>
+        <member name="T:DoradSmartphone.ViewModels.DashboardViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.CommStatus">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.commStatus"/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.DeviceList">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.deviceList"/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.StatusLabel">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.statusLabel"/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.DeviceBool">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.deviceBool"/>
+        </member>
         <member name="T:DoradSmartphone.ViewModels.ExerciseDetailsViewModel">
             <inheritdoc/>
         </member>
@@ -33,16 +60,9 @@
         </member>
         <member name="T:DoradSmartphone.ViewModels.ExerciseViewModel">
             <inheritdoc/>
-            <inheritdoc/>
         </member>
         <member name="P:DoradSmartphone.ViewModels.ExerciseViewModel.IsRefreshing">
             <inheritdoc cref="F:DoradSmartphone.ViewModels.ExerciseViewModel.isRefreshing"/>
-        </member>
-        <member name="F:DoradSmartphone.ViewModels.ExerciseViewModel.exerciseDetailsCommand">
-            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ExerciseViewModel.ExerciseDetailsCommand"/>.</summary>
-        </member>
-        <member name="P:DoradSmartphone.ViewModels.ExerciseViewModel.ExerciseDetailsCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ExerciseViewModel.ExerciseDetails(DoradSmartphone.Models.Exercise)"/>.</summary>
         </member>
         <member name="T:DoradSmartphone.ViewModels.LoginViewModel">
             <inheritdoc/>
@@ -104,6 +124,18 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsScanning">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsScanning" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CommStatus">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CommStatus" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DeviceList">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DeviceList" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.StatusLabel">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "StatusLabel" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DeviceBool">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DeviceBool" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Exercise">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Exercise" generated properties.</summary>
         </member>
@@ -145,6 +177,18 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsNotScanning">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsNotScanning" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CommStatus">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CommStatus" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DeviceList">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DeviceList" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.StatusLabel">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "StatusLabel" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DeviceBool">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DeviceBool" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Exercise">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Exercise" generated properties.</summary>

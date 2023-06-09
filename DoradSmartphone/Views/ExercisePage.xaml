@@ -40,8 +40,7 @@
                 <DataTemplate x:DataType="model:Exercise">
                     <Frame HeightRequest="90" Margin="5">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExerciseViewModel}}, Path=ExerciseDetailsCommand}
-                                            " CommandParameter="{Binding .}"></TapGestureRecognizer>
+                            <TapGestureRecognizer Tapped="OnTapGestureRouteUpdate" CommandParameter="{Binding .}" />
                         </Frame.GestureRecognizers>
                         <HorizontalStackLayout Padding="10" Spacing="5" >
                             <Label Text="{Binding Id}"></Label>

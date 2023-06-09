@@ -7,4 +7,15 @@ namespace DoradSmartphone;
 [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
 public class MainActivity : MauiAppCompatActivity
 {
+    //Platforms.Android.BluetoothService bluetoothClass;
+
+    protected override void OnCreate(Bundle savedInstanceState)
+    {
+        base.OnCreate(savedInstanceState);
+
+        if(savedInstanceState == null)
+        {
+           // bluetoothClass = new Platforms.Android.BluetoothClass();
+        }
+    }
 }

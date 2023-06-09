@@ -2,11 +2,30 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoradSmartphone.Views.DashboardPage"
+             xmlns:model="clr-namespace:DoradSmartphone.Models"
+             xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"   
+             x:DataType ="viewmodel:DashboardViewModel"
              Title="{Binding Title}">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <StackLayout>
+        <Label x:Name="StatusLabel" Text="{Binding CommStatus}"  IsVisible="{Binding StatusLabel}"/>
+        <ListView x:Name="DeviceListView"
+                  ItemsSource="{Binding Devices}"
+                  IsVisible="{Binding DeviceBool}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:DeviceCandidate">
+                    <Frame HeightRequest="90" Margin="5">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:DashboardViewModel}}, Path=PairingCommand}"
+                                                  CommandParameter="{Binding .}"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                                <VerticalStackLayout Padding="5" Spacing="4">
+                                    <Label Text="{Binding Name}" FontAttributes="Bold" />
+                                    <Label Text="{Binding Address}" FontSize="Small" />
+                                    <Label Text="{Binding Id}" FontSize="Small" />
+                                </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

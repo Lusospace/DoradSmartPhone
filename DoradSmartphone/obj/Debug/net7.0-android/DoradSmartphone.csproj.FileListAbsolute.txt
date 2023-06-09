@@ -876,6 +876,7 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\andro
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc6495d4f5d63cc5c882\AwaitableTaskCompleteListener_1.java
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc649ff77a65592e7d55\TabbedPageManager_Listeners.java
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc649ff77a65592e7d55\TabbedPageManager_TempView.java
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc64a01e16bbd1aab3e3\DiscoverableModeReceiver.java
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc64a25b61d9f8ee364f\FloatArrayEvaluator.java
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc64a25b61d9f8ee364f\RectEvaluator.java
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc64a25b61d9f8ee364f\TransitionUtils.java
@@ -912,6 +913,7 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\andro
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc64e1fb321c08285b90\ViewRenderer.java
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc64e1fb321c08285b90\ViewRenderer_2.java
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc64e1fb321c08285b90\VisualElementRenderer_1.java
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc64e3266e4c153dad4e\BluetoothClass.java
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc64e53d2f592022988e\ConnectivityBroadcastReceiver.java
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc64e53d2f592022988e\ConnectivityImplementation_EssentialsNetworkCallback.java
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc64f62664462a8937a9\AccelerometerListener.java
@@ -1066,6 +1068,9 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\stamp
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\stamp\_GenerateJavaStubs.stamp
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\stamp\_GeneratePackageManagerJava.stamp
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\stamp\_ResolveLibraryProjectImports.stamp
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc643c41d85473a1b0aa\BluetoothService.java
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc643c41d85473a1b0aa\DiscoverableModeReceiverService.java
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc643c41d85473a1b0aa\BluetoothReceiver.java
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\typemaps.arm64-v8a.ll
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\environment.arm64-v8a.ll
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\compressed_assemblies.arm64-v8a.ll
