@@ -106,4 +106,8 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\Widgets\route.png" />
+	</ItemGroup>
+
 </Project>

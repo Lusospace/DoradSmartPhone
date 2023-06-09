@@ -26,6 +26,7 @@ This README would normally document whatever steps are necessary to get your app
 * Writing tests
 * Code review
 * Other guidelines
+* Icons referece <a href="https://www.flaticon.com/br/icones-gratis">Icones criados por Smashicons - Flaticon</a>
 
 ### Who do I talk to? ###
 
