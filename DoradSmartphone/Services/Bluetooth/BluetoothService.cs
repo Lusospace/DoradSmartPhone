@@ -1,7 +1,5 @@
-﻿using Android;
-using Android.App;
+﻿using Android.App;
 using Android.Bluetooth;
-using Android.Content;
 using Android.OS;
 using Android.Widget;
 

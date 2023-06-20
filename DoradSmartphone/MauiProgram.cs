@@ -25,10 +25,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<DatabaseConn>();
         builder.Services.AddScoped<IRepository, DatabaseConn>();
 
-        builder.Services.AddSingleton<IMap>(Map.Default);
-        builder.Services.AddSingleton<IToast>((e) => new Toaster());
-        builder.Services.AddSingleton<IGeolocation>(Geolocation.Default);
-        builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);        
+        builder.Services.AddSingleton<IToast>((e) => new Toaster()); 
 
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<UserPage>();
@@ -39,6 +36,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<ExercisePage>();
         builder.Services.AddSingleton<DashboardPage>();        
         builder.Services.AddSingleton<ExerciseDetailsPage>();
+        builder.Services.AddSingleton<DisplaySelectedItemsPage>();
 
         builder.Services.AddSingleton<UserService>();
         builder.Services.AddSingleton<LoginService>();        
@@ -50,7 +48,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<UserViewModel>();
         builder.Services.AddSingleton<GlassViewModel>();
         builder.Services.AddSingleton<LoginViewModel>();
-        builder.Services.AddSingleton<WidgetViewModel>();
+        builder.Services.AddTransient<WidgetViewModel>();
         builder.Services.AddSingleton<LoadingViewModel>();
         builder.Services.AddTransient<ExerciseViewModel>();
         builder.Services.AddSingleton<DashboardViewModel>();

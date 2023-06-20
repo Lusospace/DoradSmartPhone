@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoradSmartphone.Models
 {
@@ -21,13 +16,13 @@ namespace DoradSmartphone.Models
             }
         }
 
-        private bool _isSelected;
+        private bool isSelected;
         public bool IsSelected
         {
-            get { return _isSelected; }
+            get { return isSelected; }
             set
             {
-                _isSelected = value;
+                isSelected = value;
                 OnPropertyChanged();
             }
         }

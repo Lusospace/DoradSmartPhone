@@ -45,6 +45,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\battery.png" />
+	  <MauiImage Remove="Resources\Images\distance.png" />
+	  <MauiImage Remove="Resources\Images\kmh.png" />
+	  <MauiImage Remove="Resources\Images\time.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Images\barchart.png" />
 	  <None Remove="Resources\Images\dashboard.png" />
 	  <None Remove="Resources\Images\glasses.png" />
@@ -84,6 +91,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\DashboardPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DisplaySelectedItemsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ExerciseDetailsPage.xaml">

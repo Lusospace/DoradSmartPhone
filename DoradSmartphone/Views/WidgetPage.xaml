@@ -6,22 +6,96 @@
              xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"             
              x:DataType ="viewmodel:WidgetViewModel"
              Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="WidgetContainerStyle" TargetType="Frame">
+                <Setter Property="HeightRequest" Value="180" />
+                <Setter Property="CornerRadius" Value="24" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="Margin" Value="10" />
+            </Style>
 
-    <CollectionView ItemsSource="{Binding Images}" SelectionMode="Single" SelectionChangedCommand="{Binding ItemSelectedCommand}">
-        <CollectionView.ItemsLayout>
-            <GridItemsLayout Span="2" Orientation="Vertical"/>
-        </CollectionView.ItemsLayout>
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <Grid Margin="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Image Source="{Binding ImageSource}" Aspect="AspectFit" HeightRequest="100" Grid.Row="0"/>
-                    <CheckBox IsChecked="{Binding IsSelected}" Grid.Row="1"/>
-                </Grid>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+            <Style x:Key="WidgetImageStyle" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFill" />
+            </Style>
+
+            <Style x:Key="WidgetNameTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontFamily" Value="Fallingsky" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="12, 0" />
+            </Style>
+
+            <Style x:Key="WidgetDescriptionTextStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontFamily" Value="Fallingsky" />
+                <Setter Property="Margin" Value="12, 0" />
+            </Style>
+
+            <Style x:Key="WidgetRatingContainerStyle" TargetType="Frame">
+                <Setter Property="HeightRequest" Value="25" />
+                <Setter Property="WidthRequest" Value="25" />
+                <Setter Property="CornerRadius" Value="24" />
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Padding" Value="6" />
+                <Setter Property="Margin" Value="0, 0, 12, 12" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <Grid Padding="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <ScrollView Grid.Row="0">
+                <FlexLayout BindableLayout.ItemsSource="{Binding Widgets}"
+                            Direction="Row"
+                            Wrap="Wrap"
+                            AlignItems="Start">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="model:Widget">
+                            <Frame 
+                                Style="{StaticResource WidgetContainerStyle}" WidthRequest="100">
+                                <Grid
+                                    RowDefinitions="*, 36, 48">
+                                    <Image
+                                        Source="{Binding FileName}"
+                                        Style="{StaticResource WidgetImageStyle}"/>
+                                    <StackLayout
+                                        Grid.Row="1">
+                                        <Label
+                                            Text="{Binding Name}"
+                                            Style="{StaticResource WidgetNameTextStyle}"/>
+                                    </StackLayout>
+                                    <Grid
+                                        Grid.Row="2"
+                                        ColumnDefinitions="*, Auto">
+                                        <Frame Style="{StaticResource WidgetRatingContainerStyle}">
+                                            <CheckBox IsChecked="{Binding IsSelected}" />
+                                        </Frame>
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+            </ScrollView>
+            <Button
+                Text="Select and Display"
+                Command="{Binding DisplaySelectedItemsCommand}"
+                Grid.Row="3"
+                Margin="0,12"
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand" />
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>

@@ -1,66 +1,98 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Android.Widget;
+using CommunityToolkit.Mvvm.ComponentModel;
 using DoradSmartphone.Models;
+using DoradSmartphone.Views;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using ToastProject;
 
 namespace DoradSmartphone.ViewModels
 {
     public partial class WidgetViewModel : BaseViewModel, INotifyPropertyChanged
     {
-        private ObservableCollection<ImageWidget> _images;
-        public ObservableCollection<ImageWidget> Images
-        {
-            get { return _images; }
-            set
-            {
-                _images = value;
-                OnPropertyChanged();
-            }
-        }
+        public IToast toast;
 
-        public ICommand ItemSelectedCommand { get; }
+        [ObservableProperty]
+        private bool isRefreshing;
+        
 
-        public WidgetViewModel()
+        public ObservableCollection<Widget> Widgets { get; private set; } = new();
+
+        private List<Widget> selectedItems;
+
+   
+
+        public ICommand DisplaySelectedItemsCommand => new Command(DisplaySelectedItems);
+
+
+        public WidgetViewModel(IToast toast)
         {
             Title = "Widget Selection";
-            Images = new ObservableCollection<ImageWidget>();
-            LoadImages();
-
-            ItemSelectedCommand = new Command(ItemSelected);
+            this.toast = toast;
         }
 
-        private void LoadImages()
+        public async Task GetWidgetList()
         {
-            var imagePaths = Directory.GetFiles("pathToImagesFolder");
-
-            foreach (var imagePath in imagePaths)
+            if (IsLoading) return;
+            try
             {
-                Images.Add(new ImageWidget { ImageSource = ImageSource.FromFile(imagePath), IsSelected = false });
+                IsLoading = true;
+                if (Widgets.Any()) Widgets.Clear();
+
+                var widgets = GetWidgets();
+                foreach (var widget in widgets) Widgets.Add(widget);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                await Shell.Current.DisplayAlert("Error", "Failed to retrieve the widgets list", "Ok");
+            }
+            finally
+            {
+                IsLoading = false;
+                IsRefreshing = false;
             }
         }
 
-        private void ItemSelected()
+        private void DisplaySelectedItems()
         {
-            int selectedCount = Images.Count(i => i.IsSelected);
-
-            if (selectedCount >= 1 && selectedCount <= 5)
+            // Select a minimum of 1 and a maximum of 3 items
+            selectedItems = Widgets.Where(w => w.IsSelected).Take(3).ToList();
+            if(selectedItems.Count < 1)
             {
-                // Move to the next page
-                // Implement your navigation logic here
-            }
-            else
+                toast.MakeToast($"Must select more than 1 Widget");
+                return;
+            } else if (selectedItems.Count > 5)
             {
-                // Show an error message or handle the selection error
-            }
+                toast.MakeToast($"Must not select more than 5 Widgets");
+                return;
+            } else
+            {
+                // Navigate to another page and pass the selected items
+                // Here's an example using NavigationPage and pushing a new page onto the navigation stack
+                Application.Current.MainPage.Navigation.PushAsync(new DisplaySelectedItemsPage(selectedItems));
+            }            
         }
 
-        // Implement INotifyPropertyChanged interface methods
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+
+        public List<Widget> GetWidgets() => new List<Widget>
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+            new Widget {
+            Id = 1, Name = "Battery", FileName = "Images/Widgets/route.png"
+            },
+            new Widget {
+            Id = 2, Name = "Time", FileName = "Images/Widgets/route.png"
+            },
+            new Widget {
+            Id = 3, Name = "Route", FileName = "Images/Widgets/route.png"
+            },
+            new Widget {
+            Id = 4, Name = "Distance", FileName = "Images/Widgets/route.png"
+            },
+            new Widget {
+            Id = 5, Name = "Speed", FileName = "Images/Widgets/route.png"
+            },
+        };
     }
 }
