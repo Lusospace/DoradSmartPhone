@@ -7,33 +7,74 @@
              Title="{Binding Title}">
 
     <ContentPage.Content>
-        <controls:DraggableFrame BackgroundColor="LightGray"
-                         BorderColor="DarkGray"                         
-                         Padding="10"
-                         WidthRequest="150"
-                         HeightRequest="150"
-                         CornerRadius="8"
-                         Margin="10"
-                         HorizontalOptions="Start"
-                         VerticalOptions="Start"                         
-                         IsDragging="{Binding IsDragging}"
-                         TranslationX="{Binding TranslationX}"
-                         TranslationY="{Binding TranslationY}">
-            <!-- Widget Content -->
-            <StackLayout>
-                <Image Source="{Binding FileName}" 
-               Aspect="AspectFit" 
-               HeightRequest="80" 
-               WidthRequest="80" 
-               HorizontalOptions="Center" 
-               VerticalOptions="Center" />
-                <Label Text="{Binding Name}" 
-               FontSize="12" 
-               FontAttributes="Bold" 
-               TextColor="Black" 
-               HorizontalOptions="Center" 
-               VerticalOptions="Center" />
-            </StackLayout>
-        </controls:DraggableFrame>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image Source="{Binding Widgets[0].FileName}"
+                   Aspect="AspectFit"
+                   HeightRequest="80"
+                   WidthRequest="80"
+                   Margin="5"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start">
+                <Image.GestureRecognizers>
+                    <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image Source="{Binding Widgets[1].FileName}"
+                   Aspect="AspectFit"
+                   HeightRequest="80"
+                   WidthRequest="80"
+                   Margin="5"
+                   HorizontalOptions="End"
+                   VerticalOptions="Start">
+                <Image.GestureRecognizers>
+                    <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image Source="{Binding Widgets[2].FileName}"
+                   Aspect="AspectFit"
+                   HeightRequest="80"
+                   WidthRequest="80"
+                   Margin="5"
+                   HorizontalOptions="Start"
+                   VerticalOptions="End">
+                <Image.GestureRecognizers>
+                    <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image Source="{Binding Widgets[3].FileName}"
+                   Aspect="AspectFit"
+                   HeightRequest="80"
+                   WidthRequest="80"
+                   Margin="5"
+                   HorizontalOptions="End"
+                   VerticalOptions="End">
+                <Image.GestureRecognizers>
+                    <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image Source="{Binding Widgets[4].FileName}"
+                   Aspect="AspectFit"
+                   HeightRequest="80"
+                   WidthRequest="80"
+                   Margin="5"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                </Image.GestureRecognizers>
+            </Image>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

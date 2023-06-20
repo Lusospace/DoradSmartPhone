@@ -81,6 +81,29 @@
         <member name="P:DoradSmartphone.ViewModels.LoginViewModel.UserCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.LoginViewModel.User"/>.</summary>
         </member>
+        <member name="T:DoradSmartphone.ViewModels.ManualViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.ManualViewModel.dragCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ManualViewModel.DragCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.ManualViewModel.DragCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ManualViewModel.Drag(DoradSmartphone.Models.Widget)"/>.</summary>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.ManualViewModel.dropCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ManualViewModel.DropCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.ManualViewModel.DropCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ManualViewModel.Drop(System.String)"/>.</summary>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.ManualViewModel.loadAutomaticPageCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ManualViewModel.LoadAutomaticPageCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.ManualViewModel.LoadAutomaticPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ManualViewModel.LoadAutomaticPage"/>.</summary>
+        </member>
         <member name="T:DoradSmartphone.ViewModels.UserViewModel">
             <inheritdoc/>
             <inheritdoc/>
