@@ -45,13 +45,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiImage Remove="Resources\Images\battery.png" />
-	  <MauiImage Remove="Resources\Images\distance.png" />
-	  <MauiImage Remove="Resources\Images\kmh.png" />
-	  <MauiImage Remove="Resources\Images\time.png" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <None Remove="Resources\Images\barchart.png" />
 	  <None Remove="Resources\Images\dashboard.png" />
 	  <None Remove="Resources\Images\glasses.png" />
@@ -60,10 +53,43 @@
 	  <None Remove="Resources\Images\lusospace.png" />
 	  <None Remove="Resources\Images\lusovu.png" />
 	  <None Remove="Resources\Images\lusovu_icon.png" />
-	  <None Remove="Resources\Images\route.png" />
+	  <None Remove="Resources\Images\routes.png" />
 	  <None Remove="Resources\Images\runner.png" />
 	  <None Remove="Resources\Images\shoes.png" />
 	  <None Remove="Resources\Images\user1.png" />
+	  <None Remove="Resources\Images\Widgets\altitude.png" />
+	  <None Remove="Resources\Images\Widgets\battery.png" />
+	  <None Remove="Resources\Images\Widgets\direction.png" />
+	  <None Remove="Resources\Images\Widgets\distance.png" />
+	  <None Remove="Resources\Images\Widgets\heart.png" />
+	  <None Remove="Resources\Images\Widgets\kmh.png" />
+	  <None Remove="Resources\Images\Widgets\time.png" />
+	  <None Remove="Resources\Images\Widgets\weather.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\Widgets\altitude.png" />
+	  <MauiImage Include="Resources\Images\Widgets\battery.png">
+	    <CopyToOutputDirectory></CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\Widgets\direction.png">
+	    <CopyToOutputDirectory></CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\Widgets\distance.png">
+	    <CopyToOutputDirectory></CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\Widgets\heart.png">
+	    <CopyToOutputDirectory></CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\Widgets\kmh.png">
+	    <CopyToOutputDirectory></CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\Widgets\time.png">
+	    <CopyToOutputDirectory></CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\Widgets\weather.png">
+	    <CopyToOutputDirectory></CopyToOutputDirectory>
+	  </MauiImage>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -90,6 +116,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\AutomaticPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\DashboardPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -109,6 +138,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ManualPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\UserPage.xaml">

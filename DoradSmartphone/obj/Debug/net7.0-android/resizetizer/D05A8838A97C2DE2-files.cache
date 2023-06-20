@@ -1,7 +1,13 @@
-﻿obj\Debug\net7.0-android\resizetizer\r\drawable\barchart.png
+﻿obj\Debug\net7.0-android\resizetizer\r\drawable\altitude.png
+obj\Debug\net7.0-android\resizetizer\r\drawable\barchart.png
+obj\Debug\net7.0-android\resizetizer\r\drawable\battery.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\dashboard.png
+obj\Debug\net7.0-android\resizetizer\r\drawable\direction.png
+obj\Debug\net7.0-android\resizetizer\r\drawable\distance.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\glasses.png
+obj\Debug\net7.0-android\resizetizer\r\drawable\heart.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\home.png
+obj\Debug\net7.0-android\resizetizer\r\drawable\kmh.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\lock.jpg
 obj\Debug\net7.0-android\resizetizer\r\drawable\logout.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\lusospace.png
@@ -11,7 +17,9 @@ obj\Debug\net7.0-android\resizetizer\r\drawable\route.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\routes.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\runner.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\shoes.png
+obj\Debug\net7.0-android\resizetizer\r\drawable\time.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\user1.png
+obj\Debug\net7.0-android\resizetizer\r\drawable\weather.png
 obj\Debug\net7.0-android\resizetizer\r\drawable-hdpi\dotnet_bot.png
 obj\Debug\net7.0-android\resizetizer\r\drawable-hdpi\splash.png
 obj\Debug\net7.0-android\resizetizer\r\drawable-mdpi\dotnet_bot.png

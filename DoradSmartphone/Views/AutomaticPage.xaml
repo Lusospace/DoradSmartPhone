@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoradSmartphone.Views.AutomaticPage"
+             xmlns:model="clr-namespace:DoradSmartphone.Models"
+             Title="{Binding Title}">
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Image Source="{Binding Widgets[0].FileName}"
+                   Aspect="AspectFit"
+                   HeightRequest="80"
+                   WidthRequest="80"
+                   Margin="5"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start" />
+
+            <Image Source="{Binding Widgets[1].FileName}"
+                   Aspect="AspectFit"
+                   HeightRequest="80"
+                   WidthRequest="80"
+                   Margin="5"
+                   HorizontalOptions="End"
+                   VerticalOptions="Start" />
+
+            <Image Source="{Binding Widgets[2].FileName}"
+                   Aspect="AspectFit"
+                   HeightRequest="80"
+                   WidthRequest="80"
+                   Margin="5"
+                   HorizontalOptions="Start"
+                   VerticalOptions="End" />
+
+            <Image Source="{Binding Widgets[3].FileName}"
+                   Aspect="AspectFit"
+                   HeightRequest="80"
+                   WidthRequest="80"
+                   Margin="5"
+                   HorizontalOptions="End"
+                   VerticalOptions="End" />
+
+            <Image Source="{Binding Widgets[4].FileName}"
+                   Aspect="AspectFit"
+                   HeightRequest="80"
+                   WidthRequest="80"
+                   Margin="5"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

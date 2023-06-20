@@ -1080,3 +1080,12 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\stamp
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\stamp\_GenerateJavaStubs.stamp
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\stamp\_GeneratePackageManagerJava.stamp
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\stamp\_ResolveLibraryProjectImports.stamp
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\resizetizer\r\drawable\altitude.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\resizetizer\r\drawable\direction.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\resizetizer\r\drawable\distance.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\resizetizer\r\drawable\heart.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\resizetizer\r\drawable\kmh.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\resizetizer\r\drawable\time.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\resizetizer\r\drawable\weather.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\resizetizer\r\drawable\battery.png
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android\android\src\crc641931fc92dbf2edee\DraggableFrameRenderer.java

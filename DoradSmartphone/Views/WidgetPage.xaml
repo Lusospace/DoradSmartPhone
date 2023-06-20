@@ -19,7 +19,8 @@
             </Style>
 
             <Style x:Key="WidgetImageStyle" TargetType="Image">
-                <Setter Property="Aspect" Value="AspectFill" />
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="HeightRequest" Value="80" />
             </Style>
 
             <Style x:Key="WidgetNameTextStyle" TargetType="Label">
@@ -36,14 +37,11 @@
                 <Setter Property="Margin" Value="12, 0" />
             </Style>
 
-            <Style x:Key="WidgetRatingContainerStyle" TargetType="Frame">
+            <Style x:Key="WidgetRatingContainerStyle" TargetType="CheckBox">
                 <Setter Property="HeightRequest" Value="25" />
                 <Setter Property="WidthRequest" Value="25" />
-                <Setter Property="CornerRadius" Value="24" />
-                <Setter Property="HasShadow" Value="True" />
                 <Setter Property="HorizontalOptions" Value="End" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="Padding" Value="6" />
                 <Setter Property="Margin" Value="0, 0, 12, 12" />
             </Style>
         </ResourceDictionary>
@@ -55,8 +53,8 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            
-            <ScrollView Grid.Row="0">
+
+            <ScrollView Grid.Row="0" HorizontalOptions="Center">
                 <FlexLayout BindableLayout.ItemsSource="{Binding Widgets}"
                             Direction="Row"
                             Wrap="Wrap"
@@ -79,9 +77,8 @@
                                     <Grid
                                         Grid.Row="2"
                                         ColumnDefinitions="*, Auto">
-                                        <Frame Style="{StaticResource WidgetRatingContainerStyle}">
-                                            <CheckBox IsChecked="{Binding IsSelected}" />
-                                        </Frame>
+                                        <CheckBox IsChecked="{Binding IsSelected}" 
+                                                      Style="{StaticResource WidgetRatingContainerStyle}"/>
                                     </Grid>
                                 </Grid>
                             </Frame>

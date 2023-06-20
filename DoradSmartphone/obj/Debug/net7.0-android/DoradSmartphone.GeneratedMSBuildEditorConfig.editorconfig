@@ -44,6 +44,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = DoradSmartphone.Resources.
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
+[C:/Projects/Dorad/doradsmartphone/DoradSmartphone/Views/AutomaticPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = DoradSmartphone.Views.AutomaticPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AutomaticPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AutomaticPage.xaml
+
 [C:/Projects/Dorad/doradsmartphone/DoradSmartphone/Views/DashboardPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = DoradSmartphone.Views.DashboardPage.xaml
@@ -85,6 +91,12 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = DoradSmartphone.Views.LoginPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\LoginPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\LoginPage.xaml
+
+[C:/Projects/Dorad/doradsmartphone/DoradSmartphone/Views/ManualPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = DoradSmartphone.Views.ManualPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ManualPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ManualPage.xaml
 
 [C:/Projects/Dorad/doradsmartphone/DoradSmartphone/Views/UserPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml

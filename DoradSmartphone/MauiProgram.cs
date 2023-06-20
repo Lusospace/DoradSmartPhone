@@ -32,8 +32,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<GlassPage>();
         builder.Services.AddSingleton<LoginPage>();
         builder.Services.AddSingleton<WidgetPage>();
+        builder.Services.AddSingleton<ManualPage>();
         builder.Services.AddSingleton<LoadingPage>();
         builder.Services.AddSingleton<ExercisePage>();
+        builder.Services.AddSingleton<AutomaticPage>();
         builder.Services.AddSingleton<DashboardPage>();        
         builder.Services.AddSingleton<ExerciseDetailsPage>();
         builder.Services.AddSingleton<DisplaySelectedItemsPage>();
@@ -49,8 +51,10 @@ public static class MauiProgram
         builder.Services.AddSingleton<GlassViewModel>();
         builder.Services.AddSingleton<LoginViewModel>();
         builder.Services.AddTransient<WidgetViewModel>();
-        builder.Services.AddSingleton<LoadingViewModel>();
+        builder.Services.AddTransient<ManualViewModel>();
+        builder.Services.AddSingleton<LoadingViewModel>();        
         builder.Services.AddTransient<ExerciseViewModel>();
+        builder.Services.AddTransient<AutomaticViewModel>();
         builder.Services.AddSingleton<DashboardViewModel>();
         builder.Services.AddTransient<ExerciseDetailsViewModel>();
 
