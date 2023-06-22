@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoradSmartphone.Views.AutomaticPage"
+             xmlns:viewmodel ="clr-namespace:DoradSmartphone.ViewModels"
              xmlns:model="clr-namespace:DoradSmartphone.Models"
+             x:DataType = "viewmodel:AutomaticViewModel"
              Title="{Binding Title}">
 
     <ContentPage.Content>

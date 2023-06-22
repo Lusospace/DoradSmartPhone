@@ -57,12 +57,12 @@ namespace DoradSmartphone.ViewModels
             selectedItems = Widgets.Where(w => w.IsSelected).ToList();
             if (selectedItems.Count < 1)
             {
-                toast.MakeToast($"Must select more than 1 Widget");
+                toast.MakeToast($"Must select at least 1 widget");
                 return;
             }
             else if (selectedItems.Count > 5)
             {
-                toast.MakeToast($"Must not select more than 5 Widgets");
+                toast.MakeToast($"Must not select more than 5 widgets");
                 return;
             }
             else

@@ -7,11 +7,35 @@ namespace DoradSmartphone.ViewModels
 {
     public partial class ManualViewModel : BaseViewModel, INotifyPropertyChanged
     {
-        //public ICommand LoadAutomaticPageCommand => new Command(LoadAutomaticPage);
+        private double sliderValue;
+        private string sliderLabel;
 
-        private Widget draggedWidget;
+        public double SliderValue
+        {
+            get { return sliderValue; }
+            set
+            {
+                if (sliderValue != value)
+                {
+                    sliderValue = value;
+                    OnPropertyChanged("SliderValue");
+                    UpdateSliderLabel();
+                }
+            }
+        }
 
-        private int selectedWidget;
+        public string SliderLabel
+        {
+            get { return sliderLabel; }
+            set
+            {
+                if (sliderLabel != value)
+                {
+                    sliderLabel = value;
+                    OnPropertyChanged("SliderLabel");
+                }
+            }
+        }
 
         private ObservableCollection<Widget> widgets;
         public ObservableCollection<Widget> Widgets
@@ -30,25 +54,9 @@ namespace DoradSmartphone.ViewModels
         public ManualViewModel(List<Widget> selectedItems)
         {
             Title = "Manual Configuration";
+            SliderValue = 1;
+            UpdateSliderLabel();
             Widgets = new ObservableCollection<Widget>(selectedItems);
-        }
-
-        [RelayCommand]
-        public void Drag(Widget widget)
-        {
-            draggedWidget = widget;
-        }
-
-        [RelayCommand]
-        public void Drop(string option)
-        {
-            int op = Convert.ToInt32(option);
-            if (selectedWidget == op) return;
-
-            if(draggedWidget != null)
-            {
-                var currentWidget = widgets[selectedWidget];               
-            }
         }
 
         [RelayCommand]
@@ -101,6 +109,52 @@ namespace DoradSmartphone.ViewModels
                 Title = "Automatic",
                 Content = layout
             };
+        }
+
+        private void UpdateSliderLabel()
+        {
+            int sliderValueInt = (int)SliderValue;
+
+            // Use the converted integer value in the switch statement
+            switch (sliderValueInt)
+            {
+                case 1:
+                    SliderLabel = "6.531645173";
+                    break;
+                case 2:
+                    SliderLabel = "3.265822586";
+                    break;
+                case 3:
+                    SliderLabel = "2.177215058";
+                    break;
+                case 4:
+                    SliderLabel = "1.632911293";
+                    break;
+                case 5:
+                    SliderLabel = "1.306329035";
+                    break;
+                case 6:
+                    SliderLabel = "1.088607529";
+                    break;
+                case 7:
+                    SliderLabel = "0.933092168";
+                    break;
+                case 8:
+                    SliderLabel = "0.816455647";
+                    break;
+                case 9:
+                    SliderLabel = "0.725738353";
+                    break;
+                case 10:
+                    SliderLabel = "0.653164517";
+                    break;
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected new virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
     }

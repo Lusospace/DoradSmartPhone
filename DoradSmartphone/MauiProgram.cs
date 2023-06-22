@@ -28,9 +28,9 @@ public static class MauiProgram
         builder.Services.AddSingleton<IToast>((e) => new Toaster()); 
 
         builder.Services.AddSingleton<MainPage>();
-        builder.Services.AddSingleton<UserPage>();
+        builder.Services.AddTransient<UserPage>();
         builder.Services.AddSingleton<GlassPage>();
-        builder.Services.AddSingleton<LoginPage>();
+        builder.Services.AddTransient<LoginPage>();
         builder.Services.AddSingleton<WidgetPage>();
         builder.Services.AddSingleton<ManualPage>();
         builder.Services.AddSingleton<LoadingPage>();

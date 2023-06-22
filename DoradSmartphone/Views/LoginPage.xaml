@@ -7,36 +7,55 @@
              x:DataType = "viewmodel:LoginViewModel"
              Shell.NavBarIsVisible="False"
              Title="{Binding Title}">
-    <VerticalStackLayout Spacing="20" Padding="30,0" VerticalOptions="Center">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="EntryContainerStyle" TargetType="Entry">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="HeightRequest" Value="48" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-        <Image
-                Source="{x:Static helpers:Icons.Lusospace}"
-                SemanticProperties.Description="See Beyond!"
-                HeightRequest="300"
-                WidthRequest="300"
-                HorizontalOptions="Center"/>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <ScrollView>
+                <StackLayout x:Name="MainLayout" VerticalOptions="Center">
+                    <Grid VerticalOptions="Center" HorizontalOptions="Center" RowSpacing="15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-        <VerticalStackLayout Spacing="5">
-            <Label Text="Welcome To Dorad!" FontSize="28" TextColor="RoyalBlue" HorizontalTextAlignment="Center"/>
+                        <Image Source="{x:Static helpers:Icons.Lusospace}" SemanticProperties.Description="See Beyond!" HeightRequest="300" WidthRequest="300" HorizontalOptions="Center" Grid.Row="0" />
 
-        </VerticalStackLayout>
+                        <Label Text="Welcome To Dorad!" FontSize="28" TextColor="RoyalBlue" HorizontalTextAlignment="Center" Grid.Row="1" Margin="20"/>
 
-        <StackLayout Orientation="Horizontal">
-            <Entry x:Name="Username" Placeholder="Enter email" Text="{Binding Username}" />
+                        <Entry x:Name="Username" Placeholder="Enter email" 
+                               Text="{Binding Username}" Grid.Row="2" 
+                               Completed="OnEntryCompleted"
+                               Style="{StaticResource EntryContainerStyle}"/>
+
+                        <Entry x:Name="Password" Placeholder="Enter Password" 
+                               IsPassword="True" Text="{Binding Password}" Grid.Row="3" 
+                               Completed="OnEntryCompleted"
+                               Style="{StaticResource EntryContainerStyle}"/>
+
+                        <Button Text="Sign In" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" 
+                                Command="{Binding LoginCommand}" Grid.Row="4" Margin="10" 
+                                FontSize="15"/>
+
+                        <Label Text="Create Account" TextColor="Gray" Grid.Row="5" HorizontalTextAlignment="Center" Margin="10">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding UserCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
-
-        <StackLayout Orientation="Horizontal">
-            <Entry x:Name="Password" Placeholder="Enter Password" IsPassword="True" Text="{Binding Password}" />
-        </StackLayout>
-
-        <Button Text="Sign In" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" Command="{Binding LoginCommand}" />
-
-        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
-            <Label Text="Create Account" TextColor="Gray">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding UserCommand}"/>
-                </Label.GestureRecognizers>
-            </Label>
-        </StackLayout>
-    </VerticalStackLayout>
+    </ContentPage.Content>
 </ContentPage>

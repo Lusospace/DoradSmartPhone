@@ -3,77 +3,102 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoradSmartphone.Views.ManualPage"
              xmlns:model="clr-namespace:DoradSmartphone.Models"
-             xmlns:controls="clr-namespace:DoradSmartphone.Controls;assembly=DoradSmartphone"
+             xmlns:viewmodel ="clr-namespace:DoradSmartphone.ViewModels"     
+             x:DataType = "viewmodel:ManualViewModel"
              Title="{Binding Title}">
 
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
+                <RowDefinition Height="90*" />
+                <RowDefinition Height="10*" />
             </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Image Source="{Binding Widgets[0].FileName}"
-                   Aspect="AspectFit"
-                   HeightRequest="80"
-                   WidthRequest="80"
-                   Margin="5"
-                   HorizontalOptions="Start"
-                   VerticalOptions="Start">
-                <Image.GestureRecognizers>
-                    <PanGestureRecognizer PanUpdated="OnPanUpdated" />
-                </Image.GestureRecognizers>
-            </Image>
+            <!-- First Grid with 90% height -->
+            <Grid x:Name="WidgetGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-            <Image Source="{Binding Widgets[1].FileName}"
-                   Aspect="AspectFit"
-                   HeightRequest="80"
-                   WidthRequest="80"
-                   Margin="5"
-                   HorizontalOptions="End"
-                   VerticalOptions="Start">
-                <Image.GestureRecognizers>
-                    <PanGestureRecognizer PanUpdated="OnPanUpdated" />
-                </Image.GestureRecognizers>
-            </Image>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding Widgets[0].FileName}"
+                       Aspect="AspectFit"
+                       HeightRequest="80"
+                       WidthRequest="80"
+                       Margin="5"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Start">
+                    <Image.GestureRecognizers>
+                        <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                    </Image.GestureRecognizers>
+                </Image>
 
-            <Image Source="{Binding Widgets[2].FileName}"
-                   Aspect="AspectFit"
-                   HeightRequest="80"
-                   WidthRequest="80"
-                   Margin="5"
-                   HorizontalOptions="Start"
-                   VerticalOptions="End">
-                <Image.GestureRecognizers>
-                    <PanGestureRecognizer PanUpdated="OnPanUpdated" />
-                </Image.GestureRecognizers>
-            </Image>
+                <Image Source="{Binding Widgets[1].FileName}"
+                       Aspect="AspectFit"
+                       HeightRequest="80"
+                       WidthRequest="80"
+                       Margin="5"
+                       HorizontalOptions="End"
+                       VerticalOptions="Start">
+                    <Image.GestureRecognizers>
+                        <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                    </Image.GestureRecognizers>
+                </Image>
 
-            <Image Source="{Binding Widgets[3].FileName}"
-                   Aspect="AspectFit"
-                   HeightRequest="80"
-                   WidthRequest="80"
-                   Margin="5"
-                   HorizontalOptions="End"
-                   VerticalOptions="End">
-                <Image.GestureRecognizers>
-                    <PanGestureRecognizer PanUpdated="OnPanUpdated" />
-                </Image.GestureRecognizers>
-            </Image>
+                <Image Source="{Binding Widgets[2].FileName}"
+                       Aspect="AspectFit"
+                       HeightRequest="80"
+                       WidthRequest="80"
+                       Margin="5"
+                       HorizontalOptions="Start"
+                       VerticalOptions="End">
+                    <Image.GestureRecognizers>
+                        <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                    </Image.GestureRecognizers>
+                </Image>
 
-            <Image Source="{Binding Widgets[4].FileName}"
-                   Aspect="AspectFit"
-                   HeightRequest="80"
-                   WidthRequest="80"
-                   Margin="5"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center">
-                <Image.GestureRecognizers>
-                    <PanGestureRecognizer PanUpdated="OnPanUpdated" />
-                </Image.GestureRecognizers>
-            </Image>
+                <Image Source="{Binding Widgets[3].FileName}"
+                       Aspect="AspectFit"
+                       HeightRequest="80"
+                       WidthRequest="80"
+                       Margin="5"
+                       HorizontalOptions="End"
+                       VerticalOptions="End">
+                    <Image.GestureRecognizers>
+                        <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Image Source="{Binding Widgets[4].FileName}"
+                       Aspect="AspectFit"
+                       HeightRequest="80"
+                       WidthRequest="80"
+                       Margin="5"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="10" x:Name="SliderGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="1" HorizontalOptions="End" VerticalOptions="Center" />
+                <Label Text="10" Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Center" />
+
+                <Slider x:Name="slider" Grid.Column="1" Minimum="1" Maximum="10" Value="{Binding SliderValue, Mode=TwoWay}" />
+
+                <!-- Display the corresponding value from the ViewModel -->
+                <Label Text="{Binding SliderLabel}" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Grid>
 
         </Grid>
     </ContentPage.Content>

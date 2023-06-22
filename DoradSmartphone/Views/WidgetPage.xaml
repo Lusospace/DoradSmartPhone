@@ -13,14 +13,15 @@
                 <Setter Property="CornerRadius" Value="24" />
                 <Setter Property="HasShadow" Value="False" />
                 <Setter Property="Padding" Value="0" />
-                <Setter Property="HorizontalOptions" Value="Start" />
-                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="Margin" Value="10" />
             </Style>
 
             <Style x:Key="WidgetImageStyle" TargetType="Image">
                 <Setter Property="Aspect" Value="AspectFit" />
                 <Setter Property="HeightRequest" Value="80" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
             </Style>
 
             <Style x:Key="WidgetNameTextStyle" TargetType="Label">
@@ -37,18 +38,19 @@
                 <Setter Property="Margin" Value="12, 0" />
             </Style>
 
-            <Style x:Key="WidgetRatingContainerStyle" TargetType="CheckBox">
+            <Style x:Key="WidgetCheckboxContainerStyle" TargetType="CheckBox">
                 <Setter Property="HeightRequest" Value="25" />
                 <Setter Property="WidthRequest" Value="25" />
                 <Setter Property="HorizontalOptions" Value="End" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="Margin" Value="0, 0, 12, 12" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <Grid Padding="24">
+        <Grid Padding="24" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
@@ -62,7 +64,7 @@
                     <BindableLayout.ItemTemplate>
                         <DataTemplate x:DataType="model:Widget">
                             <Frame 
-                                Style="{StaticResource WidgetContainerStyle}" WidthRequest="100">
+                                Style="{StaticResource WidgetContainerStyle}">
                                 <Grid
                                     RowDefinitions="*, 36, 48">
                                     <Image
@@ -78,7 +80,7 @@
                                         Grid.Row="2"
                                         ColumnDefinitions="*, Auto">
                                         <CheckBox IsChecked="{Binding IsSelected}" 
-                                                      Style="{StaticResource WidgetRatingContainerStyle}"/>
+                                                      Style="{StaticResource WidgetCheckboxContainerStyle}"/>
                                     </Grid>
                                 </Grid>
                             </Frame>

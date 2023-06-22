@@ -16,7 +16,7 @@ public partial class DashboardPage : ContentPage
         InitializeComponent();
         viewModel = new DashboardViewModel();
         BindingContext = viewModel;
-        StartScanning();
+        //StartScanning();
     }
 
     private async void StartScanning()
