@@ -1,4 +1,5 @@
 ﻿using DoradSmartphone.Data;
+using DoradSmartphone.Helpers;
 using DoradSmartphone.Services;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.ViewModels;
@@ -40,12 +41,14 @@ public static class MauiProgram
         builder.Services.AddSingleton<ExerciseDetailsPage>();
         builder.Services.AddSingleton<DisplaySelectedItemsPage>();
 
+        builder.Services.AddTransient<MyHandler>();
+
         builder.Services.AddSingleton<UserService>();
         builder.Services.AddSingleton<LoginService>();        
         builder.Services.AddSingleton<ExerciseService>();
         builder.Services.AddSingleton<DashboardService>();
         builder.Services.AddSingleton<BluetoothService>();
-        builder.Services.AddSingleton<BluetoothLEService>();
+        //builder.Services.AddSingleton<BluetoothLEService>();
 
         builder.Services.AddSingleton<UserViewModel>();
         builder.Services.AddSingleton<GlassViewModel>();

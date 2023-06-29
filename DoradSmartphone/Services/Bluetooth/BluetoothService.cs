@@ -1,166 +1,349 @@
-﻿using Android.App;
-using Android.Bluetooth;
+﻿using Android.Bluetooth;
 using Android.OS;
-using Android.Widget;
+using Android.Util;
+using DoradSmartphone.Helpers;
+using Java.Util;
+using System.Runtime.CompilerServices;
 
 namespace DoradSmartphone.Services.Bluetooth
 {
-    public class BluetoothService : Fragment
+    public class BluetoothService
     {
+        const string TAG = "Dorad SmartPhone App";        
+        static UUID MY_UUID_SECURE = UUID.FromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
 
-        const int REQUEST_CONNECT_DEVICE_SECURE = 1;
-        const int REQUEST_CONNECT_DEVICE_INSECURE = 2;
-        const int REQUEST_ENABLE_BT = 3;
+        BluetoothAdapter btAdapter;
+        Handler handler;
+        ConnectThread connectThread;
+        ConnectedThread connectedThread;
+        int state;
+        int newState;
 
-        BluetoothAdapter bluetoothAdapter = null;
-        DiscoverableModeReceiverService receiver;
-        //ChatHandler handler;
-        //WriteListener writeListener;
+        public const int STATE_NONE = 0;
+        public const int STATE_LISTEN = 1;
+        public const int STATE_CONNECTING = 2;
+        public const int STATE_CONNECTED = 3; 
 
-        bool requestingPermissionsSecure, requestingPermissionsInsecure;
-
-        public BluetoothService()
+        public BluetoothService(Handler handler)
         {
-            StartScanning();
+            btAdapter = BluetoothAdapter.DefaultAdapter;
+            state = STATE_NONE;
+            newState = state;
+            this.handler = handler;
         }
 
-        public void StartScanning()
-        {            
-            bluetoothAdapter = BluetoothAdapter.DefaultAdapter;
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        void UpdateUserInterfaceTitle()
+        {
+            state = GetState();
+            newState = state;
+            handler.ObtainMessage(Constants.MESSAGE_STATE_CHANGE, newState, -1).SendToTarget();
+        }
 
-            receiver = new DiscoverableModeReceiverService();
-            receiver.BluetoothDiscoveryModeChanged += (sender, e) =>
-            {
-                Console.WriteLine("something");
-            };
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        public int GetState()
+        {
+            return state;
+        }
 
-            if (bluetoothAdapter == null)
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        public void Start()
+        {
+            if (connectThread != null)
             {
-                Toast.MakeText(Activity, "Bluetooth is not available.", ToastLength.Long).Show();
-                Activity.FinishAndRemoveTask();
+                connectThread.Cancel();
+                connectThread = null;
             }
-            Console.WriteLine(bluetoothAdapter);
 
-            var x = bluetoothAdapter.StartDiscovery();
+            if (connectedThread != null)
+            {
+                connectedThread.Cancel();
+                connectedThread = null;
+            }
 
-            Task.Delay(5000);
+            state = STATE_LISTEN;
+            UpdateUserInterfaceTitle();
         }
 
-        public override void OnCreate(Bundle savedInstanceState)
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        public void Connect(BluetoothDevice device)
         {
-            
+            if (state == STATE_CONNECTING)
+            {
+                if (connectThread != null)
+                {
+                    connectThread.Cancel();
+                    connectThread = null;
+                }
+            }
+
+            // Cancel any thread currently running a connection
+            if (connectedThread != null)
+            {
+                connectedThread.Cancel();
+                connectedThread = null;
+            }
+
+            // Start the thread to connect with the given device
+            connectThread = new ConnectThread(device, this);
+            _ = connectThread.Run();
+
+            state = STATE_CONNECTING;
+            UpdateUserInterfaceTitle();
         }
 
-        //public override void OnStart()
-        //{
-        //    base.OnStart();
-        //    if (!bluetoothAdapter.IsEnabled)
-        //    {
-        //        var enableIntent = new Intent(BluetoothAdapter.ActionRequestEnable);
-        //        StartActivityForResult(enableIntent, REQUEST_ENABLE_BT);
-        //    }
-        //    else if (chatService == null)
-        //    {
-        //        SetupChat();
-        //    }
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        public void Connected(BluetoothSocket socket, BluetoothDevice device)
+        {
+            // Cancel the thread that completed the connection
+            if (connectThread != null)
+            {
+                connectThread.Cancel();
+                connectThread = null;
+            }
 
-        //    // Register for when the scan mode changes
-        //    var filter = new IntentFilter(BluetoothAdapter.ActionScanModeChanged);
-        //    Activity.RegisterReceiver(receiver, filter);
-        //}
+            // Cancel any thread currently running a connection
+            if (connectedThread != null)
+            {
+                connectedThread.Cancel();
+                connectedThread = null;
+            }
 
-        //public override void OnResume()
-        //{
-        //    base.OnResume();
-        //    if (chatService != null)
-        //    {
-        //        if (chatService.GetState() == BluetoothChatService.STATE_NONE)
-        //        {
-        //            chatService.Start();
-        //        }
-        //    }
-        //}
+            // Start the thread to manage the connection and perform transmissions
+            connectedThread = new ConnectedThread(socket, this);
+            _ = connectedThread.Run();
 
-        //public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
-        //{
-        //    var allGranted = grantResults.AllPermissionsGranted();
-        //    if (requestCode == PermissionUtils.RC_LOCATION_PERMISSIONS)
-        //    {
-        //        if (requestingPermissionsSecure)
-        //        {
-        //            PairWithBlueToothDevice(true);
-        //        }
-        //        if (requestingPermissionsInsecure)
-        //        {
-        //            PairWithBlueToothDevice(false);
-        //        }
+            state = STATE_CONNECTED;
 
-        //        requestingPermissionsSecure = false;
-        //        requestingPermissionsInsecure = false;
-        //    }
-        //}
+            // Send the name of the connected device back to the UI Activity
+            var msg = handler.ObtainMessage(Constants.MESSAGE_DEVICE_NAME);
+            Bundle bundle = new Bundle();
+            bundle.PutString(Constants.GLASSES_NAME, device.Name);
+            msg.Data = bundle;
+            handler.SendMessage(msg);
+        }
 
-        //public override void OnActivityResult(int requestCode, Result resultCode, Intent data)
-        //{
-        //    switch (requestCode)
-        //    {
-        //        case REQUEST_CONNECT_DEVICE_SECURE:
-        //            if (Result.Ok == resultCode)
-        //            {
-        //                ConnectDevice(data, true);
-        //            }
-        //            break;
-        //        case REQUEST_CONNECT_DEVICE_INSECURE:
-        //            if (Result.Ok == resultCode)
-        //            {
-        //                ConnectDevice(data, true);
-        //            }
-        //            break;
-        //        case REQUEST_ENABLE_BT:
-        //            if (Result.Ok == resultCode)
-        //            {
-        //                Toast.MakeText(Activity, Resource.String.bt_not_enabled_leaving, ToastLength.Short).Show();
-        //                Activity.FinishAndRemoveTask();
-        //            }
-        //            break;
-        //    }
-        //}
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        public void Stop()
+        {
+            if (connectThread != null)
+            {
+                connectThread.Cancel();
+                connectThread = null;
+            }
 
-        //public override void OnDestroy()
-        //{
-        //    base.OnDestroy();
-        //    Activity.UnregisterReceiver(receiver);
-        //    if (chatService != null)
-        //    {
-        //        chatService.Stop();
-        //    }
-        //}
+            if (connectedThread != null)
+            {
+                connectedThread.Cancel();
+                connectedThread = null;
+            }
 
-        //void PairWithBlueToothDevice(bool secure)
-        //{
-        //    requestingPermissionsSecure = false;
-        //    requestingPermissionsInsecure = false;
+            state = STATE_NONE;
+            UpdateUserInterfaceTitle();
+        }
 
-        //    // Bluetooth is automatically granted by Android. Location, OTOH,
-        //    // is considered a "dangerous permission" and as such has to 
-        //    // be explicitly granted by the user.
-        //    if (!Activity.HasLocationPermissions())
-        //    {
-        //        requestingPermissionsSecure = secure;
-        //        requestingPermissionsInsecure = !secure;
-        //        this.RequestPermissionsForApp();
-        //        return;
-        //    }
+        public void Write(byte[] @out)
+        {
+            // Create temporary object
+            ConnectedThread r;
+            // Synchronize a copy of the ConnectedThread
+            lock (this)
+            {
+                if (state != STATE_CONNECTED)
+                {
+                    return;
+                }
+                r = connectedThread;
+            }
+            // Perform the write unsynchronized
+            r.Write(@out);
+        }
 
-        //    var intent = new Intent(Activity, typeof(DeviceListActivity));
-        //    if (secure)
-        //    {
-        //        StartActivityForResult(intent, REQUEST_CONNECT_DEVICE_SECURE);
-        //    }
-        //    else
-        //    {
-        //        StartActivityForResult(intent, REQUEST_CONNECT_DEVICE_INSECURE);
-        //    }
-        //}
+        void ConnectionFailed()
+        {
+            state = STATE_LISTEN;
+
+            var msg = handler.ObtainMessage(Constants.MESSAGE_TOAST);
+            var bundle = new Bundle();
+            bundle.PutString(Constants.TOAST, "Unable to connect device");
+            msg.Data = bundle;
+            handler.SendMessage(msg);
+
+            Start();
+        }
+
+        public void ConnectionLost()
+        {
+            var msg = handler.ObtainMessage(Constants.MESSAGE_TOAST);
+            var bundle = new Bundle();
+            bundle.PutString(Constants.TOAST, "Device connection was lost");
+            msg.Data = bundle;
+            handler.SendMessage(msg);
+
+            state = STATE_NONE;
+            UpdateUserInterfaceTitle();
+            Start();
+        }
+
+        class ConnectThread
+        {
+            private BluetoothSocket socket;
+            private BluetoothDevice device;
+            private BluetoothService service;
+
+            public ConnectThread(BluetoothDevice device, BluetoothService service)
+            {
+                this.device = device;
+                this.service = service;
+                BluetoothSocket tmp = null;
+
+                try
+                {
+                    tmp = device.CreateRfcommSocketToServiceRecord(MY_UUID_SECURE);
+                }
+                catch (Java.IO.IOException e)
+                {
+                    Log.Error(TAG, "create() failed", e);
+                }
+                socket = tmp;
+            }
+
+            public async Task Run()
+            {
+                // Always cancel discovery because it will slow down connection
+                service.btAdapter.CancelDiscovery();
+
+                // Make a connection to the BluetoothSocket
+                try
+                {
+                    // This is a blocking call and will only return on a
+                    // successful connection or an exception
+                    await socket.ConnectAsync();
+                }
+                catch (Java.IO.IOException e)
+                {
+                    // Close the socket
+                    try
+                    {
+                        socket.Close();
+                    }
+                    catch (Java.IO.IOException e2)
+                    {
+                        Log.Error(TAG, $"unable to close() socket during connection failure.", e2);
+                    }
+
+                    // Start the service over to restart listening mode
+                    service.ConnectionFailed();
+                    return;
+                }
+
+                // Reset the ConnectThread because we're done
+                lock (this)
+                {
+                    service.connectThread = null;
+                }
+
+                // Start the connected thread
+                service.Connected(socket, device);
+            }
+
+            public void Cancel()
+            {
+                try
+                {
+                    socket.Close();
+                }
+                catch (Java.IO.IOException e)
+                {
+                    Log.Error(TAG, "close() of connect socket failed", e);
+                }
+            }
+        }
+
+        class ConnectedThread
+        {
+            private static readonly string TAG = "ConnectedThread";
+            private BluetoothSocket socket;
+            private Stream inStream;
+            private Stream outStream;
+            private BluetoothService service;
+
+            public ConnectedThread(BluetoothSocket socket, BluetoothService service)
+            {
+                Log.Debug(TAG, "create ConnectedThread");
+
+                this.socket = socket;
+                this.service = service;
+
+                try
+                {
+                    inStream = socket.InputStream;
+                    outStream = socket.OutputStream;
+                }
+                catch (IOException e)
+                {
+                    Log.Error(TAG, "Failed to create IO streams", e);
+                }
+            }
+
+            public async Task Run()
+            {
+                Log.Info(TAG, "BEGIN mConnectedThread");
+
+                byte[] buffer = new byte[1024];
+                int bytes;
+
+                while (true)
+                {
+                    try
+                    {
+                        bytes = await inStream.ReadAsync(buffer, 0, buffer.Length);
+
+                        if (bytes > 0)
+                        {
+                            // Send the obtained bytes to the UI Activity
+                            service.handler
+                                .ObtainMessage(Constants.MESSAGE_READ, bytes, -1, buffer)
+                                .SendToTarget();
+                        }
+                    }
+                    catch (IOException e)
+                    {
+                        Log.Error(TAG, "Disconnected", e);
+                        service.ConnectionLost();
+                        break;
+                    }
+                }
+            }
+
+            public void Write(byte[] buffer)
+            {
+                try
+                {
+                    outStream.Write(buffer, 0, buffer.Length);
+
+                    // Share the sent message back to the UI Activity
+                    service.handler
+                        .ObtainMessage(Constants.MESSAGE_WRITE, -1, -1, buffer)
+                        .SendToTarget();
+                }
+                catch (IOException e)
+                {
+                    Log.Error(TAG, "Exception during write", e);
+                }
+            }
+
+            public void Cancel()
+            {
+                try
+                {
+                    socket.Close();
+                }
+                catch (IOException e)
+                {
+                    Log.Error(TAG, "close() of connect socket failed", e);
+                }
+            }
+        }
     }
 }
