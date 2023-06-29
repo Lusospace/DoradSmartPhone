@@ -52,12 +52,6 @@
         <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.DeviceBool">
             <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.deviceBool"/>
         </member>
-        <member name="T:DoradSmartphone.ViewModels.ExerciseDetailsViewModel">
-            <inheritdoc/>
-        </member>
-        <member name="P:DoradSmartphone.ViewModels.ExerciseDetailsViewModel.Exercise">
-            <inheritdoc cref="F:DoradSmartphone.ViewModels.ExerciseDetailsViewModel.exercise"/>
-        </member>
         <member name="T:DoradSmartphone.ViewModels.ExerciseViewModel">
             <inheritdoc/>
         </member>
@@ -87,6 +81,29 @@
         <member name="P:DoradSmartphone.ViewModels.LoginViewModel.UserCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.LoginViewModel.User"/>.</summary>
         </member>
+        <member name="T:DoradSmartphone.ViewModels.ManualViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.ManualViewModel.dragCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ManualViewModel.DragCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.ManualViewModel.DragCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ManualViewModel.Drag(DoradSmartphone.Models.Widget)"/>.</summary>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.ManualViewModel.dropCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ManualViewModel.DropCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.ManualViewModel.DropCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ManualViewModel.Drop(System.String)"/>.</summary>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.ManualViewModel.loadAutomaticPageCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ManualViewModel.LoadAutomaticPageCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.ManualViewModel.LoadAutomaticPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ManualViewModel.LoadAutomaticPage"/>.</summary>
+        </member>
         <member name="T:DoradSmartphone.ViewModels.UserViewModel">
             <inheritdoc/>
             <inheritdoc/>
@@ -108,6 +125,12 @@
         </member>
         <member name="P:DoradSmartphone.ViewModels.UserViewModel.CreateUserCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.UserViewModel.CreateUser"/>.</summary>
+        </member>
+        <member name="T:DoradSmartphone.ViewModels.WidgetViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.WidgetViewModel.IsRefreshing">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.WidgetViewModel.isRefreshing"/>
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
             <summary>
@@ -135,9 +158,6 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DeviceBool">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DeviceBool" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Exercise">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Exercise" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsRefreshing">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
@@ -189,9 +209,6 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DeviceBool">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DeviceBool" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Exercise">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Exercise" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsRefreshing">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>

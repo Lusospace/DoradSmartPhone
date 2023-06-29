@@ -26,7 +26,7 @@ namespace DoradSmartphone.ViewModels
         }
 
         [RelayCommand]
-        async Task CreateUser()
+        public async Task CreateUser()
         {
             if (string.IsNullOrEmpty(name))
             {

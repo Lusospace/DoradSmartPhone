@@ -24,7 +24,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net7.0-android"
+          "net7.0-android33.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -33,7 +33,7 @@
         },
         "frameworks": {
           "net7.0-android33.0": {
-            "targetAlias": "net7.0-android",
+            "targetAlias": "net7.0-android33.0",
             "projectReferences": {
               "C:\\Projects\\Dorad\\doradsmartphone\\ToastProject\\ToastProject.csproj": {
                 "projectPath": "C:\\Projects\\Dorad\\doradsmartphone\\ToastProject\\ToastProject.csproj"
@@ -49,7 +49,7 @@
       },
       "frameworks": {
         "net7.0-android33.0": {
-          "targetAlias": "net7.0-android",
+          "targetAlias": "net7.0-android33.0",
           "dependencies": {
             "CommunityToolkit.Mvvm": {
               "target": "Package",

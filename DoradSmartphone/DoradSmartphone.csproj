@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android</TargetFrameworks>
+		<TargetFrameworks>net7.0-android33.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
 		<OutputType>Exe</OutputType>
@@ -53,10 +53,43 @@
 	  <None Remove="Resources\Images\lusospace.png" />
 	  <None Remove="Resources\Images\lusovu.png" />
 	  <None Remove="Resources\Images\lusovu_icon.png" />
-	  <None Remove="Resources\Images\route.png" />
+	  <None Remove="Resources\Images\routes.png" />
 	  <None Remove="Resources\Images\runner.png" />
 	  <None Remove="Resources\Images\shoes.png" />
 	  <None Remove="Resources\Images\user1.png" />
+	  <None Remove="Resources\Images\Widgets\altitude.png" />
+	  <None Remove="Resources\Images\Widgets\battery.png" />
+	  <None Remove="Resources\Images\Widgets\direction.png" />
+	  <None Remove="Resources\Images\Widgets\distance.png" />
+	  <None Remove="Resources\Images\Widgets\heart.png" />
+	  <None Remove="Resources\Images\Widgets\kmh.png" />
+	  <None Remove="Resources\Images\Widgets\time.png" />
+	  <None Remove="Resources\Images\Widgets\weather.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\Widgets\altitude.png" />
+	  <MauiImage Include="Resources\Images\Widgets\battery.png">
+	    <CopyToOutputDirectory></CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\Widgets\direction.png">
+	    <CopyToOutputDirectory></CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\Widgets\distance.png">
+	    <CopyToOutputDirectory></CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\Widgets\heart.png">
+	    <CopyToOutputDirectory></CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\Widgets\kmh.png">
+	    <CopyToOutputDirectory></CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\Widgets\time.png">
+	    <CopyToOutputDirectory></CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Include="Resources\Images\Widgets\weather.png">
+	    <CopyToOutputDirectory></CopyToOutputDirectory>
+	  </MauiImage>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -83,7 +116,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\AutomaticPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\DashboardPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DisplaySelectedItemsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ExerciseDetailsPage.xaml">
@@ -101,7 +140,13 @@
 	  <MauiXaml Update="Views\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\ManualPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\UserPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\WidgetPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

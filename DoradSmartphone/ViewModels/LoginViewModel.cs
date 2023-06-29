@@ -2,11 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using DoradSmartphone.Services;
 using DoradSmartphone.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoradSmartphone.ViewModels
 {
@@ -26,7 +21,7 @@ namespace DoradSmartphone.ViewModels
         }
 
         [RelayCommand]
-        async Task Login()
+        public async Task Login()
         {
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))            
                 await DisplayLoginError();            

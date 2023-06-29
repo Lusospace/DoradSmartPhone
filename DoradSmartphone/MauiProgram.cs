@@ -25,19 +25,20 @@ public static class MauiProgram
 		builder.Services.AddSingleton<DatabaseConn>();
         builder.Services.AddScoped<IRepository, DatabaseConn>();
 
-        builder.Services.AddSingleton<IMap>(Map.Default);
-        builder.Services.AddSingleton<IToast>((e) => new Toaster());
-        builder.Services.AddSingleton<IGeolocation>(Geolocation.Default);
-        builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);        
+        builder.Services.AddSingleton<IToast>((e) => new Toaster()); 
 
         builder.Services.AddSingleton<MainPage>();
-        builder.Services.AddSingleton<UserPage>();
+        builder.Services.AddTransient<UserPage>();
         builder.Services.AddSingleton<GlassPage>();
-        builder.Services.AddSingleton<LoginPage>();        
+        builder.Services.AddTransient<LoginPage>();
+        builder.Services.AddSingleton<WidgetPage>();
+        builder.Services.AddSingleton<ManualPage>();
         builder.Services.AddSingleton<LoadingPage>();
         builder.Services.AddSingleton<ExercisePage>();
-        builder.Services.AddSingleton<DashboardPage>();
+        builder.Services.AddSingleton<AutomaticPage>();
+        builder.Services.AddSingleton<DashboardPage>();        
         builder.Services.AddSingleton<ExerciseDetailsPage>();
+        builder.Services.AddSingleton<DisplaySelectedItemsPage>();
 
         builder.Services.AddSingleton<UserService>();
         builder.Services.AddSingleton<LoginService>();        
@@ -48,10 +49,13 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<UserViewModel>();
         builder.Services.AddSingleton<GlassViewModel>();
-        builder.Services.AddSingleton<LoginViewModel>();        
-        builder.Services.AddSingleton<LoadingViewModel>();
+        builder.Services.AddSingleton<LoginViewModel>();
+        builder.Services.AddTransient<WidgetViewModel>();
+        builder.Services.AddTransient<ManualViewModel>();
+        builder.Services.AddSingleton<LoadingViewModel>();        
         builder.Services.AddTransient<ExerciseViewModel>();
-        builder.Services.AddSingleton<DashboardViewModel>();
+        builder.Services.AddTransient<AutomaticViewModel>();
+        builder.Services.AddTransient<DashboardViewModel>();
         builder.Services.AddTransient<ExerciseDetailsViewModel>();
 
         return builder.Build();

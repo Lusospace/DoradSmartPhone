@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DoradSmartphone.Helpers
+﻿namespace DoradSmartphone.Helpers
 {
     public static class Icons
     {        
-        public const string Route = "route.png";        
+        public const string Route = "routes.png";        
         public const string Avatar = "runner.png";
         public const string LusoVu = "lusovu.png";
         public const string Logout = "logout.png";
