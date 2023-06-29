@@ -3,13 +3,10 @@ using DoradSmartphone.ViewModels;
 namespace DoradSmartphone.Views;
 
 public partial class DashboardPage : ContentPage
-{
-    private readonly DashboardViewModel viewModel;
-
-    public DashboardPage()
+{    
+    public DashboardPage(DashboardViewModel viewModel)
     {
         InitializeComponent();
-        viewModel = new DashboardViewModel();
         BindingContext = viewModel;
     }
 }
