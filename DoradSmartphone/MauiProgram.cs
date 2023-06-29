@@ -55,7 +55,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<LoadingViewModel>();        
         builder.Services.AddTransient<ExerciseViewModel>();
         builder.Services.AddTransient<AutomaticViewModel>();
-        builder.Services.AddSingleton<DashboardViewModel>();
+        builder.Services.AddTransient<DashboardViewModel>();
         builder.Services.AddTransient<ExerciseDetailsViewModel>();
 
         return builder.Build();

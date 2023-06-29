@@ -1089,3 +1089,4 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android33.0\l
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android33.0\lp\161\jl\files.cache
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android33.0\lp\163\jl\files.cache
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android33.0\lp\165\jl\files.cache
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android33.0\android\src\crc64d87659115677cf29\DashboardViewModel_AcceptThread.java

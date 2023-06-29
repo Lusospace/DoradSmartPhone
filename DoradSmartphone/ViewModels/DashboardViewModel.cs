@@ -1,16 +1,9 @@
 ﻿using Android.Bluetooth;
-using Android.Content;
-using AndroidX.Lifecycle;
 using CommunityToolkit.Mvvm.ComponentModel;
 using DoradSmartphone.Models;
-using DoradSmartphone.Services.Bluetooth;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoradSmartphone.ViewModels
 {
@@ -25,8 +18,10 @@ namespace DoradSmartphone.ViewModels
         [ObservableProperty]
         bool deviceBool;
 
-        private List<DeviceCandidate> devices;
-        public List<DeviceCandidate> Devices
+        private BluetoothSocket _socket;
+
+        private ObservableCollection<DeviceCandidate> devices;        
+        public ObservableCollection<DeviceCandidate> Devices
         {
             get { return devices; }
             set
@@ -37,53 +32,65 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
-        public bool HasDevices => Devices != null && Devices.Count > 0;
+        public bool HasDevices => Devices != null && Devices.ToList().Count > 0;
 
-
-        public DashboardViewModel() { 
+        public DashboardViewModel()
+        {
             Title = "Welcome";
-            CommStatus = "Scaning";
+            CommStatus = "Scanning";
             StatusLabel = true;
             DeviceBool = false;
             //StartScanning();
+            ConnectedDevices();
         }
 
-        private async void StartScanning()
+        private async void ConnectedDevices()
         {
             var adapter = BluetoothAdapter.DefaultAdapter;
             if (adapter != null && adapter.IsEnabled)
             {
-                var receiver = new BluetoothReceiver();
-                var filter = new IntentFilter(BluetoothDevice.ActionFound);
-                MauiApplication.Current.ApplicationContext.RegisterReceiver(receiver, filter);
-
-                // Retrieve already paired devices
                 var pairedDevices = adapter.BondedDevices;
-                foreach (var device in pairedDevices)
+                var glasses = pairedDevices.FirstOrDefault(bd => bd.Name == "My GATT Server");
+
+                if (glasses == null)
                 {
-                    receiver.Devices.Add(new DeviceCandidate {
-                        Name = device.Name,
-                        Address = device.Address
-                    });
-                }
-
-                adapter.StartDiscovery();
-                await Task.Delay(5000); // Scan for 5 seconds (adjust as needed)
-
-                adapter.CancelDiscovery();
-                MauiApplication.Current.ApplicationContext.UnregisterReceiver(receiver);
-
-                var devices = receiver.Devices;
-                if (devices.Count > 0)
-                {
-                    Devices = devices;
-                    DeviceBool = true;
-                    //HasDevices = true;
-                    StatusLabel = false;
+                    CommStatus = "No connected devices found.";
+                    throw new Exception("Glass device not found.");
                 }
                 else
                 {
-                    CommStatus = "No devices found.";
+                    CommStatus = "Found Device: " + glasses.Name;
+                }
+                try
+                {
+
+                
+                _socket = glasses.CreateRfcommSocketToServiceRecord(glasses.GetUuids().FirstOrDefault().Uuid);
+
+                await _socket.ConnectAsync();
+
+                // Read data from the device
+                //await _socket.InputStream.ReadAsync(buffer, 0, buffer.Length);
+
+                System.Random random = new System.Random();
+
+                List<Widget> widgets = GetWidgets();
+
+                foreach (var widget in widgets)
+                {
+                    widget.XPosition = random.Next(0, 100);
+                    widget.YPosition = random.Next(0, 100);
+                }
+
+                string json = System.Text.Json.JsonSerializer.Serialize(widgets);
+                string json2 = JsonConvert.SerializeObject(widgets);
+                //string json = JsonConvert.SerializeObject(widgets, Formatting.Indented);                
+
+                // Write data to the device
+                await SendJsonFileOverBluetooth(json);
+                }
+                catch (Exception ex) {
+                    CommStatus = "Error connecting to the GATT server: " + ex.Message;
                 }
             }
             else
@@ -92,29 +99,43 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
-        private void SendJsonFile()
+        private async Task SendJsonFileOverBluetooth(string json)
         {
-            var json = JsonConvert.SerializeObject(Devices);
-            //if (chatService.GetState() != BluetoothChatService.STATE_CONNECTED)
-            //{
-            //    Toast.MakeText(Activity, Resource.String.not_connected, ToastLength.Long).Show();
-            //    return;
-            //}
+            // Read the JSON file contents into a byte array
+            byte[] jsonBytes = File.ReadAllBytes(json);
 
-            //if (message.Length > 0)
-            //{
-            //    var bytes = Encoding.ASCII.GetBytes(message);
-            //    chatService.Write(bytes);
-            //    outStringBuffer.Clear();
-            //    outEditText.Text = outStringBuffer.ToString();
-            //}
-        }        
+            try
+            {
+                byte[] dataBytes = System.Text.Encoding.UTF8.GetBytes(json);
+                await _socket.OutputStream.WriteAsync(dataBytes, 0, dataBytes.Length);
+            }
+            catch (Exception ex)
+            {
+                // Handle write or read error
+                CommStatus = "Error sending JSON file over Bluetooth: " + ex.Message;
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
         }
-    }
+
+        public List<Widget> GetWidgets() => new List<Widget>
+        {
+            new Widget {
+            Id = 1, Name = "Battery", FileName = "Images/Widgets/battery.png"
+            },
+            new Widget {
+            Id = 2, Name = "Time", FileName = "Images/Widgets/time.png"
+            },
+            new Widget {
+            Id = 3, Name = "Route", FileName = "Images/Widgets/route.png"
+            },
+        };
+    }    
 }
