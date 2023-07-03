@@ -3,18 +3,18 @@ using Android.OS;
 using Android.Util;
 using DoradSmartphone.Helpers;
 using Java.Util;
-using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace DoradSmartphone.Services.Bluetooth
 {
-    public class BluetoothService
+    public class BluetoothService : IBluetoothService
     {
-        const string TAG = "Dorad SmartPhone App";        
-        static UUID MY_UUID_SECURE = UUID.FromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
+        const string TAG = "Dorad SmartPhone App";
+        static readonly UUID MY_UUID_SECURE = UUID.FromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
 
         BluetoothAdapter btAdapter;
         Handler handler;
-        ConnectThread connectThread;
+        AcceptThread acceptThread;
         ConnectedThread connectedThread;
         int state;
         int newState;
@@ -22,7 +22,7 @@ namespace DoradSmartphone.Services.Bluetooth
         public const int STATE_NONE = 0;
         public const int STATE_LISTEN = 1;
         public const int STATE_CONNECTING = 2;
-        public const int STATE_CONNECTED = 3; 
+        public const int STATE_CONNECTED = 3;
 
         public BluetoothService(Handler handler)
         {
@@ -32,27 +32,17 @@ namespace DoradSmartphone.Services.Bluetooth
             this.handler = handler;
         }
 
-        [MethodImpl(MethodImplOptions.Synchronized)]
-        void UpdateUserInterfaceTitle()
-        {
-            state = GetState();
-            newState = state;
-            handler.ObtainMessage(Constants.MESSAGE_STATE_CHANGE, newState, -1).SendToTarget();
-        }
-
-        [MethodImpl(MethodImplOptions.Synchronized)]
         public int GetState()
         {
             return state;
         }
 
-        [MethodImpl(MethodImplOptions.Synchronized)]
         public void Start()
         {
-            if (connectThread != null)
+            if (acceptThread != null)
             {
-                connectThread.Cancel();
-                connectThread = null;
+                acceptThread.Cancel();
+                acceptThread = null;
             }
 
             if (connectedThread != null)
@@ -65,71 +55,81 @@ namespace DoradSmartphone.Services.Bluetooth
             UpdateUserInterfaceTitle();
         }
 
-        [MethodImpl(MethodImplOptions.Synchronized)]
+        public void Accept()
+        {
+            if (connectedThread != null)
+            {
+                connectedThread.Cancel();
+                connectedThread = null;
+            }
+
+            acceptThread = new AcceptThread(this);
+            acceptThread.Start();
+
+            state = STATE_LISTEN;
+            UpdateUserInterfaceTitle();
+        }
+
         public void Connect(BluetoothDevice device)
         {
             if (state == STATE_CONNECTING)
             {
-                if (connectThread != null)
+                if (connectedThread != null)
                 {
-                    connectThread.Cancel();
-                    connectThread = null;
+                    connectedThread.Cancel();
+                    connectedThread = null;
                 }
             }
 
             // Cancel any thread currently running a connection
-            if (connectedThread != null)
+            if (acceptThread != null)
             {
-                connectedThread.Cancel();
-                connectedThread = null;
+                acceptThread.Cancel();
+                acceptThread = null;
             }
-
             // Start the thread to connect with the given device
-            connectThread = new ConnectThread(device, this);
-            _ = connectThread.Run();
+            ConnectAsync(device);
+        }
 
+        private async Task ConnectAsync(BluetoothDevice device)
+        {
             state = STATE_CONNECTING;
             UpdateUserInterfaceTitle();
+
+            BluetoothSocket socket = null;
+
+            try
+            {
+                // This is a blocking call and will only return on a
+                // successful connection or an exception
+                socket = device.CreateRfcommSocketToServiceRecord(MY_UUID_SECURE);
+                await socket.ConnectAsync();
+            }
+            catch (IOException e)
+            {
+                // Close the socket
+                try
+                {
+                    socket?.Close();
+                }
+                catch (IOException e2)
+                {
+                    Log.Error(TAG, $"unable to close() socket during connection failure.", e2);
+                }
+
+                // Start the service over to restart listening mode
+                ConnectionFailed();
+                return;
+            }
+            Connected(socket, device);
         }
 
-        [MethodImpl(MethodImplOptions.Synchronized)]
-        public void Connected(BluetoothSocket socket, BluetoothDevice device)
-        {
-            // Cancel the thread that completed the connection
-            if (connectThread != null)
-            {
-                connectThread.Cancel();
-                connectThread = null;
-            }
-
-            // Cancel any thread currently running a connection
-            if (connectedThread != null)
-            {
-                connectedThread.Cancel();
-                connectedThread = null;
-            }
-
-            // Start the thread to manage the connection and perform transmissions
-            connectedThread = new ConnectedThread(socket, this);
-            _ = connectedThread.Run();
-
-            state = STATE_CONNECTED;
-
-            // Send the name of the connected device back to the UI Activity
-            var msg = handler.ObtainMessage(Constants.MESSAGE_DEVICE_NAME);
-            Bundle bundle = new Bundle();
-            bundle.PutString(Constants.GLASSES_NAME, device.Name);
-            msg.Data = bundle;
-            handler.SendMessage(msg);
-        }
-
-        [MethodImpl(MethodImplOptions.Synchronized)]
         public void Stop()
         {
-            if (connectThread != null)
+            if (acceptThread != null)
             {
-                connectThread.Cancel();
-                connectThread = null;
+                acceptThread.Cancel();
+                acceptThread = null;
             }
 
             if (connectedThread != null)
@@ -142,7 +142,7 @@ namespace DoradSmartphone.Services.Bluetooth
             UpdateUserInterfaceTitle();
         }
 
-        public void Write(byte[] @out)
+        public void Write(byte[] data)
         {
             // Create temporary object
             ConnectedThread r;
@@ -156,7 +156,14 @@ namespace DoradSmartphone.Services.Bluetooth
                 r = connectedThread;
             }
             // Perform the write unsynchronized
-            r.Write(@out);
+            r.Write(data);
+        }
+
+        void UpdateUserInterfaceTitle()
+        {
+            state = GetState();
+            newState = state;
+            handler.ObtainMessage(Constants.MESSAGE_STATE_CHANGE, newState, -1).SendToTarget();
         }
 
         void ConnectionFailed()
@@ -172,7 +179,37 @@ namespace DoradSmartphone.Services.Bluetooth
             Start();
         }
 
-        public void ConnectionLost()
+        public void Connected(BluetoothSocket socket, BluetoothDevice device)
+        {
+            // Cancel the thread that completed the connection
+            if (acceptThread != null)
+            {
+                acceptThread.Cancel();
+                acceptThread = null;
+            }
+
+            // Cancel any thread currently running a connection
+            if (connectedThread != null)
+            {
+                connectedThread.Cancel();
+                connectedThread = null;
+            }
+
+            // Start the thread to manage the connection and perform transmissions
+            connectedThread = new ConnectedThread(socket, this);
+            connectedThread.Start();
+
+            state = STATE_CONNECTED;
+
+            // Send the name of the connected device back to the UI Activity
+            var msg = handler.ObtainMessage(Constants.MESSAGE_DEVICE_NAME);
+            Bundle bundle = new Bundle();
+            bundle.PutString(Constants.GLASSES_NAME, device.Name);
+            msg.Data = bundle;
+            handler.SendMessage(msg);
+        }
+
+        void ConnectionLost()
         {
             var msg = handler.ObtainMessage(Constants.MESSAGE_TOAST);
             var bundle = new Bundle();
@@ -185,77 +222,84 @@ namespace DoradSmartphone.Services.Bluetooth
             Start();
         }
 
-        class ConnectThread
+        class AcceptThread
         {
-            private BluetoothSocket socket;
-            private BluetoothDevice device;
+            private BluetoothServerSocket serverSocket;
             private BluetoothService service;
 
-            public ConnectThread(BluetoothDevice device, BluetoothService service)
+            public AcceptThread(BluetoothService service)
             {
-                this.device = device;
                 this.service = service;
-                BluetoothSocket tmp = null;
+                BluetoothServerSocket tmp = null;
 
                 try
                 {
-                    tmp = device.CreateRfcommSocketToServiceRecord(MY_UUID_SECURE);
+                    tmp = service.btAdapter.ListenUsingRfcommWithServiceRecord(TAG, MY_UUID_SECURE);
                 }
-                catch (Java.IO.IOException e)
+                catch (IOException e)
                 {
-                    Log.Error(TAG, "create() failed", e);
+                    Log.Error(TAG, "listen() failed", e);
                 }
-                socket = tmp;
+
+                serverSocket = tmp;
             }
 
-            public async Task Run()
+            public void Start()
             {
-                // Always cancel discovery because it will slow down connection
-                service.btAdapter.CancelDiscovery();
+                Task.Run(async () =>
+                {
+                    BluetoothSocket socket = null;
 
-                // Make a connection to the BluetoothSocket
-                try
-                {
-                    // This is a blocking call and will only return on a
-                    // successful connection or an exception
-                    await socket.ConnectAsync();
-                }
-                catch (Java.IO.IOException e)
-                {
-                    // Close the socket
-                    try
+                    while (service.state != STATE_CONNECTED)
                     {
-                        socket.Close();
+                        try
+                        {
+                            socket = await serverSocket.AcceptAsync();
+                        }
+                        catch (IOException e)
+                        {
+                            Log.Error(TAG, "accept() failed", e);
+                            break;
+                        }
+
+                        if (socket != null)
+                        {
+                            lock (service)
+                            {
+                                switch (service.state)
+                                {
+                                    case STATE_LISTEN:
+                                    case STATE_CONNECTING:
+                                        service.Connected(socket, socket.RemoteDevice);
+                                        break;
+                                    case STATE_NONE:
+                                    case STATE_CONNECTED:
+                                        // Either not ready or already connected. Terminate new socket.
+                                        try
+                                        {
+                                            socket.Close();
+                                        }
+                                        catch (IOException e)
+                                        {
+                                            Log.Error(TAG, "Could not close unwanted socket", e);
+                                        }
+                                        break;
+                                }
+                            }
+                        }
                     }
-                    catch (Java.IO.IOException e2)
-                    {
-                        Log.Error(TAG, $"unable to close() socket during connection failure.", e2);
-                    }
-
-                    // Start the service over to restart listening mode
-                    service.ConnectionFailed();
-                    return;
-                }
-
-                // Reset the ConnectThread because we're done
-                lock (this)
-                {
-                    service.connectThread = null;
-                }
-
-                // Start the connected thread
-                service.Connected(socket, device);
+                });
             }
 
             public void Cancel()
             {
                 try
                 {
-                    socket.Close();
+                    serverSocket.Close();
                 }
-                catch (Java.IO.IOException e)
+                catch (IOException e)
                 {
-                    Log.Error(TAG, "close() of connect socket failed", e);
+                    Log.Error(TAG, "close() of server socket failed", e);
                 }
             }
         }
@@ -286,34 +330,30 @@ namespace DoradSmartphone.Services.Bluetooth
                 }
             }
 
-            public async Task Run()
+            public void Start()
             {
-                Log.Info(TAG, "BEGIN mConnectedThread");
-
-                byte[] buffer = new byte[1024];
-                int bytes;
-
-                while (true)
+                Task.Run(() =>
                 {
-                    try
-                    {
-                        bytes = await inStream.ReadAsync(buffer, 0, buffer.Length);
+                    byte[] buffer = new byte[1024];
+                    int bytes;
 
-                        if (bytes > 0)
+                    while (true)
+                    {
+                        try
                         {
-                            // Send the obtained bytes to the UI Activity
-                            service.handler
-                                .ObtainMessage(Constants.MESSAGE_READ, bytes, -1, buffer)
-                                .SendToTarget();
+                            bytes = inStream.Read(buffer, 0, buffer.Length);
+                            string receivedData = Encoding.UTF8.GetString(buffer, 0, bytes);
+                            Console.WriteLine(receivedData);
+                            service.handler.ObtainMessage(Constants.MESSAGE_READ, bytes, -1, buffer).SendToTarget();
+                        }
+                        catch (IOException e)
+                        {
+                            Log.Error(TAG, "disconnected", e);
+                            service.ConnectionLost();
+                            break;
                         }
                     }
-                    catch (IOException e)
-                    {
-                        Log.Error(TAG, "Disconnected", e);
-                        service.ConnectionLost();
-                        break;
-                    }
-                }
+                });
             }
 
             public void Write(byte[] buffer)
@@ -347,3 +387,4 @@ namespace DoradSmartphone.Services.Bluetooth
         }
     }
 }
+

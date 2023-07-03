@@ -47,7 +47,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<LoginService>();        
         builder.Services.AddSingleton<ExerciseService>();
         builder.Services.AddSingleton<DashboardService>();
-        builder.Services.AddSingleton<BluetoothService>();
+        builder.Services.AddSingleton<IBluetoothService, BluetoothService>();
         //builder.Services.AddSingleton<BluetoothLEService>();
 
         builder.Services.AddSingleton<UserViewModel>();

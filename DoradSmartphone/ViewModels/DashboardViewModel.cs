@@ -1,6 +1,7 @@
 ﻿using Android.Bluetooth;
 using Android.OS;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using DoradSmartphone.Helpers;
 using DoradSmartphone.Models;
 using DoradSmartphone.Services.Bluetooth;
@@ -65,7 +66,7 @@ namespace DoradSmartphone.ViewModels
                 if (glasses == null)
                 {
                     CommStatus = "No connected devices found.";
-                    throw new Exception("Glasses device not found.");
+                    //throw new Exception("Glasses device not found.");
                 }
                 else
                 {
@@ -78,7 +79,8 @@ namespace DoradSmartphone.ViewModels
                     btService.Connect(glasses);     
                     try
                     {
-                        btService.Write(ConvertWidgetToJsonAndBytes());
+                        //btService.Write(ConvertWidgetToJsonAndBytes());
+                        //btService.Accept();
                     }
                     catch (Exception ex)
                     {
@@ -94,6 +96,12 @@ namespace DoradSmartphone.ViewModels
             {
                 CommStatus = "Bluetooth is disabled.";
             }
+        }
+
+        [RelayCommand]
+        public void SendSomething()
+        {
+            btService.Write(ConvertWidgetToJsonAndBytes());
         }
 
         private byte[] ConvertWidgetToJsonAndBytes()

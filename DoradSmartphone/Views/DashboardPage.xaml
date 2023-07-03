@@ -23,5 +23,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Text="Seeeeeeeeeeeend" Command="{Binding SendSomethingCommand}"/>
     </StackLayout>
 </ContentPage>

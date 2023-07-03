@@ -110,9 +110,6 @@
 	  <Compile Update="Services\Bluetooth\BluetoothService.cs">
 	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
 	  </Compile>
-	  <Compile Update="Services\Bluetooth\DiscoverableModeReceiverService.cs">
-	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
-	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>

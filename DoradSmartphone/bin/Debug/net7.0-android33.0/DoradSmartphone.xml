@@ -4,18 +4,6 @@
         <name>DoradSmartphone</name>
     </assembly>
     <members>
-        <member name="T:DoradSmartphone.Platforms.Android.Bluetooth.DiscoverableModeReceiver">
-            <summary>
-            Listen for when the device goes in and out of Bluetooth discoverability
-            mode, and will raise an Event.
-            </summary>
-        </member>
-        <member name="T:DoradSmartphone.Services.Bluetooth.DiscoverableModeReceiverService">
-            <summary>
-            Listen for when the device goes in and out of Bluetooth discoverability
-            mode, and will raise an Event.
-            </summary>
-        </member>
         <member name="T:DoradSmartphone.ViewModels.AppShellViewModel">
             <inheritdoc/>
         </member>
@@ -39,6 +27,7 @@
         </member>
         <member name="T:DoradSmartphone.ViewModels.DashboardViewModel">
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.CommStatus">
             <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.commStatus"/>
@@ -51,6 +40,12 @@
         </member>
         <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.DeviceBool">
             <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.deviceBool"/>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.DashboardViewModel.sendSomethingCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.DashboardViewModel.SendSomethingCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.SendSomethingCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.DashboardViewModel.SendSomething"/>.</summary>
         </member>
         <member name="T:DoradSmartphone.ViewModels.ExerciseViewModel">
             <inheritdoc/>
