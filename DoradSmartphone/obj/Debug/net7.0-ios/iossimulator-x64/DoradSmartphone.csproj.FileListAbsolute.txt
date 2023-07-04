@@ -14,6 +14,8 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimula
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.Maui.Graphics.dll
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.Maui.Maps.dll
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\Newtonsoft.Json.dll
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\Plugin.BLE.Abstractions.dll
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\Plugin.BLE.dll
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\SQLite-net.dll
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\SQLiteNetExtensions.dll
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\SQLitePCLRaw.batteries_v2.dll
@@ -223,6 +225,9 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimula
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\libxamarin-dotnet-debug.dylib
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\libxamarin-dotnet.a
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\libxamarin-dotnet.dylib
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\ToastProject.dll
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\bin\Debug\net7.0-ios\iossimulator-x64\ToastProject.pdb
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-ios\iossimulator-x64\build-signature\signature
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-ios\iossimulator-x64\mauiimage.inputs
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-ios\iossimulator-x64\mauifont.inputs
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-ios\iossimulator-x64\mauisplash.inputs

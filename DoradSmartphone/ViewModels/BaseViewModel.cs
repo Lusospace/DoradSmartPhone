@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿    using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace DoradSmartphone.ViewModels
 {
@@ -9,13 +9,11 @@ namespace DoradSmartphone.ViewModels
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsNotLoading))]
         bool isLoading;
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsNotScanning))]
+        bool isScanning;
 
-        public bool IsNotLoading
-        {
-            get
-            {
-                return !IsLoading;
-            }
-        }
+        public bool IsNotLoading => !IsLoading;
+        public bool IsNotScanning => !IsScanning;
     }
 }

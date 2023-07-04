@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoradSmartphone.Views.GlassPage"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="True"
+             x:DataType="viewmodel:GlassViewModel"
+             xmlns:model="clr-namespace:DoradSmartphone.Models"
+             xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
+             Title="{Binding Title}">
+    
+    <Grid x:Name="HomePageGrid"
+          ColumnDefinitions="*,*"
+          ColumnSpacing="6"
+          RowDefinitions="*,Auto"
+          RowSpacing="0">
+        <ScrollView x:Name="HomePageScrollView"
+                    Grid.ColumnSpan="2">
+            <CollectionView x:Name="HomePageCollectionView"
+                            ItemsSource="{Binding DeviceCandidates}"
+                            BackgroundColor="Transparent"
+                            SelectionMode="None">
+                <CollectionView.EmptyView>
+                    <StackLayout Grid.RowSpan="2"
+                                 Grid.ColumnSpan="2"
+                                 BackgroundColor="Transparent">
+                        <Grid RowDefinitions="*,*"
+                              RowSpacing="8"
+                              HorizontalOptions="CenterAndExpand"
+                              VerticalOptions="CenterAndExpand">
+                            <Label Grid.Row="0"
+                                   Text="Scan for nearby Bluetooth LE devices."                                   
+                                   HorizontalOptions="CenterAndExpand"/>
+
+                            <Label Grid.Row="1"
+                                   Text="Check Bluetooth."                                   
+                                   HorizontalOptions="CenterAndExpand"/>
+                        </Grid>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout  Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:DeviceCandidate">
+                        <Grid Padding="10">
+                            <Frame>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:GlassViewModel}}, 
+                                                  Path=GoToHeartRatePageAsyncCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+                                <VerticalStackLayout Padding="8">
+                                    <Label Text="{Binding Name}" />
+                                    <Label Text="{Binding Id}" />
+                                </VerticalStackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+
+        <Button x:Name="ScanDevicesButton"
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="8"
+                Command="{Binding ScanNearbyDevicesAsyncCommand}"
+                IsEnabled="{Binding IsNotScanning}"
+                IsVisible="{Binding IsNotScanning}"
+                Text="Scan nearby devices" />
+
+        <Button x:Name="CheckBluetoothButton"
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="8"
+                Command="{Binding CheckBluetoothAvailabilityAsyncCommand}"
+                IsEnabled="{Binding IsNotScanning}"
+                IsVisible="{Binding IsNotScanning}"                
+                Text="Check Bluetooth" />
+
+        <ActivityIndicator x:Name="HomePageActivityIndicator"
+                           Grid.ColumnSpan="2"
+                           IsRunning="{Binding IsScanning}"
+                           IsVisible="{Binding IsScanning}"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="StartAndExpand" />
+    </Grid>
+</ContentPage>

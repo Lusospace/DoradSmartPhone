@@ -1,0 +1,213 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DoradSmartphone</name>
+    </assembly>
+    <members>
+        <member name="T:DoradSmartphone.ViewModels.AppShellViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.AppShellViewModel.logoutCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.AppShellViewModel.LogoutCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.AppShellViewModel.LogoutCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.AppShellViewModel.Logout"/>.</summary>
+        </member>
+        <member name="T:DoradSmartphone.ViewModels.BaseViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.BaseViewModel.Title">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.BaseViewModel.title"/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.BaseViewModel.IsLoading">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.BaseViewModel.isLoading"/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.BaseViewModel.IsScanning">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.BaseViewModel.isScanning"/>
+        </member>
+        <member name="T:DoradSmartphone.ViewModels.DashboardViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.CommStatus">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.commStatus"/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.DeviceList">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.deviceList"/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.StatusLabel">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.statusLabel"/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.DeviceBool">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.deviceBool"/>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.DashboardViewModel.sendSomethingCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.DashboardViewModel.SendSomethingCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.SendSomethingCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.DashboardViewModel.SendSomething"/>.</summary>
+        </member>
+        <member name="T:DoradSmartphone.ViewModels.ExerciseViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.ExerciseViewModel.IsRefreshing">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.ExerciseViewModel.isRefreshing"/>
+        </member>
+        <member name="T:DoradSmartphone.ViewModels.LoginViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.LoginViewModel.Username">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.LoginViewModel.username"/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.LoginViewModel.Password">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.LoginViewModel.password"/>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.LoginViewModel.loginCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.LoginViewModel.LoginCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.LoginViewModel.LoginCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.LoginViewModel.Login"/>.</summary>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.LoginViewModel.userCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.LoginViewModel.UserCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.LoginViewModel.UserCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.LoginViewModel.User"/>.</summary>
+        </member>
+        <member name="T:DoradSmartphone.ViewModels.ManualViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.ManualViewModel.loadAutomaticPageCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ManualViewModel.LoadAutomaticPageCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.ManualViewModel.LoadAutomaticPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ManualViewModel.LoadAutomaticPage"/>.</summary>
+        </member>
+        <member name="T:DoradSmartphone.ViewModels.UserViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.UserViewModel.Name">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.UserViewModel.name"/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.UserViewModel.Email">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.UserViewModel.email"/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.UserViewModel.Password">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.UserViewModel.password"/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.UserViewModel.PhoneNumber">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.UserViewModel.phoneNumber"/>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.UserViewModel.createUserCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.UserViewModel.CreateUserCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.UserViewModel.CreateUserCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.UserViewModel.CreateUser"/>.</summary>
+        </member>
+        <member name="T:DoradSmartphone.ViewModels.WidgetViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.WidgetViewModel.IsRefreshing">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.WidgetViewModel.isRefreshing"/>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsLoading">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsLoading" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsScanning">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsScanning" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CommStatus">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CommStatus" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DeviceList">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DeviceList" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.StatusLabel">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "StatusLabel" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DeviceBool">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DeviceBool" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsRefreshing">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Username">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Username" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Password">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Password" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Name">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Name" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Email">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Email" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PhoneNumber">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PhoneNumber" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsLoading">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsLoading" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsNotLoading">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsNotLoading" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsScanning">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsScanning" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsNotScanning">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsNotScanning" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CommStatus">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CommStatus" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DeviceList">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DeviceList" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.StatusLabel">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "StatusLabel" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DeviceBool">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DeviceBool" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsRefreshing">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Username">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Username" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Password">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Password" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Name">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Name" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Email">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Email" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PhoneNumber">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PhoneNumber" generated properties.</summary>
+        </member>
+    </members>
+</doc>

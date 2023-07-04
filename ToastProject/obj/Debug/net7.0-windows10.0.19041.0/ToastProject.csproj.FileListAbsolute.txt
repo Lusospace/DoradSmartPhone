@@ -1,0 +1,12 @@
+C:\Projects\Dorad\doradsmartphone\ToastProject\bin\Debug\net7.0-windows10.0.19041.0\ToastProject.deps.json
+C:\Projects\Dorad\doradsmartphone\ToastProject\bin\Debug\net7.0-windows10.0.19041.0\ToastProject.dll
+C:\Projects\Dorad\doradsmartphone\ToastProject\bin\Debug\net7.0-windows10.0.19041.0\ToastProject.pdb
+C:\Projects\Dorad\doradsmartphone\ToastProject\obj\Debug\net7.0-windows10.0.19041.0\ToastProject.csproj.AssemblyReference.cache
+C:\Projects\Dorad\doradsmartphone\ToastProject\obj\Debug\net7.0-windows10.0.19041.0\ToastProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\Dorad\doradsmartphone\ToastProject\obj\Debug\net7.0-windows10.0.19041.0\ToastProject.AssemblyInfoInputs.cache
+C:\Projects\Dorad\doradsmartphone\ToastProject\obj\Debug\net7.0-windows10.0.19041.0\ToastProject.AssemblyInfo.cs
+C:\Projects\Dorad\doradsmartphone\ToastProject\obj\Debug\net7.0-windows10.0.19041.0\ToastProject.csproj.CoreCompileInputs.cache
+C:\Projects\Dorad\doradsmartphone\ToastProject\obj\Debug\net7.0-windows10.0.19041.0\ToastProject.dll
+C:\Projects\Dorad\doradsmartphone\ToastProject\obj\Debug\net7.0-windows10.0.19041.0\refint\ToastProject.dll
+C:\Projects\Dorad\doradsmartphone\ToastProject\obj\Debug\net7.0-windows10.0.19041.0\ToastProject.pdb
+C:\Projects\Dorad\doradsmartphone\ToastProject\obj\Debug\net7.0-windows10.0.19041.0\ref\ToastProject.dll

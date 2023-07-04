@@ -12,4 +12,16 @@
 	<!-- Required to access the user's location -->
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+	<!--Add this line to your manifest if you want to declare that your app is available to BLE-capable devices only:-->
+	<uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
+
+	<!-- Request legacy Bluetooth + location permissions on older devices. -->
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	<uses-permission android:name="android.permission.BLUETOOTH"/>
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+
+	<uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+	<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
 </manifest>

@@ -2,33 +2,58 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoradSmartphone.Views.UserPage"
-             xmlns:viewmodel ="clr-namespace:DoradSmartphone.ViewModels"
+             xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
              x:DataType="viewmodel:UserViewModel"
              Shell.NavBarIsVisible="False"
              Title="{Binding Title}">
-    <VerticalStackLayout Spacing="20" Padding="20,0" VerticalOptions="Center">
 
-        <VerticalStackLayout Spacing="5">
-            <Label Text="Create User" FontSize="25" TextColor="RoyalBlue" HorizontalTextAlignment="Center"/>
-        </VerticalStackLayout>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="EntryContainerStyle" TargetType="Entry">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="HeightRequest" Value="40" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <ScrollView>
+                <StackLayout x:Name="MainLayout">
+                    <Grid HorizontalOptions="CenterAndExpand" RowSpacing="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-        <StackLayout Orientation="Horizontal">
-            <Entry x:Name="Name" Placeholder="Enter name" Text="{Binding Name}" />
+                        <Label Text="Create User" FontSize="40" TextColor="RoyalBlue" HorizontalTextAlignment="Center" Grid.Row="0" Margin="10"/>
+
+                        <Entry x:Name="Name" Placeholder="Enter name" Text="{Binding Name}" 
+                               Completed="OnEntryCompleted" Grid.Row="1" Style="{StaticResource EntryContainerStyle}"/>
+
+                        <Entry x:Name="Email" Placeholder="Enter e-mail" Keyboard="Email" 
+                               Text="{Binding Email}" Completed="OnEntryCompleted" Grid.Row="2" 
+                               Style="{StaticResource EntryContainerStyle}"/>
+
+                        <Entry x:Name="Password" Placeholder="Enter Password" IsPassword="True" 
+                               Text="{Binding Password}" Completed="OnEntryCompleted" Grid.Row="3" 
+                               Style="{StaticResource EntryContainerStyle}"/>
+
+                        <Entry x:Name="Phonenumber" Placeholder="Enter phone number" Keyboard="Telephone" 
+                               Text="{Binding PhoneNumber}" Completed="OnEntryCompleted" Grid.Row="4" 
+                               Style="{StaticResource EntryContainerStyle}"/>
+
+                        <Button Text="Sign In" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" 
+                                Command="{Binding CreateUserCommand}" Grid.Row="5" Padding="10"
+                                FontSize="15"/>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
-        
-        <StackLayout Orientation="Horizontal">
-            <Entry x:Name="Email" Placeholder="Enter e-mail" Keyboard="Email" Text="{Binding Email}" />
-        </StackLayout>
-
-        <StackLayout Orientation="Horizontal">
-            <Entry x:Name="Password" Placeholder="Enter Password" IsPassword="True" Text="{Binding Password}" />
-        </StackLayout>
-
-        <StackLayout Orientation="Horizontal">
-            <Entry x:Name="Phonenumber" Placeholder="Enter phone number" Keyboard="Telephone" Text="{Binding PhoneNumber}" />
-        </StackLayout>
-
-        <Button Text="Sign In" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" Command="{Binding CreateUserCommand}" />
-
-    </VerticalStackLayout>
+    </ContentPage.Content>
 </ContentPage>
+

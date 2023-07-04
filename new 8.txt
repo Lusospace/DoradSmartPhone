@@ -1,0 +1,204 @@
+--------- beginning of main
+06-01 20:17:00.045 17353 17427 D EGL_emulation: app_time_stats: avg=60023.01ms min=60023.01ms max=60023.01ms count=1
+06-01 20:17:14.098 17117 17160 D AudioFlinger: mixer(0x7535ddb5fa70) throttle end: throttle time(5)
+06-01 20:17:14.191 30169 30193 D EGL_emulation: app_time_stats: avg=10308.47ms min=11.24ms max=205383.69ms count=20
+06-01 20:17:14.246 30169 30169 W TabLayout: MODE_SCROLLABLE + GRAVITY_FILL is not supported, GRAVITY_START will be used instead
+06-01 20:17:14.267 30169 30169 W monodroid-assembly: open_from_bundles: failed to load assembly Plugin.BLE.dll
+06-01 20:17:14.537 30169 30169 D AndroidRuntime: Shutting down VM
+--------- beginning of crash
+06-01 20:17:14.538 30169 30169 E AndroidRuntime: FATAL EXCEPTION: main
+06-01 20:17:14.538 30169 30169 E AndroidRuntime: Process: com.lusospace.doradsmartphone, PID: 30169
+06-01 20:17:14.538 30169 30169 E AndroidRuntime: android.runtime.JavaProxyThrowable: Microsoft.Maui.Controls.Xaml.XamlParseException: Position 17:11. StaticResource not found for key LightBackground
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Maui.Controls.Xaml.ApplyPropertiesVisitor.ProvideValue(Object& value, ElementNode node, Object source, XmlName propertyName)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Maui.Controls.Xaml.ApplyPropertiesVisitor.Visit(ElementNode node, INode parentNode)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Maui.Controls.Xaml.ElementNode.Accept(IXamlNodeVisitor visitor, INode parentNode)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Maui.Controls.Xaml.ElementNode.Accept(IXamlNodeVisitor visitor, INode parentNode)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Maui.Controls.Xaml.ElementNode.Accept(IXamlNodeVisitor visitor, INode parentNode)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Maui.Controls.Xaml.RootNode.Accept(IXamlNodeVisitor visitor, INode parentNode)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Maui.Controls.Xaml.XamlLoader.Visit(RootNode rootnode, HydrationContext visitorContext, Boolean useDesignProperties)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Maui.Controls.Xaml.XamlLoader.Load(Object view, String xaml, Assembly rootAssembly, Boolean useDesignProperties)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Maui.Controls.Xaml.XamlLoader.Load(Object view, String xaml, Boolean useDesignProperties)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Maui.Controls.Xaml.XamlLoader.Load(Object view, Type callingType)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml[GlassPage](GlassPage view, Type callingType)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at DoradSmartphone.Views.GlassPage.InitializeComponent()
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at DoradSmartphone.Views.GlassPage..ctor(GlassViewModel glassViewModel)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2[[Microsoft.Extensions.DependencyInjection.ServiceLookup.RuntimeResolverContext, Microsoft.Extensions.DependencyInjection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60],[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].VisitCallSiteMain(ServiceCallSite callSite, RuntimeResolverContext argument)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2[[Microsoft.Extensions.DependencyInjection.ServiceLookup.RuntimeResolverContext, Microsoft.Extensions.DependencyInjection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60],[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].VisitCallSite(ServiceCallSite callSite, RuntimeResolverContext argument)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Extensions.DependencyInjection.ServiceProvider.CreateServiceAccessor(Type serviceType)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at System.Collections.Concurrent.ConcurrentDictionary`2[[System.Type, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Func`2[[Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope, Microsoft.Extensions.DependencyInjection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60],[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].GetOrAdd(Type key, Func`2 valueFactory)
+06-01 20:17:14.538 30169 30169 E AndroidRuntime:    at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:    at Microsoft.Maui.MauiContext.WrappedServiceProvider.GetService(Type serviceType)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:    at Microsoft.Maui.Controls.ShellContent.<>c__DisplayClass19_0.<Microsoft.Maui.Controls.IShellContentController.GetOrCreateContent>b__0()
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:    at Microsoft.Maui.Controls.ElementTemplate.CreateContent()
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:    at Microsoft.Maui.Controls.Internals.DataTemplateExtensions.CreateContent(DataTemplate self, Object item, BindableObject container)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:    at Microsoft.Maui.Controls.ShellContent.Microsoft.Maui.Controls.IShellContentController.GetOrCreateContent()
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:    at Microsoft.Maui.Controls.Platform.Compatibility.ShellSectionRenderer.OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:    at AndroidX.Fragment.App.Fragment.n_OnCreateView_Landroid_view_LayoutInflater_Landroid_view_ViewGroup_Landroid_os_Bundle_(IntPtr jnienv, IntPtr native__this, IntPtr native_inflater, IntPtr native_container, IntPtr native_savedInstanceState)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:    at Android.Runtime.JNINativeWrapper.Wrap_JniMarshal_PPLLL_L(_JniMarshal_PPLLL_L callback, IntPtr jnienv, IntPtr klazz, IntPtr p0, IntPtr p1, IntPtr p2)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:        at crc640ec207abc449b2ca.ShellSectionRenderer.n_onCreateView(Native Method)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:        at crc640ec207abc449b2ca.ShellSectionRenderer.onCreateView(ShellSectionRenderer.java:44)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:        at androidx.fragment.app.Fragment.performCreateView(Fragment.java:3104)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:        at androidx.fragment.app.FragmentStateManager.createView(FragmentStateManager.java:524)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:        at androidx.fragment.app.FragmentStateManager.moveToExpectedState(FragmentStateManager.java:261)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:        at androidx.fragment.app.FragmentManager.executeOpsTogether(FragmentManager.java:1899)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:        at androidx.fragment.app.FragmentManager.removeRedundantOperationsAndExecute(FragmentManager.java:1817)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:        at androidx.fragment.app.FragmentManager.execPendingActions(FragmentManager.java:1760)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:        at androidx.fragment.app.FragmentManager$5.run(FragmentManager.java:547)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:        at android.os.Handler.handleCallback(Handler.java:938)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:        at android.os.Handler.dispatchMessage(Handler.java:99)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:        at android.os.Looper.loopOnce(Looper.java:201)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:        at android.os.Looper.loop(Looper.java:288)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:        at android.app.ActivityThread.main(ActivityThread.java:7839)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:        at java.lang.reflect.Method.invoke(Native Method)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:        at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+06-01 20:17:14.542 30169 30169 E AndroidRuntime:        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1003)06-01 20:17:14.549 30169 30169 W monodroid-assembly: Shared library 'liblog' not loaded, p/invoke '__android_log_print' may fail
+06-01 20:17:14.561 30169 30169 I MonoDroid: UNHANDLED EXCEPTION:
+06-01 20:17:14.582 30169 30169 I MonoDroid: Android.Runtime.JavaProxyThrowable: Exception of type 'Android.Runtime.JavaProxyThrowable' was thrown.
+06-01 20:17:14.582 30169 30169 I MonoDroid:
+06-01 20:17:14.582 30169 30169 I MonoDroid:   --- End of managed Android.Runtime.JavaProxyThrowable stack trace ---
+06-01 20:17:14.582 30169 30169 I MonoDroid: android.runtime.JavaProxyThrowable: Microsoft.Maui.Controls.Xaml.XamlParseException: Position 17:11. StaticResource not found for key LightBackground
+06-01 20:17:14.583 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.ApplyPropertiesVisitor.ProvideValue(Object& value, ElementNode node, Object source, XmlName propertyName)
+06-01 20:17:14.583 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.ApplyPropertiesVisitor.Visit(ElementNode node, INode parentNode)
+06-01 20:17:14.583 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.ElementNode.Accept(IXamlNodeVisitor visitor, INode parentNode)
+06-01 20:17:14.583 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.ElementNode.Accept(IXamlNodeVisitor visitor, INode parentNode)
+06-01 20:17:14.583 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.ElementNode.Accept(IXamlNodeVisitor visitor, INode parentNode)
+06-01 20:17:14.583 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.RootNode.Accept(IXamlNodeVisitor visitor, INode parentNode)
+06-01 20:17:14.583 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.XamlLoader.Visit(RootNode rootnode, HydrationContext visitorContext, Boolean useDesignProperties)
+06-01 20:17:14.583 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.XamlLoader.Load(Object view, String xaml, Assembly rootAssembly, Boolean useDesignProperties)
+06-01 20:17:14.583 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.XamlLoader.Load(Object view, String xaml, Boolean useDesignProperties)
+06-01 20:17:14.583 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.XamlLoader.Load(Object view, Type callingType)
+06-01 20:17:14.583 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml[GlassPage](GlassPage view, Type callingType)
+06-01 20:17:14.583 30169 30169 I MonoDroid:    at DoradSmartphone.Views.GlassPage.InitializeComponent()
+06-01 20:17:14.583 30169 30169 I MonoDroid:    at DoradSmartphone.Views.GlassPage..ctor(GlassViewModel glassViewModel)
+06-01 20:17:14.583 30169 30169 I MonoDroid:    at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+06-01 20:17:14.583 30169 30169 I MonoDroid:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+06-01 20:17:14.584 30169 30169 I MonoDroid:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2[[Microsoft.Extensions.DependencyInjection.ServiceLookup.RuntimeResolverContext, Microsoft.Extensions.DependencyInjection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60],[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].VisitCallSiteMain(ServiceCallSite callSite, RuntimeResolverContext argument)
+06-01 20:17:14.584 30169 30169 I MonoDroid:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+06-01 20:17:14.585 30169 30169 I MonoDroid:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2[[Microsoft.Extensions.DependencyInjection.ServiceLookup.RuntimeResolverContext, Microsoft.Extensions.DependencyInjection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60],[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].VisitCallSite(ServiceCallSite callSite, RuntimeResolverContext argument)
+06-01 20:17:14.585 30169 30169 I MonoDroid:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+06-01 20:17:14.585 30169 30169 I MonoDroid:    at Microsoft.Extensions.DependencyInjection.ServiceProvider.CreateServiceAccessor(Type serviceType)
+06-01 20:17:14.585 30169 30169 I MonoDroid:    at System.Collections.Concurrent.ConcurrentDictionary`2[[System.Type, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Func`2[[Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope, Microsoft.Extensions.DependencyInjection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60],[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].GetOrAdd(Type key, Func`2 valueFactory)
+06-01 20:17:14.585 30169 30169 I MonoDroid:    at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+06-01 20:17:14.585 30169 30169 I MonoDroid:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+06-01 20:17:14.586 30169 30169 I MonoDroid:    at Microsoft.Maui.MauiContext.WrappedServiceProvider.GetService(Type serviceType)
+06-01 20:17:14.586 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.ShellContent.<>c__DisplayClass19_0.<Microsoft.Maui.Controls.IShellContentController.GetOrCreateContent>b__0()
+06-01 20:17:14.586 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.ElementTemplate.CreateContent()
+06-01 20:17:14.586 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Internals.DataTemplateExtensions.CreateContent(DataTemplate self, Object item, BindableObject container)
+06-01 20:17:14.586 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.ShellContent.Microsoft.Maui.Controls.IShellContentController.GetOrCreateContent()
+06-01 20:17:14.586 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Platform.Compatibility.ShellSectionRenderer.OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+06-01 20:17:14.586 30169 30169 I MonoDroid:    at AndroidX.Fragment.App.Fragment.n_OnCreateView_Landroid_view_LayoutInflater_Landroid_view_ViewGroup_Landroid_os_Bundle_(IntPtr jnienv, IntPtr native__this, IntPtr native_inflater, IntPtr native_container, IntPtr native_savedInstanceState)
+06-01 20:17:14.586 30169 30169 I MonoDroid:    at Android.Runtime.JNINativeWrapper.Wrap_JniMarshal_PPLLL_L(_JniMarshal_PPLLL_L callback, IntPtr jnienv, IntPtr klazz, IntPtr p0, IntPtr p1, IntPtr p2)
+06-01 20:17:14.586 30169 30169 I MonoDroid:     at crc640ec207abc449b2ca.ShellSectionRenderer.n_onCreateView(Native Method)
+06-01 20:17:14.586 30169 30169 I MonoDroid:     at crc640ec207abc449b2ca.ShellSectionRenderer.onCreateView(ShellSectionRenderer.java:44)
+06-01 20:17:14.587 30169 30169 I MonoDroid:     at androidx.fragment.app.Fragment.performCreateView(Fragment.java:3104)
+06-01 20:17:14.587 30169 30169 I MonoDroid:     at androidx.fragment.app.FragmentStateManager.createView(FragmentStateManager.java:524)
+06-01 20:17:14.587 30169 30169 I MonoDroid:     at androidx.fragment.app.FragmentStateManager.moveToExpectedState(FragmentStateManager.java:261)
+06-01 20:17:14.587 30169 30169 I MonoDroid:     at androidx.fragment.app.FragmentManager.executeOpsTogether(FragmentManager.java:1899)
+06-01 20:17:14.587 30169 30169 I MonoDroid:     at androidx.fragment.app.FragmentManager.removeRedundantOperationsAndExecute(FragmentManager.java:1817)
+06-01 20:17:14.587 30169 30169 I MonoDroid:     at androidx.fragment.app.FragmentManager.execPendingActions(FragmentManager.java:1760)
+06-01 20:17:14.587 30169 30169 I MonoDroid:     at androidx.fragment.app.FragmentManager$5.run(FragmentManager.java:547)06-01 20:17:14.587 30169 30169 I MonoDroid:     at android.os.Handler.handleCallback(Handler.java:938)
+06-01 20:17:14.587 30169 30169 I MonoDroid:     at android.os.Handler.dispatchMessage(Handler.java:99)
+06-01 20:17:14.587 30169 30169 I MonoDroid:     at android.os.Looper.loopOnce(Looper.java:201)
+06-01 20:17:14.587 30169 30169 I MonoDroid:     at android.os.Looper.loop(Looper.java:288)
+06-01 20:17:14.587 30169 30169 I MonoDroid:     at android.app.ActivityThread.main(ActivityThread.java:7839)
+06-01 20:17:14.587 30169 30169 I MonoDroid:     at java.lang.reflect.Method.invoke(Native Method)
+06-01 20:17:14.587 30169 30169 I MonoDroid:     at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+06-01 20:17:14.588 30169 30169 I MonoDroid:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1003)
+06-01 20:17:14.588 30169 30169 I MonoDroid:
+06-01 20:17:14.588 30169 30169 I MonoDroid:   --- End of managed Android.Runtime.JavaProxyThrowable stack trace ---
+06-01 20:17:14.588 30169 30169 I MonoDroid: android.runtime.JavaProxyThrowable: Microsoft.Maui.Controls.Xaml.XamlParseException: Position 17:11. StaticResource not found for key LightBackground
+06-01 20:17:14.588 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.ApplyPropertiesVisitor.ProvideValue(Object& value, ElementNode node, Object source, XmlName propertyName)
+06-01 20:17:14.588 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.ApplyPropertiesVisitor.Visit(ElementNode node, INode parentNode)
+06-01 20:17:14.588 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.ElementNode.Accept(IXamlNodeVisitor visitor, INode parentNode)
+06-01 20:17:14.588 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.ElementNode.Accept(IXamlNodeVisitor visitor, INode parentNode)
+06-01 20:17:14.588 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.ElementNode.Accept(IXamlNodeVisitor visitor, INode parentNode)
+06-01 20:17:14.589 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.RootNode.Accept(IXamlNodeVisitor visitor, INode parentNode)
+06-01 20:17:14.589 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.XamlLoader.Visit(RootNode rootnode, HydrationContext visitorContext, Boolean useDesignProperties)
+06-01 20:17:14.589 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.XamlLoader.Load(Object view, String xaml, Assembly rootAssembly, Boolean useDesignProperties)
+06-01 20:17:14.589 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.XamlLoader.Load(Object view, String xaml, Boolean useDesignProperties)
+06-01 20:17:14.589 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.XamlLoader.Load(Object view, Type callingType)
+06-01 20:17:14.589 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml[GlassPage](GlassPage view, Type callingType)
+06-01 20:17:14.589 30169 30169 I MonoDroid:    at DoradSmartphone.Views.GlassPage.InitializeComponent()
+06-01 20:17:14.589 30169 30169 I MonoDroid:    at DoradSmartphone.Views.GlassPage..ctor(GlassViewModel glassViewModel)
+06-01 20:17:14.589 30169 30169 I MonoDroid:    at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+06-01 20:17:14.589 30169 30169 I MonoDroid:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+06-01 20:17:14.589 30169 30169 I MonoDroid:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2[[Microsoft.Extensions.DependencyInjection.ServiceLookup.RuntimeResolverContext, Microsoft.Extensions.DependencyInjection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60],[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].VisitCallSiteMain(ServiceCallSite callSite, RuntimeResolverContext argument)
+06-01 20:17:14.590 30169 30169 I MonoDroid:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+06-01 20:17:14.590 30169 30169 I MonoDroid:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2[[Microsoft.Extensions.DependencyInjection.ServiceLookup.RuntimeResolverContext, Microsoft.Extensions.DependencyInjection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60],[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].VisitCallSite(ServiceCallSite callSite, RuntimeResolverContext argument)
+06-01 20:17:14.590 30169 30169 I MonoDroid:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+06-01 20:17:14.590 30169 30169 I MonoDroid:    at Microsoft.Extensions.DependencyInjection.ServiceProvider.CreateServiceAccessor(Type serviceType)
+06-01 20:17:14.590 30169 30169 I MonoDroid:    at System.Collections.Concurrent.ConcurrentDictionary`2[[System.Type, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Func`2[[Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope, Microsoft.Extensions.DependencyInjection, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60],[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].GetOrAdd(Type key, Func`2 valueFactory)
+06-01 20:17:14.590 30169 30169 I MonoDroid:    at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+06-01 20:17:14.590 30169 30169 I MonoDroid:    at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+06-01 20:17:14.590 30169 30169 I MonoDroid:    at Microsoft.Maui.MauiContext.WrappedServiceProvider.GetService(Type serviceType)
+06-01 20:17:14.590 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.ShellContent.<>c__DisplayClass19_0.<Microsoft.Maui.Controls.IShellContentController.GetOrCreateContent>b__0()
+06-01 20:17:14.590 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.ElementTemplate.CreateContent()
+06-01 20:17:14.590 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Internals.DataTemplateExtensions.CreateContent(DataTemplate self, Object item, BindableObject container)
+06-01 20:17:14.591 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.ShellContent.Microsoft.Maui.Controls.IShellContentController.GetOrCreateContent()
+06-01 20:17:14.591 30169 30169 I MonoDroid:    at Microsoft.Maui.Controls.Platform.Compatibility.ShellSectionRenderer.OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+06-01 20:17:14.591 30169 30169 I MonoDroid:    at AndroidX.Fragment.App.Fragment.n_OnCreateView_Landroid_view_LayoutInflater_Landroid_view_ViewGroup_Landroid_os_Bundle_(IntPtr jnienv, IntPtr native__this, IntPtr native_inflater, IntPtr native_container, IntPtr native_savedInstanceState)
+06-01 20:17:14.591 30169 30169 I MonoDroid:    at Android.Runtime.JNINativeWrapper.Wrap_JniMarshal_PPLLL_L(_JniMarshal_PPLLL_L callback, IntPtr jnienv, IntPtr klazz, IntPtr p0, IntPtr p1, IntPtr p2)
+06-01 20:17:14.591 30169 30169 I MonoDroid:     at crc640ec207abc449b2ca.ShellSectionRenderer.n_onCreateView(Native Method)
+06-01 20:17:14.591 30169 30169 I MonoDroid:     at crc640ec207abc449b2ca.ShellSectionRenderer.onCreateView(ShellSectionRenderer.java:44)
+06-01 20:17:14.591 30169 30169 I MonoDroid:     at androidx.fragment.app.Fragment.performCreateView(Fragment.java:3104)
+06-01 20:17:14.591 30169 30169 I MonoDroid:     at androidx.fragment.app.FragmentStateManager.createView(FragmentStateManager.java:524)
+06-01 20:17:14.592 30169 30169 I MonoDroid:     at androidx.fragment.app.FragmentStateManager.moveToExpectedState(FragmentStateManager.java:261)
+06-01 20:17:14.592 30169 30169 I MonoDroid:     at androidx.fragment.app.FragmentManager.executeOpsTogether(FragmentManager.java:1899)
+06-01 20:17:14.592 30169 30169 I MonoDroid:     at androidx.fragment.app.FragmentManager.removeRedundantOperationsAndExecute(FragmentManager.java:1817)
+06-01 20:17:14.592 30169 30169 I MonoDroid:     at androidx.fragment.app.FragmentManager.execPendingActions(FragmentManager.java:1760)
+06-01 20:17:14.592 30169 30169 I MonoDroid:     at androidx.fragment.app.FragmentManager$5.run(FragmentManager.java:547)06-01 20:17:14.592 30169 30169 I MonoDroid:     at android.os.Handler.handleCallback(Handler.java:938)
+06-01 20:17:14.592 30169 30169 I MonoDroid:     at android.os.Handler.dispatchMessage(Handler.java:99)
+06-01 20:17:14.593 30169 30169 I MonoDroid:     at android.os.Looper.loopOnce(Looper.java:201)
+06-01 20:17:14.593 30169 30169 I MonoDroid:     at android.os.Looper.loop(Looper.java:288)
+06-01 20:17:14.593 30169 30169 I MonoDroid:     at android.app.ActivityThread.main(ActivityThread.java:7839)
+06-01 20:17:14.593 30169 30169 I MonoDroid:     at java.lang.reflect.Method.invoke(Native Method)
+06-01 20:17:14.593 30169 30169 I MonoDroid:     at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+06-01 20:17:14.593 30169 30169 I MonoDroid:     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1003)
+06-01 20:17:14.593 30169 30169 I MonoDroid:
+--------- beginning of system
+06-01 20:17:14.609 17183 30282 I DropBoxManagerService: add tag=data_app_crash isTagEnabled=true flags=0x2
+06-01 20:17:14.616 17183 19110 W ActivityTaskManager:   Force finishing activity com.lusospace.doradsmartphone/crc64ae884e02adde98dc.MainActivity
+06-01 20:17:14.629   349   395 D goldfish-address-space: claimShared: Ask to claim region [0x3f571d000 0x3f5d49000]
+06-01 20:17:14.682 30169 30169 I Process : Sending signal. PID: 30169 SIG: 9
+06-01 20:17:14.683 17183 17216 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+06-01 20:17:14.684 17183 17216 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+06-01 20:17:14.791 17116 17116 I Zygote  : Process 30169 exited due to signal 9 (Killed)
+06-01 20:17:14.798 17183 18568 I WindowManager: WIN DEATH: Window{c9bd85c u0 com.lusospace.doradsmartphone/crc64ae884e02adde98dc.MainActivity}
+06-01 20:17:14.798 17183 18568 W InputManager-JNI: Input channel object 'c9bd85c com.lusospace.doradsmartphone/crc64ae884e02adde98dc.MainActivity (client)' was disposed without first being removed with the input manager!
+06-01 20:17:14.802 17183 17218 I libprocessgroup: Successfully killed process cgroup uid 10151 pid 30169 in 0ms
+06-01 20:17:14.803 17183 19095 I ActivityManager: Process com.lusospace.doradsmartphone (pid 30169) has died: fg  TOP
+06-01 20:17:14.821   416   416 E BpTransactionCompletedListener: Failed to transact (-32)
+06-01 20:17:14.924 17703 17703 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.phenotype.service.START pkg=com.google.android.gms }
+06-01 20:17:14.995 17183 19095 W ActivityTaskManager: Can't find TaskDisplayArea to determine support for multi window. Task id=184 attached=false
+06-01 20:17:14.995 17183 19095 W ActivityTaskManager: Can't find TaskDisplayArea to determine support for multi window. Task id=184 attached=false
+06-01 20:17:15.009 17183 17202 W ActivityManager: setHasOverlayUi called on unknown pid: 30169
+06-01 20:17:15.101 18159 18159 I A       : onApplyWindowInsets: systemWindowInsets=Insets{left=0, top=66, right=0, bottom=132}
+06-01 20:17:15.101 18159 18159 I A       : onApplyWindowInsets: systemWindowInsets=Insets{left=0, top=66, right=0, bottom=132}
+06-01 20:17:15.103   349   395 D goldfish-address-space: claimShared: Ask to claim region [0x3f6b6b000 0x3f750f000]
+06-01 20:17:15.159 17183 17202 W ActivityTaskManager: Activity top resumed state loss timeout for ActivityRecord{6b345d1 u0 com.lusospace.doradsmartphone/crc64ae884e02adde98dc.MainActivity t-1 f}}
+06-01 20:17:15.162   349   395 D goldfish-address-space: claimShared: Ask to claim region [0x3f44db000 0x3f4e7f000]
+06-01 20:17:15.184   349   395 D goldfish-address-space: claimShared: Ask to claim region [0x3f8000000 0x3f89a4000]
+06-01 20:17:15.224   349   395 D goldfish-address-space: claimShared: Ask to claim region [0x3f5d49000 0x3f66ed000]
+06-01 20:17:15.229 18159 18393 I OpenGLRenderer: Davey! duration=12097379ms; Flags=1, FrameTimelineVsyncId=41902, IntendedVsync=20840916503836, Vsync=20840933170502, InputEventId=0, HandleInputStart=20840935275300, AnimationStart=20840935315700, PerformTraversalsStart=20840935418500, DrawStart=20841045960000, FrameDeadline=20840949837168, FrameInterval=20840935216300, FrameStartTime=16666666, SyncQueued=20841046320200, SyncStart=20841087792500, IssueDrawCommandsStart=20841089097100, SwapBuffers=20841089323600, FrameCompleted=32938336991320, DequeueBufferDuration=187000, QueueBufferDuration=6804200, GpuCompleted=32938336991320, SwapBuffersCompleted=20841102900000, DisplayPresentTime=952236171805107380,
+06-01 20:17:15.239 17183 17485 W ActivityManager: Unable to start service Intent { act=android.service.smartspace.SmartspaceService cmp=com.google.android.as/com.google.android.apps.miphone.aiai.app.AiAiSmartspaceService } U=0: not found
+06-01 20:17:15.241 17183 17485 W RemoteSmartspaceService: could not bind to Intent { act=android.service.smartspace.SmartspaceService cmp=com.google.android.as/com.google.android.apps.miphone.aiai.app.AiAiSmartspaceService } using flags 67112961
+06-01 20:17:15.257   349   395 D goldfish-address-space: claimShared: Ask to claim region [0x3f9348000 0x3f9cec000]
+06-01 20:17:15.262 17183 17183 W ActivityManager: Unbind failed: could not find connection for android.app.LoadedApk$ServiceDispatcher$InnerConnection@128c769
+06-01 20:17:15.263   349   395 D goldfish-address-space: claimShared: Ask to claim region [0x3fdcec000 0x3fe690000]
+06-01 20:17:15.268 18025 18025 I GsaVoiceInteractionSrv: Handling ACTION_START_HOTWORD
+06-01 20:17:15.270 18025 18025 I GsaVoiceInteractionSrv: disregardVoiceMatch: false
+06-01 20:17:15.270 18025 18025 I GsaVoiceInteractionSrv: Cannot start hotword, hotword has been explicitly disabled.
+06-01 20:17:15.297 17183 17485 W ActivityManager: Unable to start service Intent { act=android.service.smartspace.SmartspaceService cmp=com.google.android.as/com.google.android.apps.miphone.aiai.app.AiAiSmartspaceService } U=0: not found
+06-01 20:17:15.307 17183 17485 W RemoteSmartspaceService: could not bind to Intent { act=android.service.smartspace.SmartspaceService cmp=com.google.android.as/com.google.android.apps.miphone.aiai.app.AiAiSmartspaceService } using flags 67112961
+06-01 20:17:15.310 17183 17183 W ActivityManager: Unbind failed: could not find connection for android.app.LoadedApk$ServiceDispatcher$InnerConnection@7fd0a8f
+06-01 20:17:15.387 17876 17876 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():3420
+06-01 20:17:15.394 17876 17876 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():2002
+06-01 20:17:15.400 17876 17876 I DeviceUnlockedTag: DeviceUnlockedTag.notifyDeviceLockStatusChanged():31 Notify device unlocked.
+06-01 20:17:15.520 17353 17427 D EGL_emulation: app_time_stats: avg=7282.15ms min=2.76ms max=225500.23ms count=31
+06-01 20:17:15.536 17353 17427 D EGL_emulation: app_time_stats: avg=15491.02ms min=15491.02ms max=15491.02ms count=1
+06-01 20:17:24.837 17183 18463 D TelephonyManager: requestModemActivityInfo: Sending result to app: ModemActivityInfo{ mTimestamp=32947955 mSleepTimeMs=0 mIdleTimeMs=19974006 mTxTimeMs[]=[0, 0, 0, 0, 0] mRxTimeMs=0}
