@@ -1,11 +1,9 @@
 ﻿using Android.Bluetooth;
-using Android.OS;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DoradSmartphone.Helpers;
 using DoradSmartphone.Models;
 using DoradSmartphone.Services.Bluetooth;
-using Java.Util.Logging;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
