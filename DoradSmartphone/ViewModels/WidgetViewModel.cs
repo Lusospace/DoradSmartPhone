@@ -1,5 +1,4 @@
-﻿using Android.Widget;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using DoradSmartphone.Models;
 using DoradSmartphone.Views;
 using System.Collections.ObjectModel;

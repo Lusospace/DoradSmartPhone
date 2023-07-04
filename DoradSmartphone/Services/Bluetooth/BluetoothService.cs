@@ -1,35 +1,37 @@
 ﻿using Android.Bluetooth;
-using Android.OS;
 using Android.Util;
 using DoradSmartphone.Helpers;
 using Java.Util;
 using System.Text;
+using ToastProject;
 
 namespace DoradSmartphone.Services.Bluetooth
 {
     public class BluetoothService : IBluetoothService
     {
-        const string TAG = "Dorad SmartPhone App";
-        static readonly UUID MY_UUID_SECURE = UUID.FromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
-
-        BluetoothAdapter btAdapter;
-        Handler handler;
-        AcceptThread acceptThread;
-        ConnectedThread connectedThread;
-        int state;
-        int newState;
-
         public const int STATE_NONE = 0;
         public const int STATE_LISTEN = 1;
         public const int STATE_CONNECTING = 2;
         public const int STATE_CONNECTED = 3;
+        const string TAG = "Dorad SmartPhone App";
+        static readonly UUID MY_UUID_SECURE = UUID.FromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
 
-        public BluetoothService(Handler handler)
+        BluetoothAdapter btAdapter;
+        AcceptThread acceptThread;
+        ConnectedThread connectedThread;
+
+        public IToast toast;
+
+        int state;
+        int newState;
+
+        public BluetoothService(IToast toast)
         {
             btAdapter = BluetoothAdapter.DefaultAdapter;
             state = STATE_NONE;
             newState = state;
-            this.handler = handler;
+            this.toast = toast;
+            Start();
         }
 
         public int GetState()
@@ -39,20 +41,45 @@ namespace DoradSmartphone.Services.Bluetooth
 
         public void Start()
         {
-            if (acceptThread != null)
+           if (btAdapter != null && btAdapter.IsEnabled)
             {
-                acceptThread.Cancel();
-                acceptThread = null;
-            }
+                var pairedDevices = btAdapter.BondedDevices;
+                var glasses = pairedDevices.FirstOrDefault(bd => bd.Name == Constants.GLASSES_NAME);
 
-            if (connectedThread != null)
-            {
-                connectedThread.Cancel();
-                connectedThread = null;
-            }
+                if (glasses == null)
+                {
+                    Console.Write("No connected devices found.");
+                    //toast.MakeToast($"No connected devices found.");
+                }
+                else
+                {
+                    Console.Write("Found Device: " + glasses.Name);
+                    //toast.MakeToast($"Found Device: " + glasses.Name);
+                }
+                try
+                {
+                    if (acceptThread != null)
+                    {
+                        acceptThread.Cancel();
+                        acceptThread = null;
+                    }
 
-            state = STATE_LISTEN;
-            UpdateUserInterfaceTitle();
+                    if (connectedThread != null)
+                    {
+                        connectedThread.Cancel();
+                        connectedThread = null;
+                    }
+
+                    state = STATE_LISTEN;
+                    UpdateBtStatus();
+
+                    Connect(glasses);
+                }
+                catch (Exception ex)
+                {
+                    toast.MakeToast($"Error connecting to Dorad Glasses: " + ex.Message);
+                }
+            }
         }
 
         public void Accept()
@@ -67,7 +94,7 @@ namespace DoradSmartphone.Services.Bluetooth
             acceptThread.Start();
 
             state = STATE_LISTEN;
-            UpdateUserInterfaceTitle();
+            UpdateBtStatus();
         }
 
         public void Connect(BluetoothDevice device)
@@ -94,7 +121,7 @@ namespace DoradSmartphone.Services.Bluetooth
         private async Task ConnectAsync(BluetoothDevice device)
         {
             state = STATE_CONNECTING;
-            UpdateUserInterfaceTitle();
+            UpdateBtStatus();
 
             BluetoothSocket socket = null;
 
@@ -139,9 +166,10 @@ namespace DoradSmartphone.Services.Bluetooth
             }
 
             state = STATE_NONE;
-            UpdateUserInterfaceTitle();
+            UpdateBtStatus();
         }
 
+        //Call this one to send data over BT
         public void Write(byte[] data)
         {
             // Create temporary object
@@ -159,23 +187,17 @@ namespace DoradSmartphone.Services.Bluetooth
             r.Write(data);
         }
 
-        void UpdateUserInterfaceTitle()
+        void UpdateBtStatus()
         {
             state = GetState();
             newState = state;
-            handler.ObtainMessage(Constants.MESSAGE_STATE_CHANGE, newState, -1).SendToTarget();
         }
 
         void ConnectionFailed()
         {
             state = STATE_LISTEN;
 
-            var msg = handler.ObtainMessage(Constants.MESSAGE_TOAST);
-            var bundle = new Bundle();
-            bundle.PutString(Constants.TOAST, "Unable to connect device");
-            msg.Data = bundle;
-            handler.SendMessage(msg);
-
+            // Handle connection failure
             Start();
         }
 
@@ -201,24 +223,14 @@ namespace DoradSmartphone.Services.Bluetooth
 
             state = STATE_CONNECTED;
 
-            // Send the name of the connected device back to the UI Activity
-            var msg = handler.ObtainMessage(Constants.MESSAGE_DEVICE_NAME);
-            Bundle bundle = new Bundle();
-            bundle.PutString(Constants.GLASSES_NAME, device.Name);
-            msg.Data = bundle;
-            handler.SendMessage(msg);
+            // Handle successful connection
         }
 
         void ConnectionLost()
         {
-            var msg = handler.ObtainMessage(Constants.MESSAGE_TOAST);
-            var bundle = new Bundle();
-            bundle.PutString(Constants.TOAST, "Device connection was lost");
-            msg.Data = bundle;
-            handler.SendMessage(msg);
-
+            // Handle lost connection
             state = STATE_NONE;
-            UpdateUserInterfaceTitle();
+            UpdateBtStatus();
             Start();
         }
 
@@ -344,7 +356,7 @@ namespace DoradSmartphone.Services.Bluetooth
                             bytes = inStream.Read(buffer, 0, buffer.Length);
                             string receivedData = Encoding.UTF8.GetString(buffer, 0, bytes);
                             Console.WriteLine(receivedData);
-                            service.handler.ObtainMessage(Constants.MESSAGE_READ, bytes, -1, buffer).SendToTarget();
+                            // Handle received data
                         }
                         catch (IOException e)
                         {
@@ -356,16 +368,12 @@ namespace DoradSmartphone.Services.Bluetooth
                 });
             }
 
+            //This one 
             public void Write(byte[] buffer)
             {
                 try
                 {
-                    outStream.Write(buffer, 0, buffer.Length);
-
-                    // Share the sent message back to the UI Activity
-                    service.handler
-                        .ObtainMessage(Constants.MESSAGE_WRITE, -1, -1, buffer)
-                        .SendToTarget();
+                    outStream.Write(buffer, 0, buffer.Length);                    
                 }
                 catch (IOException e)
                 {
@@ -387,4 +395,3 @@ namespace DoradSmartphone.Services.Bluetooth
         }
     }
 }
-

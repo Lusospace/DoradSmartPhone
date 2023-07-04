@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using DoradSmartphone.Models;
-using DoradSmartphone.Services;
+using DoradSmartphone.Services.Bluetooth;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;

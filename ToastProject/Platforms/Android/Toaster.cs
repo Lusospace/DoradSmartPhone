@@ -1,5 +1,4 @@
 ﻿using Android.Widget;
-using ToastProject;
 
 namespace ToastProject.Platforms
 {

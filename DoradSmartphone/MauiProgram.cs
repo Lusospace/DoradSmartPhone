@@ -16,7 +16,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()       
-            .UseMauiMaps()
+            .UseMauiMaps()            
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -39,15 +39,15 @@ public static class MauiProgram
         builder.Services.AddSingleton<AutomaticPage>();
         builder.Services.AddSingleton<DashboardPage>();        
         builder.Services.AddSingleton<ExerciseDetailsPage>();
-        builder.Services.AddSingleton<DisplaySelectedItemsPage>();
-
-        builder.Services.AddTransient<MyHandler>();
+        builder.Services.AddSingleton<DisplaySelectedItemsPage>();        
 
         builder.Services.AddSingleton<UserService>();
         builder.Services.AddSingleton<LoginService>();        
         builder.Services.AddSingleton<ExerciseService>();
         builder.Services.AddSingleton<DashboardService>();
-        builder.Services.AddSingleton<IBluetoothService, BluetoothService>();
+        
+        builder.Services.AddTransient<BluetoothService>();
+        builder.Services.AddScoped<IBluetoothService, BluetoothService>();
         //builder.Services.AddSingleton<BluetoothLEService>();
 
         builder.Services.AddSingleton<UserViewModel>();

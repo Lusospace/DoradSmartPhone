@@ -21,15 +21,13 @@ namespace DoradSmartphone.ViewModels
         [ObservableProperty]
         bool statusLabel;
         [ObservableProperty]
-        bool deviceBool;        
-
-        BluetoothAdapter btAdapter;
-        BluetoothService btService;                
-        Handler handler;
+        bool deviceBool;
         
+        BluetoothService btService;
+
         bool isConnected = false;
 
-        private ObservableCollection<DeviceCandidate> devices;        
+        private ObservableCollection<DeviceCandidate> devices;
         public ObservableCollection<DeviceCandidate> Devices
         {
             get { return devices; }
@@ -48,11 +46,8 @@ namespace DoradSmartphone.ViewModels
             Title = "Welcome";
             CommStatus = "Scanning";
             StatusLabel = true;
-            DeviceBool = false;
-            //StartScanning();            
-            btAdapter = BluetoothAdapter.DefaultAdapter;
-            handler = new MyHandler(this);
-            ConnectedDevices();
+            DeviceBool = false;            
+            //ConnectedDevices();
         }
 
         private async void ConnectedDevices()
@@ -74,9 +69,9 @@ namespace DoradSmartphone.ViewModels
                 }
                 try
                 {
-                    btService = new BluetoothService(handler);
-                    btService.Start();
-                    btService.Connect(glasses);     
+                    //btService = new BluetoothService();
+                    //btService.Start();
+                    //btService.Connect(glasses);
                     try
                     {
                         //btService.Write(ConvertWidgetToJsonAndBytes());
@@ -88,7 +83,8 @@ namespace DoradSmartphone.ViewModels
                         CommStatus = "Error sending JSON file over Bluetooth: " + ex.Message;
                     }
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     CommStatus = "Error connecting to the GATT server: " + ex.Message;
                 }
             }
@@ -101,7 +97,15 @@ namespace DoradSmartphone.ViewModels
         [RelayCommand]
         public void SendSomething()
         {
-            btService.Write(ConvertWidgetToJsonAndBytes());
+            try
+            {
+                btService.Write(ConvertWidgetToJsonAndBytes());
+            }
+            catch (Exception ex)
+            {                
+                CommStatus = "Error sending JSON file over Bluetooth: " + ex.Message;
+            }
+            
         }
 
         private byte[] ConvertWidgetToJsonAndBytes()
@@ -145,30 +149,5 @@ namespace DoradSmartphone.ViewModels
             Id = 3, Name = "Route", FileName = "Images/Widgets/route.png"
             },
         };
-
-        public void HandleDeviceName(string deviceName)
-        {
-            // Handle the received device name
-        }
-
-        public void HandleStateChange(int newState)
-        {
-            // Handle the state change
-        }
-
-        public void HandleToastMessage(string toastMessage)
-        {
-            // Handle the toast message
-        }
-
-        public void HandleReceivedData(byte[] readBytes)
-        {
-            // Handle the received data
-        }
-
-        public void HandleSentData(byte[] writeBytes)
-        {
-            // Handle the sent data
-        }
     }
 }
