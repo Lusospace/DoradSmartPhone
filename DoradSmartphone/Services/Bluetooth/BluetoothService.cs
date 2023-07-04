@@ -179,6 +179,7 @@ namespace DoradSmartphone.Services.Bluetooth
             {
                 if (state != STATE_CONNECTED)
                 {
+                    toast.MakeToast($"No device connected to send.");
                     return;
                 }
                 r = connectedThread;

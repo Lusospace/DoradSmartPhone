@@ -5,10 +5,12 @@ using CommunityToolkit.Mvvm.Input;
 using DoradSmartphone.Helpers;
 using DoradSmartphone.Models;
 using DoradSmartphone.Services.Bluetooth;
+using Java.Util.Logging;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using ToastProject;
 
 namespace DoradSmartphone.ViewModels
 {
@@ -24,6 +26,7 @@ namespace DoradSmartphone.ViewModels
         bool deviceBool;
         
         BluetoothService btService;
+        public IToast toast;
 
         bool isConnected = false;
 
@@ -41,12 +44,13 @@ namespace DoradSmartphone.ViewModels
 
         public bool HasDevices => Devices != null && Devices.ToList().Count > 0;
 
-        public DashboardViewModel()
+        public DashboardViewModel(IToast toast)
         {
             Title = "Welcome";
             CommStatus = "Scanning";
             StatusLabel = true;
-            DeviceBool = false;            
+            DeviceBool = false;
+            this.toast = toast;
             //ConnectedDevices();
         }
 
@@ -99,6 +103,7 @@ namespace DoradSmartphone.ViewModels
         {
             try
             {
+                btService = new BluetoothService(toast);
                 btService.Write(ConvertWidgetToJsonAndBytes());
             }
             catch (Exception ex)
@@ -110,7 +115,7 @@ namespace DoradSmartphone.ViewModels
 
         private byte[] ConvertWidgetToJsonAndBytes()
         {
-            System.Random random = new System.Random();
+            System.Random random = new Random();
 
             List<Widget> widgets = GetWidgets();
 
