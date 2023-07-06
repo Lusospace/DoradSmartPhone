@@ -1,0 +1,57 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoradSmartphone.Views.AvatarPage"
+             xmlns:model="clr-namespace:DoradSmartphone.Models"
+             xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
+             xmlns:helpers="clr-namespace:DoradSmartphone.Helpers"
+             x:DataType="viewmodel:AvatarViewModel"
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="EntryContainerStyle" TargetType="Entry">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="HeightRequest" Value="48" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout x:Name="MainLayout" VerticalOptions="FillAndExpand">
+                <Grid VerticalOptions="Center" HorizontalOptions="Center" RowSpacing="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Image Source="{x:Static helpers:Icons.AvatarXg}" HeightRequest="300" WidthRequest="300" HorizontalOptions="Center" Grid.Row="0" />
+
+                    <Label Text="The Route Speed was 17km/h" FontSize="20" TextColor="RoyalBlue" HorizontalTextAlignment="Center" Grid.Row="1" Margin="20"/>
+
+                    <Entry x:Name="Speed" Placeholder="Type the speed" Text="{Binding Speed}" Grid.Row="2" Style="{StaticResource EntryContainerStyle}" Keyboard="Numeric">
+                        <Entry.Behaviors>
+                            <helpers:NumericValidationBehavior MaximumValue="30" />
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Entry x:Name="Percentage" Placeholder="Type the percentage of speed" Text="{Binding Percentage}" Grid.Row="3" Style="{StaticResource EntryContainerStyle}" Keyboard="Numeric">
+                        <Entry.Behaviors>
+                            <helpers:NumericValidationBehavior MaximumValue="100" />
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Label Text="{Binding NewSpeed, StringFormat='The new speed is {0} km/h'}" FontSize="20" TextColor="RoyalBlue" HorizontalTextAlignment="Center" Grid.Row="4" Margin="20"/>
+
+                    <Button Text="Send" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" 
+                                Command="{Binding SetAvatarCommand}" Grid.Row="5" Margin="10" 
+                                FontSize="15"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

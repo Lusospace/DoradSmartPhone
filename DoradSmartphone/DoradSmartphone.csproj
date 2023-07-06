@@ -45,9 +45,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="ViewModels\ExerciseDetailsViewModel.cs" />
+	  <Compile Remove="Views\ExerciseDetailsPage.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="Views\ExerciseDetailsPage.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\avatar.png" />
 	  <None Remove="Resources\Images\barchart.png" />
 	  <None Remove="Resources\Images\dashboard.png" />
 	  <None Remove="Resources\Images\glasses.png" />
+	  <None Remove="Resources\Images\glasses_page.png" />
 	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\lock.jpg" />
 	  <None Remove="Resources\Images\lusospace.png" />
@@ -55,7 +66,6 @@
 	  <None Remove="Resources\Images\lusovu_icon.png" />
 	  <None Remove="Resources\Images\routes.png" />
 	  <None Remove="Resources\Images\runner.png" />
-	  <None Remove="Resources\Images\shoes.png" />
 	  <None Remove="Resources\Images\user1.png" />
 	  <None Remove="Resources\Images\Widgets\altitude.png" />
 	  <None Remove="Resources\Images\Widgets\battery.png" />
@@ -116,13 +126,13 @@
 	  <MauiXaml Update="Views\AutomaticPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\AvatarPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\DashboardPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\DisplaySelectedItemsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\ExerciseDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ExercisePage.xaml">
@@ -138,6 +148,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ManualPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\StartRun.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\UserPage.xaml">

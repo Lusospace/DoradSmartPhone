@@ -1,9 +1,4 @@
 ﻿using Android.Bluetooth;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoradSmartphone.Services.Bluetooth
 {
@@ -17,4 +12,3 @@ namespace DoradSmartphone.Services.Bluetooth
         void Stop();
     }
 }
-

@@ -27,7 +27,7 @@ namespace DoradSmartphone.Services
                 else
                 {
                     Preferences.Set("UserLoggedIn", true);
-                    await Shell.Current.GoToAsync($"//{nameof(DashboardPage)}");
+                    await Shell.Current.GoToAsync($"//{nameof(GlassPage)}");
                 }               
             }
             catch(Exception ex)

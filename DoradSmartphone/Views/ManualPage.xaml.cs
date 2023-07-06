@@ -17,7 +17,6 @@ public partial class ManualPage : ContentPage
     private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
     {
         var image = (Image)sender;
-        var parentGrid = (Grid)image.Parent;
         const double sensitivity = 0.7; // Adjust the sensitivity factor as needed
 
         switch (e.StatusType)
@@ -38,7 +37,7 @@ public partial class ManualPage : ContentPage
                 var finalPosition = new Microsoft.Maui.Graphics.Point(image.TranslationX, image.TranslationY);
                 initialPosition = finalPosition;
                 Shell.Current.DisplayAlert("Warning", "The new position is: " + finalPosition, "Ok");
-                // Assuming your grid is named "SliderGrid"
+                
                 var gridWidth = WidgetGrid.Width;
                 var gridHeight = WidgetGrid.Height;
 
@@ -51,24 +50,6 @@ public partial class ManualPage : ContentPage
 
                 Shell.Current.DisplayAlert("Warning", "The new relative position is for the X: " + formattedRelativeX + " and for the Y " + formattedRelativeY, "Ok");
                 break;
-
-                // Check for overlap with other images or the slider
-                //if (CheckCrossedLimits(image))
-                //{
-                //    // Overlapping detected, return image to its initial position
-                //    image.TranslationX = initialPosition.X;
-                //    image.TranslationY = initialPosition.Y;
-                //    Shell.Current.DisplayAlert("Warning", "Going back to the initial position: " + initialPosition, "Ok");
-                //}
-                //else
-                //{
-                //    // No overlap, update the initial position
-                //    initialPosition = finalPosition;
-                //    Shell.Current.DisplayAlert("Warning", "The new position is: " + finalPosition, "Ok");
-                //}                
-                //break;
         }
-    }
-
-   
+    }   
 }
