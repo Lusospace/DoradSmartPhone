@@ -46,9 +46,9 @@
                 Route="WidgetsPage"/>
         </Tab>
 
-        <Tab Title="Avatar" Icon="{x:Static helpers:Icons.Avatar}">
+        <Tab Title="Start Run" Icon="{x:Static helpers:Icons.Avatar}">
             <ShellContent
-                Title="Avatar"
+                Title="Start Run"
                 ContentTemplate="{DataTemplate views:StartRunPage}"
                 Route="StartRun"/>
         </Tab>

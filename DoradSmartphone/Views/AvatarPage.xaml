@@ -31,7 +31,7 @@
 
                     <Image Source="{x:Static helpers:Icons.AvatarXg}" HeightRequest="300" WidthRequest="300" HorizontalOptions="Center" Grid.Row="0" />
 
-                    <Label Text="The Route Speed was 17km/h" FontSize="20" TextColor="RoyalBlue" HorizontalTextAlignment="Center" Grid.Row="1" Margin="20"/>
+                    <Label Text="{Binding NewSpeed, StringFormat='The Selected Route AVG speed was {0} km/h'}" FontSize="20" TextColor="RoyalBlue" HorizontalTextAlignment="Center" Grid.Row="1" Margin="20"/>
 
                     <Entry x:Name="Speed" Placeholder="Type the speed" Text="{Binding Speed}" Grid.Row="2" Style="{StaticResource EntryContainerStyle}" Keyboard="Numeric">
                         <Entry.Behaviors>
@@ -45,10 +45,10 @@
                         </Entry.Behaviors>
                     </Entry>
 
-                    <Label Text="{Binding NewSpeed, StringFormat='The new speed is {0} km/h'}" FontSize="20" TextColor="RoyalBlue" HorizontalTextAlignment="Center" Grid.Row="4" Margin="20"/>
+                    <Label Text="{Binding NewSpeed, StringFormat='The Avatar speed will be {0} km/h'}" FontSize="20" TextColor="RoyalBlue" HorizontalTextAlignment="Center" Grid.Row="4" Margin="20"/>
 
-                    <Button Text="Send" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" 
-                                Command="{Binding SetAvatarCommand}" Grid.Row="5" Margin="10" 
+                    <Button Text="Go to Widget Selection" WidthRequest="200" CornerRadius="40" HorizontalOptions="Center" 
+                                Command="{Binding NextPageCommand}" Grid.Row="5" Margin="10" 
                                 FontSize="15"/>
                 </Grid>
             </StackLayout>

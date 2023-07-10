@@ -2,24 +2,39 @@
 using CommunityToolkit.Mvvm.Input;
 using DoradSmartphone;
 using DoradSmartphone.Data;
+using DoradSmartphone.DTO;
 using DoradSmartphone.Models;
 using DoradSmartphone.Services;
 using DoradSmartphone.Services.Bluetooth;
+using DoradSmartphone.Views;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace DoradSmartphone.ViewModels
 {
-    public partial class ExerciseViewModel : BaseViewModel
+    public partial class ExerciseViewModel : BaseViewModel, INotifyPropertyChanged
     {
         private readonly ExerciseService exerciseService;
 
         public ObservableCollection<Exercise> Exercises { get; private set; } = new();
+
+        private ObservableCollection<Exercise> startExercises;
+        public ObservableCollection<Exercise> StartExercises
+        {
+            get { return startExercises; }
+            set
+            {
+                startExercises = value;
+                OnPropertyChanged(nameof(StartExercises));
+            }
+        }
+
         public ExerciseViewModel(ExerciseService exerciseService)
         {
             Title = "Training Routes";
-            this.exerciseService = exerciseService;                                            
+            this.exerciseService = exerciseService;
         }
 
         [ObservableProperty]
@@ -49,7 +64,7 @@ namespace DoradSmartphone.ViewModels
         }
 
         public async Task LoadExercisesAsync()
-        {            
+        {
             var exercices = await exerciseService.RecoverExercicesAsync();
             foreach (var exercise in exercices) Exercises.Add(exercise);
         }
@@ -63,8 +78,24 @@ namespace DoradSmartphone.ViewModels
         [RelayCommand]
         public void Clear()
         {
+            Exercises.Clear();
             exerciseService.ClearAll();
         }
+
+        [RelayCommand]
+        public void NavigateToAvatar(Exercise exercise)
+        {
+            // Create the DTO object
+            var dto = new GlassDTO
+            {
+                Exercise = exercise,
+                Widgets = null,                
+                Avatar = null
+            };
+
+            Application.Current.MainPage.Navigation.PushAsync(new AvatarPage(dto));        
+        }
+
 
         public List<Location> GetLocations(int exerciseId)
         {
@@ -108,6 +139,13 @@ namespace DoradSmartphone.ViewModels
                             new Location(-1.4515756786484433, -48.47169012644734),
                         };
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

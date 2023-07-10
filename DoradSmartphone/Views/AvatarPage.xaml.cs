@@ -1,12 +1,14 @@
+using DoradSmartphone.DTO;
+using DoradSmartphone.Models;
 using DoradSmartphone.ViewModels;
 
 namespace DoradSmartphone.Views;
 
 public partial class AvatarPage : ContentPage
 {
-	public AvatarPage(AvatarViewModel avatarViewModel)
+	public AvatarPage(GlassDTO glassDTO)
 	{
 		InitializeComponent();
-		BindingContext = avatarViewModel;
+		BindingContext = new AvatarViewModel(glassDTO);
 	}
 }

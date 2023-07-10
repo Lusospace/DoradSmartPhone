@@ -1,4 +1,9 @@
-﻿using System.ComponentModel;
+﻿using Android.Gms.Maps.Model;
+using CommunityToolkit.Mvvm.Input;
+using DoradSmartphone.DTO;
+using DoradSmartphone.Models;
+using DoradSmartphone.Views;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace DoradSmartphone.ViewModels
@@ -9,6 +14,8 @@ namespace DoradSmartphone.ViewModels
         private double routeSpeed;
         private double newSpeed;
         private double percentage;
+
+        private GlassDTO _glassDTO;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -67,10 +74,11 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
-        public AvatarViewModel()
+        public AvatarViewModel(GlassDTO glassDTO)
         {
             Title = "Avatar Page";
-            RouteSpeed = 17;
+            _glassDTO = glassDTO;
+            RouteSpeed = glassDTO.Exercise.Speed.Avg;
         }
 
         private void OnPropertyChanged(string propertyName)
@@ -87,11 +95,16 @@ namespace DoradSmartphone.ViewModels
             }            
         }
 
-        public ICommand SetAvatarCommand => new Command(SetAvatar);
-
-        private void SetAvatar()
+        [RelayCommand]
+        public void NextPage()
         {
-            // Perform any necessary actions when the button is clicked
+            if (_glassDTO.Avatar == null)
+            {
+                _glassDTO.Avatar = new AvatarDTO(); // Create a new instance if null
+            }
+            _glassDTO.Avatar.Speed = NewSpeed;
+            _glassDTO.Avatar.Active = true;
+            //Application.Current.MainPage.Navigation.PushAsync(new WidgetPage(_glassDTO));
         }
     }
 }

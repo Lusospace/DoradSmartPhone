@@ -4,7 +4,7 @@
              xmlns:model="clr-namespace:DoradSmartphone.Models"
              xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
              x:DataType="viewmodel:ExerciseViewModel"
-             Title="{Binding Title}">
+             Title="Select a Route to Run">
 
     <ScrollView>
         <StackLayout>
@@ -27,6 +27,10 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Exercise">
                             <Frame BorderColor="RoyalBlue" Padding="10" Margin="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExerciseViewModel}}, Path=NavigateToAvatarCommand}
+                                        " CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
                                 <StackLayout>
                                     <Label Text="{Binding StartingDate, StringFormat='Starting Date: {0:dd/MM/yyyy HH:mm}'}" />
                                     <Label Text="{Binding FinishingDate, StringFormat='Finishing Date: {0:dd/MM/yyyy HH:mm}'}" />
