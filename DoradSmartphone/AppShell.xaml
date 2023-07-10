@@ -49,8 +49,8 @@
         <Tab Title="Avatar" Icon="{x:Static helpers:Icons.Avatar}">
             <ShellContent
                 Title="Avatar"
-                ContentTemplate="{DataTemplate views:AvatarPage}"
-                Route="AvatarPage"/>
+                ContentTemplate="{DataTemplate views:StartRunPage}"
+                Route="StartRun"/>
         </Tab>
         
     </TabBar>

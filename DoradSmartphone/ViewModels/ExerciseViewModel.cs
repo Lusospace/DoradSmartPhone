@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DoradSmartphone;
+using DoradSmartphone.Data;
 using DoradSmartphone.Models;
 using DoradSmartphone.Services;
 using DoradSmartphone.Services.Bluetooth;
@@ -45,6 +46,24 @@ namespace DoradSmartphone.ViewModels
                 IsLoading = false;
                 IsRefreshing = false;
             }
+        }
+
+        public async Task LoadExercisesAsync()
+        {            
+            var exercices = await exerciseService.RecoverExercicesAsync();
+            foreach (var exercise in exercices) Exercises.Add(exercise);
+        }
+
+        [RelayCommand]
+        public void Insert()
+        {
+            exerciseService.InsertExercises();
+        }
+
+        [RelayCommand]
+        public void Clear()
+        {
+            exerciseService.ClearAll();
         }
 
         public List<Location> GetLocations(int exerciseId)

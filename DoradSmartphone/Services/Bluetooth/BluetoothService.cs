@@ -37,7 +37,7 @@ namespace DoradSmartphone.Services.Bluetooth
             newState = state;
             this.toast = toast;
             Start();
-            connectionTimer = new Timer(CheckConnectionStatus, newState, ConnectionCheckInterval, ConnectionCheckInterval);
+            //connectionTimer = new Timer(CheckConnectionStatus, newState, ConnectionCheckInterval, ConnectionCheckInterval);
         }
 
         public int GetState()

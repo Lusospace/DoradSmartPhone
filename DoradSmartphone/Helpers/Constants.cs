@@ -18,7 +18,7 @@ public static class Constants
 
 
     // Key names received from the BluetoothChatService Handler    
-    //public const string GLASSES_NAME = "My GATT Server";
-    public const string GLASSES_NAME = "Redmi Note 11";
+    public const string GLASSES_NAME = "QCOM-BTD";
+    //public const string GLASSES_NAME = "Redmi Note 11";
     public const string TOAST = "toast";
 }

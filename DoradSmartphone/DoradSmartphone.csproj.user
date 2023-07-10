@@ -27,6 +27,9 @@
     <MauiXaml Update="Views\DisplaySelectedItemsPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Views\ExerciseListPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Views\ExercisePage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
@@ -42,7 +45,7 @@
     <MauiXaml Update="Views\ManualPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Views\StartRun.xaml">
+    <MauiXaml Update="Views\StartRunPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="Views\UserPage.xaml">

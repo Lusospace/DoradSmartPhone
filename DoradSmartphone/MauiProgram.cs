@@ -38,6 +38,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<ManualPage>();
         builder.Services.AddSingleton<LoadingPage>();
         builder.Services.AddSingleton<ExercisePage>();
+        builder.Services.AddTransient<StartRunPage>();
         builder.Services.AddSingleton<AutomaticPage>();
         builder.Services.AddSingleton<DashboardPage>();                
         builder.Services.AddSingleton<DisplaySelectedItemsPage>();        

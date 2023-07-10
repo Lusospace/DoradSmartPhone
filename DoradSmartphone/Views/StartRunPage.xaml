@@ -1,0 +1,46 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoradSmartphone.Views.StartRunPage"
+             xmlns:model="clr-namespace:DoradSmartphone.Models"
+             xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
+             x:DataType="viewmodel:ExerciseViewModel"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <StackLayout>
+            <Grid VerticalOptions="Center" HorizontalOptions="Center" RowSpacing="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Insert" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" 
+                        Command="{Binding InsertCommand}" Grid.Row="0" Grid.Column="0" Margin="10" 
+                        FontSize="15" />
+                <Button Text="Clean" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" 
+                        Command="{Binding ClearCommand}" Grid.Row="0" Grid.Column="1" Margin="10" 
+                        FontSize="15" />
+                <CollectionView ItemsSource="{Binding Exercises}" Grid.Row="1" Grid.ColumnSpan="2">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Exercise">
+                            <Frame BorderColor="RoyalBlue" Padding="10" Margin="5">
+                                <StackLayout>
+                                    <Label Text="{Binding StartingDate, StringFormat='Starting Date: {0:dd/MM/yyyy HH:mm}'}" />
+                                    <Label Text="{Binding FinishingDate, StringFormat='Finishing Date: {0:dd/MM/yyyy HH:mm}'}" />
+                                    <Label Text="{Binding Time}" />
+                                    <Label Text="{Binding Speed.Avg, StringFormat='Average Speed: {0}'}" />
+                                    <Label Text="{Binding Speed.Max, StringFormat='Maximum Speed: {0}'}" />
+                                    <Label Text="{Binding Route[0].Latitude, StringFormat='Address: {0}'}" />
+                                    <Label Text="{Binding Route[0].Longitude}" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

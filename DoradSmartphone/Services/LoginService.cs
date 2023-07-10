@@ -1,5 +1,7 @@
 ﻿using DoradSmartphone.Data;
+using DoradSmartphone.Models;
 using DoradSmartphone.Views;
+using Newtonsoft.Json;
 
 namespace DoradSmartphone.Services
 {
@@ -26,6 +28,18 @@ namespace DoradSmartphone.Services
                 }
                 else
                 {
+                    // Create the user session
+                    var userSession = new UserSession
+                    {
+                        Id = user.Id,
+                        Name = user.Name,
+                        Email = user.Email
+                        // Set other relevant user properties
+                    };
+
+                    // Store the user session using Preferences
+                    Preferences.Set("UserSession", JsonConvert.SerializeObject(userSession));
+
                     Preferences.Set("UserLoggedIn", true);
                     await Shell.Current.GoToAsync($"//{nameof(GlassPage)}");
                 }               

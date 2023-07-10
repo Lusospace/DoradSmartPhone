@@ -69,7 +69,7 @@ namespace DoradSmartphone.ViewModels
 
         public AvatarViewModel()
         {
-            Title = "AvatarPage";
+            Title = "Avatar Page";
             RouteSpeed = 17;
         }
 

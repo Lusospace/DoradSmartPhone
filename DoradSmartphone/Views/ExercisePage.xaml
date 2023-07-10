@@ -9,9 +9,6 @@
              x:DataType ="viewmodel:ExerciseViewModel"
              Title="{Binding Title}">
 
-
-
-
     <Grid Padding="5" Margin="5" RowSpacing="5" ColumnSpacing="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -44,7 +41,7 @@
                         </Frame.GestureRecognizers>
                         <HorizontalStackLayout Padding="10" Spacing="5" >
                             <Label Text="{Binding Id}"></Label>
-                            <Label Text="{Binding Date}"></Label>
+                            <Label Text="{Binding StartingDate}"></Label>
                         </HorizontalStackLayout>
                     </Frame>
                 </DataTemplate>
