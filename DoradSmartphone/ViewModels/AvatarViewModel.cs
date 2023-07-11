@@ -5,6 +5,7 @@ using DoradSmartphone.Models;
 using DoradSmartphone.Views;
 using System.ComponentModel;
 using System.Windows.Input;
+using ToastProject;
 
 namespace DoradSmartphone.ViewModels
 {
@@ -15,7 +16,8 @@ namespace DoradSmartphone.ViewModels
         private double newSpeed;
         private double percentage;
 
-        private GlassDTO _glassDTO;
+        private GlassDTO glassDTO;
+        private IToast toast;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -74,10 +76,11 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
-        public AvatarViewModel(GlassDTO glassDTO)
+        public AvatarViewModel(GlassDTO glassDTO, IToast toast)
         {
             Title = "Avatar Page";
-            _glassDTO = glassDTO;
+            this.glassDTO = glassDTO;
+            this.toast = toast;
             RouteSpeed = glassDTO.Exercise.Speed.Avg;
         }
 
@@ -98,13 +101,13 @@ namespace DoradSmartphone.ViewModels
         [RelayCommand]
         public void NextPage()
         {
-            if (_glassDTO.Avatar == null)
+            if (glassDTO.Avatar == null)
             {
-                _glassDTO.Avatar = new AvatarDTO(); // Create a new instance if null
+                glassDTO.Avatar = new AvatarDTO(); // Create a new instance if null
             }
-            _glassDTO.Avatar.Speed = NewSpeed;
-            _glassDTO.Avatar.Active = true;
-            //Application.Current.MainPage.Navigation.PushAsync(new WidgetPage(_glassDTO));
+            glassDTO.Avatar.Speed = NewSpeed;
+            glassDTO.Avatar.Active = true;
+            Application.Current.MainPage.Navigation.PushAsync(new WidgetPage(glassDTO, toast));
         }
     }
 }

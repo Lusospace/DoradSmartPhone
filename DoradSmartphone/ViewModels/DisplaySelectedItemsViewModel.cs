@@ -1,46 +1,48 @@
-﻿using AndroidX.Lifecycle;
+﻿using DoradSmartphone.DTO;
 using DoradSmartphone.Models;
 using DoradSmartphone.Views;
 using System.ComponentModel;
 using System.Windows.Input;
-using static Android.App.Assist.AssistStructure;
+using ToastProject;
 
 namespace DoradSmartphone.ViewModels
 {
     public partial class DisplaySelectedItemsViewModel : BaseViewModel, INotifyPropertyChanged
     {
-        private List<Widget> _selectedItems;
+        private IToast toast;
+        private GlassDTO glassDTO;
 
         public ICommand ManualCommand => new Command(Manual);
         public ICommand AutomaticCommand => new Command(Automatic);
 
         public List<Widget> SelectedItems
         {
-            get { return _selectedItems; }
+            get { return glassDTO.Widgets; }
             set
             {
-                if (_selectedItems != value)
+                if (glassDTO.Widgets != value)
                 {
-                    _selectedItems = value;
+                    glassDTO.Widgets = value;
                     OnPropertyChanged(nameof(SelectedItems));
                 }
             }
         }
 
-        public DisplaySelectedItemsViewModel(List<Widget> selectedItems)
+        public DisplaySelectedItemsViewModel(GlassDTO glassDTO, IToast toast)
         {
             Title = "Configuration Type";
-            SelectedItems = selectedItems;
+            this.toast = toast;
+            this.glassDTO = glassDTO;
         }
 
         public void Manual()
         {
-            Application.Current.MainPage.Navigation.PushAsync(new ManualPage(SelectedItems));
+            Application.Current.MainPage.Navigation.PushAsync(new ManualPage(glassDTO));
         }
 
         public void Automatic()
         {
-            Application.Current.MainPage.Navigation.PushAsync(new AutomaticPage(SelectedItems));
+            Application.Current.MainPage.Navigation.PushAsync(new AutomaticPage(glassDTO, toast));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

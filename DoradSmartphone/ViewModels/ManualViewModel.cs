@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using DoradSmartphone.DTO;
 using DoradSmartphone.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -7,6 +8,8 @@ namespace DoradSmartphone.ViewModels
 {
     public partial class ManualViewModel : BaseViewModel, INotifyPropertyChanged
     {
+        private GlassDTO glassDTO;
+
         private double sliderValue;
         private string sliderLabel;
 
@@ -51,12 +54,13 @@ namespace DoradSmartphone.ViewModels
             set => SetProperty(ref automaticPage, value);
         }        
 
-        public ManualViewModel(List<Widget> selectedItems)
+        public ManualViewModel(GlassDTO glassDTO)
         {
             Title = "Manual Configuration";
             SliderValue = 1;
             UpdateSliderLabel();
-            Widgets = new ObservableCollection<Widget>(selectedItems);
+            this.glassDTO = glassDTO;
+            Widgets = new ObservableCollection<Widget>(glassDTO.Widgets);
         }
 
         [RelayCommand]

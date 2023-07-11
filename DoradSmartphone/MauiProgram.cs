@@ -1,10 +1,8 @@
 ﻿using DoradSmartphone.Data;
-using DoradSmartphone.Helpers;
 using DoradSmartphone.Services;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.ViewModels;
 using DoradSmartphone.Views;
-using Microsoft.Maui.Controls.Compatibility.Hosting;
 using ToastProject;
 using ToastProject.Platforms;
 
@@ -27,7 +25,9 @@ public static class MauiProgram
         builder.Services.AddSingleton<DatabaseConn>();
         builder.Services.AddScoped<IRepository, DatabaseConn>();
 
-        builder.Services.AddSingleton<IToast>((e) => new Toaster()); 
+        builder.Services.AddSingleton<IToast>((e) => new Toaster());
+
+        builder.Services.AddSingleton<GeneralPage>();
 
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddTransient<UserPage>();        

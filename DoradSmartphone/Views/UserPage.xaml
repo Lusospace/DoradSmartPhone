@@ -11,7 +11,7 @@
         <ResourceDictionary>
             <Style x:Key="EntryContainerStyle" TargetType="Entry">
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="HeightRequest" Value="45" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>

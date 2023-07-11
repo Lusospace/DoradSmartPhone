@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using DoradSmartphone.DTO;
 using DoradSmartphone.Models;
 using DoradSmartphone.Views;
 using System.Collections.ObjectModel;
@@ -11,6 +12,7 @@ namespace DoradSmartphone.ViewModels
     public partial class WidgetViewModel : BaseViewModel, INotifyPropertyChanged
     {
         public IToast toast;
+        private GlassDTO glassDTO;
 
         [ObservableProperty]
         private bool isRefreshing;
@@ -21,10 +23,11 @@ namespace DoradSmartphone.ViewModels
 
         public ICommand DisplaySelectedItemsCommand => new Command(DisplaySelectedItems);
 
-        public WidgetViewModel(IToast toast)
+        public WidgetViewModel(GlassDTO glassDTO, IToast toast)
         {
             Title = "Widget Selection";
             this.toast = toast;
+            this.glassDTO = glassDTO;
         }
 
         public async Task GetWidgetList()
@@ -66,7 +69,12 @@ namespace DoradSmartphone.ViewModels
             }
             else
             {
-                Application.Current.MainPage.Navigation.PushAsync(new DisplaySelectedItemsPage(selectedItems));
+                if (glassDTO.Widgets == null)
+                {
+                    glassDTO.Widgets = new List<Widget>(); // Create a new instance if null
+                }
+                glassDTO.Widgets = selectedItems;
+                Application.Current.MainPage.Navigation.PushAsync(new DisplaySelectedItemsPage(glassDTO, toast));
             }
         }
 

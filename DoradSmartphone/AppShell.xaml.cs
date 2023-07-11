@@ -21,7 +21,9 @@ public partial class AppShell : Shell
         else
         {
             DoradShell.CurrentItem = ExerciseShell;
-        } 
+        }
+
+        Routing.RegisterRoute(nameof(GeneralPage), typeof(GeneralPage));
 
         Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
         Routing.RegisterRoute(nameof(UserPage), typeof(UserPage));       

@@ -24,7 +24,7 @@ namespace DoradSmartphone.ViewModels
 
         public void CheckConnection()
         {
-            BluetoothService bluetoothService = new BluetoothService(toast); // Instantiate BluetoothService without passing a toast object
+            BluetoothService bluetoothService = new BluetoothService(toast);
 
             int connectionState = bluetoothService.GetState();
 

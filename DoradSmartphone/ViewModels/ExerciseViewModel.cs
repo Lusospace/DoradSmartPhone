@@ -1,21 +1,19 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using DoradSmartphone;
-using DoradSmartphone.Data;
 using DoradSmartphone.DTO;
 using DoradSmartphone.Models;
 using DoradSmartphone.Services;
-using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
-using Microsoft.Maui.Controls.Maps;
-using Microsoft.Maui.Maps;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using ToastProject;
 
 namespace DoradSmartphone.ViewModels
 {
     public partial class ExerciseViewModel : BaseViewModel, INotifyPropertyChanged
     {
+        private IToast toast;
+        private List<Exercise> ExercisesList;
         private readonly ExerciseService exerciseService;
 
         public ObservableCollection<Exercise> Exercises { get; private set; } = new();
@@ -31,9 +29,10 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
-        public ExerciseViewModel(ExerciseService exerciseService)
+        public ExerciseViewModel(ExerciseService exerciseService, IToast toast)
         {
             Title = "Training Routes";
+            this.toast = toast;
             this.exerciseService = exerciseService;
         }
 
@@ -48,13 +47,18 @@ namespace DoradSmartphone.ViewModels
                 IsLoading = true;
                 if (Exercises.Any()) Exercises.Clear();
 
-                var exercices = exerciseService.GetExercises();
+                var exercices = await exerciseService.RecoverExerciseByIdAsync();
+                ExercisesList = exercices;
+                if(exercices == null)
+                {
+                    toast.MakeToast("User does not have exercises");
+                }
                 foreach (var exercise in exercices) Exercises.Add(exercise);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                await Shell.Current.DisplayAlert("Error", "Failed to retrieve the exercice list", "Ok");
+                toast.MakeToast("Failed to retrieve the exercice list " + ex.ToString());
             }
             finally
             {
@@ -65,15 +69,23 @@ namespace DoradSmartphone.ViewModels
 
         public async Task LoadExercisesAsync()
         {
-            var exercices = await exerciseService.RecoverExercicesAsync();
-            foreach (var exercise in exercices) Exercises.Add(exercise);
+            var exercises = await exerciseService.RecoverExerciseByIdAsync();
+            foreach (var exercise in exercises)
+            {
+                if (exercise.Route != null && exercise.Route.Count > 0)
+                {
+                    var firstRoute = exercise.Route[0];
+                    string address = await GoogleMapsGeocoding.GetAddressName(firstRoute.Latitude, firstRoute.Longitude);
+                    exercise.Route[0].Address = address;
+                }
+
+                Exercises.Add(exercise);
+            }
         }
 
+
         [RelayCommand]
-        public void Insert()
-        {
-            exerciseService.InsertExercises();
-        }
+        public void Insert() => exerciseService.InsertExercises();
 
         [RelayCommand]
         public void Clear()
@@ -93,53 +105,33 @@ namespace DoradSmartphone.ViewModels
                 Avatar = null
             };
 
-            Application.Current.MainPage.Navigation.PushAsync(new AvatarPage(dto));        
+            Application.Current.MainPage.Navigation.PushAsync(new AvatarPage(dto, toast));        
         }
-
 
         public List<Location> GetLocations(int exerciseId)
         {
-            if (exerciseId == 1)
+            List<Location> locations = new List<Location>();
+
+            // Retrieve the Exercise entity based on the exerciseId
+            var exercise = ExercisesList.FirstOrDefault(e => e.Id == exerciseId);
+            if (exercise != null)
             {
-                return new List<Location>
-                        {
-                            new Location(35.6823324582143, 139.7620853729577),
-                            new Location(35.679263477092704, 139.75773939496295),
-                            new Location(35.68748054650018, 139.761486207315),
-                            new Location(35.690745005825136, 139.7560362984393),
-                            new Location(35.68966608916097, 139.75147199952355),
-                            new Location(35.68427128680411, 139.7442168083328)
-                        };
+                // Retrieve the Route entities associated with the Exercise
+                var routes = exercise.Route;
+                if (routes != null)
+                {
+                    // Convert the latitude and longitude information to Location objects
+                    foreach (var route in routes)
+                    {
+                        Location location = new Location(route.Latitude, route.Longitude);
+                        locations.Add(location);
+                    }
+                }
             }
-            else if (exerciseId == 2)
-            {
-                return new List<Location>
-                        {
-                            new Location(38.70061856336034 , -8.957381918676203 ),
-                            new Location(38.70671683905933 , -8.945225024701308 ),
-                            new Location(38.701985630081595, -8.944503277546072 ),
-                            new Location(38.701872978433386, -8.940750192338834 ),
-                            new Location(38.71054663609023 , -8.939162348597312 ),
-                            new Location(38.717755109243214, -8.942193686649311 ),
-                            new Location(38.7435419727561  , -8.928480490699792 ),
-                            new Location(38.78327379379296 , -8.880556478454272 ),
-                            new Location(38.925473761602376, -8.881999972299806 ),
-                            new Location(38.93692729913667 , -8.869585920414709 ),
-                            new Location(38.93493556584553 , -8.86536198145887  )
-                        };
-            }
-            else
-            {
-                return new List<Location>
-                        {
-                            new Location(-1.4412474319742032, -48.485914192075455),
-                            new Location(-1.4415280369316321, -48.48548039261385),
-                            new Location(-1.438135265584208, -48.47889684784361),
-                            new Location(-1.4519869242562538, -48.47759544945879),
-                            new Location(-1.4515756786484433, -48.47169012644734),
-                        };
-            }
+
+            return locations;
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

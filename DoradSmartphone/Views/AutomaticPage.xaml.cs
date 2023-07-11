@@ -1,13 +1,15 @@
+using DoradSmartphone.DTO;
 using DoradSmartphone.Models;
 using DoradSmartphone.ViewModels;
+using ToastProject;
 
 namespace DoradSmartphone.Views;
 
 public partial class AutomaticPage : ContentPage
 {
-    public AutomaticPage(List<Widget> selectedItems)
+    public AutomaticPage(GlassDTO glassDTO, IToast toast)
     {
         InitializeComponent();
-        BindingContext = new AutomaticViewModel(selectedItems);
+        BindingContext = new AutomaticViewModel(glassDTO, toast);
     }
 }

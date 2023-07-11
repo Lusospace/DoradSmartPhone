@@ -8,6 +8,7 @@ namespace DoradSmartphone.Models
     {
         public double Latitude { get; set; }
         public double Longitude { get; set; }
+        public string Address { get; set; }
 
         [ForeignKey(typeof(Exercise))]
         public int ExerciseId { get; set; }

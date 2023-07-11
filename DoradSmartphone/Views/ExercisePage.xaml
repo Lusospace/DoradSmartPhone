@@ -25,8 +25,8 @@
                                 <x:Double>-9.128544160596851</x:Double>
                             </x:Arguments>
                         </sensors:Location>
-                        <x:Double>0.7</x:Double>
-                        <x:Double>0.7</x:Double>
+                        <x:Double>1</x:Double>
+                        <x:Double>1</x:Double>
                     </x:Arguments>
                 </MapSpan>
             </x:Arguments>

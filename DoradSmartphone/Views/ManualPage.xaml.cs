@@ -1,17 +1,18 @@
-using DoradSmartphone.Models;
+using DoradSmartphone.DTO;
 using DoradSmartphone.ViewModels;
-using System.Drawing;
-using ToastProject;
 
 namespace DoradSmartphone.Views;
 
 public partial class ManualPage : ContentPage
 {
     private Microsoft.Maui.Graphics.Point initialPosition;
-    public ManualPage(List<Widget> selectedItems)
+
+    private GlassDTO glassDTO;
+
+    public ManualPage(GlassDTO glassDTO)
     {
         InitializeComponent();        
-        BindingContext = new ManualViewModel(selectedItems);
+        BindingContext = new ManualViewModel(glassDTO);
     }
 
     private void OnPanUpdated(object sender, PanUpdatedEventArgs e)

@@ -18,22 +18,11 @@ namespace DoradSmartphone.Services
             _toast = toast;
         }
 
-        public List<Exercise> GetExercises() => new List<Exercise>
+        public async Task<List<Exercise>> RecoverExerciseByIdAsync()
         {
-            new Exercise {
-            Id= 1, StartingDate= today.AddDays(-2)
-            },
-            new Exercise {
-            Id= 2, StartingDate= today.AddDays(-1)
-            },
-            new Exercise {
-            Id= 3, StartingDate= today
-            }
-        };
+            User user = UserSessionHelper.GetUserFromSessionJson();
 
-        public async Task<List<Exercise>> RecoverExercicesAsync()
-        {
-            return await _repository.RecoverItensAsync<Exercise>(null);
+            return await _repository.RecoverExerciseByIdAsync<Exercise>(null, user.Id);
         }
 
         public async void InsertExercises()
@@ -47,28 +36,16 @@ namespace DoradSmartphone.Services
             TimeSpan difference4 = today - today.AddMinutes(20);
             string differenceFormatted4 = difference4.ToString(@"hh\:mm\:ss");
 
-            // Retrieve the user session from Preferences
-            var userSessionJson = Preferences.Get("UserSession", string.Empty);
-            if (!string.IsNullOrEmpty(userSessionJson))
+            User user = UserSessionHelper.GetUserFromSessionJson();
+
+
+            var speed1 = new Speed
             {
-                var userSession = JsonConvert.DeserializeObject<UserSession>(userSessionJson);
+                Avg = 10.5f,
+                Max = 15.2f,
+            };
 
-                // Use the user session to access the user information
-                // Create mock values
-                var user = new User
-                {
-                    Id = userSession.Id,
-                    Name = userSession.Name,
-                    Email = userSession.Email,
-                };
-
-                var speed1 = new Speed
-                {
-                    Avg = 10.5f,
-                    Max = 15.2f,
-                };
-
-                var route1 = new List<Route>
+            var route1 = new List<Route>
             {
                 new Route { Latitude = 35.6823324582143, Longitude = 139.7620853729577 },
                 new Route { Latitude = 35.679263477092704, Longitude = 139.75773939496295 },
@@ -78,26 +55,26 @@ namespace DoradSmartphone.Services
                 new Route { Latitude = 35.68427128680411, Longitude = 139.7442168083328 }
             };
 
-                var exercise1 = new Exercise
-                {
-                    StartingDate = today,
-                    FinishingDate = today.AddMinutes(45),
-                    Time = differenceFormatted1,
-                    UserId = user.Id,
-                    Speed = speed1,
-                    Route = route1
-                };
+            var exercise1 = new Exercise
+            {
+                StartingDate = today,
+                FinishingDate = today.AddMinutes(45),
+                Time = differenceFormatted1,
+                UserId = user.Id,
+                Speed = speed1,
+                Route = route1
+            };
 
-                await _repository.SaveItensAsync(exercise1);
+            await _repository.SaveItensAsync(exercise1);
 
 
-                var speed2 = new Speed
-                {
-                    Avg = 12.5f,
-                    Max = 16.2f,
-                };
+            var speed2 = new Speed
+            {
+                Avg = 12.5f,
+                Max = 16.2f,
+            };
 
-                var route2 = new List<Route>
+            var route2 = new List<Route>
             {
                 new Route { Latitude = 38.70061856336034, Longitude = -8.957381918676203 },
                 new Route { Latitude = 38.70671683905933, Longitude = -8.945225024701308 },
@@ -112,25 +89,25 @@ namespace DoradSmartphone.Services
                 new Route { Latitude = 38.93493556584553, Longitude = -8.86536198145887 }
             };
 
-                var exercise2 = new Exercise
-                {
-                    StartingDate = today,
-                    FinishingDate = today.AddMinutes(30),
-                    Time = differenceFormatted2,
-                    UserId = user.Id,
-                    Speed = speed2,
-                    Route = route2
-                };
+            var exercise2 = new Exercise
+            {
+                StartingDate = today,
+                FinishingDate = today.AddMinutes(30),
+                Time = differenceFormatted2,
+                UserId = user.Id,
+                Speed = speed2,
+                Route = route2
+            };
 
-                await _repository.SaveItensAsync(exercise2);
+            await _repository.SaveItensAsync(exercise2);
 
-                var speed3 = new Speed
-                {
-                    Avg = 13.5f,
-                    Max = 14.8f,
-                };
+            var speed3 = new Speed
+            {
+                Avg = 13.5f,
+                Max = 14.8f,
+            };
 
-                var route3 = new List<Route>
+            var route3 = new List<Route>
             {
                 new Route { Latitude = -1.4412474319742032, Longitude = -48.485914192075455 },
                 new Route { Latitude = -1.4415280369316321, Longitude = -48.48548039261385 },
@@ -139,25 +116,25 @@ namespace DoradSmartphone.Services
                 new Route { Latitude = -1.4515756786484433, Longitude = -48.47169012644734 }
             };
 
-                var exercise3 = new Exercise
-                {
-                    StartingDate = today,
-                    FinishingDate = today.AddMinutes(60),
-                    Time = differenceFormatted3,
-                    UserId = user.Id,
-                    Speed = speed3,
-                    Route = route3
-                };
+            var exercise3 = new Exercise
+            {
+                StartingDate = today,
+                FinishingDate = today.AddMinutes(60),
+                Time = differenceFormatted3,
+                UserId = user.Id,
+                Speed = speed3,
+                Route = route3
+            };
 
-                await _repository.SaveItensAsync(exercise3);
+            await _repository.SaveItensAsync(exercise3);
 
-                var speed4 = new Speed
-                {
-                    Avg = 13.5f,
-                    Max = 14.8f,
-                };
+            var speed4 = new Speed
+            {
+                Avg = 13.5f,
+                Max = 14.8f,
+            };
 
-                var route4 = new List<Route>
+            var route4 = new List<Route>
             {
                 new Route { Latitude = 38.70061856336034, Longitude = -8.957381918676203 },
                 new Route { Latitude = 38.70671683905933, Longitude = -8.945225024701308 },
@@ -172,22 +149,17 @@ namespace DoradSmartphone.Services
                 new Route { Latitude = 38.93493556584553, Longitude = -8.86536198145887 }
             };
 
-                var exercise4 = new Exercise
-                {
-                    StartingDate = today,
-                    FinishingDate = today.AddMinutes(20),
-                    Time = differenceFormatted4,
-                    UserId = user.Id,
-                    Speed = speed4,
-                    Route = route4
-                };
-
-                await _repository.SaveItensAsync(exercise4);
-            }
-            else
+            var exercise4 = new Exercise
             {
-                _toast.MakeToast("Error when trying to recover user session.");
-            }
+                StartingDate = today,
+                FinishingDate = today.AddMinutes(20),
+                Time = differenceFormatted4,
+                UserId = user.Id,
+                Speed = speed4,
+                Route = route4
+            };
+
+            await _repository.SaveItensAsync(exercise4);
         }
 
         public async void ClearAll()
