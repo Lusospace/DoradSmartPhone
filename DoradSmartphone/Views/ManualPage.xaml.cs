@@ -24,7 +24,7 @@ public partial class ManualPage : ContentPage
         {
             case GestureStatus.Started:
                 // Store the initial position of the image
-                initialPosition = new Microsoft.Maui.Graphics.Point(image.TranslationX, image.TranslationY);
+                initialPosition = new Point(image.TranslationX, image.TranslationY);
                 break;
 
             case GestureStatus.Running:
@@ -35,7 +35,7 @@ public partial class ManualPage : ContentPage
 
             case GestureStatus.Completed:
                 // Get the final position of the image when the dragging is completed
-                var finalPosition = new Microsoft.Maui.Graphics.Point(image.TranslationX, image.TranslationY);
+                var finalPosition = new Point(image.TranslationX, image.TranslationY);
                 initialPosition = finalPosition;
                 Shell.Current.DisplayAlert("Warning", "The new position is: " + finalPosition, "Ok");
                 

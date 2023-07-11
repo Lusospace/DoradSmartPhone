@@ -42,7 +42,7 @@
         <Tab Title="Widgets" Icon="{x:Static helpers:Icons.Dashboard}">
             <ShellContent
                 Title="Widgets"
-                ContentTemplate="{DataTemplate views:WidgetPage}"
+                ContentTemplate="{DataTemplate views:DashboardPage}"
                 Route="WidgetsPage"/>
         </Tab>
 
