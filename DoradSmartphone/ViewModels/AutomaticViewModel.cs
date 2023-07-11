@@ -1,12 +1,21 @@
-﻿using DoradSmartphone.Models;
+﻿using CommunityToolkit.Mvvm.Input;
+using DoradSmartphone.DTO;
+using DoradSmartphone.Helpers;
+using DoradSmartphone.Models;
+using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using ToastProject;
 
 namespace DoradSmartphone.ViewModels
 {
     public partial class AutomaticViewModel : BaseViewModel
     {
+        private IToast toast;
+        private GlassDTO glassDTO;
+        private IBluetoothService bluetoothService;
+
         private ObservableCollection<Widget> widgets;
         public ObservableCollection<Widget> Widgets
         {
@@ -19,65 +28,35 @@ namespace DoradSmartphone.ViewModels
         {
             get => automaticPage;
             set => SetProperty(ref automaticPage, value);
-        }
+        }        
 
-        public ICommand LoadAutomaticPageCommand => new Command(LoadAutomaticPage);
-
-        public AutomaticViewModel(List<Widget> selectedItems)
+        public AutomaticViewModel(GlassDTO glassDTO, IToast toast, IBluetoothService bluetoothService)
         {
             Title = "Automatic Configuration";
-            Widgets = new ObservableCollection<Widget>(selectedItems);
+            this.toast = toast;
+            this.glassDTO = glassDTO;
+            this.bluetoothService = bluetoothService;
+            Widgets = new ObservableCollection<Widget>(glassDTO.Widgets);
+            LoadAutomaticPage();
         }
+
+        [RelayCommand]
+        public void ReviewPage()
+        {
+            SendOverBluetooth();
+            Application.Current.MainPage.Navigation.PushAsync(new GeneralPage(glassDTO));
+        }
+
+        private void SendOverBluetooth() => bluetoothService.Write(ConvertToJsonAndBytes.Convert(glassDTO));
+       
 
         private void LoadAutomaticPage()
         {
-            var layout = new Grid();
+            CalculateWidgetPositions.LoadAutomaticPage(glassDTO, out ContentPage automaticPage);
+            AutomaticPage = automaticPage;
 
-            int numColumns = (int)Math.Ceiling(Math.Sqrt(Widgets.Count));
-            int numRows = (int)Math.Ceiling((double)Widgets.Count / numColumns);
-
-            for (int row = 0; row < numRows; row++)
-            {
-                layout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
-            }
-
-            for (int col = 0; col < numColumns; col++)
-            {
-                layout.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-            }
-
-            int widgetIndex = 0;
-            for (int row = 0; row < numRows; row++)
-            {
-                for (int col = 0; col < numColumns; col++)
-                {
-                    if (widgetIndex < Widgets.Count)
-                    {
-                        var widget = Widgets[widgetIndex];
-                        var image = new Image
-                        {
-                            Source = widget.FileName,
-                            Aspect = Aspect.AspectFit
-                        };
-
-                        Grid.SetRow(image, row);
-                        Grid.SetColumn(image, col);
-                        layout.Children.Add(image);
-
-                        widgetIndex++;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-
-            AutomaticPage = new ContentPage
-            {
-                Title = "Automatic",
-                Content = layout
-            };
+            // Update the GlassDTO with the modified Widgets
+            glassDTO.Widgets = Widgets.ToList();
         }
     }
 }

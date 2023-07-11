@@ -11,8 +11,11 @@ namespace DoradSmartphone.Models
         private bool isSelected;
         public string Name { get; set; }
         public string FileName { get; set; }
-        public int XPosition { get; internal set; }
-        public int YPosition { get; internal set; }
+        public double XPosition { get; internal set; }
+        public double YPosition { get; internal set; }
+        public double ZPosition { get; internal set; }
+        public double RelativeXPosition { get; set; }
+        public double RelativeYPosition { get; set; }
 
         [ForeignKey(typeof(WidgetConfiguration))]
         public int WidgetConfigurationId { get; set; }

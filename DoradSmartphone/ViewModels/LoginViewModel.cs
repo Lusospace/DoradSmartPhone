@@ -7,7 +7,7 @@ namespace DoradSmartphone.ViewModels
 {
     public partial class LoginViewModel : BaseViewModel
     {
-        private readonly LoginService _loginService;
+        private readonly LoginService loginService;
 
         [ObservableProperty]
         string username;
@@ -17,17 +17,22 @@ namespace DoradSmartphone.ViewModels
         public LoginViewModel(LoginService loginService)
         {
             Title = "Login";
-            _loginService = loginService;
+            this.loginService = loginService;
         }
 
         [RelayCommand]
         public async Task Login()
         {
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))            
-                await DisplayLoginError();            
-            else            
-                await _loginService.VerifyLogin(username, password);                
-            
+                await DisplayLoginError();
+            else
+            {
+                await loginService.VerifyLogin(username, password);
+                // Clear the username and password fields
+                username = string.Empty;
+                password = string.Empty;
+            }
+
         }
         async Task DisplayLoginError()
         {

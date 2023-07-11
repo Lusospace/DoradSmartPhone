@@ -45,7 +45,7 @@ public partial class ExercisePage : ContentPage
 
         routeMap.MoveToRegion(
             MapSpan.FromCenterAndRadius(
-                routes.FirstOrDefault(), Distance.FromMiles(0.5)));
+                routes.FirstOrDefault(), Distance.FromMiles(1)));
         routeMap.MapElements.Add(polyline);
     }
 }

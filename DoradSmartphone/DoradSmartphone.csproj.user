@@ -18,16 +18,19 @@
     <MauiXaml Update="Views\AutomaticPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Views\AvatarPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Views\DashboardPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="Views\DisplaySelectedItemsPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Views\ExerciseDetailsPage.xaml">
+    <MauiXaml Update="Views\ExercisePage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Views\ExercisePage.xaml">
+    <MauiXaml Update="Views\GeneralPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="Views\GlassPage.xaml">
@@ -40,6 +43,9 @@
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="Views\ManualPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Views\StartRunPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="Views\UserPage.xaml">

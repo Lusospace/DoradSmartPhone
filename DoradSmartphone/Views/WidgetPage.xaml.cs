@@ -1,5 +1,8 @@
 using AndroidX.Lifecycle;
+using DoradSmartphone.DTO;
+using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.ViewModels;
+using ToastProject;
 
 namespace DoradSmartphone.Views;
 
@@ -7,10 +10,11 @@ public partial class WidgetPage : ContentPage
 {
     private readonly WidgetViewModel viewModel;
 
-    public WidgetPage(WidgetViewModel widgetViewModel)
-	{
-		InitializeComponent();
-		BindingContext = widgetViewModel;
+    public WidgetPage(GlassDTO glassDTO, IToast toast, IBluetoothService bluetoothService)
+    {
+        InitializeComponent();
+        var widgetViewModel = new WidgetViewModel(glassDTO, toast, bluetoothService);
+        BindingContext = widgetViewModel;
         viewModel = widgetViewModel;
     }
 

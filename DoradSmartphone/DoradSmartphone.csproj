@@ -45,9 +45,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="ViewModels\ExerciseDetailsViewModel.cs" />
+	  <Compile Remove="Views\ExerciseDetailsPage.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="Views\ExerciseDetailsPage.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\avatar.png" />
 	  <None Remove="Resources\Images\barchart.png" />
 	  <None Remove="Resources\Images\dashboard.png" />
 	  <None Remove="Resources\Images\glasses.png" />
+	  <None Remove="Resources\Images\glasses_page.png" />
 	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\lock.jpg" />
 	  <None Remove="Resources\Images\lusospace.png" />
@@ -55,7 +66,6 @@
 	  <None Remove="Resources\Images\lusovu_icon.png" />
 	  <None Remove="Resources\Images\routes.png" />
 	  <None Remove="Resources\Images\runner.png" />
-	  <None Remove="Resources\Images\shoes.png" />
 	  <None Remove="Resources\Images\user1.png" />
 	  <None Remove="Resources\Images\Widgets\altitude.png" />
 	  <None Remove="Resources\Images\Widgets\battery.png" />
@@ -110,10 +120,16 @@
 	  <Compile Update="Services\Bluetooth\BluetoothService.cs">
 	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
 	  </Compile>
+	  <Compile Update="Views\StartRunPage.xaml.cs">
+	    <DependentUpon>StartRunPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\AutomaticPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AvatarPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\DashboardPage.xaml">
@@ -122,10 +138,10 @@
 	  <MauiXaml Update="Views\DisplaySelectedItemsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ExerciseDetailsPage.xaml">
+	  <MauiXaml Update="Views\ExercisePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ExercisePage.xaml">
+	  <MauiXaml Update="Views\GeneralPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\GlassPage.xaml">
@@ -138,6 +154,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ManualPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\StartRunPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\UserPage.xaml">

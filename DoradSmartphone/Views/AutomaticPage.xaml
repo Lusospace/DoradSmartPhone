@@ -10,14 +10,21 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
+                <RowDefinition Height="88*" />
+                <RowDefinition Height="12*" />
             </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+            <!-- First Grid with 90% height -->
+            <Grid x:Name="WidgetGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-            <Image Source="{Binding Widgets[0].FileName}"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Image Source="{Binding Widgets[0].FileName}"
                    Aspect="AspectFit"
                    HeightRequest="80"
                    WidthRequest="80"
@@ -25,7 +32,7 @@
                    HorizontalOptions="Start"
                    VerticalOptions="Start" />
 
-            <Image Source="{Binding Widgets[1].FileName}"
+                <Image Source="{Binding Widgets[1].FileName}"
                    Aspect="AspectFit"
                    HeightRequest="80"
                    WidthRequest="80"
@@ -33,7 +40,7 @@
                    HorizontalOptions="End"
                    VerticalOptions="Start" />
 
-            <Image Source="{Binding Widgets[2].FileName}"
+                <Image Source="{Binding Widgets[2].FileName}"
                    Aspect="AspectFit"
                    HeightRequest="80"
                    WidthRequest="80"
@@ -41,7 +48,7 @@
                    HorizontalOptions="Start"
                    VerticalOptions="End" />
 
-            <Image Source="{Binding Widgets[3].FileName}"
+                <Image Source="{Binding Widgets[3].FileName}"
                    Aspect="AspectFit"
                    HeightRequest="80"
                    WidthRequest="80"
@@ -49,14 +56,22 @@
                    HorizontalOptions="End"
                    VerticalOptions="End" />
 
-            <Image Source="{Binding Widgets[4].FileName}"
+                <Image Source="{Binding Widgets[4].FileName}"
                    Aspect="AspectFit"
                    HeightRequest="80"
                    WidthRequest="80"
                    Margin="5"
                    HorizontalOptions="Center"
                    VerticalOptions="Center" />
+            </Grid>
 
+            <!-- Second Grid with 10% height -->
+            <Grid Grid.Row="1" Margin="10" x:Name="ButtonGrid">
+                <Button Text="Review" WidthRequest="100" CornerRadius="40" HorizontalOptions="Center" 
+                                Command="{Binding ReviewPageCommand}" Margin="10" 
+                                FontSize="15"/>
+            </Grid>
         </Grid>
+        
     </ContentPage.Content>
 </ContentPage>

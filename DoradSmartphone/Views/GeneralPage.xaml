@@ -1,0 +1,60 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoradSmartphone.Views.GeneralPage"
+             xmlns:model="clr-namespace:DoradSmartphone.Models"
+             xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
+             x:DataType="viewmodel:GeneralViewModel"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <StackLayout>
+            <Grid VerticalOptions="Center" HorizontalOptions="Center" RowSpacing="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <CollectionView ItemsSource="{Binding GlassDTO.Exercise.Route}" Grid.Row="1" Grid.ColumnSpan="2">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Route">
+                            <Frame BorderColor="RoyalBlue" Padding="10" Margin="5">
+                                <StackLayout>
+                                    <Label Text="{Binding Latitude, StringFormat='Latitude: {0}'}" />
+                                    <Label Text="{Binding Longitude, StringFormat='Longitude: {0}'}" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+
+            <Frame BorderColor="RoyalBlue" Padding="10" Margin="5">
+                <StackLayout>
+                    <Label Text="{Binding GlassDTO.Exercise.StartingDate, StringFormat='Starting Date: {0:dd/MM/yyyy HH:mm}'}" />
+                    <Label Text="{Binding GlassDTO.Exercise.FinishingDate, StringFormat='Finishing Date: {0:dd/MM/yyyy HH:mm}'}" />
+                    <Label Text="{Binding GlassDTO.Exercise.Time}" />
+                    <Label Text="{Binding GlassDTO.Exercise.Speed.Avg, StringFormat='Average Speed: {0}'}" />
+                    <Label Text="{Binding GlassDTO.Exercise.Speed.Max, StringFormat='Maximum Speed: {0}'}" />
+                </StackLayout>
+            </Frame>
+
+            <CollectionView ItemsSource="{Binding GlassDTO.Widgets}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Widget">
+                        <Frame BorderColor="RoyalBlue" Padding="10" Margin="5">
+                            <StackLayout>
+                                <Label Text="{Binding Name}" />
+                                <Label Text="{Binding FileName}" />
+                                <Label Text="{Binding XPosition, StringFormat='X Position: {0}'}" />
+                                <Label Text="{Binding YPosition, StringFormat='Y Position: {0}'}" />
+                                <Label Text="{Binding RelativeXPosition, StringFormat='Relative X Position: {0}'}" />
+                                <Label Text="{Binding RelativeYPosition, StringFormat='Relative Y Position: {0}'}" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

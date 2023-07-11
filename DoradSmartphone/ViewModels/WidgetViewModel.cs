@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using DoradSmartphone.DTO;
 using DoradSmartphone.Models;
+using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -10,7 +12,9 @@ namespace DoradSmartphone.ViewModels
 {
     public partial class WidgetViewModel : BaseViewModel, INotifyPropertyChanged
     {
-        public IToast toast;
+        private IToast toast;
+        private GlassDTO glassDTO;
+        private IBluetoothService bluetoothService;
 
         [ObservableProperty]
         private bool isRefreshing;
@@ -21,10 +25,12 @@ namespace DoradSmartphone.ViewModels
 
         public ICommand DisplaySelectedItemsCommand => new Command(DisplaySelectedItems);
 
-        public WidgetViewModel(IToast toast)
+        public WidgetViewModel(GlassDTO glassDTO, IToast toast, IBluetoothService bluetoothService)
         {
             Title = "Widget Selection";
             this.toast = toast;
+            this.glassDTO = glassDTO;
+            this.bluetoothService = bluetoothService;
         }
 
         public async Task GetWidgetList()
@@ -66,7 +72,12 @@ namespace DoradSmartphone.ViewModels
             }
             else
             {
-                Application.Current.MainPage.Navigation.PushAsync(new DisplaySelectedItemsPage(selectedItems));
+                if (glassDTO.Widgets == null)
+                {
+                    glassDTO.Widgets = new List<Widget>(); // Create a new instance if null
+                }
+                glassDTO.Widgets = selectedItems;
+                Application.Current.MainPage.Navigation.PushAsync(new DisplaySelectedItemsPage(glassDTO, toast, bluetoothService));
             }
         }
 

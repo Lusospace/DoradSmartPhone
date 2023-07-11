@@ -5,10 +5,12 @@ namespace DoradSmartphone.Models
 {
     [Table("routes")]
     public class Route : BaseEntity
-    {        
-        public Double Latitude { get; set; }
-        public Double Longitude { get; set; }
-        [ManyToOne(CascadeOperations = CascadeOperation.All)]
-        public Exercise Exercise { get; set; }
+    {
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public string Address { get; set; }
+
+        [ForeignKey(typeof(Exercise))]
+        public int ExerciseId { get; set; }
     }
 }

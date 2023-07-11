@@ -1,5 +1,4 @@
 ﻿using DoradSmartphone.Data;
-using DoradSmartphone.Helpers;
 using DoradSmartphone.Services;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.ViewModels;
@@ -23,22 +22,25 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		builder.Services.AddSingleton<DatabaseConn>();
+        builder.Services.AddSingleton<DatabaseConn>();
         builder.Services.AddScoped<IRepository, DatabaseConn>();
 
-        builder.Services.AddSingleton<IToast>((e) => new Toaster()); 
+        builder.Services.AddSingleton<IToast>((e) => new Toaster());
+
+        builder.Services.AddSingleton<GeneralPage>();
 
         builder.Services.AddSingleton<MainPage>();
-        builder.Services.AddTransient<UserPage>();
-        builder.Services.AddSingleton<GlassPage>();
+        builder.Services.AddTransient<UserPage>();        
+        builder.Services.AddTransient<GlassPage>();
         builder.Services.AddTransient<LoginPage>();
+        builder.Services.AddSingleton<AvatarPage>();
         builder.Services.AddSingleton<WidgetPage>();
         builder.Services.AddSingleton<ManualPage>();
         builder.Services.AddSingleton<LoadingPage>();
         builder.Services.AddSingleton<ExercisePage>();
+        builder.Services.AddTransient<StartRunPage>();
         builder.Services.AddSingleton<AutomaticPage>();
-        builder.Services.AddSingleton<DashboardPage>();        
-        builder.Services.AddSingleton<ExerciseDetailsPage>();
+        builder.Services.AddSingleton<DashboardPage>();                
         builder.Services.AddSingleton<DisplaySelectedItemsPage>();        
 
         builder.Services.AddSingleton<UserService>();
@@ -51,15 +53,15 @@ public static class MauiProgram
         //builder.Services.AddSingleton<BluetoothLEService>();
 
         builder.Services.AddSingleton<UserViewModel>();
-        builder.Services.AddSingleton<GlassViewModel>();
+        builder.Services.AddTransient<GlassViewModel>();
         builder.Services.AddSingleton<LoginViewModel>();
+        builder.Services.AddSingleton<AvatarViewModel>();
         builder.Services.AddTransient<WidgetViewModel>();
         builder.Services.AddTransient<ManualViewModel>();
         builder.Services.AddSingleton<LoadingViewModel>();        
         builder.Services.AddTransient<ExerciseViewModel>();
         builder.Services.AddTransient<AutomaticViewModel>();
-        builder.Services.AddTransient<DashboardViewModel>();
-        builder.Services.AddTransient<ExerciseDetailsViewModel>();
+        builder.Services.AddTransient<DashboardViewModel>();        
 
         return builder.Build();
 	}

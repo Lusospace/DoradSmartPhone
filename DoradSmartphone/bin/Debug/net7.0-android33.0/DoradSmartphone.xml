@@ -13,6 +13,24 @@
         <member name="P:DoradSmartphone.ViewModels.AppShellViewModel.LogoutCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.AppShellViewModel.Logout"/>.</summary>
         </member>
+        <member name="T:DoradSmartphone.ViewModels.AutomaticViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.AutomaticViewModel.reviewPageCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.AutomaticViewModel.ReviewPageCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.AutomaticViewModel.ReviewPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.AutomaticViewModel.ReviewPage"/>.</summary>
+        </member>
+        <member name="T:DoradSmartphone.ViewModels.AvatarViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.AvatarViewModel.nextPageCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.AvatarViewModel.NextPageCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.AvatarViewModel.NextPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.AvatarViewModel.NextPage"/>.</summary>
+        </member>
         <member name="T:DoradSmartphone.ViewModels.BaseViewModel">
             <inheritdoc/>
         </member>
@@ -49,9 +67,46 @@
         </member>
         <member name="T:DoradSmartphone.ViewModels.ExerciseViewModel">
             <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:DoradSmartphone.ViewModels.ExerciseViewModel.IsRefreshing">
             <inheritdoc cref="F:DoradSmartphone.ViewModels.ExerciseViewModel.isRefreshing"/>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.ExerciseViewModel.insertCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ExerciseViewModel.InsertCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.ExerciseViewModel.InsertCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ExerciseViewModel.Insert"/>.</summary>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.ExerciseViewModel.clearCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ExerciseViewModel.ClearCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.ExerciseViewModel.ClearCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ExerciseViewModel.Clear"/>.</summary>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.ExerciseViewModel.navigateToAvatarCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ExerciseViewModel.NavigateToAvatarCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.ExerciseViewModel.NavigateToAvatarCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ExerciseViewModel.NavigateToAvatar(DoradSmartphone.Models.Exercise)"/>.</summary>
+        </member>
+        <member name="T:DoradSmartphone.ViewModels.GlassViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.GlassViewModel.Battery">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.GlassViewModel.battery"/>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.GlassViewModel.Status">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.GlassViewModel.status"/>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.GlassViewModel.calibrationCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.GlassViewModel.CalibrationCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.GlassViewModel.CalibrationCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.GlassViewModel.Calibration"/>.</summary>
         </member>
         <member name="T:DoradSmartphone.ViewModels.LoginViewModel">
             <inheritdoc/>
@@ -79,11 +134,11 @@
         <member name="T:DoradSmartphone.ViewModels.ManualViewModel">
             <inheritdoc/>
         </member>
-        <member name="F:DoradSmartphone.ViewModels.ManualViewModel.loadAutomaticPageCommand">
-            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ManualViewModel.LoadAutomaticPageCommand"/>.</summary>
+        <member name="F:DoradSmartphone.ViewModels.ManualViewModel.reviewPageCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ManualViewModel.ReviewPageCommand"/>.</summary>
         </member>
-        <member name="P:DoradSmartphone.ViewModels.ManualViewModel.LoadAutomaticPageCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ManualViewModel.LoadAutomaticPage"/>.</summary>
+        <member name="P:DoradSmartphone.ViewModels.ManualViewModel.ReviewPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ManualViewModel.ReviewPage"/>.</summary>
         </member>
         <member name="T:DoradSmartphone.ViewModels.UserViewModel">
             <inheritdoc/>
@@ -143,6 +198,12 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsRefreshing">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Battery">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Battery" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Status">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Status" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Username">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Username" generated properties.</summary>
         </member>
@@ -193,6 +254,12 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsRefreshing">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Battery">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Battery" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Status">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Status" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Username">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Username" generated properties.</summary>

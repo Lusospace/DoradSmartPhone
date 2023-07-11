@@ -39,7 +39,7 @@
                                Completed="OnEntryCompleted"
                                Style="{StaticResource EntryContainerStyle}"/>
 
-                        <Entry x:Name="Password" Placeholder="Enter Password" 
+                        <Entry x:Name="Password" Placeholder="Enter Password"
                                IsPassword="True" Text="{Binding Password}" Grid.Row="3" 
                                Completed="OnEntryCompleted"
                                Style="{StaticResource EntryContainerStyle}"/>

@@ -1,10 +1,12 @@
 ﻿obj\Debug\net7.0-android33.0\resizetizer\r\drawable\altitude.png
+obj\Debug\net7.0-android33.0\resizetizer\r\drawable\avatar.png
 obj\Debug\net7.0-android33.0\resizetizer\r\drawable\barchart.png
 obj\Debug\net7.0-android33.0\resizetizer\r\drawable\battery.png
 obj\Debug\net7.0-android33.0\resizetizer\r\drawable\dashboard.png
 obj\Debug\net7.0-android33.0\resizetizer\r\drawable\direction.png
 obj\Debug\net7.0-android33.0\resizetizer\r\drawable\distance.png
 obj\Debug\net7.0-android33.0\resizetizer\r\drawable\glasses.png
+obj\Debug\net7.0-android33.0\resizetizer\r\drawable\glasses_page.png
 obj\Debug\net7.0-android33.0\resizetizer\r\drawable\heart.png
 obj\Debug\net7.0-android33.0\resizetizer\r\drawable\home.png
 obj\Debug\net7.0-android33.0\resizetizer\r\drawable\kmh.png

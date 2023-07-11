@@ -1,90 +1,73 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoradSmartphone.Views.GlassPage"
-             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-             ios:Page.UseSafeArea="True"
-             x:DataType="viewmodel:GlassViewModel"
              xmlns:model="clr-namespace:DoradSmartphone.Models"
              xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
+             xmlns:helpers="clr-namespace:DoradSmartphone.Helpers"
+             x:DataType="viewmodel:GlassViewModel"
              Title="{Binding Title}">
-    
-    <Grid x:Name="HomePageGrid"
-          ColumnDefinitions="*,*"
-          ColumnSpacing="6"
-          RowDefinitions="*,Auto"
-          RowSpacing="0">
-        <ScrollView x:Name="HomePageScrollView"
-                    Grid.ColumnSpan="2">
-            <CollectionView x:Name="HomePageCollectionView"
-                            ItemsSource="{Binding DeviceCandidates}"
-                            BackgroundColor="Transparent"
-                            SelectionMode="None">
-                <CollectionView.EmptyView>
-                    <StackLayout Grid.RowSpan="2"
-                                 Grid.ColumnSpan="2"
-                                 BackgroundColor="Transparent">
-                        <Grid RowDefinitions="*,*"
-                              RowSpacing="8"
-                              HorizontalOptions="CenterAndExpand"
-                              VerticalOptions="CenterAndExpand">
-                            <Label Grid.Row="0"
-                                   Text="Scan for nearby Bluetooth LE devices."                                   
-                                   HorizontalOptions="CenterAndExpand"/>
 
-                            <Label Grid.Row="1"
-                                   Text="Check Bluetooth."                                   
-                                   HorizontalOptions="CenterAndExpand"/>
-                        </Grid>
-                    </StackLayout>
-                </CollectionView.EmptyView>
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout  Orientation="Vertical"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:DeviceCandidate">
-                        <Grid Padding="10">
-                            <Frame>
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer 
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:GlassViewModel}}, 
-                                                  Path=GoToHeartRatePageAsyncCommand}"
-                                        CommandParameter="{Binding .}"/>
-                                </Frame.GestureRecognizers>
-                                <VerticalStackLayout Padding="8">
-                                    <Label Text="{Binding Name}" />
-                                    <Label Text="{Binding Id}" />
-                                </VerticalStackLayout>
-                            </Frame>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LabelContainerStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="Margin" Value="20" />
+                <Setter Property="TextColor" Value="RoyalBlue" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+        <ResourceDictionary>
+            <Style x:Key="ImageContainerStyle" TargetType="Image">
+                <Setter Property="HeightRequest" Value="300" />
+                <Setter Property="WidthRequest" Value="300" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+        <ResourceDictionary>
+            <Style x:Key="ButtonContainerStyle" TargetType="Button">
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="CornerRadius" Value="20" />
+                <Setter Property="WidthRequest" Value="110" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout x:Name="MainLayout" VerticalOptions="FillAndExpand">
+                <Grid VerticalOptions="Center" HorizontalOptions="Center" RowSpacing="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Image Source="{x:Static helpers:Icons.GlassesXg}" 
+                           Grid.Row="0"
+                           Style="{StaticResource ImageContainerStyle}"/>
+
+                    <Label Text="{Binding Battery}" 
+                           Grid.Row="1"
+                           Style="{StaticResource LabelContainerStyle}"/>
+
+                    <Button Text="Calibration" Command="{Binding CalibrationCommand}" 
+                            Grid.Row="2" 
+                            Style="{StaticResource ButtonContainerStyle}"/>
+
+                    <Label Text="{Binding Status}" 
+                           Grid.Row="3"
+                           Style="{StaticResource LabelContainerStyle}"/>
+
+                    <Label Text="IDP Settings" 
+                           Grid.Row="4"
+                           Style="{StaticResource LabelContainerStyle}"/>
+
+                </Grid>
+            </StackLayout>
         </ScrollView>
-
-        <Button x:Name="ScanDevicesButton"
-                Grid.Row="1"
-                Grid.Column="0"
-                Margin="8"
-                Command="{Binding ScanNearbyDevicesAsyncCommand}"
-                IsEnabled="{Binding IsNotScanning}"
-                IsVisible="{Binding IsNotScanning}"
-                Text="Scan nearby devices" />
-
-        <Button x:Name="CheckBluetoothButton"
-                Grid.Row="1"
-                Grid.Column="1"
-                Margin="8"
-                Command="{Binding CheckBluetoothAvailabilityAsyncCommand}"
-                IsEnabled="{Binding IsNotScanning}"
-                IsVisible="{Binding IsNotScanning}"                
-                Text="Check Bluetooth" />
-
-        <ActivityIndicator x:Name="HomePageActivityIndicator"
-                           Grid.ColumnSpan="2"
-                           IsRunning="{Binding IsScanning}"
-                           IsVisible="{Binding IsScanning}"
-                           HorizontalOptions="CenterAndExpand"
-                           VerticalOptions="StartAndExpand" />
-    </Grid>
+    </ContentPage.Content>
 </ContentPage>

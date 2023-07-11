@@ -4,6 +4,7 @@ using DoradSmartphone.Helpers;
 using Java.Util;
 using System.Text;
 using ToastProject;
+using Timer = System.Threading.Timer;
 
 namespace DoradSmartphone.Services.Bluetooth
 {
@@ -14,6 +15,7 @@ namespace DoradSmartphone.Services.Bluetooth
         public const int STATE_CONNECTING = 2;
         public const int STATE_CONNECTED = 3;
         const string TAG = "Dorad SmartPhone App";
+        
         static readonly UUID MY_UUID_SECURE = UUID.FromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
 
         BluetoothAdapter btAdapter;
@@ -25,6 +27,9 @@ namespace DoradSmartphone.Services.Bluetooth
         int state;
         int newState;
 
+        private Timer connectionTimer;
+        private const int ConnectionCheckInterval = 5000; // Check every 5 seconds
+
         public BluetoothService(IToast toast)
         {
             btAdapter = BluetoothAdapter.DefaultAdapter;
@@ -32,6 +37,7 @@ namespace DoradSmartphone.Services.Bluetooth
             newState = state;
             this.toast = toast;
             Start();
+            //connectionTimer = new Timer(CheckConnectionStatus, newState, ConnectionCheckInterval, ConnectionCheckInterval);
         }
 
         public int GetState()
@@ -148,7 +154,7 @@ namespace DoradSmartphone.Services.Bluetooth
                 ConnectionFailed();
                 return;
             }
-            Connected(socket, device);
+            Connected(socket);
         }
 
         public void Stop()
@@ -202,7 +208,7 @@ namespace DoradSmartphone.Services.Bluetooth
             Start();
         }
 
-        public void Connected(BluetoothSocket socket, BluetoothDevice device)
+        public void Connected(BluetoothSocket socket)
         {
             // Cancel the thread that completed the connection
             if (acceptThread != null)
@@ -229,10 +235,19 @@ namespace DoradSmartphone.Services.Bluetooth
 
         void ConnectionLost()
         {
-            // Handle lost connection
+            // Handle lost connection            
             state = STATE_NONE;
             UpdateBtStatus();
             Start();
+        }
+
+        private void CheckConnectionStatus(object state)
+        {
+            // Check the connection status here
+            if ((int)state != STATE_CONNECTED)
+            {
+                ConnectionLost();                
+            }            
         }
 
         class AcceptThread
@@ -283,7 +298,7 @@ namespace DoradSmartphone.Services.Bluetooth
                                 {
                                     case STATE_LISTEN:
                                     case STATE_CONNECTING:
-                                        service.Connected(socket, socket.RemoteDevice);
+                                        service.Connected(socket);
                                         break;
                                     case STATE_NONE:
                                     case STATE_CONNECTED:
@@ -369,7 +384,7 @@ namespace DoradSmartphone.Services.Bluetooth
                 });
             }
 
-            //This one 
+            //This one do the send
             public void Write(byte[] buffer)
             {
                 try

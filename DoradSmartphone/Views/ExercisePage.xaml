@@ -9,9 +9,6 @@
              x:DataType ="viewmodel:ExerciseViewModel"
              Title="{Binding Title}">
 
-
-
-
     <Grid Padding="5" Margin="5" RowSpacing="5" ColumnSpacing="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -28,24 +25,26 @@
                                 <x:Double>-9.128544160596851</x:Double>
                             </x:Arguments>
                         </sensors:Location>
-                        <x:Double>0.7</x:Double>
-                        <x:Double>0.7</x:Double>
+                        <x:Double>1</x:Double>
+                        <x:Double>1</x:Double>
                     </x:Arguments>
                 </MapSpan>
             </x:Arguments>
         </maps:Map>
 
-        <CarouselView ItemsSource="{Binding Exercises}" Grid.Row="1" PeekAreaInsets="100">
+        <CarouselView ItemsSource="{Binding Exercises}" Grid.Row="1" PeekAreaInsets="200">
             <CarouselView.ItemTemplate>
                 <DataTemplate x:DataType="model:Exercise">
-                    <Frame HeightRequest="90" Margin="5">
+                    <Frame HeightRequest="150" Margin="5">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnTapGestureRouteUpdate" CommandParameter="{Binding .}" />
                         </Frame.GestureRecognizers>
-                        <HorizontalStackLayout Padding="10" Spacing="5" >
-                            <Label Text="{Binding Id}"></Label>
-                            <Label Text="{Binding Date}"></Label>
-                        </HorizontalStackLayout>
+                        <StackLayout>
+                            <Label Text="{Binding StartingDate, StringFormat='Starting Date: {0:dd/MM/yyyy HH:mm}'}" />
+                            <Label Text="{Binding Time, StringFormat='Time: {0} '}" />
+                            <Label Text="{Binding Speed.Avg, StringFormat='Avg Speed: {0}'}" />
+                            <Label Text="{Binding Route[0].Address, StringFormat='Address: {0}'}" />
+                        </StackLayout>
                     </Frame>
                 </DataTemplate>
             </CarouselView.ItemTemplate>

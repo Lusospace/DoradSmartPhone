@@ -1,12 +1,22 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using DoradSmartphone.DTO;
+using DoradSmartphone.Helpers;
 using DoradSmartphone.Models;
+using DoradSmartphone.Services.Bluetooth;
+using DoradSmartphone.Views;
+using Microsoft.Maui.Graphics.Text;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using ToastProject;
 
 namespace DoradSmartphone.ViewModels
 {
     public partial class ManualViewModel : BaseViewModel, INotifyPropertyChanged
     {
+        private IToast toast;
+        private GlassDTO glassDTO;
+        private IBluetoothService bluetoothService;
+
         private double sliderValue;
         private string sliderLabel;
 
@@ -44,71 +54,42 @@ namespace DoradSmartphone.ViewModels
             set => SetProperty(ref widgets, value);
         }
 
-        private ContentPage automaticPage;
-        public ContentPage AutomaticPage
+        private ContentPage manualPage;
+        public ContentPage ManualPage
         {
-            get => automaticPage;
-            set => SetProperty(ref automaticPage, value);
-        }        
+            get => manualPage;
+            set => SetProperty(ref manualPage, value);
+        }
 
-        public ManualViewModel(List<Widget> selectedItems)
+        public ManualViewModel(GlassDTO glassDTO, IToast toast, IBluetoothService bluetoothService)
         {
             Title = "Manual Configuration";
             SliderValue = 1;
+            this.toast = toast;
+            this.glassDTO = glassDTO;
+            this.bluetoothService = bluetoothService;
+            Widgets = new ObservableCollection<Widget>(glassDTO.Widgets);
+
             UpdateSliderLabel();
-            Widgets = new ObservableCollection<Widget>(selectedItems);
+            LoadAutomaticPage();
         }
 
         [RelayCommand]
+        public void ReviewPage()
+        {
+            SendOverBluetooth();
+            Application.Current.MainPage.Navigation.PushAsync(new GeneralPage(glassDTO));
+        }
+
+        private void SendOverBluetooth() => bluetoothService.Write(ConvertToJsonAndBytes.Convert(glassDTO));
+
         private void LoadAutomaticPage()
         {
-            var layout = new Grid();
+            CalculateWidgetPositions.LoadAutomaticPage(glassDTO, out ContentPage manualPage);
+            ManualPage = manualPage;
 
-            int numColumns = (int)Math.Ceiling(Math.Sqrt(Widgets.Count));
-            int numRows = (int)Math.Ceiling((double)Widgets.Count / numColumns);
-
-            for (int row = 0; row < numRows; row++)
-            {
-                layout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
-            }
-
-            for (int col = 0; col < numColumns; col++)
-            {
-                layout.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-            }
-
-            int widgetIndex = 0;
-            for (int row = 0; row < numRows; row++)
-            {
-                for (int col = 0; col < numColumns; col++)
-                {
-                    if (widgetIndex < Widgets.Count)
-                    {
-                        var widget = Widgets[widgetIndex];
-                        var image = new Image
-                        {
-                            Source = widget.FileName,
-                            Aspect = Aspect.AspectFit
-                        };
-
-                        Grid.SetRow(image, row);
-                        Grid.SetColumn(image, col);
-                        layout.Children.Add(image);
-
-                        widgetIndex++;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-
-            AutomaticPage = new ContentPage
-            {
-                Title = "Automatic",
-                Content = layout
-            };
+            // Update the GlassDTO with the modified Widgets
+            glassDTO.Widgets = Widgets.ToList();
         }
 
         private void UpdateSliderLabel()
@@ -149,7 +130,20 @@ namespace DoradSmartphone.ViewModels
                     SliderLabel = "0.653164517";
                     break;
             }
+            UpdateWidgetZPosition(sliderLabel);
         }
+
+        public void UpdateWidgetZPosition(string zPosition)
+        {
+            if (glassDTO != null)
+            {
+                foreach (var widget in glassDTO.Widgets)
+                {
+                    widget.ZPosition = double.Parse(zPosition);
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected new virtual void OnPropertyChanged(string propertyName)

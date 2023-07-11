@@ -32,25 +32,25 @@
                 x:Name="ExerciseShell"/>
         </Tab>
 
-        <Tab Title="Dashboard" Icon="{x:Static helpers:Icons.Dashboard}">
-            <ShellContent
-                Title="Dashboard"
-                ContentTemplate="{DataTemplate views:DashboardPage}"
-                Route="DashboardPage"/>
-        </Tab>
-
         <Tab Title="Glasses" Icon="{x:Static helpers:Icons.Glasses}">
             <ShellContent
                 Title="Glasses"
-                ContentTemplate="{DataTemplate views:WidgetPage}"
+                ContentTemplate="{DataTemplate views:GlassPage}"
                 Route="GlassPage"/>
         </Tab>
 
-        <Tab Title="Avatar" Icon="{x:Static helpers:Icons.Avatar}">
+        <Tab Title="Widgets" Icon="{x:Static helpers:Icons.Dashboard}">
             <ShellContent
-                Title="Avatar"
-                ContentTemplate="{DataTemplate local:MainPage}"
-                Route="MainPage"/>
+                Title="Widgets"
+                ContentTemplate="{DataTemplate views:DashboardPage}"
+                Route="WidgetsPage"/>
+        </Tab>
+
+        <Tab Title="Start Run" Icon="{x:Static helpers:Icons.Avatar}">
+            <ShellContent
+                Title="Start Run"
+                ContentTemplate="{DataTemplate views:StartRunPage}"
+                Route="StartRun"/>
         </Tab>
         
     </TabBar>

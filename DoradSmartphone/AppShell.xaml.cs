@@ -11,7 +11,7 @@ public partial class AppShell : Shell
 		InitializeComponent();
         BindingContext= new AppShellViewModel();
 
-        var getUserLogKey = Preferences.Get("UserLoggedIn", false);
+       var getUserLogKey = Preferences.Get("UserLoggedIn", false);
 
         
         if (getUserLogKey == true)
@@ -21,17 +21,21 @@ public partial class AppShell : Shell
         else
         {
             DoradShell.CurrentItem = ExerciseShell;
-        } 
+        }
+
+        Routing.RegisterRoute(nameof(GeneralPage), typeof(GeneralPage));
 
         Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
-        Routing.RegisterRoute(nameof(UserPage), typeof(UserPage));
+        Routing.RegisterRoute(nameof(UserPage), typeof(UserPage));       
         Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+        Routing.RegisterRoute(nameof(GlassPage), typeof(GlassPage));
+        Routing.RegisterRoute(nameof(AvatarPage), typeof(AvatarPage));
         Routing.RegisterRoute(nameof(WidgetPage), typeof(WidgetPage));
-        Routing.RegisterRoute(nameof(LoadingPage), typeof(LoadingPage));        
+        Routing.RegisterRoute(nameof(LoadingPage), typeof(LoadingPage));
+        Routing.RegisterRoute(nameof(StartRunPage), typeof(StartRunPage));
         Routing.RegisterRoute(nameof(ExercisePage), typeof(ExercisePage));
         Routing.RegisterRoute(nameof(AutomaticPage), typeof(AutomaticPage));
-        Routing.RegisterRoute(nameof(DashboardPage), typeof(DashboardPage));        
-        Routing.RegisterRoute(nameof(ExerciseDetailsPage), typeof(ExerciseDetailsPage));
+        Routing.RegisterRoute(nameof(DashboardPage), typeof(DashboardPage));                
         Routing.RegisterRoute(nameof(DisplaySelectedItemsPage), typeof(DisplaySelectedItemsPage));
 
     }    

@@ -8,7 +8,7 @@ namespace DoradSmartphone.ViewModels
     public partial class UserViewModel : BaseViewModel
     {
 
-        private readonly UserService _userService;
+        private readonly UserService userService;
 
         [ObservableProperty]
         string name;
@@ -22,7 +22,7 @@ namespace DoradSmartphone.ViewModels
         public UserViewModel(UserService userService)
         {
             Title = "User Registration";
-            _userService = userService;
+            this.userService = userService;
         }
 
         [RelayCommand]
@@ -45,9 +45,15 @@ namespace DoradSmartphone.ViewModels
                 await DisplayLoginError("Type a phone number", "Ok");
             } else
             {
-                var result = await _userService.SaveUser(name, email, password, phoneNumber);
+                var result = await userService.SaveUser(name, email, password, phoneNumber);
                 if (result)
+                {
+                    name = string.Empty; 
+                    email = string.Empty;
+                    password = string.Empty;
+                    phoneNumber = string.Empty;
                     await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+                }
             }
         }
 

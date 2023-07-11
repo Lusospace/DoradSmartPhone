@@ -1,15 +1,18 @@
 using AndroidX.Lifecycle;
+using DoradSmartphone.DTO;
 using DoradSmartphone.Models;
+using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.ViewModels;
+using ToastProject;
 
 namespace DoradSmartphone.Views;
 
 public partial class DisplaySelectedItemsPage : ContentPage
 {    
 
-    public DisplaySelectedItemsPage(List<Widget> selectedItems)
+    public DisplaySelectedItemsPage(GlassDTO glassDTO, IToast toast, IBluetoothService bluetoothService)
     {
         InitializeComponent();        
-        BindingContext = new DisplaySelectedItemsViewModel(selectedItems);
+        BindingContext = new DisplaySelectedItemsViewModel(glassDTO, toast, bluetoothService);
     }
 }
