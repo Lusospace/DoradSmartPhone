@@ -1,18 +1,18 @@
 using DoradSmartphone.DTO;
+using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.ViewModels;
+using ToastProject;
 
 namespace DoradSmartphone.Views;
 
 public partial class ManualPage : ContentPage
 {
-    private Microsoft.Maui.Graphics.Point initialPosition;
+    private Point initialPosition;
 
-    private GlassDTO glassDTO;
-
-    public ManualPage(GlassDTO glassDTO)
+    public ManualPage(GlassDTO glassDTO, IToast toast, IBluetoothService bluetoothService)
     {
         InitializeComponent();        
-        BindingContext = new ManualViewModel(glassDTO);
+        BindingContext = new ManualViewModel(glassDTO, toast, bluetoothService);
     }
 
     private void OnPanUpdated(object sender, PanUpdatedEventArgs e)

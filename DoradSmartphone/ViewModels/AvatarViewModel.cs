@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using DoradSmartphone.DTO;
 using DoradSmartphone.Models;
+using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
 using System.ComponentModel;
 using System.Windows.Input;
@@ -18,6 +19,7 @@ namespace DoradSmartphone.ViewModels
 
         private GlassDTO glassDTO;
         private IToast toast;
+        private IBluetoothService bluetoothService;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -76,11 +78,12 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
-        public AvatarViewModel(GlassDTO glassDTO, IToast toast)
+        public AvatarViewModel(GlassDTO glassDTO, IToast toast, IBluetoothService bluetoothService)
         {
             Title = "Avatar Page";
             this.glassDTO = glassDTO;
             this.toast = toast;
+            this.bluetoothService = bluetoothService;
             RouteSpeed = glassDTO.Exercise.Speed.Avg;
         }
 
@@ -107,7 +110,7 @@ namespace DoradSmartphone.ViewModels
             }
             glassDTO.Avatar.Speed = NewSpeed;
             glassDTO.Avatar.Active = true;
-            Application.Current.MainPage.Navigation.PushAsync(new WidgetPage(glassDTO, toast));
+            Application.Current.MainPage.Navigation.PushAsync(new WidgetPage(glassDTO, toast, bluetoothService));
         }
     }
 }

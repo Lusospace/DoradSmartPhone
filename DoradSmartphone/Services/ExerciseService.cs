@@ -22,7 +22,17 @@ namespace DoradSmartphone.Services
         {
             User user = UserSessionHelper.GetUserFromSessionJson();
 
-            return await _repository.RecoverExerciseByIdAsync<Exercise>(null, user.Id);
+            var exercises = await _repository.RecoverExerciseByIdAsync<Exercise>(null, user.Id);
+
+            foreach (var exercise in exercises)
+            {
+                if (exercise.Route != null && exercise.Route.Count > 0)
+                {
+                    var firstRoute = exercise.Route[0];
+                    exercise.Route[0].Address = await GoogleMapsGeocoding.GetAddressName(firstRoute.Latitude, firstRoute.Longitude);
+                }
+            }
+            return exercises;
         }
 
         public async void InsertExercises()

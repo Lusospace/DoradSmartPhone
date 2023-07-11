@@ -1,5 +1,6 @@
 ﻿using DoradSmartphone.DTO;
 using DoradSmartphone.Models;
+using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
 using System.ComponentModel;
 using System.Windows.Input;
@@ -11,6 +12,7 @@ namespace DoradSmartphone.ViewModels
     {
         private IToast toast;
         private GlassDTO glassDTO;
+        private IBluetoothService bluetoothService;
 
         public ICommand ManualCommand => new Command(Manual);
         public ICommand AutomaticCommand => new Command(Automatic);
@@ -28,21 +30,22 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
-        public DisplaySelectedItemsViewModel(GlassDTO glassDTO, IToast toast)
+        public DisplaySelectedItemsViewModel(GlassDTO glassDTO, IToast toast, IBluetoothService bluetoothService)
         {
             Title = "Configuration Type";
             this.toast = toast;
             this.glassDTO = glassDTO;
+            this.bluetoothService = bluetoothService;
         }
 
         public void Manual()
         {
-            Application.Current.MainPage.Navigation.PushAsync(new ManualPage(glassDTO));
+            Application.Current.MainPage.Navigation.PushAsync(new ManualPage(glassDTO, toast, bluetoothService));
         }
 
         public void Automatic()
         {
-            Application.Current.MainPage.Navigation.PushAsync(new AutomaticPage(glassDTO, toast));
+            Application.Current.MainPage.Navigation.PushAsync(new AutomaticPage(glassDTO, toast, bluetoothService));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

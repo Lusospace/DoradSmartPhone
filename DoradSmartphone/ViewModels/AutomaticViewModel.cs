@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using DoradSmartphone.DTO;
+using DoradSmartphone.Helpers;
 using DoradSmartphone.Models;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
@@ -14,8 +15,8 @@ namespace DoradSmartphone.ViewModels
     public partial class AutomaticViewModel : BaseViewModel
     {
         private IToast toast;
-        private GlassDTO glassDTO;        
-        BluetoothService btService;
+        private GlassDTO glassDTO;
+        private IBluetoothService bluetoothService;
 
         private ObservableCollection<Widget> widgets;
         public ObservableCollection<Widget> Widgets
@@ -33,47 +34,25 @@ namespace DoradSmartphone.ViewModels
 
         public ICommand LoadAutomaticPageCommand => new Command(LoadAutomaticPage);
 
-        public AutomaticViewModel(GlassDTO glassDTO, IToast toast)
+        public AutomaticViewModel(GlassDTO glassDTO, IToast toast, IBluetoothService bluetoothService)
         {
             Title = "Automatic Configuration";
             this.toast = toast;
             this.glassDTO = glassDTO;
+            this.bluetoothService = bluetoothService;
             Widgets = new ObservableCollection<Widget>(glassDTO.Widgets);
-            LoadAutomaticPage();            
+            LoadAutomaticPage();
         }
 
         [RelayCommand]
-        public void ReviewPage() {
+        public void ReviewPage()
+        {
             SendOverBluetooth();
             Application.Current.MainPage.Navigation.PushAsync(new GeneralPage(glassDTO));
         }
 
-        private void SendOverBluetooth()
-        {
-            BluetoothService bluetoothService = new BluetoothService(toast);
-
-            int connectionState = bluetoothService.GetState();
-
-            if (connectionState == BluetoothService.STATE_CONNECTED)
-            {
-                bluetoothService.Write(ConvertToJsonAndBytes());
-            }
-            else
-            {
-                toast.MakeToast("Bluetooth Disconnected");
-            }
-        }
-
-        private byte[] ConvertToJsonAndBytes()
-        {            
-
-            string json = System.Text.Json.JsonSerializer.Serialize(glassDTO);
-            string json2 = JsonConvert.SerializeObject(glassDTO);
-
-            byte[] byteArray = Encoding.UTF8.GetBytes(json);
-
-            return byteArray;
-        }
+        private void SendOverBluetooth() => bluetoothService.Write(ConvertToJsonAndBytes.Convert(glassDTO));
+       
 
         private void LoadAutomaticPage()
         {
@@ -153,7 +132,5 @@ namespace DoradSmartphone.ViewModels
                 widget.YPosition = Math.Round(widget.YPosition, 2);
             }
         }
-
-
     }
 }

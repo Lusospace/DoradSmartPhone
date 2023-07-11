@@ -32,17 +32,19 @@
             </x:Arguments>
         </maps:Map>
 
-        <CarouselView ItemsSource="{Binding Exercises}" Grid.Row="1" PeekAreaInsets="100">
+        <CarouselView ItemsSource="{Binding Exercises}" Grid.Row="1" PeekAreaInsets="200">
             <CarouselView.ItemTemplate>
                 <DataTemplate x:DataType="model:Exercise">
-                    <Frame HeightRequest="90" Margin="5">
+                    <Frame HeightRequest="150" Margin="5">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnTapGestureRouteUpdate" CommandParameter="{Binding .}" />
                         </Frame.GestureRecognizers>
-                        <HorizontalStackLayout Padding="10" Spacing="5" >
-                            <Label Text="{Binding Id}"></Label>
-                            <Label Text="{Binding StartingDate}"></Label>
-                        </HorizontalStackLayout>
+                        <StackLayout>
+                            <Label Text="{Binding StartingDate, StringFormat='Starting Date: {0:dd/MM/yyyy HH:mm}'}" />
+                            <Label Text="{Binding Time, StringFormat='Time: {0} '}" />
+                            <Label Text="{Binding Speed.Avg, StringFormat='Avg Speed: {0}'}" />
+                            <Label Text="{Binding Route[0].Address, StringFormat='Address: {0}'}" />
+                        </StackLayout>
                     </Frame>
                 </DataTemplate>
             </CarouselView.ItemTemplate>

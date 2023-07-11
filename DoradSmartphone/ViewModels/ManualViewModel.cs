@@ -1,14 +1,20 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using DoradSmartphone.DTO;
+using DoradSmartphone.Helpers;
 using DoradSmartphone.Models;
+using DoradSmartphone.Services.Bluetooth;
+using DoradSmartphone.Views;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using ToastProject;
 
 namespace DoradSmartphone.ViewModels
 {
     public partial class ManualViewModel : BaseViewModel, INotifyPropertyChanged
     {
+        private IToast toast;
         private GlassDTO glassDTO;
+        private IBluetoothService bluetoothService;
 
         private double sliderValue;
         private string sliderLabel;
@@ -54,14 +60,25 @@ namespace DoradSmartphone.ViewModels
             set => SetProperty(ref automaticPage, value);
         }        
 
-        public ManualViewModel(GlassDTO glassDTO)
+        public ManualViewModel(GlassDTO glassDTO, IToast toast, IBluetoothService bluetoothService)
         {
             Title = "Manual Configuration";
             SliderValue = 1;
             UpdateSliderLabel();
+            this.toast = toast;
             this.glassDTO = glassDTO;
+            this.bluetoothService = bluetoothService;
             Widgets = new ObservableCollection<Widget>(glassDTO.Widgets);
         }
+
+        [RelayCommand]
+        public void ReviewPage()
+        {
+            SendOverBluetooth();
+            Application.Current.MainPage.Navigation.PushAsync(new GeneralPage(glassDTO));
+        }
+
+        private void SendOverBluetooth() => bluetoothService.Write(ConvertToJsonAndBytes.Convert(glassDTO));
 
         [RelayCommand]
         private void LoadAutomaticPage()

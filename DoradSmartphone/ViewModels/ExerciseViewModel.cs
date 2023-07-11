@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using DoradSmartphone.DTO;
 using DoradSmartphone.Models;
 using DoradSmartphone.Services;
+using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace DoradSmartphone.ViewModels
     public partial class ExerciseViewModel : BaseViewModel, INotifyPropertyChanged
     {
         private IToast toast;
+        private IBluetoothService bluetoothService;
         private List<Exercise> ExercisesList;
         private readonly ExerciseService exerciseService;
 
@@ -29,11 +31,12 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
-        public ExerciseViewModel(ExerciseService exerciseService, IToast toast)
+        public ExerciseViewModel(ExerciseService exerciseService, IToast toast, IBluetoothService bluetoothService)
         {
             Title = "Training Routes";
             this.toast = toast;
             this.exerciseService = exerciseService;
+            this.bluetoothService = bluetoothService;
         }
 
         [ObservableProperty]
@@ -67,22 +70,6 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
-        public async Task LoadExercisesAsync()
-        {
-            var exercises = await exerciseService.RecoverExerciseByIdAsync();
-            foreach (var exercise in exercises)
-            {
-                if (exercise.Route != null && exercise.Route.Count > 0)
-                {
-                    var firstRoute = exercise.Route[0];
-                    string address = await GoogleMapsGeocoding.GetAddressName(firstRoute.Latitude, firstRoute.Longitude);
-                    exercise.Route[0].Address = address;
-                }
-
-                Exercises.Add(exercise);
-            }
-        }
-
 
         [RelayCommand]
         public void Insert() => exerciseService.InsertExercises();
@@ -105,7 +92,7 @@ namespace DoradSmartphone.ViewModels
                 Avatar = null
             };
 
-            Application.Current.MainPage.Navigation.PushAsync(new AvatarPage(dto, toast));        
+            Application.Current.MainPage.Navigation.PushAsync(new AvatarPage(dto, toast, bluetoothService));        
         }
 
         public List<Location> GetLocations(int exerciseId)

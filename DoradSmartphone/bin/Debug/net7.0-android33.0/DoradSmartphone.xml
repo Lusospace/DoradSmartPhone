@@ -133,6 +133,13 @@
         </member>
         <member name="T:DoradSmartphone.ViewModels.ManualViewModel">
             <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.ManualViewModel.reviewPageCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ManualViewModel.ReviewPageCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.ManualViewModel.ReviewPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ManualViewModel.ReviewPage"/>.</summary>
         </member>
         <member name="F:DoradSmartphone.ViewModels.ManualViewModel.loadAutomaticPageCommand">
             <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ManualViewModel.LoadAutomaticPageCommand"/>.</summary>

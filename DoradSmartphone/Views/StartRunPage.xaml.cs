@@ -15,6 +15,6 @@ public partial class StartRunPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        _ = viewModel.LoadExercisesAsync();
+        _ = viewModel.GetExerciseList();
     }
 }

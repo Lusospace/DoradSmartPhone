@@ -13,6 +13,7 @@ namespace DoradSmartphone.Models
         public string FileName { get; set; }
         public double XPosition { get; internal set; }
         public double YPosition { get; internal set; }
+        public double ZPosition { get; internal set; }
         public double RelativeXPosition { get; set; }
         public double RelativeYPosition { get; set; }
 
