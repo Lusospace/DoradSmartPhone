@@ -1,0 +1,14 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoradSmartphone.Views.ChoicePage"
+             xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
+             x:DataType="viewmodel:ChoiceViewModel"
+             Title="ChoicePage">
+    <StackLayout VerticalOptions="CenterAndExpand">
+        <Label Text="Want to run an old Route or do a new one?!" HorizontalOptions="Center" Margin="0,0,0,20" />
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,0,0,20">
+            <Button x:Name="OldRoutesButton" Text="Old Routes" Command="{Binding OldRouteCommand}" Margin="10" />
+            <Button x:Name="NewRouteButton" Text="New Route" Clicked="NewRouteButton_Clicked" Margin="10" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

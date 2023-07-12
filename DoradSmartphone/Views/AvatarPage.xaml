@@ -31,7 +31,7 @@
 
                     <Image Source="{x:Static helpers:Icons.AvatarXg}" HeightRequest="300" WidthRequest="300" HorizontalOptions="Center" Grid.Row="0" />
 
-                    <Label Text="{Binding NewSpeed, StringFormat='The Selected Route AVG speed was {0} km/h'}" FontSize="20" TextColor="RoyalBlue" HorizontalTextAlignment="Center" Grid.Row="1" Margin="20"/>
+                    <Label Text="{Binding RouteSpeed, StringFormat='The Selected Route AVG speed was {0} km/h'}" FontSize="20" TextColor="RoyalBlue" HorizontalTextAlignment="Center" Grid.Row="1" Margin="20"/>
 
                     <Entry x:Name="Speed" Placeholder="Type the speed" Text="{Binding Speed}" Grid.Row="2" Style="{StaticResource EntryContainerStyle}" Keyboard="Numeric">
                         <Entry.Behaviors>

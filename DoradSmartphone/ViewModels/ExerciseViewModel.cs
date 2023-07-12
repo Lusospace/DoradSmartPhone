@@ -7,6 +7,7 @@ using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Input;
 using ToastProject;
 
 namespace DoradSmartphone.ViewModels
@@ -31,20 +32,46 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
+        private bool isLoading;
+        public bool IsLoading
+        {
+            get { return isLoading; }
+            set
+            {
+                isLoading = value;
+                OnPropertyChanged(nameof(IsLoading));
+                OnPropertyChanged(nameof(IsNotLoading));
+            }
+        }
+
+        private bool isRefreshing;
+        public bool IsRefreshing
+        {
+            get { return isRefreshing; }
+            set
+            {
+                isRefreshing = value;
+                OnPropertyChanged(nameof(IsRefreshing));
+            }
+        }
+
+        public ICommand RefreshCommand { get; }
+
         public ExerciseViewModel(ExerciseService exerciseService, IToast toast, IBluetoothService bluetoothService)
         {
             Title = "Training Routes";
             this.toast = toast;
             this.exerciseService = exerciseService;
             this.bluetoothService = bluetoothService;
-        }
 
-        [ObservableProperty]
-        bool isRefreshing;
+            RefreshCommand = new Command(async () =>
+            {
+                await RefreshData();                
+            });
+        }
 
         public async Task GetExerciseList()
         {
-            if (IsLoading) return;
             try
             {
                 IsLoading = true;
@@ -66,6 +93,23 @@ namespace DoradSmartphone.ViewModels
             finally
             {
                 IsLoading = false;
+            }
+        }
+        private async Task RefreshData()
+        {
+
+            try
+            {
+                IsRefreshing = false;
+                await GetExerciseList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                toast.MakeToast("Failed to retrieve the exercice list " + ex.ToString());
+            }
+            finally
+            {
                 IsRefreshing = false;
             }
         }

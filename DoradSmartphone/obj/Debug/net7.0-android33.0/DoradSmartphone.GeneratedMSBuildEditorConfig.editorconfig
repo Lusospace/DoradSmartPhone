@@ -56,6 +56,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = DoradSmartphone.Views.Avat
 build_metadata.AdditionalFiles.TargetPath = Views\AvatarPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\AvatarPage.xaml
 
+[C:/Projects/Dorad/doradsmartphone/DoradSmartphone/Views/ChoicePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = DoradSmartphone.Views.ChoicePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ChoicePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ChoicePage.xaml
+
 [C:/Projects/Dorad/doradsmartphone/DoradSmartphone/Views/DashboardPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = DoradSmartphone.Views.DashboardPage.xaml

@@ -9,6 +9,7 @@
              x:DataType ="viewmodel:ExerciseViewModel"
              Title="{Binding Title}">
 
+
     <Grid Padding="5" Margin="5" RowSpacing="5" ColumnSpacing="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -31,23 +32,29 @@
                 </MapSpan>
             </x:Arguments>
         </maps:Map>
-
-        <CarouselView ItemsSource="{Binding Exercises}" Grid.Row="1" PeekAreaInsets="200">
-            <CarouselView.ItemTemplate>
-                <DataTemplate x:DataType="model:Exercise">
-                    <Frame HeightRequest="150" Margin="5">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnTapGestureRouteUpdate" CommandParameter="{Binding .}" />
-                        </Frame.GestureRecognizers>
-                        <StackLayout>
-                            <Label Text="{Binding StartingDate, StringFormat='Starting Date: {0:dd/MM/yyyy HH:mm}'}" />
-                            <Label Text="{Binding Time, StringFormat='Time: {0} '}" />
-                            <Label Text="{Binding Speed.Avg, StringFormat='Avg Speed: {0}'}" />
-                            <Label Text="{Binding Route[0].Address, StringFormat='Address: {0}'}" />
-                        </StackLayout>
-                    </Frame>
-                </DataTemplate>
-            </CarouselView.ItemTemplate>
-        </CarouselView>
+        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
+            <RefreshView.Content>
+                <CarouselView ItemsSource="{Binding Exercises}" Grid.Row="1" PeekAreaInsets="200">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Exercise">
+                            <Frame HeightRequest="150" Margin="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnTapGestureRouteUpdate" CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+                                <StackLayout>
+                                    <Label Text="{Binding StartingDate, StringFormat='Starting Date: {0:dd/MM/yyyy HH:mm}'}" />
+                                    <Label Text="{Binding Time, StringFormat='Time: {0} '}" />
+                                    <Label Text="{Binding Speed.Avg, StringFormat='Avg Speed: {0}'}" />
+                                    <Label Text="{Binding Route[0].Address, StringFormat='Address: {0}'}" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+            </RefreshView.Content>
+        </RefreshView>
+        <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"
+                               HorizontalOptions="Center" VerticalOptions="Center" />
     </Grid>
+
 </ContentPage>

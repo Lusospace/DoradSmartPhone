@@ -36,6 +36,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<AvatarPage>();
         builder.Services.AddSingleton<WidgetPage>();
         builder.Services.AddSingleton<ManualPage>();
+        builder.Services.AddSingleton<ChoicePage>();
         builder.Services.AddSingleton<LoadingPage>();
         builder.Services.AddSingleton<ExercisePage>();
         builder.Services.AddTransient<StartRunPage>();
@@ -58,6 +59,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<AvatarViewModel>();
         builder.Services.AddTransient<WidgetViewModel>();
         builder.Services.AddTransient<ManualViewModel>();
+        builder.Services.AddTransient<ChoiceViewModel>();
         builder.Services.AddSingleton<LoadingViewModel>();        
         builder.Services.AddTransient<ExerciseViewModel>();
         builder.Services.AddTransient<AutomaticViewModel>();

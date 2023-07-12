@@ -5,45 +5,50 @@
              xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
              x:DataType="viewmodel:ExerciseViewModel"
              Title="Select a Route to Run">
-
-    <ScrollView>
-        <StackLayout>
-            <Grid VerticalOptions="Center" HorizontalOptions="Center" RowSpacing="15">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Button Text="Insert" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" 
+    <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
+        <RefreshView.Content>
+            <ScrollView>
+                <StackLayout>
+                    <Grid VerticalOptions="Center" HorizontalOptions="Center" RowSpacing="15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Text="Insert" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" 
                         Command="{Binding InsertCommand}" Grid.Row="0" Grid.Column="0" Margin="10" 
                         FontSize="15" />
-                <Button Text="Clean" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" 
+                        <Button Text="Clean" WidthRequest="100" CornerRadius="20" HorizontalOptions="Center" 
                         Command="{Binding ClearCommand}" Grid.Row="0" Grid.Column="1" Margin="10" 
                         FontSize="15" />
-                <CollectionView ItemsSource="{Binding Exercises}" Grid.Row="1" Grid.ColumnSpan="2">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:Exercise">
-                            <Frame BorderColor="RoyalBlue" Padding="10" Margin="5">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExerciseViewModel}}, Path=NavigateToAvatarCommand}
+                        <CollectionView ItemsSource="{Binding Exercises}" Grid.Row="1" Grid.ColumnSpan="2">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="model:Exercise">
+                                    <Frame BorderColor="RoyalBlue" Padding="10" Margin="5">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExerciseViewModel}}, Path=NavigateToAvatarCommand}
                                         " CommandParameter="{Binding .}" />
-                                </Frame.GestureRecognizers>
-                                <StackLayout>
-                                    <Label Text="{Binding StartingDate, StringFormat='Starting Date: {0:dd/MM/yyyy HH:mm}'}" />
-                                    <Label Text="{Binding FinishingDate, StringFormat='Finishing Date: {0:dd/MM/yyyy HH:mm}'}" />
-                                    <Label Text="{Binding Time}" />
-                                    <Label Text="{Binding Speed.Avg, StringFormat='Average Speed: {0}'}" />
-                                    <Label Text="{Binding Speed.Max, StringFormat='Maximum Speed: {0}'}" />
-                                    <Label Text="{Binding Route[0].Address, StringFormat='Address: {0}'}" />
-                                </StackLayout>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </Grid>
-        </StackLayout>
-    </ScrollView>
+                                        </Frame.GestureRecognizers>
+                                        <StackLayout>
+                                            <Label Text="{Binding StartingDate, StringFormat='Starting Date: {0:dd/MM/yyyy HH:mm}'}" />
+                                            <Label Text="{Binding FinishingDate, StringFormat='Finishing Date: {0:dd/MM/yyyy HH:mm}'}" />
+                                            <Label Text="{Binding Time}" />
+                                            <Label Text="{Binding Speed.Avg, StringFormat='Average Speed: {0}'}" />
+                                            <Label Text="{Binding Speed.Max, StringFormat='Maximum Speed: {0}'}" />
+                                            <Label Text="{Binding Route[0].Address, StringFormat='Address: {0}'}" />
+                                        </StackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                    <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"
+                                       HorizontalOptions="Center" VerticalOptions="Center" />
+                </StackLayout>
+            </ScrollView>
+        </RefreshView.Content>
+    </RefreshView>
 </ContentPage>
