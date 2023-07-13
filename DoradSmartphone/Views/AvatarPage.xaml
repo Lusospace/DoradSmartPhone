@@ -48,14 +48,15 @@
                     <Label Text="{Binding RouteSpeed, StringFormat='The Selected Route AVG speed was {0} km/h'}" Grid.Row="1" Style="{StaticResource LabelContainerStyle}"/>
 
                     <Label Text="Type the speed" Grid.Row="2" Style="{StaticResource LabelContainerStyle}"/>
-                    <Entry x:Name="Speed" Placeholder="Speed:" Text="{Binding Speed}" Grid.Row="3" Style="{StaticResource EntryContainerStyle}">
+                    <Entry x:Name="Speed" Placeholder="Speed:" Text="{Binding Speed}" Grid.Row="3" Style="{StaticResource EntryContainerStyle}" TextChanged="SpeedEntry_TextChanged">
                         <Entry.Behaviors>
                             <helpers:NumericValidationBehavior MaximumValue="30" />
                         </Entry.Behaviors>
                     </Entry>
 
                     <Label Text="Type the speed percentage" Grid.Row="4" Style="{StaticResource LabelContainerStyle}"/>
-                    <Entry x:Name="Percentage" Placeholder="Percentage:" Text="{Binding Percentage, Mode=TwoWay, StringFormat='{0}%'}" Grid.Row="5" Style="{StaticResource EntryContainerStyle}">
+                    <Entry x:Name="Percentage" Placeholder="Percentage:" Text="{Binding Percentage, Mode=TwoWay}" Grid.Row="5" Style="{StaticResource EntryContainerStyle}"
+                           TextChanged="PercentageEntry_TextChanged">
                         <Entry.Behaviors>
                             <helpers:NumericValidationBehavior MaximumValue="100" />
                         </Entry.Behaviors>

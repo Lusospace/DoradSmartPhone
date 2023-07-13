@@ -29,8 +29,8 @@ namespace DoradSmartphone.ViewModels
             {
                 await loginService.VerifyLogin(username, password);
                 // Clear the username and password fields
-                username = string.Empty;
-                password = string.Empty;
+                Username = string.Empty;
+                Password = string.Empty;
             }
 
         }

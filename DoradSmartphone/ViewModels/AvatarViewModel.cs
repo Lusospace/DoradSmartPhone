@@ -101,6 +101,12 @@ namespace DoradSmartphone.ViewModels
                     var calc = RouteSpeed + (RouteSpeed * (percentageValue / 100));
                     NewSpeed = double.Round(calc, 2, MidpointRounding.AwayFromZero);
                 }
+            } else if (!string.IsNullOrWhiteSpace(speed) && double.TryParse(speed, out double SpeedValue))
+            {
+                if (SpeedValue >= 0)
+                {                    
+                    NewSpeed = SpeedValue;
+                }
             }
         }
 

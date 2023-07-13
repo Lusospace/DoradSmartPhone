@@ -48,10 +48,10 @@ namespace DoradSmartphone.ViewModels
                 var result = await userService.SaveUser(name, email, password, phoneNumber);
                 if (result)
                 {
-                    name = string.Empty; 
-                    email = string.Empty;
-                    password = string.Empty;
-                    phoneNumber = string.Empty;
+                    Name = string.Empty; 
+                    Email = string.Empty;
+                    Password = string.Empty;
+                    PhoneNumber = string.Empty;
                     await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
                 }
             }
