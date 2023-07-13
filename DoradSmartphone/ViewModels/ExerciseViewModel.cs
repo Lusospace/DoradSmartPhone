@@ -5,6 +5,7 @@ using DoradSmartphone.Models;
 using DoradSmartphone.Services;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
+using Kotlin.Properties;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
@@ -18,6 +19,9 @@ namespace DoradSmartphone.ViewModels
         private IBluetoothService bluetoothService;
         private List<Exercise> ExercisesList;
         private readonly ExerciseService exerciseService;
+
+        [ObservableProperty]
+        string finalAddress;
 
         public ObservableCollection<Exercise> Exercises { get; private set; } = new();
 
@@ -83,7 +87,12 @@ namespace DoradSmartphone.ViewModels
                 {
                     toast.MakeToast("User does not have exercises");
                 }
-                foreach (var exercise in exercices) Exercises.Add(exercise);
+                foreach (var exercise in exercices)
+                {
+                    var lastRoute = exercise.Route[exercise.Route.Count - 1];
+
+                    Exercises.Add(exercise);
+                }
             }
             catch (Exception ex)
             {

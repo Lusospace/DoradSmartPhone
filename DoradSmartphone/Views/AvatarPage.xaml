@@ -10,8 +10,20 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="EntryContainerStyle" TargetType="Entry">
-                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Keyboard" Value="Numeric" />
                 <Setter Property="HeightRequest" Value="48" />
+                <Setter Property="WidthRequest" Value="100" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+            </Style>
+        </ResourceDictionary>
+
+        <ResourceDictionary>
+            <Style x:Key="LabelContainerStyle" TargetType="Label">
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="TextColor" Value="RoyalBlue" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -19,8 +31,10 @@
     <ContentPage.Content>
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout x:Name="MainLayout" VerticalOptions="FillAndExpand">
-                <Grid VerticalOptions="Center" HorizontalOptions="Center" RowSpacing="15">
+                <Grid HorizontalOptions="Center" RowSpacing="10">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -29,26 +43,28 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <Image Source="{x:Static helpers:Icons.AvatarXg}" HeightRequest="300" WidthRequest="300" HorizontalOptions="Center" Grid.Row="0" />
+                    <Image Source="{x:Static helpers:Icons.AvatarXg}" HeightRequest="250" WidthRequest="250" HorizontalOptions="Center" Grid.Row="0" />
 
-                    <Label Text="{Binding RouteSpeed, StringFormat='The Selected Route AVG speed was {0} km/h'}" FontSize="20" TextColor="RoyalBlue" HorizontalTextAlignment="Center" Grid.Row="1" Margin="20"/>
+                    <Label Text="{Binding RouteSpeed, StringFormat='The Selected Route AVG speed was {0} km/h'}" Grid.Row="1" Style="{StaticResource LabelContainerStyle}"/>
 
-                    <Entry x:Name="Speed" Placeholder="Type the speed" Text="{Binding Speed}" Grid.Row="2" Style="{StaticResource EntryContainerStyle}" Keyboard="Numeric">
+                    <Label Text="Type the speed" Grid.Row="2" Style="{StaticResource LabelContainerStyle}"/>
+                    <Entry x:Name="Speed" Placeholder="Speed:" Text="{Binding Speed}" Grid.Row="3" Style="{StaticResource EntryContainerStyle}">
                         <Entry.Behaviors>
                             <helpers:NumericValidationBehavior MaximumValue="30" />
                         </Entry.Behaviors>
                     </Entry>
 
-                    <Entry x:Name="Percentage" Placeholder="Type the percentage of speed" Text="{Binding Percentage}" Grid.Row="3" Style="{StaticResource EntryContainerStyle}" Keyboard="Numeric">
+                    <Label Text="Type the speed percentage" Grid.Row="4" Style="{StaticResource LabelContainerStyle}"/>
+                    <Entry x:Name="Percentage" Placeholder="Percentage:" Text="{Binding Percentage, Mode=TwoWay, StringFormat='{0}%'}" Grid.Row="5" Style="{StaticResource EntryContainerStyle}">
                         <Entry.Behaviors>
                             <helpers:NumericValidationBehavior MaximumValue="100" />
                         </Entry.Behaviors>
                     </Entry>
 
-                    <Label Text="{Binding NewSpeed, StringFormat='The Avatar speed will be {0} km/h'}" FontSize="20" TextColor="RoyalBlue" HorizontalTextAlignment="Center" Grid.Row="4" Margin="20"/>
+                    <Label Text="{Binding NewSpeed, StringFormat='The Avatar speed will be {0} km/h'}" Grid.Row="6" Style="{StaticResource LabelContainerStyle}"/>
 
                     <Button Text="Go to Widget Selection" WidthRequest="200" CornerRadius="40" HorizontalOptions="Center" 
-                                Command="{Binding NextPageCommand}" Grid.Row="5" Margin="10" 
+                                Command="{Binding NextPageCommand}" Grid.Row="7" Margin="10" 
                                 FontSize="15"/>
                 </Grid>
             </StackLayout>

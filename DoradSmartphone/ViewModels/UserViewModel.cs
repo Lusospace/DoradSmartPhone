@@ -7,7 +7,7 @@ namespace DoradSmartphone.ViewModels
 {
     public partial class UserViewModel : BaseViewModel
     {
-
+        //private Itoast
         private readonly UserService userService;
 
         [ObservableProperty]

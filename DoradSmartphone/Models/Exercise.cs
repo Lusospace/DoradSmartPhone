@@ -9,6 +9,8 @@ namespace DoradSmartphone.Models
         public DateTime StartingDate { get; set; }
         public DateTime FinishingDate { get; set; }
         public string Time { get; set; }
+        public string StartingAddress { get; set; }
+        public string FinishingAddress { get; set; }
 
         [OneToOne(CascadeOperations = CascadeOperation.All)]
         public Speed Speed { get; set; }

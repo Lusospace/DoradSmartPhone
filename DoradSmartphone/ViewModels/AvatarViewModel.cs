@@ -11,19 +11,16 @@ using ToastProject;
 namespace DoradSmartphone.ViewModels
 {
     public partial class AvatarViewModel : BaseViewModel, INotifyPropertyChanged
-    {
-        private double speed;
-        private double routeSpeed;
-        private double newSpeed;
-        private double percentage;
-
+    {        
+        
         private GlassDTO glassDTO;
         private IToast toast;
         private IBluetoothService bluetoothService;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public double Speed
+        private string speed;
+        public string Speed
         {
             get { return speed; }
             set
@@ -37,6 +34,7 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
+        private double routeSpeed;
         public double RouteSpeed
         {
             get { return routeSpeed; }
@@ -51,6 +49,7 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
+        private double newSpeed;
         public double NewSpeed
         {
             get { return newSpeed; }
@@ -64,7 +63,8 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
-        public double Percentage
+        private string percentage;
+        public string Percentage
         {
             get { return percentage; }
             set
@@ -94,12 +94,16 @@ namespace DoradSmartphone.ViewModels
 
         private void UpdateNewSpeed()
         {
-            if (percentage != 0 || percentage >= 0)
+            if (!string.IsNullOrWhiteSpace(percentage) && double.TryParse(percentage, out double percentageValue))
             {
-                var calc = RouteSpeed + (RouteSpeed * (Percentage / 100));
-                NewSpeed = double.Round(calc, 2, MidpointRounding.AwayFromZero);
-            }            
+                if (percentageValue >= 0)
+                {
+                    var calc = RouteSpeed + (RouteSpeed * (percentageValue / 100));
+                    NewSpeed = double.Round(calc, 2, MidpointRounding.AwayFromZero);
+                }
+            }
         }
+
 
         [RelayCommand]
         public void NextPage()

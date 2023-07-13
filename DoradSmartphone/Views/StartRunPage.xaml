@@ -38,7 +38,8 @@
                                             <Label Text="{Binding Time}" />
                                             <Label Text="{Binding Speed.Avg, StringFormat='Average Speed: {0}'}" />
                                             <Label Text="{Binding Speed.Max, StringFormat='Maximum Speed: {0}'}" />
-                                            <Label Text="{Binding Route[0].Address, StringFormat='Address: {0}'}" />
+                                            <Label Text="{Binding StartingAddress, StringFormat='Starting Address: {0}'}" />
+                                            <Label Text="{Binding FinishingAddress, StringFormat='Finishing Address: {0}'}" />
                                         </StackLayout>
                                     </Frame>
                                 </DataTemplate>
