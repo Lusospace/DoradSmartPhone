@@ -8,7 +8,6 @@ using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
-using ToastProject;
 
 namespace DoradSmartphone.ViewModels
 {
@@ -23,8 +22,7 @@ namespace DoradSmartphone.ViewModels
         [ObservableProperty]
         bool deviceBool;
         
-        BluetoothService btService;
-        public IToast toast;
+        BluetoothService btService;        
 
         bool isConnected = false;
 
@@ -42,13 +40,12 @@ namespace DoradSmartphone.ViewModels
 
         public bool HasDevices => Devices != null && Devices.ToList().Count > 0;
 
-        public DashboardViewModel(IToast toast)
+        public DashboardViewModel()
         {
             Title = "Welcome";
             CommStatus = "Scanning";
             StatusLabel = true;
-            DeviceBool = false;
-            this.toast = toast;
+            DeviceBool = false;            
             //ConnectedDevices();
         }
 
@@ -101,7 +98,7 @@ namespace DoradSmartphone.ViewModels
         {
             try
             {
-                btService = new BluetoothService(toast);
+                btService = new BluetoothService();
                 btService.Write(ConvertWidgetToJsonAndBytes());
             }
             catch (Exception ex)
@@ -113,7 +110,7 @@ namespace DoradSmartphone.ViewModels
 
         private byte[] ConvertWidgetToJsonAndBytes()
         {
-            System.Random random = new Random();
+            Random random = new Random();
 
             List<Widget> widgets = GetWidgets();
 
@@ -123,8 +120,7 @@ namespace DoradSmartphone.ViewModels
                 widget.YPosition = random.Next(0, 100);
             }
 
-            string json = System.Text.Json.JsonSerializer.Serialize(widgets);
-            string json2 = JsonConvert.SerializeObject(widgets);
+            string json = System.Text.Json.JsonSerializer.Serialize(widgets);            
 
             byte[] byteArray = Encoding.UTF8.GetBytes(json);
 

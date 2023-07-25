@@ -1,16 +1,15 @@
 using DoradSmartphone.DTO;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.ViewModels;
-using ToastProject;
 
 namespace DoradSmartphone.Views;
 
 public partial class AvatarPage : ContentPage
 {
-    public AvatarPage(GlassDTO glassDTO, IToast toast, IBluetoothService bluetoothService)
+    public AvatarPage(TransferDTO transferDTO, IBluetoothService bluetoothService)
     {
         InitializeComponent();
-        BindingContext = new AvatarViewModel(glassDTO, toast, bluetoothService);
+        BindingContext = new AvatarViewModel(transferDTO, bluetoothService);
     }
 
     private void SpeedEntry_TextChanged(object sender, TextChangedEventArgs e)

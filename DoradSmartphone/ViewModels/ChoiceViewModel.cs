@@ -1,22 +1,20 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using DoradSmartphone.DTO;
+using DoradSmartphone.Models;
 using DoradSmartphone.Services;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
-using ToastProject;
 
 namespace DoradSmartphone.ViewModels
 {
     public partial class ChoiceViewModel : BaseViewModel
-    {
-        private IToast toast;
+    {        
         private IBluetoothService bluetoothService;
         private ExerciseService exerciseService;
 
-        public ChoiceViewModel(IToast toast, IBluetoothService bluetoothService, ExerciseService exerciseService)
+        public ChoiceViewModel(IBluetoothService bluetoothService, ExerciseService exerciseService)
         {
-            Title = "Route Option";
-            this.toast = toast;
+            Title = "Route Option";            
             this.bluetoothService = bluetoothService;
             this.exerciseService = exerciseService;            
         }        
@@ -24,7 +22,7 @@ namespace DoradSmartphone.ViewModels
         [RelayCommand]
         public void OldRoute()
         {
-            var exerciseViewModel = new ExerciseViewModel(exerciseService, toast, bluetoothService);
+            var exerciseViewModel = new ExerciseViewModel(exerciseService, bluetoothService);
 
             // Navigate to the StartRunPage with the ExerciseViewModel instance
             Application.Current.MainPage.Navigation.PushAsync(new StartRunPage(exerciseViewModel));
@@ -35,15 +33,16 @@ namespace DoradSmartphone.ViewModels
             if (result)
             {
                 // Create instances of GlassDTO, IToast, and IBluetoothService
-                var glassDto = new GlassDTO
+                var transferDTO = new TransferDTO
                 {
-                    Avatar = null,
-                    Exercise = null,
-                    Widgets = null
+                    Avatar = new AvatarDTO(),
+                    Route = new List<Route>(),
+                    Widgets = new List<Widget>(),
+                    Exercise = new Exercise()
                 };
 
                 // Navigate to the WidgetPage with the instances
-                Application.Current.MainPage.Navigation.PushAsync(new WidgetPage(glassDto, toast, bluetoothService));
+                Application.Current.MainPage.Navigation.PushAsync(new WidgetPage(transferDTO, bluetoothService));
             }
         }
     }

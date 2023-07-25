@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "5AXMQZ+5LoZlZNx0lHqv6eSqSNGTCPXf8CVGEKkxviBGWU1L9Vle5LLSCna+Qdb9k3gtuSxNsnpKVMjiewvkWQ==",
+  "dgSpecHash": "OndXs4T2Ek+LirpIUaMyl8H/tAinDiQbWONvjqSCtIu0QEoPb6bbnJnf/O66sDc1SFNVm14VEYpPUv2VK3TfyQ==",
   "success": true,
   "projectFilePath": "C:\\Projects\\Dorad\\doradsmartphone\\DoradSmartphone\\DoradSmartphone.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\lcosta\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\lcosta\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.0\\communitytoolkit.mvvm.8.2.0.nupkg.sha512",
     "C:\\Users\\lcosta\\.nuget\\packages\\googlegson\\2.9.1.1\\googlegson.2.9.1.1.nupkg.sha512",
+    "C:\\Users\\lcosta\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\lcosta\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\lcosta\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\lcosta\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",

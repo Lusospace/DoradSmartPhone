@@ -1,21 +1,20 @@
 ﻿using DoradSmartphone.DTO;
-using static Android.Icu.Text.CaseMap;
 
 namespace DoradSmartphone.ViewModels
 {
     public class GeneralViewModel : BaseViewModel
     {
-        private GlassDTO glassDTO;
-        public GlassDTO GlassDTO
+        private TransferDTO transferDTO;
+        public TransferDTO TransferDTO
         {
-            get => glassDTO;
-            set => SetProperty(ref glassDTO, value);
+            get => transferDTO;
+            set => SetProperty(ref transferDTO, value);
         }
 
-        public GeneralViewModel(GlassDTO glassDTO)
+        public GeneralViewModel(TransferDTO transferDTO)
         {
             Title = "Review Page";
-            GlassDTO = glassDTO;
+            TransferDTO = transferDTO;
         }
     }
 }

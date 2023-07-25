@@ -7,17 +7,17 @@ namespace DoradSmartphone.Services
 {
     public class LoginService
     {
-        private readonly DatabaseConn _databaseConn;
-        public LoginService(DatabaseConn databaseConn)
+        private readonly IRepository repository;
+        public LoginService(IRepository repository)
         {
-            _databaseConn = databaseConn;
+            this.repository = repository;
         }
 
         public async Task VerifyLogin(string username, string password)
         {
             try
             {
-                var user = await _databaseConn.GetUserByEmail(username);
+                var user = await repository.RecoverUserByEmail(username);
                 if (user is null)
                 {
                     await DisplayErrorMessage("No user were found!", "OK");

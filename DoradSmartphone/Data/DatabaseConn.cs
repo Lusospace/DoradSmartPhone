@@ -1,4 +1,5 @@
-﻿using DoradSmartphone.Helpers;
+﻿using Android.Content;
+using DoradSmartphone.Helpers;
 using DoradSmartphone.Models;
 using SQLite;
 
@@ -99,7 +100,7 @@ namespace DoradSmartphone.Data
         {
             await Init();
             return await db.DeleteAsync(entity);
-        }        
+        }
 
         public async Task DeleteAllItemsAsync<T>()
         {
@@ -107,13 +108,13 @@ namespace DoradSmartphone.Data
             await db.DeleteAllAsync<T>();
         }
 
-        public async Task<User> GetUserByEmail(string email)
+        public async Task<User> RecoverUserByEmail(string email)
         {
             await Init();
             return await db.Table<User>().Where(u => u.Email == email).FirstOrDefaultAsync();
         }
 
-        public async Task<List<T>> RecoverExerciseByIdAsync<T>(T entity, int userId) where T : class
+        public async Task<List<T>> RecoverExerciseByUserIdAsync<T>(T entity, int userId) where T : class
         {
             await Init();
 
@@ -126,6 +127,13 @@ namespace DoradSmartphone.Data
             }
 
             return exercises as List<T>;
+        }
+
+        public async Task<double> RecoverExerciseSpeedByRouteIdAsync(int exerciseId)
+        {
+            await Init();
+            var exercise = await db.Table<Exercise>().Where(e => e.Id == exerciseId).FirstOrDefaultAsync();
+            return exercise.Speed.Avg;
         }
     }
 }

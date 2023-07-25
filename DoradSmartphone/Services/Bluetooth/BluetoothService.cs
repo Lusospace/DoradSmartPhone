@@ -3,7 +3,6 @@ using Android.Util;
 using DoradSmartphone.Helpers;
 using Java.Util;
 using System.Text;
-using ToastProject;
 using Timer = System.Threading.Timer;
 
 namespace DoradSmartphone.Services.Bluetooth
@@ -20,9 +19,7 @@ namespace DoradSmartphone.Services.Bluetooth
 
         BluetoothAdapter btAdapter;
         AcceptThread acceptThread;
-        ConnectedThread connectedThread;
-
-        public IToast toast;
+        ConnectedThread connectedThread;        
 
         int state;
         int newState;
@@ -30,12 +27,11 @@ namespace DoradSmartphone.Services.Bluetooth
         private Timer connectionTimer;
         private const int ConnectionCheckInterval = 5000; // Check every 5 seconds
 
-        public BluetoothService(IToast toast)
+        public BluetoothService()
         {
             btAdapter = BluetoothAdapter.DefaultAdapter;
             state = STATE_NONE;
-            newState = state;
-            this.toast = toast;
+            newState = state;            
             Start();
             //connectionTimer = new Timer(CheckConnectionStatus, newState, ConnectionCheckInterval, ConnectionCheckInterval);
         }
@@ -55,12 +51,12 @@ namespace DoradSmartphone.Services.Bluetooth
                 if (glasses == null)
                 {
                     Console.Write("No connected devices found.");
-                    //toast.MakeToast($"No connected devices found.");
+                    //Toaster.MakeToast($"No connected devices found.");
                 }
                 else
                 {
                     Console.Write("Found Device: " + glasses.Name);
-                    //toast.MakeToast($"Found Device: " + glasses.Name);
+                    //Toaster.MakeToast($"Found Device: " + glasses.Name);
                 }
                 try
                 {
@@ -83,7 +79,7 @@ namespace DoradSmartphone.Services.Bluetooth
                 }
                 catch (Exception ex)
                 {
-                    toast.MakeToast($"Error connecting to Dorad Glasses: " + ex.Message);
+                    //Toaster.MakeToast($"Error connecting to Dorad Glasses: " + ex.Message);
                 }
             }
         }
@@ -137,6 +133,8 @@ namespace DoradSmartphone.Services.Bluetooth
                 // successful connection or an exception
                 socket = device.CreateRfcommSocketToServiceRecord(MY_UUID_SECURE);
                 await socket.ConnectAsync();
+                state = STATE_CONNECTED;
+                UpdateBtStatus();
             }
             catch (IOException e)
             {
@@ -177,21 +175,20 @@ namespace DoradSmartphone.Services.Bluetooth
 
         //Call this one to send data over BT
         public void Write(byte[] data)
-        {
-            // Create temporary object
-            ConnectedThread r;
+        {                       
             // Synchronize a copy of the ConnectedThread
             lock (this)
             {
                 if (state != STATE_CONNECTED)
                 {
-                    toast.MakeToast($"No device connected to send.");
+                    Toaster.MakeToast($"No device connected to send.");
                     return;
                 }
-                r = connectedThread;
-            }
-            // Perform the write unsynchronized
-            r.Write(data);
+                else
+                {
+                    connectedThread.Write(data);
+                }                
+            }           
         }
 
         void UpdateBtStatus()

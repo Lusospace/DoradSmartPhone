@@ -1,20 +1,16 @@
-﻿using Android.Gms.Maps.Model;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
+using DoradSmartphone.Data;
 using DoradSmartphone.DTO;
-using DoradSmartphone.Models;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
 using System.ComponentModel;
-using System.Windows.Input;
-using ToastProject;
 
 namespace DoradSmartphone.ViewModels
 {
     public partial class AvatarViewModel : BaseViewModel, INotifyPropertyChanged
     {        
         
-        private GlassDTO glassDTO;
-        private IToast toast;
+        private TransferDTO transferDTO;        
         private IBluetoothService bluetoothService;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -78,19 +74,18 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
-        public AvatarViewModel(GlassDTO glassDTO, IToast toast, IBluetoothService bluetoothService)
+        public AvatarViewModel(TransferDTO transferDTO, IBluetoothService bluetoothService)
         {
             Title = "Avatar Page";
-            this.glassDTO = glassDTO;
-            this.toast = toast;
+            this.transferDTO = transferDTO;            
             this.bluetoothService = bluetoothService;
-            RouteSpeed = glassDTO.Exercise.Speed.Avg;
+            RouteSpeed = transferDTO.Exercise.Speed.Avg;
         }
 
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        }         
 
         private void UpdateNewSpeed()
         {
@@ -114,13 +109,13 @@ namespace DoradSmartphone.ViewModels
         [RelayCommand]
         public void NextPage()
         {
-            if (glassDTO.Avatar == null)
+            if (transferDTO.Avatar == null)
             {
-                glassDTO.Avatar = new AvatarDTO(); // Create a new instance if null
+                transferDTO.Avatar = new AvatarDTO(); // Create a new instance if null
             }
-            glassDTO.Avatar.Speed = NewSpeed;
-            glassDTO.Avatar.Active = true;
-            Application.Current.MainPage.Navigation.PushAsync(new WidgetPage(glassDTO, toast, bluetoothService));
+            transferDTO.Avatar.Speed = NewSpeed;
+            transferDTO.Avatar.Active = true;
+            Application.Current.MainPage.Navigation.PushAsync(new WidgetPage(transferDTO, bluetoothService));
         }
     }
 }

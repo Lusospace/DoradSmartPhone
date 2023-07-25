@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using DoradSmartphone.Helpers;
 using DoradSmartphone.Services;
 using DoradSmartphone.Views;
 
@@ -24,7 +25,7 @@ namespace DoradSmartphone.ViewModels
         public async Task Login()
         {
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))            
-                await DisplayLoginError();
+                DisplayLoginError();
             else
             {
                 await loginService.VerifyLogin(username, password);
@@ -34,9 +35,10 @@ namespace DoradSmartphone.ViewModels
             }
 
         }
-        async Task DisplayLoginError()
+
+        public void DisplayLoginError()
         {
-            await Shell.Current.DisplayAlert("Invalid Attempt", "Invalid Username or Password", "Ok");            
+            Toaster.MakeToast("Invalid Username or Password");
         }
 
         [RelayCommand]

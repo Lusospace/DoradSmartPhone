@@ -55,7 +55,7 @@
             </RefreshView.Content>
         </RefreshView>
         <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"
-                               HorizontalOptions="Center" VerticalOptions="Center" />
+                               HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1"/>
     </Grid>
 
 </ContentPage>

@@ -5,9 +5,9 @@ namespace DoradSmartphone.Views;
 
 public partial class GeneralPage : ContentPage
 {
-	public GeneralPage(GlassDTO glassDTO)
+	public GeneralPage(TransferDTO transferDTO)
 	{
 		InitializeComponent();
-		BindingContext = new GeneralViewModel(glassDTO);
+		BindingContext = new GeneralViewModel(transferDTO);
     }
 }

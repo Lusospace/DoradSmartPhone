@@ -1,21 +1,17 @@
-﻿using Android.Media;
-using DoradSmartphone.Data;
+﻿using DoradSmartphone.Data;
+using DoradSmartphone.Helpers;
 using DoradSmartphone.Models;
-using Newtonsoft.Json;
-using ToastProject;
 using Route = DoradSmartphone.Models.Route;
 
 namespace DoradSmartphone.Services
 {
     public class ExerciseService
-    {
-        IToast toast;
+    {        
         DateTime today = DateTime.Now;
         public readonly IRepository _repository;
-        public ExerciseService(IRepository repository, IToast toast)
+        public ExerciseService(IRepository repository)
         {
-            _repository = repository;
-            this.toast = toast;
+            _repository = repository;            
         }
 
         public async Task<List<Exercise>> RecoverExerciseByIdAsync()
@@ -24,22 +20,22 @@ namespace DoradSmartphone.Services
             {
                 User user = UserSessionHelper.GetUserFromSessionJson();
 
-                var exercises = await _repository.RecoverExerciseByIdAsync<Exercise>(null, user.Id);
+                var exercises = await _repository.RecoverExerciseByUserIdAsync<Exercise>(null, user.Id);
 
                 foreach (var exercise in exercises)
                 {
                     if (exercise.Route != null && exercise.Route.Count > 0)
                     {
-                        var firstRoute = exercise.Route[0];
+                        var firstRoute = exercise.Route.First();
                         exercise.StartingAddress = await GoogleMapsGeocoding.GetAddressName(firstRoute.Latitude, firstRoute.Longitude);
-                        var lastRoute = exercise.Route[exercise.Route.Count - 1];
+                        var lastRoute = exercise.Route.Last();
                         exercise.FinishingAddress = await GoogleMapsGeocoding.GetAddressName(lastRoute.Latitude, lastRoute.Longitude);
                     }
                 }
                 return exercises;
             } catch(Exception ex)
             {
-                toast.MakeToast("Error when grabing Exercises information. " + ex);
+                Toaster.MakeToast("Error when grabing Exercises information. " + ex);
                 throw new Exception("Error retrieving exercises from database.");
             }            
         }
@@ -60,8 +56,8 @@ namespace DoradSmartphone.Services
 
             var speed1 = new Speed
             {
-                Avg = 10.5f,
-                Max = 15.2f,
+                Avg = 10.5,
+                Max = 15.2,
             };
 
             var route1 = new List<Route>
@@ -89,8 +85,8 @@ namespace DoradSmartphone.Services
 
             var speed2 = new Speed
             {
-                Avg = 12.5f,
-                Max = 16.2f,
+                Avg = 12.5,
+                Max = 16.2,
             };
 
             var route2 = new List<Route>
@@ -122,8 +118,8 @@ namespace DoradSmartphone.Services
 
             var speed3 = new Speed
             {
-                Avg = 13.5f,
-                Max = 14.8f,
+                Avg = 13.5,
+                Max = 14.8,
             };
 
             var route3 = new List<Route>
@@ -149,8 +145,8 @@ namespace DoradSmartphone.Services
 
             var speed4 = new Speed
             {
-                Avg = 13.5f,
-                Max = 14.8f,
+                Avg = 13.5,
+                Max = 14.8,
             };
 
             var route4 = new List<Route>

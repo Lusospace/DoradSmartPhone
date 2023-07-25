@@ -1,13 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using DoradSmartphone.Helpers;
 using DoradSmartphone.Services;
 using DoradSmartphone.Views;
 
 namespace DoradSmartphone.ViewModels
 {
     public partial class UserViewModel : BaseViewModel
-    {
-        //private Itoast
+    {        
         private readonly UserService userService;
 
         [ObservableProperty]
@@ -30,19 +30,19 @@ namespace DoradSmartphone.ViewModels
         {
             if (string.IsNullOrEmpty(name))
             {
-                await DisplayLoginError("Type a name", "Ok");
+                Toaster.MakeToast("Type a name");
             }
             else if (string.IsNullOrEmpty(email))
             {
-                await DisplayLoginError("Type an email", "Ok");
+                Toaster.MakeToast("Type an email");
             }
             else if (string.IsNullOrEmpty(password))
             {
-                await DisplayLoginError("Type a password", "Ok");
+                Toaster.MakeToast("Type a password");
             }
             else if (string.IsNullOrEmpty(phoneNumber))
             {
-                await DisplayLoginError("Type a phone number", "Ok");
+                Toaster.MakeToast("Type a phone number");
             } else
             {
                 var result = await userService.SaveUser(name, email, password, phoneNumber);
@@ -55,8 +55,6 @@ namespace DoradSmartphone.ViewModels
                     await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
                 }
             }
-        }
-
-        async Task DisplayLoginError(string msg, string action) => await Shell.Current.DisplayAlert("Invalid Attempt", msg, action);
+        }        
     }
 }

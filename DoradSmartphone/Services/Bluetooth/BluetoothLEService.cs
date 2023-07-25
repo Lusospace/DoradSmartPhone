@@ -1,9 +1,9 @@
-﻿using DoradSmartphone.Models;
+﻿using DoradSmartphone.Helpers;
+using DoradSmartphone.Models;
 using Plugin.BLE;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.EventArgs;
 using System.Diagnostics;
-using ToastProject;
 
 namespace DoradSmartphone.Services.Bluetooth;
 
@@ -13,12 +13,10 @@ public class BluetoothLEService
     public List<DeviceCandidate> DeviceCandidateList { get; private set; }
     public IBluetoothLE BluetoothLE { get; private set; }
     public IAdapter Adapter { get; private set; }
-    public IDevice Device { get; set; }
-    public IToast toast;
+    public IDevice Device { get; set; }    
 
-    public BluetoothLEService(IToast toast)
-    {
-        this.toast = toast;
+    public BluetoothLEService()
+    {        
         BluetoothLE = CrossBluetoothLE.Current;
         Adapter = CrossBluetoothLE.Current.Adapter;
         Adapter.ScanTimeout = 4000;
@@ -48,7 +46,7 @@ public class BluetoothLEService
                         Id = systemDevice.Id,
                         Name = systemDevice.Name,
                     });
-                    toast.MakeToast($"Found {systemDevice.State.ToString().ToLower()} device {systemDevice.Name}.");
+                    Toaster.MakeToast($"Found {systemDevice.State.ToString().ToLower()} device {systemDevice.Name}.");
                 }
             }
             await Adapter.StartScanningForDevicesAsync();
@@ -73,7 +71,7 @@ public class BluetoothLEService
                 Id = e.Device.Id,
                 Name = e.Device.Name,
             });
-            toast.MakeToast($"Found {e.Device.State.ToString().ToLower()} {e.Device.Name}.");
+            Toaster.MakeToast($"Found {e.Device.State.ToString().ToLower()} {e.Device.Name}.");
         }
     }
 
@@ -83,11 +81,11 @@ public class BluetoothLEService
         {
             try
             {
-                toast.MakeToast($"{e.Device.Name} connection is lost.");
+                Toaster.MakeToast($"{e.Device.Name} connection is lost.");
             }
             catch
             {
-                toast.MakeToast($"Device connection is lost.");
+                Toaster.MakeToast($"Device connection is lost.");
             }
         });
     }
@@ -98,11 +96,11 @@ public class BluetoothLEService
         {
             try
             {
-                toast.MakeToast($"{e.Device.Name} is connected.");
+                Toaster.MakeToast($"{e.Device.Name} is connected.");
             }
             catch
             {
-                toast.MakeToast($"Device is connected.");
+                Toaster.MakeToast($"Device is connected.");
             }
         });
     }
@@ -113,11 +111,11 @@ public class BluetoothLEService
         {
             try
             {
-                toast.MakeToast($"{e.Device.Name} is disconnected.");
+                Toaster.MakeToast($"{e.Device.Name} is disconnected.");
             }
             catch
             {
-                toast.MakeToast($"Device is disconnected.");
+                Toaster.MakeToast($"Device is disconnected.");
             }
         });
     }
@@ -130,11 +128,11 @@ public class BluetoothLEService
         {
             try
             {
-                toast.MakeToast($"Bluetooth state is {e.NewState}.");
+                Toaster.MakeToast($"Bluetooth state is {e.NewState}.");
             }
             catch
             {
-                toast.MakeToast($"Bluetooth state has changed.");
+                Toaster.MakeToast($"Bluetooth state has changed.");
             }
         });
     }

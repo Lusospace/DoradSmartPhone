@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DoradSmartphone.DTO;
+using DoradSmartphone.Helpers;
 using DoradSmartphone.Models;
 using DoradSmartphone.Services;
 using DoradSmartphone.Services.Bluetooth;
@@ -9,13 +10,11 @@ using Kotlin.Properties;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
-using ToastProject;
 
 namespace DoradSmartphone.ViewModels
 {
     public partial class ExerciseViewModel : BaseViewModel, INotifyPropertyChanged
-    {
-        private IToast toast;
+    {        
         private IBluetoothService bluetoothService;
         private List<Exercise> ExercisesList;
         private readonly ExerciseService exerciseService;
@@ -61,10 +60,9 @@ namespace DoradSmartphone.ViewModels
 
         public ICommand RefreshCommand { get; }
 
-        public ExerciseViewModel(ExerciseService exerciseService, IToast toast, IBluetoothService bluetoothService)
+        public ExerciseViewModel(ExerciseService exerciseService, IBluetoothService bluetoothService)
         {
-            Title = "Training Routes";
-            this.toast = toast;
+            Title = "Training Routes";            
             this.exerciseService = exerciseService;
             this.bluetoothService = bluetoothService;
 
@@ -85,7 +83,7 @@ namespace DoradSmartphone.ViewModels
                 ExercisesList = exercices;
                 if(exercices == null)
                 {
-                    toast.MakeToast("User does not have exercises");
+                    Toaster.MakeToast("User does not have exercises");
                 }
                 foreach (var exercise in exercices)
                 {
@@ -97,7 +95,7 @@ namespace DoradSmartphone.ViewModels
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                toast.MakeToast("Failed to retrieve the exercice list " + ex.ToString());
+                Toaster.MakeToast("Failed to retrieve the exercice list " + ex.ToString());
             }
             finally
             {
@@ -115,7 +113,7 @@ namespace DoradSmartphone.ViewModels
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                toast.MakeToast("Failed to retrieve the exercice list " + ex.ToString());
+                Toaster.MakeToast("Failed to retrieve the exercice list " + ex.ToString());
             }
             finally
             {
@@ -138,14 +136,15 @@ namespace DoradSmartphone.ViewModels
         public void NavigateToAvatar(Exercise exercise)
         {
             // Create the DTO object
-            var dto = new GlassDTO
+            var dto = new TransferDTO
             {
                 Exercise = exercise,
-                Widgets = null,                
-                Avatar = null
+                Avatar = new AvatarDTO(),
+                Route = exercise.Route,
+                Widgets = new List<Widget>()
             };
 
-            Application.Current.MainPage.Navigation.PushAsync(new AvatarPage(dto, toast, bluetoothService));        
+            Application.Current.MainPage.Navigation.PushAsync(new AvatarPage(dto, bluetoothService));        
         }
 
         public List<Location> GetLocations(int exerciseId)

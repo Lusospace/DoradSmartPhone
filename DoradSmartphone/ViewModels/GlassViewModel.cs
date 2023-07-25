@@ -1,8 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DoradSmartphone.Services.Bluetooth;
-using System.ComponentModel;
-using ToastProject;
 
 namespace DoradSmartphone.ViewModels
 {
@@ -11,20 +9,17 @@ namespace DoradSmartphone.ViewModels
         [ObservableProperty]
         private string battery;
         [ObservableProperty]
-        private string status;
+        private string status;        
 
-        private IToast toast;
-
-        public GlassViewModel(IToast toast)
+        public GlassViewModel()
         {
-            Title = "Glasses";
-            this.toast = toast;
+            Title = "Glasses";            
             CheckConnection();
         }
 
         public void CheckConnection()
         {
-            BluetoothService bluetoothService = new BluetoothService(toast);
+            BluetoothService bluetoothService = new BluetoothService();
 
             int connectionState = bluetoothService.GetState();
 

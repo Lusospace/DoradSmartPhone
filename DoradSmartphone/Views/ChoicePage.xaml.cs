@@ -1,7 +1,6 @@
 using DoradSmartphone.Services;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.ViewModels;
-using ToastProject;
 
 namespace DoradSmartphone.Views
 {
@@ -9,10 +8,10 @@ namespace DoradSmartphone.Views
     {
         private ChoiceViewModel viewModel;
 
-        public ChoicePage(IToast toast, IBluetoothService bluetoothService, ExerciseService exerciseService)
+        public ChoicePage(IBluetoothService bluetoothService, ExerciseService exerciseService)
         {
             InitializeComponent();
-            viewModel = new ChoiceViewModel(toast, bluetoothService, exerciseService);
+            viewModel = new ChoiceViewModel(bluetoothService, exerciseService);
             BindingContext = viewModel;
         }
 

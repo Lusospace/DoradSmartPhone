@@ -4,14 +4,12 @@ using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
 using System.ComponentModel;
 using System.Windows.Input;
-using ToastProject;
 
 namespace DoradSmartphone.ViewModels
 {
     public partial class DisplaySelectedItemsViewModel : BaseViewModel, INotifyPropertyChanged
-    {
-        private IToast toast;
-        private GlassDTO glassDTO;
+    {        
+        private TransferDTO transferDTO;
         private IBluetoothService bluetoothService;
 
         public ICommand ManualCommand => new Command(Manual);
@@ -19,33 +17,32 @@ namespace DoradSmartphone.ViewModels
 
         public List<Widget> SelectedItems
         {
-            get { return glassDTO.Widgets; }
+            get { return transferDTO.Widgets; }
             set
             {
-                if (glassDTO.Widgets != value)
+                if (transferDTO.Widgets != value)
                 {
-                    glassDTO.Widgets = value;
+                    transferDTO.Widgets = value;
                     OnPropertyChanged(nameof(SelectedItems));
                 }
             }
         }
 
-        public DisplaySelectedItemsViewModel(GlassDTO glassDTO, IToast toast, IBluetoothService bluetoothService)
+        public DisplaySelectedItemsViewModel(TransferDTO transferDTO, IBluetoothService bluetoothService)
         {
             Title = "Configuration Type";
-            this.toast = toast;
-            this.glassDTO = glassDTO;
+            this.transferDTO = transferDTO;
             this.bluetoothService = bluetoothService;
         }
 
         public void Manual()
         {
-            Application.Current.MainPage.Navigation.PushAsync(new ManualPage(glassDTO, toast, bluetoothService));
+            Application.Current.MainPage.Navigation.PushAsync(new ManualPage(transferDTO, bluetoothService));
         }
 
         public void Automatic()
         {
-            Application.Current.MainPage.Navigation.PushAsync(new AutomaticPage(glassDTO, toast, bluetoothService));
+            Application.Current.MainPage.Navigation.PushAsync(new AutomaticPage(transferDTO, bluetoothService));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
