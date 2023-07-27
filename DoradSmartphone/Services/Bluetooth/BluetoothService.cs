@@ -1,6 +1,7 @@
 ﻿using Android.Bluetooth;
 using Android.Util;
 using DoradSmartphone.Helpers;
+using GoogleGson;
 using Java.Util;
 using System.Text;
 using Timer = System.Threading.Timer;
@@ -359,7 +360,7 @@ namespace DoradSmartphone.Services.Bluetooth
             {
                 Task.Run(() =>
                 {
-                    byte[] buffer = new byte[1024];
+                    byte[] buffer = new byte[2048];
                     int bytes;
 
                     while (true)
@@ -385,8 +386,8 @@ namespace DoradSmartphone.Services.Bluetooth
             public void Write(byte[] buffer)
             {
                 try
-                {
-                    outStream.Write(buffer, 0, buffer.Length);                    
+                {                    
+                    outStream.Write(buffer);                    
                 }
                 catch (IOException e)
                 {

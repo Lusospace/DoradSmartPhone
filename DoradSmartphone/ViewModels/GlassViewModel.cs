@@ -21,6 +21,8 @@ namespace DoradSmartphone.ViewModels
         {
             BluetoothService bluetoothService = new BluetoothService();
 
+            bluetoothService.Start();
+
             int connectionState = bluetoothService.GetState();
 
             if (connectionState == BluetoothService.STATE_CONNECTED)
