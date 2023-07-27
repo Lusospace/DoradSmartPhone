@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoradSmartphone.Views.CalibrationPage"
+             xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
+             x:DataType="viewmodel:CalibrationViewModel"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <ScrollView>
+                <StackLayout x:Name="MainLayout" VerticalOptions="Center">
+                    <Grid VerticalOptions="Center" HorizontalOptions="Center" RowSpacing="15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Image x:Name="SelectedPhotoImage" Source="{Binding SelectedPhoto}" 
+                   Style="{StaticResource ImageContainerStyle}" WidthRequest="300"
+                   HeightRequest="300" HorizontalOptions="Center" Grid.Row="0"/>
+
+                        <!-- Button to stop calibration -->
+                        <Button Text="Stop Calibration" Command="{Binding StopCalibrationCommand}"
+                    Style="{StaticResource ButtonContainerStyle}" Grid.Row="1"
+                                WidthRequest="100" CornerRadius="20" HorizontalOptions="Center"
+                                Margin="10" 
+                                FontSize="15"/>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

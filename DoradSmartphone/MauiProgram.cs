@@ -37,7 +37,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<ExercisePage>();
         builder.Services.AddTransient<StartRunPage>();
         builder.Services.AddSingleton<AutomaticPage>();
-        builder.Services.AddSingleton<DashboardPage>();                
+        builder.Services.AddSingleton<DashboardPage>();
+        builder.Services.AddSingleton<CalibrationPage>();
         builder.Services.AddSingleton<DisplaySelectedItemsPage>();        
 
         builder.Services.AddSingleton<UserService>();
@@ -58,7 +59,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<LoadingViewModel>();        
         builder.Services.AddTransient<ExerciseViewModel>();
         builder.Services.AddTransient<AutomaticViewModel>();
-        builder.Services.AddTransient<DashboardViewModel>();        
+        builder.Services.AddTransient<DashboardViewModel>();
+        builder.Services.AddTransient<CalibrationViewModel>();
 
         return builder.Build();
 	}

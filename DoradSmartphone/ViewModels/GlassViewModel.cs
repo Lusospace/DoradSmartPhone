@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using DoradSmartphone.Helpers;
 using DoradSmartphone.Services.Bluetooth;
+using DoradSmartphone.Views;
 
 namespace DoradSmartphone.ViewModels
 {
@@ -13,7 +15,7 @@ namespace DoradSmartphone.ViewModels
 
         public GlassViewModel()
         {
-            Title = "Glasses";            
+            Title = "Glasses Page";            
             CheckConnection();
         }
 
@@ -36,9 +38,49 @@ namespace DoradSmartphone.ViewModels
         }
 
         [RelayCommand]
-        public void Calibration()
+        public async Task Calibration()
         {
             CheckConnection();
+
+            byte[] photoData = await PickPhotoAsync();
+
+            if (photoData != null)
+            {
+                try
+                {
+                    //bluetoothService.Write(photoData);
+                    _ = Application.Current.MainPage.Navigation.PushAsync(new CalibrationPage(photoData));
+                }
+                catch (Exception ex)
+                {
+                    Toaster.MakeToast("Error when sending the image via bluetooth. " + ex);
+                    throw new Exception("Error when sending the image via bluetooth");
+                }
+            }
+        }
+
+        private async Task<byte[]> PickPhotoAsync()
+        {
+            try
+            {
+                var photo = await MediaPicker.PickPhotoAsync();
+                if (photo != null)
+                {
+                    using (var stream = await photo.OpenReadAsync())
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await stream.CopyToAsync(memoryStream);
+                        return memoryStream.ToArray();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Toaster.MakeToast("Error when picking image. " + ex);
+                throw new Exception("Error picking image.");
+            }
+
+            return null;
         }
 
     }
