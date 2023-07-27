@@ -9,7 +9,6 @@ Microsoft.Maui.Graphics.dll
 Microsoft.Maui.Maps.dll
 Plugin.BLE.dll
 SQLitePCLRaw.lib.e_sqlite3.android.dll
-ToastProject.dll
 Xamarin.Android.Glide.Annotations.dll
 Xamarin.Android.Glide.DiskLruCache.dll
 Xamarin.Android.Glide.dll
@@ -165,7 +164,6 @@ maui.aar
 Microsoft.Maui.aar
 Microsoft.Maui.Essentials.aar
 Microsoft.Maui.Maps.aar
-ToastProject.aar
 Xamarin.Google.Crypto.Tink.Android.aar
 play-services-base.aar
 play-services-basement.aar

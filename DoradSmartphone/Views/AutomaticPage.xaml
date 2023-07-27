@@ -65,7 +65,7 @@
                    VerticalOptions="Center" />
             </Grid>
 
-            <!-- Second Grid with 10% height -->
+            <!-- Second Grid with 12% height -->
             <Grid Grid.Row="1" Margin="10" x:Name="ButtonGrid">
                 <Button Text="Review" WidthRequest="100" CornerRadius="40" HorizontalOptions="Center" 
                                 Command="{Binding ReviewPageCommand}" Margin="10" 

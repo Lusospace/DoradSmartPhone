@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     "net7.0-android33.0": {
+      "AutoMapper/12.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.2.0": {
         "type": "package",
         "compile": {
@@ -29,6 +45,15 @@
           "lib/net6.0-android31.0/GoogleGson.dll": {
             "related": ".aar;.xml"
           }
+        }
+      },
+      "Microsoft.CSharp/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/MonoAndroid10/_._": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10/_._": {}
         }
       },
       "Microsoft.Extensions.Configuration/7.0.0": {
@@ -2206,20 +2231,26 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.KotlinX.Coroutines.Core.Jvm.targets": {}
-        }
-      },
-      "ToastProject/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "compile": {
-          "bin/placeholder/ToastProject.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ToastProject.dll": {}
         }
       }
     },
     "net7.0-android33.0/android-arm": {
+      "AutoMapper/12.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.2.0": {
         "type": "package",
         "compile": {
@@ -2247,6 +2278,15 @@
           "lib/net6.0-android31.0/GoogleGson.dll": {
             "related": ".aar;.xml"
           }
+        }
+      },
+      "Microsoft.CSharp/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/MonoAndroid10/_._": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10/_._": {}
         }
       },
       "Microsoft.Extensions.Configuration/7.0.0": {
@@ -4424,20 +4464,26 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.KotlinX.Coroutines.Core.Jvm.targets": {}
-        }
-      },
-      "ToastProject/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "compile": {
-          "bin/placeholder/ToastProject.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ToastProject.dll": {}
         }
       }
     },
     "net7.0-android33.0/android-arm64": {
+      "AutoMapper/12.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.2.0": {
         "type": "package",
         "compile": {
@@ -4465,6 +4511,15 @@
           "lib/net6.0-android31.0/GoogleGson.dll": {
             "related": ".aar;.xml"
           }
+        }
+      },
+      "Microsoft.CSharp/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/MonoAndroid10/_._": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10/_._": {}
         }
       },
       "Microsoft.Extensions.Configuration/7.0.0": {
@@ -6642,20 +6697,26 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.KotlinX.Coroutines.Core.Jvm.targets": {}
-        }
-      },
-      "ToastProject/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "compile": {
-          "bin/placeholder/ToastProject.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ToastProject.dll": {}
         }
       }
     },
     "net7.0-android33.0/android-x64": {
+      "AutoMapper/12.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.2.0": {
         "type": "package",
         "compile": {
@@ -6683,6 +6744,15 @@
           "lib/net6.0-android31.0/GoogleGson.dll": {
             "related": ".aar;.xml"
           }
+        }
+      },
+      "Microsoft.CSharp/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/MonoAndroid10/_._": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10/_._": {}
         }
       },
       "Microsoft.Extensions.Configuration/7.0.0": {
@@ -8860,20 +8930,26 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.KotlinX.Coroutines.Core.Jvm.targets": {}
-        }
-      },
-      "ToastProject/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "compile": {
-          "bin/placeholder/ToastProject.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ToastProject.dll": {}
         }
       }
     },
     "net7.0-android33.0/android-x86": {
+      "AutoMapper/12.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.2.0": {
         "type": "package",
         "compile": {
@@ -8901,6 +8977,15 @@
           "lib/net6.0-android31.0/GoogleGson.dll": {
             "related": ".aar;.xml"
           }
+        }
+      },
+      "Microsoft.CSharp/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/MonoAndroid10/_._": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10/_._": {}
         }
       },
       "Microsoft.Extensions.Configuration/7.0.0": {
@@ -11078,21 +11163,26 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.KotlinX.Coroutines.Core.Jvm.targets": {}
-        }
-      },
-      "ToastProject/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "compile": {
-          "bin/placeholder/ToastProject.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ToastProject.dll": {}
         }
       }
     }
   },
   "libraries": {
+    "AutoMapper/12.0.1": {
+      "sha512": "hvV62vl6Hp/WfQ24yzo3Co9+OPl8wH8hApwVtgWpiAynVJkUcs7xvehnSftawL8Pe8FrPffBRM3hwzLQqWDNjA==",
+      "type": "package",
+      "path": "automapper/12.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "automapper.12.0.1.nupkg.sha512",
+        "automapper.nuspec",
+        "icon.png",
+        "lib/netstandard2.1/AutoMapper.dll",
+        "lib/netstandard2.1/AutoMapper.xml"
+      ]
+    },
     "CommunityToolkit.Mvvm/8.2.0": {
       "sha512": "F883u+B0AVUkRZS+VQBiZEJiqlGiiQhGA8Ejy1/Y8fl4ecBmSd+HYuDso0iiUhh+UxRDjp2aTQ7jGkuL2S4NrA==",
       "type": "package",
@@ -11140,6 +11230,75 @@
         "lib/net6.0-android31.0/GoogleGson.aar",
         "lib/net6.0-android31.0/GoogleGson.dll",
         "lib/net6.0-android31.0/GoogleGson.xml"
+      ]
+    },
+    "Microsoft.CSharp/4.7.0": {
+      "sha512": "pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
+      "type": "package",
+      "path": "microsoft.csharp/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/Microsoft.CSharp.dll",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.3/Microsoft.CSharp.dll",
+        "lib/netstandard2.0/Microsoft.CSharp.dll",
+        "lib/netstandard2.0/Microsoft.CSharp.xml",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/uap10.0.16299/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "microsoft.csharp.4.7.0.nupkg.sha512",
+        "microsoft.csharp.nuspec",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/Microsoft.CSharp.dll",
+        "ref/netcore50/Microsoft.CSharp.xml",
+        "ref/netcore50/de/Microsoft.CSharp.xml",
+        "ref/netcore50/es/Microsoft.CSharp.xml",
+        "ref/netcore50/fr/Microsoft.CSharp.xml",
+        "ref/netcore50/it/Microsoft.CSharp.xml",
+        "ref/netcore50/ja/Microsoft.CSharp.xml",
+        "ref/netcore50/ko/Microsoft.CSharp.xml",
+        "ref/netcore50/ru/Microsoft.CSharp.xml",
+        "ref/netcore50/zh-hans/Microsoft.CSharp.xml",
+        "ref/netcore50/zh-hant/Microsoft.CSharp.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.0/Microsoft.CSharp.dll",
+        "ref/netstandard1.0/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/de/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/es/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/fr/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/it/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/ja/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/ko/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/ru/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/zh-hans/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/zh-hant/Microsoft.CSharp.xml",
+        "ref/netstandard2.0/Microsoft.CSharp.dll",
+        "ref/netstandard2.0/Microsoft.CSharp.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/uap10.0.16299/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "Microsoft.Extensions.Configuration/7.0.0": {
@@ -13889,15 +14048,11 @@
         "xamarin.kotlinx.coroutines.core.jvm.1.6.4.1.nupkg.sha512",
         "xamarin.kotlinx.coroutines.core.jvm.nuspec"
       ]
-    },
-    "ToastProject/1.0.0": {
-      "type": "project",
-      "path": "../ToastProject/ToastProject.csproj",
-      "msbuildProject": "../ToastProject/ToastProject.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0-android33.0": [
+      "AutoMapper >= 12.0.1",
       "CommunityToolkit.Mvvm >= 8.2.0",
       "Microsoft.Extensions.Configuration >= 7.0.0",
       "Microsoft.Extensions.DependencyInjection >= 7.0.0",
@@ -13909,7 +14064,6 @@
       "Plugin.BLE >= 2.1.3",
       "SQLiteNetExtensions >= 2.1.0",
       "SQLitePCLRaw.provider.dynamic_cdecl >= 2.1.4",
-      "ToastProject >= 1.0.0",
       "Xamarin.Android.Glide >= 4.13.2.2",
       "Xamarin.AndroidX.Browser >= 1.4.0.3",
       "Xamarin.AndroidX.Legacy.Support.V4 >= 1.0.0.15",
@@ -13959,11 +14113,7 @@
       "frameworks": {
         "net7.0-android33.0": {
           "targetAlias": "net7.0-android33.0",
-          "projectReferences": {
-            "C:\\Projects\\Dorad\\doradsmartphone\\ToastProject\\ToastProject.csproj": {
-              "projectPath": "C:\\Projects\\Dorad\\doradsmartphone\\ToastProject\\ToastProject.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -13976,6 +14126,10 @@
       "net7.0-android33.0": {
         "targetAlias": "net7.0-android33.0",
         "dependencies": {
+          "AutoMapper": {
+            "target": "Package",
+            "version": "[12.0.1, )"
+          },
           "CommunityToolkit.Mvvm": {
             "target": "Package",
             "version": "[8.2.0, )"

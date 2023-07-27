@@ -1,22 +1,26 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DoradSmartphone.DTO;
+using DoradSmartphone.Helpers;
 using DoradSmartphone.Models;
 using DoradSmartphone.Services;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
+using Kotlin.Properties;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using ToastProject;
+using System.Windows.Input;
 
 namespace DoradSmartphone.ViewModels
 {
     public partial class ExerciseViewModel : BaseViewModel, INotifyPropertyChanged
-    {
-        private IToast toast;
+    {        
         private IBluetoothService bluetoothService;
         private List<Exercise> ExercisesList;
         private readonly ExerciseService exerciseService;
+
+        [ObservableProperty]
+        string finalAddress;
 
         public ObservableCollection<Exercise> Exercises { get; private set; } = new();
 
@@ -31,20 +35,45 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
-        public ExerciseViewModel(ExerciseService exerciseService, IToast toast, IBluetoothService bluetoothService)
+        private bool isLoading;
+        public bool IsLoading
         {
-            Title = "Training Routes";
-            this.toast = toast;
-            this.exerciseService = exerciseService;
-            this.bluetoothService = bluetoothService;
+            get { return isLoading; }
+            set
+            {
+                isLoading = value;
+                OnPropertyChanged(nameof(IsLoading));
+                OnPropertyChanged(nameof(IsNotLoading));
+            }
         }
 
-        [ObservableProperty]
-        bool isRefreshing;
+        private bool isRefreshing;
+        public bool IsRefreshing
+        {
+            get { return isRefreshing; }
+            set
+            {
+                isRefreshing = value;
+                OnPropertyChanged(nameof(IsRefreshing));
+            }
+        }
+
+        public ICommand RefreshCommand { get; }
+
+        public ExerciseViewModel(ExerciseService exerciseService, IBluetoothService bluetoothService)
+        {
+            Title = "Training Routes";            
+            this.exerciseService = exerciseService;
+            this.bluetoothService = bluetoothService;
+
+            RefreshCommand = new Command(async () =>
+            {
+                await RefreshData();                
+            });
+        }
 
         public async Task GetExerciseList()
         {
-            if (IsLoading) return;
             try
             {
                 IsLoading = true;
@@ -54,18 +83,40 @@ namespace DoradSmartphone.ViewModels
                 ExercisesList = exercices;
                 if(exercices == null)
                 {
-                    toast.MakeToast("User does not have exercises");
+                    Toaster.MakeToast("User does not have exercises");
                 }
-                foreach (var exercise in exercices) Exercises.Add(exercise);
+                foreach (var exercise in exercices)
+                {
+                    var lastRoute = exercise.Route[exercise.Route.Count - 1];
+
+                    Exercises.Add(exercise);
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                toast.MakeToast("Failed to retrieve the exercice list " + ex.ToString());
+                Toaster.MakeToast("Failed to retrieve the exercice list " + ex.ToString());
             }
             finally
             {
                 IsLoading = false;
+            }
+        }
+        private async Task RefreshData()
+        {
+
+            try
+            {
+                IsRefreshing = false;
+                await GetExerciseList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Toaster.MakeToast("Failed to retrieve the exercice list " + ex.ToString());
+            }
+            finally
+            {
                 IsRefreshing = false;
             }
         }
@@ -85,14 +136,15 @@ namespace DoradSmartphone.ViewModels
         public void NavigateToAvatar(Exercise exercise)
         {
             // Create the DTO object
-            var dto = new GlassDTO
+            var dto = new TransferDTO
             {
                 Exercise = exercise,
-                Widgets = null,                
-                Avatar = null
+                Avatar = new AvatarDTO(),
+                Route = exercise.Route,
+                Widgets = new List<Widget>()
             };
 
-            Application.Current.MainPage.Navigation.PushAsync(new AvatarPage(dto, toast, bluetoothService));        
+            Application.Current.MainPage.Navigation.PushAsync(new AvatarPage(dto, bluetoothService));        
         }
 
         public List<Location> GetLocations(int exerciseId)

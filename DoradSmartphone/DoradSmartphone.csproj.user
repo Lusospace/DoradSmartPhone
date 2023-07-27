@@ -21,6 +21,9 @@
     <MauiXaml Update="Views\AvatarPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Views\ChoicePage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Views\DashboardPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

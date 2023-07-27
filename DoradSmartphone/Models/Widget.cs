@@ -16,12 +16,11 @@ namespace DoradSmartphone.Models
         public double ZPosition { get; internal set; }
         public double RelativeXPosition { get; set; }
         public double RelativeYPosition { get; set; }
+        public double GlassXPosition { get; set; }
+        public double GlassYPosition { get; set; }
 
         [ForeignKey(typeof(WidgetConfiguration))]
         public int WidgetConfigurationId { get; set; }
-
-        [OneToOne(CascadeOperations = CascadeOperation.All)]
-        public WidgetConfiguration WidgetConfiguration { get; set; }
 
         public bool IsSelected
         {

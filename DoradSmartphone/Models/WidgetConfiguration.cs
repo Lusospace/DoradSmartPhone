@@ -7,11 +7,9 @@ namespace DoradSmartphone.Models
     public class WidgetConfiguration : BaseEntity
 
     {
-        public int PosX { get; set; }
-        public int PosY { get; set; }
-        [ForeignKey(typeof(Widget))]
-        public int WidgetId { get; set; }
-        [OneToOne(CascadeOperations = CascadeOperation.All)]
-        public Widget Widget { get; set; }
+        [ForeignKey(typeof(User))]
+        public int UserId { get; set; }
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<Widget> Widget { get; set; }
     }
 }

@@ -3,8 +3,6 @@ using DoradSmartphone.Services;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.ViewModels;
 using DoradSmartphone.Views;
-using ToastProject;
-using ToastProject.Platforms;
 
 namespace DoradSmartphone;
 
@@ -25,9 +23,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<DatabaseConn>();
         builder.Services.AddScoped<IRepository, DatabaseConn>();
 
-        builder.Services.AddSingleton<IToast>((e) => new Toaster());
-
-        builder.Services.AddSingleton<GeneralPage>();
+        builder.Services.AddTransient<GeneralPage>();
 
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddTransient<UserPage>();        
@@ -36,6 +32,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<AvatarPage>();
         builder.Services.AddSingleton<WidgetPage>();
         builder.Services.AddSingleton<ManualPage>();
+        builder.Services.AddSingleton<ChoicePage>();
         builder.Services.AddSingleton<LoadingPage>();
         builder.Services.AddSingleton<ExercisePage>();
         builder.Services.AddTransient<StartRunPage>();
@@ -50,7 +47,6 @@ public static class MauiProgram
         
         builder.Services.AddTransient<BluetoothService>();
         builder.Services.AddScoped<IBluetoothService, BluetoothService>();
-        //builder.Services.AddSingleton<BluetoothLEService>();
 
         builder.Services.AddSingleton<UserViewModel>();
         builder.Services.AddTransient<GlassViewModel>();
@@ -58,6 +54,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<AvatarViewModel>();
         builder.Services.AddTransient<WidgetViewModel>();
         builder.Services.AddTransient<ManualViewModel>();
+        builder.Services.AddTransient<ChoiceViewModel>();
         builder.Services.AddSingleton<LoadingViewModel>();        
         builder.Services.AddTransient<ExerciseViewModel>();
         builder.Services.AddTransient<AutomaticViewModel>();

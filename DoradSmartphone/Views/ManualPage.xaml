@@ -10,12 +10,34 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="90*" />
                 <RowDefinition Height="10*" />
+                <RowDefinition Height="80*" />
+                <RowDefinition Height="12*" />
             </Grid.RowDefinitions>
 
-            <!-- First Grid with 90% height -->
-            <Grid x:Name="WidgetGrid">
+            <!-- First Grid with 10% height -->
+            <Grid Grid.Row="0" Margin="10" x:Name="SliderGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Text="1" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="1"/>
+                <Label Text="10" Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Center" 
+                       Grid.Row="1"/>
+                <!-- Display the corresponding value from the ViewModel -->
+                <Label Text="{Binding SliderLabel}" Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Slider x:Name="slider" Grid.Column="1" Minimum="1" Maximum="10" 
+                        Grid.Row="1" Value="{Binding SliderValue, Mode=TwoWay}" />
+            </Grid>
+
+            <!-- Second Grid with 70% height -->
+            <Grid x:Name="WidgetGrid" Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
@@ -83,21 +105,12 @@
                     </Image.GestureRecognizers>
                 </Image>
             </Grid>
-
-            <Grid Grid.Row="1" Margin="10" x:Name="SliderGrid">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-
-                <Label Text="1" HorizontalOptions="End" VerticalOptions="Center" />
-                <Label Text="10" Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Center" />
-
-                <Slider x:Name="slider" Grid.Column="1" Minimum="1" Maximum="10" Value="{Binding SliderValue, Mode=TwoWay}" />
-
-                <!-- Display the corresponding value from the ViewModel -->
-                <Label Text="{Binding SliderLabel}" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" />
+            
+            <!-- Third Grid with 12% height -->
+            <Grid Grid.Row="2" Margin="10" x:Name="ButtonGrid">
+                <Button Text="Review" WidthRequest="100" CornerRadius="40" HorizontalOptions="Center" 
+                                Command="{Binding ReviewPageCommand}" Margin="10" 
+                                FontSize="15"/>
             </Grid>
 
         </Grid>

@@ -4,17 +4,15 @@ using DoradSmartphone.Helpers;
 using DoradSmartphone.Models;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
-using Microsoft.Maui.Graphics.Text;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using ToastProject;
 
 namespace DoradSmartphone.ViewModels
 {
     public partial class ManualViewModel : BaseViewModel, INotifyPropertyChanged
     {
-        private IToast toast;
         private GlassDTO glassDTO;
+        private TransferDTO transferDTO;
         private IBluetoothService bluetoothService;
 
         private double sliderValue;
@@ -61,14 +59,13 @@ namespace DoradSmartphone.ViewModels
             set => SetProperty(ref manualPage, value);
         }
 
-        public ManualViewModel(GlassDTO glassDTO, IToast toast, IBluetoothService bluetoothService)
+        public ManualViewModel(TransferDTO transferDTO, IBluetoothService bluetoothService)
         {
             Title = "Manual Configuration";
-            SliderValue = 1;
-            this.toast = toast;
-            this.glassDTO = glassDTO;
+            SliderValue = 1;            
+            this.transferDTO = transferDTO;
             this.bluetoothService = bluetoothService;
-            Widgets = new ObservableCollection<Widget>(glassDTO.Widgets);
+            Widgets = new ObservableCollection<Widget>(transferDTO.Widgets);
 
             UpdateSliderLabel();
             LoadAutomaticPage();
@@ -77,19 +74,21 @@ namespace DoradSmartphone.ViewModels
         [RelayCommand]
         public void ReviewPage()
         {
-            SendOverBluetooth();
-            Application.Current.MainPage.Navigation.PushAsync(new GeneralPage(glassDTO));
+            glassDTO = EntityToDto.Convertion(transferDTO);
+            glassDTO.WidgetConfiguration = false;
+            SendOverBluetooth(glassDTO);
+            Application.Current.MainPage.Navigation.PushAsync(new GeneralPage(transferDTO));
         }
 
-        private void SendOverBluetooth() => bluetoothService.Write(ConvertToJsonAndBytes.Convert(glassDTO));
+        private void SendOverBluetooth(GlassDTO glassDTO) => bluetoothService.Write(ConvertToJsonAndBytes.Convert(glassDTO));
 
         private void LoadAutomaticPage()
         {
-            CalculateWidgetPositions.LoadAutomaticPage(glassDTO, out ContentPage manualPage);
+            CalculateWidgetPositions.LoadAutomaticPage(transferDTO, out ContentPage manualPage);
             ManualPage = manualPage;
 
             // Update the GlassDTO with the modified Widgets
-            glassDTO.Widgets = Widgets.ToList();
+            transferDTO.Widgets = Widgets.ToList();
         }
 
         private void UpdateSliderLabel()
@@ -135,9 +134,9 @@ namespace DoradSmartphone.ViewModels
 
         public void UpdateWidgetZPosition(string zPosition)
         {
-            if (glassDTO != null)
+            if (transferDTO != null)
             {
-                foreach (var widget in glassDTO.Widgets)
+                foreach (var widget in transferDTO.Widgets)
                 {
                     widget.ZPosition = double.Parse(zPosition);
                 }

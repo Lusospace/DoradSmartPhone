@@ -1,7 +1,6 @@
 using DoradSmartphone.DTO;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.ViewModels;
-using ToastProject;
 
 namespace DoradSmartphone.Views;
 
@@ -9,16 +8,20 @@ public partial class ManualPage : ContentPage
 {
     private Point initialPosition;
 
-    public ManualPage(GlassDTO glassDTO, IToast toast, IBluetoothService bluetoothService)
+    public ManualPage(TransferDTO transferDTO, IBluetoothService bluetoothService)
     {
         InitializeComponent();        
-        BindingContext = new ManualViewModel(glassDTO, toast, bluetoothService);
+        BindingContext = new ManualViewModel(transferDTO, bluetoothService);
     }
 
     private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
     {
         var image = (Image)sender;
         const double sensitivity = 0.7; // Adjust the sensitivity factor as needed
+
+        var ScreenSize = CalculateWidgetPositions.GetScreenResolution();
+
+        var parentContainer = WidgetGrid; // Replace WidgetGrid with the actual parent container of the image
 
         switch (e.StatusType)
         {
@@ -37,20 +40,17 @@ public partial class ManualPage : ContentPage
                 // Get the final position of the image when the dragging is completed
                 var finalPosition = new Point(image.TranslationX, image.TranslationY);
                 initialPosition = finalPosition;
-                Shell.Current.DisplayAlert("Warning", "The new position is: " + finalPosition, "Ok");
-                
-                var gridWidth = WidgetGrid.Width;
-                var gridHeight = WidgetGrid.Height;
 
-                // Calculate the percentage values
-                var relativeX = (finalPosition.X / gridWidth) * 100;
-                var relativeY = (finalPosition.Y / gridHeight) * 100;
+                // Calculate the real pixel position based on the total resolution of the screen
+                var screenWidth = ScreenSize.Item1;
+                var screenHeight = ScreenSize.Item2;
 
-                var formattedRelativeX = relativeX.ToString("0.00");
-                var formattedRelativeY = relativeY.ToString("0.00");
+                var screenPositionX = (screenWidth * parentContainer.Width / parentContainer.Width) + finalPosition.X;
+                var screenPositionY = (screenHeight * parentContainer.Height / parentContainer.Height) + finalPosition.Y;
 
-                Shell.Current.DisplayAlert("Warning", "The new relative position is for the X: " + formattedRelativeX + " and for the Y " + formattedRelativeY, "Ok");
+                Shell.Current.DisplayAlert("Warning", "The new screen position is: X=" + screenPositionX + ", Y=" + screenPositionY, "Ok");
                 break;
         }
-    }   
+    }
+
 }

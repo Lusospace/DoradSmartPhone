@@ -24,11 +24,12 @@ public partial class AppShell : Shell
         }
 
         Routing.RegisterRoute(nameof(GeneralPage), typeof(GeneralPage));
-
+        
         Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
         Routing.RegisterRoute(nameof(UserPage), typeof(UserPage));       
         Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
         Routing.RegisterRoute(nameof(GlassPage), typeof(GlassPage));
+        Routing.RegisterRoute(nameof(ChoicePage), typeof(ChoicePage));
         Routing.RegisterRoute(nameof(AvatarPage), typeof(AvatarPage));
         Routing.RegisterRoute(nameof(WidgetPage), typeof(WidgetPage));
         Routing.RegisterRoute(nameof(LoadingPage), typeof(LoadingPage));

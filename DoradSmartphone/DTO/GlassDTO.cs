@@ -3,9 +3,10 @@
 namespace DoradSmartphone.DTO
 {
     public class GlassDTO
-    {
-        public Exercise Exercise { get; set; }
-        public List<Widget> Widgets { get; set; }        
+    { 
         public AvatarDTO Avatar { get; set; }
+        public List<RoutesDTO> RoutesDTOs { get; set; }
+        public List<WidgetDTO> WidgetDTOs { get; set; }
+        public bool WidgetConfiguration { get; set; }
     }
 }

@@ -27,6 +27,8 @@ public partial class LoginPage : ContentPage
         HideKeyboard();
         if(Username.Text != null && Password.Text != null)
             _ = loginViewModel.Login();
+        Username.Text = null;
+        Password.Text = null;
     }
 
     private void HideKeyboard()

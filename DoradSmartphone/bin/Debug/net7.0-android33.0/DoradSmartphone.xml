@@ -43,6 +43,15 @@
         <member name="P:DoradSmartphone.ViewModels.BaseViewModel.IsScanning">
             <inheritdoc cref="F:DoradSmartphone.ViewModels.BaseViewModel.isScanning"/>
         </member>
+        <member name="T:DoradSmartphone.ViewModels.ChoiceViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.ChoiceViewModel.oldRouteCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ChoiceViewModel.OldRouteCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.ChoiceViewModel.OldRouteCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ChoiceViewModel.OldRoute"/>.</summary>
+        </member>
         <member name="T:DoradSmartphone.ViewModels.DashboardViewModel">
             <inheritdoc/>
             <inheritdoc/>
@@ -71,8 +80,8 @@
             <inheritdoc/>
             <inheritdoc/>
         </member>
-        <member name="P:DoradSmartphone.ViewModels.ExerciseViewModel.IsRefreshing">
-            <inheritdoc cref="F:DoradSmartphone.ViewModels.ExerciseViewModel.isRefreshing"/>
+        <member name="P:DoradSmartphone.ViewModels.ExerciseViewModel.FinalAddress">
+            <inheritdoc cref="F:DoradSmartphone.ViewModels.ExerciseViewModel.finalAddress"/>
         </member>
         <member name="F:DoradSmartphone.ViewModels.ExerciseViewModel.insertCommand">
             <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ExerciseViewModel.InsertCommand"/>.</summary>
@@ -195,8 +204,8 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DeviceBool">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DeviceBool" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsRefreshing">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FinalAddress">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FinalAddress" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Battery">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Battery" generated properties.</summary>
@@ -218,6 +227,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PhoneNumber">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PhoneNumber" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsRefreshing">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
             <summary>
@@ -252,8 +264,8 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DeviceBool">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DeviceBool" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsRefreshing">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FinalAddress">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FinalAddress" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Battery">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Battery" generated properties.</summary>
@@ -275,6 +287,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PhoneNumber">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PhoneNumber" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsRefreshing">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
         </member>
     </members>
 </doc>

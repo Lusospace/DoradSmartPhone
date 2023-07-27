@@ -1,20 +1,20 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using AutoMapper;
+using CommunityToolkit.Mvvm.ComponentModel;
 using DoradSmartphone.DTO;
+using DoradSmartphone.Helpers;
 using DoradSmartphone.Models;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
-using ToastProject;
 
 namespace DoradSmartphone.ViewModels
 {
     public partial class WidgetViewModel : BaseViewModel, INotifyPropertyChanged
-    {
-        private IToast toast;
-        private GlassDTO glassDTO;
-        private IBluetoothService bluetoothService;
+    {        
+        private TransferDTO transferDTO;
+        private IBluetoothService bluetoothService;        
 
         [ObservableProperty]
         private bool isRefreshing;
@@ -25,11 +25,10 @@ namespace DoradSmartphone.ViewModels
 
         public ICommand DisplaySelectedItemsCommand => new Command(DisplaySelectedItems);
 
-        public WidgetViewModel(GlassDTO glassDTO, IToast toast, IBluetoothService bluetoothService)
+        public WidgetViewModel(TransferDTO transferDTO, IBluetoothService bluetoothService)
         {
-            Title = "Widget Selection";
-            this.toast = toast;
-            this.glassDTO = glassDTO;
+            Title = "Widget Selection";           
+            this.transferDTO = transferDTO;
             this.bluetoothService = bluetoothService;
         }
 
@@ -62,22 +61,22 @@ namespace DoradSmartphone.ViewModels
             selectedItems = Widgets.Where(w => w.IsSelected).ToList();
             if (selectedItems.Count < 1)
             {
-                toast.MakeToast($"Must select at least 1 widget");
+                Toaster.MakeToast($"Must select at least 1 widget");
                 return;
             }
             else if (selectedItems.Count > 5)
             {
-                toast.MakeToast($"Must not select more than 5 widgets");
+                Toaster.MakeToast($"Must not select more than 5 widgets");
                 return;
             }
             else
             {
-                if (glassDTO.Widgets == null)
+                if (transferDTO.Widgets == null)
                 {
-                    glassDTO.Widgets = new List<Widget>(); // Create a new instance if null
+                    transferDTO.Widgets = new List<Widget>();
                 }
-                glassDTO.Widgets = selectedItems;
-                Application.Current.MainPage.Navigation.PushAsync(new DisplaySelectedItemsPage(glassDTO, toast, bluetoothService));
+                transferDTO.Widgets = selectedItems;
+                Application.Current.MainPage.Navigation.PushAsync(new DisplaySelectedItemsPage(transferDTO, bluetoothService));
             }
         }
 

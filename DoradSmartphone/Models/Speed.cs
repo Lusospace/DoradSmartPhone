@@ -6,8 +6,8 @@ namespace DoradSmartphone.Models
     [Table("speed")]
     public class Speed : BaseEntity
     {
-        public float Avg { get; set; }
-        public float Max { get; set; }
+        public double Avg { get; set; }
+        public double Max { get; set; }
 
         [ForeignKey(typeof(Exercise))]
         public int ExerciseId { get; set; }

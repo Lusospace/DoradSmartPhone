@@ -49,7 +49,7 @@
         <Tab Title="Start Run" Icon="{x:Static helpers:Icons.Avatar}">
             <ShellContent
                 Title="Start Run"
-                ContentTemplate="{DataTemplate views:StartRunPage}"
+                ContentTemplate="{DataTemplate views:ChoicePage}"
                 Route="StartRun"/>
         </Tab>
         

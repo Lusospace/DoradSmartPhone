@@ -136,8 +136,8 @@ namespace DoradSmartphone.Services.Bluetooth
 
         public void Connected(BluetoothSocket socket, BluetoothDevice device)
         {
-            // Cancel the thread that completed the connection
             if (acceptThread != null)
+            // Cancel the thread that completed the connection
             {
                 acceptThread.Cancel();
                 acceptThread = null;

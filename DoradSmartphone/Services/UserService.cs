@@ -5,12 +5,11 @@ namespace DoradSmartphone.Services
 {
     public class UserService
     {
-        public readonly IRepository _repository;
-        public readonly DatabaseConn _databaseConn;
-        public UserService(IRepository repository, DatabaseConn databaseConn = null)
+        public readonly IRepository repository;
+        
+        public UserService(IRepository repository)
         {
-            _repository = repository;
-            _databaseConn = databaseConn;
+            this.repository = repository;            
         }
 
         public async Task<bool> SaveUser(string name, string email, string password, string phoneNumber)
@@ -23,10 +22,10 @@ namespace DoradSmartphone.Services
                 PhoneNumber = phoneNumber
             };
 
-            var exists = await _databaseConn.GetUserByEmail(email);
+            var exists = await repository.RecoverUserByEmail(email);
             if(exists is null)
             {
-                await _repository.SaveItensAsync(user);
+                await repository.SaveItensAsync(user);
                 return true;
             }
             else

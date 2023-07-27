@@ -5,15 +5,13 @@ using DoradSmartphone.Models;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
-using ToastProject;
 
 namespace DoradSmartphone.ViewModels
 {
     public partial class AutomaticViewModel : BaseViewModel
     {
-        private IToast toast;
         private GlassDTO glassDTO;
+        private TransferDTO transferDTO;
         private IBluetoothService bluetoothService;
 
         private ObservableCollection<Widget> widgets;
@@ -30,33 +28,35 @@ namespace DoradSmartphone.ViewModels
             set => SetProperty(ref automaticPage, value);
         }        
 
-        public AutomaticViewModel(GlassDTO glassDTO, IToast toast, IBluetoothService bluetoothService)
+        public AutomaticViewModel(TransferDTO transferDTO, IBluetoothService bluetoothService)
         {
-            Title = "Automatic Configuration";
-            this.toast = toast;
-            this.glassDTO = glassDTO;
+            Title = "Automatic Configuration";            
+            this.transferDTO = transferDTO;
             this.bluetoothService = bluetoothService;
-            Widgets = new ObservableCollection<Widget>(glassDTO.Widgets);
+            Widgets = new ObservableCollection<Widget>(transferDTO.Widgets);
+            
             LoadAutomaticPage();
         }
 
         [RelayCommand]
         public void ReviewPage()
         {
-            SendOverBluetooth();
-            Application.Current.MainPage.Navigation.PushAsync(new GeneralPage(glassDTO));
+            glassDTO = EntityToDto.Convertion(transferDTO);
+            glassDTO.WidgetConfiguration = true;
+            SendOverBluetooth(glassDTO);
+            Application.Current.MainPage.Navigation.PushAsync(new GeneralPage(transferDTO));
         }
 
-        private void SendOverBluetooth() => bluetoothService.Write(ConvertToJsonAndBytes.Convert(glassDTO));
+        private void SendOverBluetooth(GlassDTO glassDTO) => bluetoothService.Write(ConvertToJsonAndBytes.Convert(glassDTO));
        
 
         private void LoadAutomaticPage()
         {
-            CalculateWidgetPositions.LoadAutomaticPage(glassDTO, out ContentPage automaticPage);
+            CalculateWidgetPositions.LoadAutomaticPage(transferDTO, out ContentPage automaticPage);
             AutomaticPage = automaticPage;
 
             // Update the GlassDTO with the modified Widgets
-            glassDTO.Widgets = Widgets.ToList();
+            transferDTO.Widgets = Widgets.ToList();
         }
     }
 }
