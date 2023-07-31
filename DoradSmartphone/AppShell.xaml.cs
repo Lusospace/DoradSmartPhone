@@ -20,7 +20,7 @@ public partial class AppShell : Shell
         }
         else
         {
-            DoradShell.CurrentItem = ExerciseShell;
+            DoradShell.CurrentItem = GlassShell;
         }
 
         Routing.RegisterRoute(nameof(GeneralPage), typeof(GeneralPage));
@@ -36,7 +36,8 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(StartRunPage), typeof(StartRunPage));
         Routing.RegisterRoute(nameof(ExercisePage), typeof(ExercisePage));
         Routing.RegisterRoute(nameof(AutomaticPage), typeof(AutomaticPage));
-        Routing.RegisterRoute(nameof(DashboardPage), typeof(DashboardPage));                
+        Routing.RegisterRoute(nameof(DashboardPage), typeof(DashboardPage));
+        Routing.RegisterRoute(nameof(CalibrationPage), typeof(CalibrationPage));
         Routing.RegisterRoute(nameof(DisplaySelectedItemsPage), typeof(DisplaySelectedItemsPage));
 
     }    

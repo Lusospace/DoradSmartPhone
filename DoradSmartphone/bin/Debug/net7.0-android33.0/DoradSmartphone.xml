@@ -43,6 +43,22 @@
         <member name="P:DoradSmartphone.ViewModels.BaseViewModel.IsScanning">
             <inheritdoc cref="F:DoradSmartphone.ViewModels.BaseViewModel.isScanning"/>
         </member>
+        <member name="T:DoradSmartphone.ViewModels.CalibrationViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.CalibrationViewModel.stopCalibrationCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibrationCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibrationCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibration"/>.</summary>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.CalibrationViewModel.switchImageCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.CalibrationViewModel.SwitchImageCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.CalibrationViewModel.SwitchImageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.CalibrationViewModel.SwitchImage"/>.</summary>
+        </member>
         <member name="T:DoradSmartphone.ViewModels.ChoiceViewModel">
             <inheritdoc/>
         </member>
@@ -115,7 +131,7 @@
             <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.GlassViewModel.CalibrationCommand"/>.</summary>
         </member>
         <member name="P:DoradSmartphone.ViewModels.GlassViewModel.CalibrationCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.GlassViewModel.Calibration"/>.</summary>
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.GlassViewModel.Calibration"/>.</summary>
         </member>
         <member name="T:DoradSmartphone.ViewModels.LoginViewModel">
             <inheritdoc/>

@@ -1,12 +1,14 @@
+using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.ViewModels;
 
-namespace DoradSmartphone.Views;
-
-public partial class GlassPage : ContentPage
+namespace DoradSmartphone.Views
 {
-	public GlassPage(GlassViewModel glassViewModel)
-	{
-        InitializeComponent();
-		BindingContext = glassViewModel;
-	}
+    public partial class GlassPage : ContentPage
+    {        
+        public GlassPage()
+        {
+            InitializeComponent();            
+            BindingContext = new GlassViewModel();
+        }
+    }
 }

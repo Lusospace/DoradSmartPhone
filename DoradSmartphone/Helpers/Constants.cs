@@ -21,6 +21,7 @@ public static class Constants
     public const string GLASSES_NAME = "QCOM-BTD";
     //public const string GLASSES_NAME = "Redmi Note 11";
     public const string TOAST = "toast";
+    public const string STOP = "stop";
     public const int XPosition = 264;
     public const int YPosition = 176;
 

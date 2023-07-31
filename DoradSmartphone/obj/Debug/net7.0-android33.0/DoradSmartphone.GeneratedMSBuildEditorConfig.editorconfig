@@ -56,6 +56,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = DoradSmartphone.Views.Avat
 build_metadata.AdditionalFiles.TargetPath = Views\AvatarPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\AvatarPage.xaml
 
+[C:/Projects/Dorad/doradsmartphone/DoradSmartphone/Views/CalibrationPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = DoradSmartphone.Views.CalibrationPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\CalibrationPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\CalibrationPage.xaml
+
 [C:/Projects/Dorad/doradsmartphone/DoradSmartphone/Views/ChoicePage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = DoradSmartphone.Views.ChoicePage.xaml
