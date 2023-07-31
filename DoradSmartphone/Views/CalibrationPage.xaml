@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoradSmartphone.Views.CalibrationPage"
              xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
-             x:DataType="viewmodel:CalibrationViewModel"
+             x:DataType="viewmodel:CalibrationViewModel"             
              Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand">
@@ -13,20 +13,25 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Image x:Name="SelectedPhotoImage" Source="{Binding SelectedPhoto}" 
-                   Style="{StaticResource ImageContainerStyle}" WidthRequest="300"
-                   HeightRequest="300" HorizontalOptions="Center" Grid.Row="0"/>
 
-                        <!-- Button to stop calibration -->
+                        <Image x:Name="SelectedPhotoImage" Source="{Binding SelectedPhoto}" Style="{StaticResource ImageContainerStyle}" WidthRequest="300" 
+                           HeightRequest="300" Margin="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SwitchImageCommand}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label Text="Tap the image to select a new one" FontSize="20" TextColor="RoyalBlue" HorizontalTextAlignment="Center" Grid.Row="1" Margin="20"/>
+
                         <Button Text="Stop Calibration" Command="{Binding StopCalibrationCommand}"
-                    Style="{StaticResource ButtonContainerStyle}" Grid.Row="1"
-                                WidthRequest="100" CornerRadius="20" HorizontalOptions="Center"
-                                Margin="10" 
-                                FontSize="15"/>
+                        Grid.Row="2" WidthRequest="200" CornerRadius="20" HorizontalOptions="Center"
+                        Margin="20" FontSize="20"/>
                     </Grid>
                 </StackLayout>
             </ScrollView>
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

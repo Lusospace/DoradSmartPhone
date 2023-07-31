@@ -1,5 +1,6 @@
 ﻿using DoradSmartphone.Data;
 using DoradSmartphone.Models;
+using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
 using Newtonsoft.Json;
 
@@ -8,9 +9,11 @@ namespace DoradSmartphone.Services
     public class LoginService
     {
         private readonly IRepository repository;
-        public LoginService(IRepository repository)
+        private readonly IBluetoothService bluetoothService;
+        public LoginService(IRepository repository, IBluetoothService bluetoothService)
         {
             this.repository = repository;
+            this.bluetoothService = bluetoothService;
         }
 
         public async Task VerifyLogin(string username, string password)
@@ -41,7 +44,7 @@ namespace DoradSmartphone.Services
                     Preferences.Set("UserSession", JsonConvert.SerializeObject(userSession));
 
                     Preferences.Set("UserLoggedIn", true);
-                    await Shell.Current.GoToAsync($"//{nameof(GlassPage)}");
+                    await Shell.Current.GoToAsync($"//{nameof(GlassPage)}");                    
                 }               
             }
             catch(Exception ex)

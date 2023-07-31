@@ -20,7 +20,7 @@ public partial class AppShell : Shell
         }
         else
         {
-            DoradShell.CurrentItem = ExerciseShell;
+            DoradShell.CurrentItem = GlassShell;
         }
 
         Routing.RegisterRoute(nameof(GeneralPage), typeof(GeneralPage));

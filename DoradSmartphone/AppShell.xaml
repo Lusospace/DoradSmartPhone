@@ -28,15 +28,15 @@
         <Tab Title="Routes" Icon="{x:Static helpers:Icons.Route}">
             <ShellContent
                 Title="Routes"
-                ContentTemplate="{DataTemplate views:ExercisePage}"                                
-                x:Name="ExerciseShell"/>
+                ContentTemplate="{DataTemplate views:ExercisePage}"/>
         </Tab>
 
         <Tab Title="Glasses" Icon="{x:Static helpers:Icons.Glasses}">
             <ShellContent
                 Title="Glasses"
                 ContentTemplate="{DataTemplate views:GlassPage}"
-                Route="GlassPage"/>
+                Route="GlassPage"
+                x:Name="GlassShell"/>
         </Tab>
 
         <Tab Title="Widgets" Icon="{x:Static helpers:Icons.Dashboard}">

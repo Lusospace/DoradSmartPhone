@@ -1,12 +1,18 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using DoradSmartphone.Helpers;
+using DoradSmartphone.Services.Bluetooth;
+using DoradSmartphone.Views;
 
 namespace DoradSmartphone.ViewModels
 {
     public partial class CalibrationViewModel : BaseViewModel
     {
-        public CalibrationViewModel(byte[] photo)
+        private IBluetoothService bluetoothService;        
+
+        public CalibrationViewModel(byte[] photo, IBluetoothService bluetoothService)
         {
             Title = "Calibration Page";
+            this.bluetoothService = bluetoothService;
             LoadImage(photo);
         }
 
@@ -26,9 +32,47 @@ namespace DoradSmartphone.ViewModels
         }
 
         [RelayCommand]
-        public async Task StopCalibration()
+        public async Task StopCalibration() 
         {
-            // Implement the necessary logic to stop calibration.
+            bluetoothService.Write(ConvertToJsonAndBytes.Convert(Constants.STOP));
+            await GoToGlassPage();
+        } 
+
+        [RelayCommand]
+        public async Task SwitchImage()
+        {            
+            byte[] photoData = await PhotoPickerHelper.PickPhotoAsync();
+
+            if (photoData != null)
+            {
+                try
+                {
+                    SelectedPhoto = ImageSource.FromStream(() => new MemoryStream(photoData));
+                    SendImage(photoData);
+                }
+                catch (Exception ex)
+                {
+                    Toaster.MakeToast("Error when sending the image via bluetooth. " + ex);
+                    throw new Exception("Error when sending the image via bluetooth");
+                }
+            }
         }
+
+        public async void SendImage(byte[] photoData)
+        {
+            int connectionState = bluetoothService.GetState();
+
+            if (connectionState == BluetoothService.STATE_CONNECTED)
+            {                
+                bluetoothService.Write(photoData);            
+            }
+            else
+            {
+                Toaster.MakeToast("Bluetooth connection was lost.");
+                await GoToGlassPage();
+            }
+        }
+
+        public async Task GoToGlassPage() => await Application.Current.MainPage.Navigation.PushAsync(new GlassPage());        
     }
 }

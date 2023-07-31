@@ -21,7 +21,7 @@ public static class MauiProgram
 			});
 
         builder.Services.AddSingleton<DatabaseConn>();
-        builder.Services.AddScoped<IRepository, DatabaseConn>();
+        builder.Services.AddSingleton<IRepository, DatabaseConn>();
 
         builder.Services.AddTransient<GeneralPage>();
 
@@ -47,7 +47,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<DashboardService>();
         
         builder.Services.AddTransient<BluetoothService>();
-        builder.Services.AddScoped<IBluetoothService, BluetoothService>();
+        builder.Services.AddSingleton<IBluetoothService, BluetoothService>();
 
         builder.Services.AddSingleton<UserViewModel>();
         builder.Services.AddTransient<GlassViewModel>();
