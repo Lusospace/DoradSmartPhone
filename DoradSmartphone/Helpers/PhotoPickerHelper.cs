@@ -22,7 +22,6 @@
                 Toaster.MakeToast("Error when picking image. " + ex);
                 throw new Exception("Error picking image.");
             }
-
             return null;
         }
     }

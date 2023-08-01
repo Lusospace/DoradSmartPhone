@@ -15,24 +15,41 @@ namespace DoradSmartphone.Services.Bluetooth
         public const int STATE_CONNECTING = 2;
         public const int STATE_CONNECTED = 3;
         const string TAG = "Dorad SmartPhone App";
-        
+
         static readonly UUID MY_UUID_SECURE = UUID.FromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
 
         BluetoothAdapter btAdapter;
         AcceptThread acceptThread;
-        ConnectedThread connectedThread;        
+        ConnectedThread connectedThread;
 
         int state;
         int newState;
 
         private Timer connectionTimer;
-        private const int ConnectionCheckInterval = 5000; // Check every 5 seconds
+        private const int ConnectionCheckInterval = 5000; // Check every 5 seconds        
+
+        private bool isConnected;
+        public bool IsConnected
+        {
+            get => isConnected;
+            private set
+            {
+                if (isConnected != value)
+                {
+                    isConnected = value;
+                    ConnectionStatusChanged?.Invoke(this, value);
+                }
+            }
+        }
+
+        public event EventHandler<bool> ConnectionStatusChanged;
+
 
         public BluetoothService()
         {
             btAdapter = BluetoothAdapter.DefaultAdapter;
             state = STATE_NONE;
-            newState = state;            
+            newState = state;
             Start();
             //connectionTimer = new Timer(CheckConnectionStatus, newState, ConnectionCheckInterval, ConnectionCheckInterval);
         }
@@ -44,7 +61,7 @@ namespace DoradSmartphone.Services.Bluetooth
 
         public void Start()
         {
-           if (btAdapter != null && btAdapter.IsEnabled)
+            if (btAdapter != null && btAdapter.IsEnabled)
             {
                 var pairedDevices = btAdapter.BondedDevices;
                 var glasses = pairedDevices.FirstOrDefault(bd => bd.Name == Constants.GLASSES_NAME);
@@ -176,7 +193,7 @@ namespace DoradSmartphone.Services.Bluetooth
 
         //Call this one to send data over BT
         public void Write(byte[] data)
-        {                       
+        {
             // Synchronize a copy of the ConnectedThread
             lock (this)
             {
@@ -188,14 +205,15 @@ namespace DoradSmartphone.Services.Bluetooth
                 else
                 {
                     connectedThread.Write(data);
-                }                
-            }           
+                }
+            }
         }
 
         void UpdateBtStatus()
         {
             state = GetState();
             newState = state;
+            CheckConnection();
         }
 
         void ConnectionFailed()
@@ -239,13 +257,31 @@ namespace DoradSmartphone.Services.Bluetooth
             Start();
         }
 
+        public bool CheckConnection()
+        {
+            try
+            {                
+                int connectionState = GetState();
+
+                IsConnected = connectionState == STATE_CONNECTED;
+
+
+                return IsConnected;
+            }
+            catch (Exception ex)
+            {
+                Toaster.MakeToast("Error " + ex);
+                throw new Exception("Error when checking the Bluetooth status.");
+            }
+        }
+
         private void CheckConnectionStatus(object state)
         {
             // Check the connection status here
             if ((int)state != STATE_CONNECTED)
             {
-                ConnectionLost();                
-            }            
+                ConnectionLost();
+            }
         }
 
         class AcceptThread
@@ -386,8 +422,8 @@ namespace DoradSmartphone.Services.Bluetooth
             public void Write(byte[] buffer)
             {
                 try
-                {                    
-                    outStream.Write(buffer);                    
+                {
+                    outStream.Write(buffer);
                 }
                 catch (IOException e)
                 {

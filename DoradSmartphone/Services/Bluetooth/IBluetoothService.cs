@@ -10,5 +10,7 @@ namespace DoradSmartphone.Services.Bluetooth
         void Connect(BluetoothDevice device);
         void Write(byte[] data);
         void Stop();
+        bool CheckConnection();
+        event EventHandler<bool> ConnectionStatusChanged;
     }
 }

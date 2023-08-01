@@ -5,7 +5,7 @@ This README would normally document whatever steps are necessary to get your app
 ### What is this repository for? ###
 
 * Updated version of Dorad Smartphone app. Built in .Net Maui with SQLite database.
-* Version 0.5
+* Version 1.0
 
 ### How do I get set up? ###
 
@@ -17,18 +17,17 @@ This README would normally document whatever steps are necessary to get your app
 	- sqlite-net-pc 1.8.116
 	- SQLitePCLRaw.provider.dynamic_cdecl 2.1.4
 	
-* Database configuration - None for now
-* How to run tests - Download any android emulator and try it out!
-* Deployment instructions - None for now
+* Database configuration - Since we don't use any big database, none.
+* How to run tests - Download any android emulator and try it out! Bluetooth does not work in emulators and some other features like maps are unstable in emulators.
+* Deployment instructions - Emulators: look for Open Android Device Manager icon, choose a version, download it and hit the play. Physical device: should have ADB enabled for it.
 
 ### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
+* More detailed info in confluence page <a href="https://lusospace.atlassian.net/wiki/spaces/DOR/overview"> Dorad </a>
 * Icons referece <a href="https://www.flaticon.com/br/icones-gratis">Icones criados por Smashicons - Flaticon</a>
 
 ### Who do I talk to? ###
 
-* Luiz is the started, but James is aware of everything too
+* Luiz started, but James should aware of everything too
 * Chat GPT?!
+* Jesus knows who...

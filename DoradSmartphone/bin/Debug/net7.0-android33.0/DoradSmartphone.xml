@@ -51,7 +51,7 @@
             <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibrationCommand"/>.</summary>
         </member>
         <member name="P:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibrationCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibration"/>.</summary>
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibration"/>.</summary>
         </member>
         <member name="F:DoradSmartphone.ViewModels.CalibrationViewModel.switchImageCommand">
             <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.CalibrationViewModel.SwitchImageCommand"/>.</summary>
@@ -120,6 +120,33 @@
         <member name="T:DoradSmartphone.ViewModels.GlassViewModel">
             <inheritdoc/>
             <inheritdoc/>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.GlassViewModel.CheckConnection">
+            <summary>
+            Verify the status of the connection as sonn as the app starts.
+            </summary>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.GlassViewModel.Calibration">
+            <summary>
+            Check the connection status if its's connected, it picks a photo from the smartphone album, 
+            add into the commandDTO with the start debug command, send over bluetooth and go to the Calibration Page. 
+            If it's not connected then just fire a Toast message
+            </summary>
+            <returns>Nothing</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.GlassViewModel.SendOverBluetooth(DoradSmartphone.DTO.CommandDTO)">
+            <summary>
+            Receive the command DTO, send it to the method ConvertToJsonAndBytes, and send the result over bluetooth.
+            </summary>
+            <param name="command"></param>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.GlassViewModel.BluetoothService_ConnectionStatusChanged(System.Object,System.Boolean)">
+            <summary>
+            Event Listener to update the Status property based on the Bluetooth connection status
+            </summary>
+            <param name="sender"></param>
+            <param name="isConnected"></param>
         </member>
         <member name="P:DoradSmartphone.ViewModels.GlassViewModel.Battery">
             <inheritdoc cref="F:DoradSmartphone.ViewModels.GlassViewModel.battery"/>

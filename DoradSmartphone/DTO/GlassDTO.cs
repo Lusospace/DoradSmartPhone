@@ -1,6 +1,4 @@
-﻿using DoradSmartphone.Models;
-
-namespace DoradSmartphone.DTO
+﻿namespace DoradSmartphone.DTO
 {
     public class GlassDTO
     { 
