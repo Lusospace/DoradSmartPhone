@@ -4,12 +4,17 @@ using Android.Util;
 using DoradSmartphone.DTO;
 using DoradSmartphone.Helpers;
 using DoradSmartphone.Models;
-using System.Reflection.Metadata;
 
 public static class CalculateWidgetPositions
 {
     private static Tuple<int, int> ScreenSize;
 
+    /// <summary>
+    /// Receives the TransferDTO (Could it be only the Widget entity?!) and the ContentPage (Automatic or Manual Pages) then iterates through the widgets to calculate their position in the screen. 
+    /// </summary>
+    /// <param name="transferDTO"></param>
+    /// <param name="widgetPage"></param>
+    /// <returns>List of widgets </returns>
     public static List<Widget> LoadAutomaticPage(TransferDTO transferDTO, out ContentPage widgetPage)
     {
         GetScreenResolution();
@@ -83,6 +88,11 @@ public static class CalculateWidgetPositions
         return updatedWidgets;
     }
 
+
+    /// <summary>
+    /// Calculate the relative positions of the widgets. The Calculation is based on cartesian plan (X and Y axis) divided by the screen size and multiply per 100
+    /// </summary>
+    /// <param name="widgets"></param>
     public static void CalculateRelativePositions(List<Widget> widgets)
     {
         foreach (var widget in widgets)
@@ -95,6 +105,11 @@ public static class CalculateWidgetPositions
         }
     }
 
+    /// <summary>
+    /// Calculate the glass position based in the relative position in the smartphone device. 
+    /// Taking in mind that Unity position metrics works differently from the cartesian plan, where the 0,0 position is in the middle of the screen
+    /// </summary>
+    /// <param name="widgets"></param>
     public static void CalculateGlassesPositions(List<Widget> widgets)
     {
         foreach (var widget in widgets)
@@ -108,10 +123,14 @@ public static class CalculateWidgetPositions
         }
     }
 
+    /// <summary>
+    /// Here we just format to double with two digits
+    /// </summary>
+    /// <param name="widgets"></param>
     private static void FormatPositions(List<Widget> widgets)
     {
         foreach (var widget in widgets)
-        {            
+        {
             widget.RelativeXPosition = Math.Round(widget.RelativeXPosition, 2);
             widget.RelativeYPosition = Math.Round(widget.RelativeYPosition, 2);
             widget.GlassXPosition = Math.Round(widget.GlassXPosition, 2);
@@ -121,6 +140,10 @@ public static class CalculateWidgetPositions
         }
     }
 
+    /// <summary>
+    /// Method to get the screen resolution of the actual device, returns a Tuple of integer in which are the heigh and width of the pixel resolution
+    /// </summary>
+    /// <returns></returns>
     public static Tuple<int, int> GetScreenResolution()
     {
         var displayMetrics = new DisplayMetrics();
@@ -147,7 +170,7 @@ public static class CalculateWidgetPositions
         int heightPixels = displayMetrics.HeightPixels;
 
         ScreenSize = Tuple.Create(widthPixels, heightPixels);
-        
+
         return ScreenSize;
     }
 }

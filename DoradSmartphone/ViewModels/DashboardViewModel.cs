@@ -70,7 +70,7 @@ namespace DoradSmartphone.ViewModels
                 {
                     //btService = new BluetoothService();
                     //btService.Start();
-                    //btService.Connect(glasses);
+                    //btService.CheckListener(glasses);
                     try
                     {
                         //btService.Write(ConvertWidgetToJsonAndBytes());

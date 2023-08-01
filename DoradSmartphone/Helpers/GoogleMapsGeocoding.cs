@@ -9,6 +9,14 @@ public static class GoogleMapsGeocoding
     private const string size = "500x500";
     private const string zoom = "15";
 
+    /// <summary>
+    /// Receives the latitude and longitude, then go to the google maps api in the internet to grab the full address based on the provided coordinates.
+    /// We use to get the starting and finishing address of the routes. It will return the image of the map later.
+    /// </summary>
+    /// <param name="latitude"></param>
+    /// <param name="longitude"></param>
+    /// <returns>The Address</returns>
+    /// <exception cref="Exception"></exception>
     public static async Task<string> GetAddressName(double latitude, double longitude)
     {
         try
@@ -44,6 +52,12 @@ public static class GoogleMapsGeocoding
         
     }
 
+    /// <summary>
+    /// Receive the coordinates and uses google maps api to get a static image of the google maps location.
+    /// </summary>
+    /// <param name="latitude"></param>
+    /// <param name="longitude"></param>
+    /// <returns></returns>
     public static async Task<Stream> GetPlacePhotoUrl(double latitude, double longitude)
     {
         string url = $"{GooglePlacesApiBaseUrl}center={latitude},{longitude}&zoom={zoom}&size={size}&key={GoogleMapsApiKey}";
@@ -66,13 +80,17 @@ public static class GoogleMapsGeocoding
         return null;
     }
 }
-
+/// <summary>
+/// Class to handle the google maps api response
+/// </summary>
 public class GoogleMapsGeocodingResponse
 {
     public string status { get; set; }    
     public List<GoogleMapsGeocodingResult> results { get; set; }
 }
-
+/// <summary>
+/// Class to handle with the result, in our case only the address
+/// </summary>
 public class GoogleMapsGeocodingResult
 {    
     public string formatted_address { get; set; }

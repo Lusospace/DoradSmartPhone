@@ -47,6 +47,47 @@
             <inheritdoc/>
             <inheritdoc/>
         </member>
+        <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.LoadImage(System.Byte[])">
+            <summary>
+            Receives the selected image in the previous page and updates 
+            the image in the Calibration Page
+            </summary>
+            <param name="photo"></param>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibration">
+            <summary>
+            Send the command to stop the calibration mode
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.SwitchImage">
+            <summary>
+            Picks another image from the device album to replace the previous one and 
+            send to the glass initializing another debuging process
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.SendImage(System.Byte[])">
+            <summary>
+            Receive the new image, check the Bluetooth connection, if it's connected, it prepare the 
+            Command DTO with the start debug command and send it over Bluetooth. If there's no connection
+            take the user back to the GlassPage
+            </summary>
+            <param name="photoData"></param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.GoToGlassPage">
+            <summary>
+            Send the User to the GlassPage 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.SendOverBluetooth(DoradSmartphone.DTO.CommandDTO)">
+            <summary>
+            Convert the CommandDTO to bytes and send using bluetooth
+            </summary>
+            <param name="command"></param>
+        </member>
         <member name="F:DoradSmartphone.ViewModels.CalibrationViewModel.stopCalibrationCommand">
             <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibrationCommand"/>.</summary>
         </member>
@@ -219,6 +260,67 @@
         </member>
         <member name="P:DoradSmartphone.ViewModels.WidgetViewModel.IsRefreshing">
             <inheritdoc cref="F:DoradSmartphone.ViewModels.WidgetViewModel.isRefreshing"/>
+        </member>
+        <member name="M:CalculateWidgetPositions.LoadAutomaticPage(DoradSmartphone.DTO.TransferDTO,Microsoft.Maui.Controls.ContentPage@)">
+            <summary>
+            Receives the TransferDTO (Could it be only the Widget entity?!) and the ContentPage (Automatic or Manual Pages) then iterates through the widgets to calculate their position in the screen. 
+            </summary>
+            <param name="transferDTO"></param>
+            <param name="widgetPage"></param>
+            <returns>List of widgets </returns>
+        </member>
+        <member name="M:CalculateWidgetPositions.CalculateRelativePositions(System.Collections.Generic.List{DoradSmartphone.Models.Widget})">
+            <summary>
+            Calculate the relative positions of the widgets. The Calculation is based on cartesian plan (X and Y axis) divided by the screen size and multiply per 100
+            </summary>
+            <param name="widgets"></param>
+        </member>
+        <member name="M:CalculateWidgetPositions.CalculateGlassesPositions(System.Collections.Generic.List{DoradSmartphone.Models.Widget})">
+            <summary>
+            Calculate the glass position based in the relative position in the smartphone device. 
+            Taking in mind that Unity position metrics works differently from the cartesian plan, where the 0,0 position is in the middle of the screen
+            </summary>
+            <param name="widgets"></param>
+        </member>
+        <member name="M:CalculateWidgetPositions.FormatPositions(System.Collections.Generic.List{DoradSmartphone.Models.Widget})">
+            <summary>
+            Here we just format to double with two digits
+            </summary>
+            <param name="widgets"></param>
+        </member>
+        <member name="M:CalculateWidgetPositions.GetScreenResolution">
+            <summary>
+            Method to get the screen resolution of the actual device, returns a Tuple of integer in which are the heigh and width of the pixel resolution
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GoogleMapsGeocoding.GetAddressName(System.Double,System.Double)">
+            <summary>
+            Receives the latitude and longitude, then go to the google maps api in the internet to grab the full address based on the provided coordinates.
+            We use to get the starting and finishing address of the routes. It will return the image of the map later.
+            </summary>
+            <param name="latitude"></param>
+            <param name="longitude"></param>
+            <returns>The Address</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:GoogleMapsGeocoding.GetPlacePhotoUrl(System.Double,System.Double)">
+            <summary>
+            Receive the coordinates and uses google maps api to get a static image of the google maps location.
+            </summary>
+            <param name="latitude"></param>
+            <param name="longitude"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GoogleMapsGeocodingResponse">
+            <summary>
+            Class to handle the google maps api response
+            </summary>
+        </member>
+        <member name="T:GoogleMapsGeocodingResult">
+            <summary>
+            Class to handle with the result, in our case only the address
+            </summary>
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
             <summary>

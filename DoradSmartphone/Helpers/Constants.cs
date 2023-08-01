@@ -15,8 +15,6 @@ public static class Constants
     public static string DatabasePath =>
         Path.Combine(FileSystem.AppDataDirectory, DatabaseFilename);
 
-
-
     // Key names received from the BluetoothChatService Handler    
     public const string GLASSES_NAME = "QCOM-BTD";
     //public const string GLASSES_NAME = "Redmi Note 11";
