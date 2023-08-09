@@ -1,4 +1,5 @@
 using DoradSmartphone.DTO;
+using DoradSmartphone.Helpers;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.ViewModels;
 
@@ -17,7 +18,7 @@ public partial class ManualPage : ContentPage
     private void OnPanUpdated(object sender, PanUpdatedEventArgs e)
     {
         var image = (Image)sender;
-        const double sensitivity = 0.7; // Adjust the sensitivity factor as needed
+        const double sensitivity = 0.7;
 
         var ScreenSize = CalculateWidgetPositions.GetScreenResolution();
 
@@ -41,16 +42,16 @@ public partial class ManualPage : ContentPage
                 var finalPosition = new Point(image.TranslationX, image.TranslationY);
                 initialPosition = finalPosition;
 
-                // Calculate the real pixel position based on the total resolution of the screen
-                var screenWidth = ScreenSize.Item1;
-                var screenHeight = ScreenSize.Item2;
+                // Calculate relative positions in percentage
+                double relativeX = finalPosition.X / parentContainer.Width * 100.0;
+                double relativeY = finalPosition.Y / parentContainer.Height * 100.0;
 
-                var screenPositionX = (screenWidth * parentContainer.Width / parentContainer.Width) + finalPosition.X;
-                var screenPositionY = (screenHeight * parentContainer.Height / parentContainer.Height) + finalPosition.Y;
+                // Calculate glasses positions (Unity-style)
+                double glassesX = relativeX - 50.0;
+                double glassesY = 50.0 - relativeY;
 
-                Shell.Current.DisplayAlert("Warning", "The new screen position is: X=" + screenPositionX + ", Y=" + screenPositionY, "Ok");
+                Shell.Current.DisplayAlert("Warning", "The new glasses position is: X=" + glassesX + ", Y=" + glassesY, "Ok");
                 break;
         }
     }
-
 }

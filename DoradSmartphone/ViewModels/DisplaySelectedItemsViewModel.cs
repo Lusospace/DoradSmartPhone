@@ -1,8 +1,12 @@
-﻿using DoradSmartphone.DTO;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using DoradSmartphone.DTO;
 using DoradSmartphone.Models;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace DoradSmartphone.ViewModels
@@ -12,17 +16,53 @@ namespace DoradSmartphone.ViewModels
         private TransferDTO transferDTO;
         private IBluetoothService bluetoothService;
 
-        public ICommand ManualCommand => new Command(Manual);
-        public ICommand AutomaticCommand => new Command(Automatic);
+        private Widget draggedItem;
+        private int draggedItemIndex;
+        
+        public ICommand DragStartedCommand => new RelayCommand<Widget>(DragStarted);
+        public ICommand ItemDroppedCommand => new RelayCommand<Widget>(ItemDropped);
 
-        public List<Widget> SelectedItems
+        private void DragStarted(Widget item)
         {
-            get { return transferDTO.Widgets; }
+            draggedItem = item;
+            draggedItemIndex = SelectedItems.IndexOf(draggedItem);
+        }
+
+        private void ItemDropped(Widget targetItem)
+        {
+            if (draggedItem != null)
+            {
+                int targetIndex = SelectedItems.IndexOf(targetItem);
+                int draggedItemIndex = SelectedItems.IndexOf(draggedItem);
+
+                if (targetIndex != -1)
+                {
+                    SelectedItems[draggedItemIndex] = targetItem;
+                    SelectedItems[targetIndex] = draggedItem;
+
+                    // Update the UI
+                    OnPropertyChanged(nameof(SelectedItems));
+
+                    var reordenatedItens = new List<Widget>();
+                    
+                    SelectedItems.ToList().ForEach(w => reordenatedItens.Add(w));
+
+                    transferDTO.Widgets.Clear();
+                    transferDTO.Widgets.AddRange(reordenatedItens);
+                }
+                draggedItem = null;
+            }
+        }
+
+        private ObservableCollection<Widget> _selectedItems;
+        public ObservableCollection<Widget> SelectedItems
+        {
+            get { return _selectedItems; }
             set
             {
-                if (transferDTO.Widgets != value)
+                if (_selectedItems != value)
                 {
-                    transferDTO.Widgets = value;
+                    _selectedItems = value;
                     OnPropertyChanged(nameof(SelectedItems));
                 }
             }
@@ -33,19 +73,23 @@ namespace DoradSmartphone.ViewModels
             Title = "Configuration Type";
             this.transferDTO = transferDTO;
             this.bluetoothService = bluetoothService;
+            _selectedItems = new ObservableCollection<Widget>(transferDTO.Widgets);
         }
 
+        [RelayCommand]
         public void Manual()
         {
             Application.Current.MainPage.Navigation.PushAsync(new ManualPage(transferDTO, bluetoothService));
         }
 
+        [RelayCommand]
         public void Automatic()
         {
             Application.Current.MainPage.Navigation.PushAsync(new AutomaticPage(transferDTO, bluetoothService));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
 
         protected virtual void OnPropertyChanged(string propertyName)
         {

@@ -3,10 +3,11 @@ using DoradSmartphone.DTO;
 using DoradSmartphone.Helpers;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
+using System.ComponentModel;
 
 namespace DoradSmartphone.ViewModels
 {
-    public partial class CalibrationViewModel : BaseViewModel
+    public partial class CalibrationViewModel : BaseViewModel, INotifyPropertyChanged
     {
         private IBluetoothService bluetoothService;
 

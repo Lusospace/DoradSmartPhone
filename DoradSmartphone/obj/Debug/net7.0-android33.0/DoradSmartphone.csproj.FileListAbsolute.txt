@@ -1080,3 +1080,5 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android33.0\a
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android33.0\android\compressed_assemblies.arm64-v8a.o
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android33.0\android\jni_remap.arm64-v8a.o
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android33.0\app_shared_libraries\arm64-v8a\libxamarin-app.so
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android33.0\android\assets\SkiaSharp.dll
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android33.0\android\assets\SkiaSharp.pdb

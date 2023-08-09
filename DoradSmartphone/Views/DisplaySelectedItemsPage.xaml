@@ -1,40 +1,41 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoradSmartphone.Views.DisplaySelectedItemsPage"
              xmlns:model="clr-namespace:DoradSmartphone.Models"
+             xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
+             x:DataType="viewmodel:DisplaySelectedItemsViewModel"
              Title="{Binding Title}">
 
     <ContentPage.Content>
         <StackLayout Padding="20" Spacing="10">
             <Label Text="Selected Widgets" FontSize="20" HorizontalOptions="Center" />
-
             <ListView ItemsSource="{Binding SelectedItems}" SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="model:Widget">
                         <ViewCell>
-                            <Grid RowSpacing="30">
+                            <Grid RowSpacing="80">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
+                                <Grid.GestureRecognizers>
+                                    <DragGestureRecognizer DragStartingCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:DisplaySelectedItemsViewModel}}, Path=DragStartedCommand}" 
+                                                  DragStartingCommandParameter="{Binding .}" 
+                                                               CanDrag="True"/>
+                                    <DropGestureRecognizer DropCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:DisplaySelectedItemsViewModel}}, Path=ItemDroppedCommand}" 
+                                                  DropCommandParameter="{Binding .}" 
+                                                               AllowDrop="True"/>
+                                </Grid.GestureRecognizers>
+                                <Image Source="{Binding FileName}" WidthRequest="60" HeightRequest="60"
+                                       VerticalOptions="Center" Grid.RowSpan="2" />
 
-                                <Image Source="{Binding FileName}" 
-                           WidthRequest="40" HeightRequest="40"
-                           Margin="10, 0, 10, 0"
-                           VerticalOptions="Center"
-                           Grid.RowSpan="2" />
-
-                                <Label Text="{Binding Name}" FontSize="15"
-                           VerticalOptions="Center" 
-                           Grid.Column="1" 
-                           Grid.Row="0" />
+                                <Label Text="{Binding Name}" FontSize="15" VerticalOptions="Center" 
+                                           Grid.Column="1" Grid.Row="0" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Button Text="Manual" Command="{Binding ManualCommand}" Margin="5" />
                 <Button Text="Automatic" Command="{Binding AutomaticCommand}" Margin="5" />
