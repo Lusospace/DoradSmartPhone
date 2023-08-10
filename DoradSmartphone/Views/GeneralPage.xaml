@@ -15,7 +15,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <CollectionView ItemsSource="{Binding TransferDTO.Exercise.Route}" Grid.Row="1" Grid.ColumnSpan="2">
+                <CollectionView ItemsSource="{Binding GlassDTO.RoutesDTOs}" Grid.Row="1" Grid.ColumnSpan="2">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Route">
                             <Frame BorderColor="RoyalBlue" Padding="10" Margin="5">
@@ -29,26 +29,13 @@
                 </CollectionView>
             </Grid>
 
-            <Frame BorderColor="RoyalBlue" Padding="10" Margin="5">
-                <StackLayout>
-                    <Label Text="{Binding TransferDTO.Exercise.StartingDate, StringFormat='Starting Date: {0:dd/MM/yyyy HH:mm}'}" />
-                    <Label Text="{Binding TransferDTO.Exercise.FinishingDate, StringFormat='Finishing Date: {0:dd/MM/yyyy HH:mm}'}" />
-                    <Label Text="{Binding TransferDTO.Exercise.Time}" />
-                    <Label Text="{Binding TransferDTO.Exercise.Speed.Avg, StringFormat='Average Speed: {0}'}" />
-                    <Label Text="{Binding TransferDTO.Exercise.Speed.Max, StringFormat='Maximum Speed: {0}'}" />
-                </StackLayout>
-            </Frame>
-
-            <CollectionView ItemsSource="{Binding TransferDTO.Widgets}">
+            <CollectionView ItemsSource="{Binding GlassDTO.WidgetDTOs}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Widget">
                         <Frame BorderColor="RoyalBlue" Padding="10" Margin="5">
                             <StackLayout>
                                 <Label Text="{Binding Name}" />
-                                <Label Text="{Binding XPosition, StringFormat='X Position: {0}'}" />
-                                <Label Text="{Binding YPosition, StringFormat='Y Position: {0}'}" />
-                                <Label Text="{Binding RelativeXPosition, StringFormat='Relative X Position: {0}'}" />
-                                <Label Text="{Binding RelativeYPosition, StringFormat='Relative Y Position: {0}'}" />
+                                <Label Text="{Binding ZPosition, StringFormat='X Position: {0}'}" />
                                 <Label Text="{Binding GlassXPosition, StringFormat='Glass Relative X Position: {0}'}" />
                                 <Label Text="{Binding GlassYPosition, StringFormat='Glass Relative Y Position: {0}'}" />
                             </StackLayout>

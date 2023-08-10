@@ -1082,3 +1082,4 @@ C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android33.0\a
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android33.0\app_shared_libraries\arm64-v8a\libxamarin-app.so
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android33.0\android\assets\SkiaSharp.dll
 C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android33.0\android\assets\SkiaSharp.pdb
+C:\Projects\Dorad\doradsmartphone\DoradSmartphone\obj\Debug\net7.0-android33.0\resizetizer\r\drawable\x_widget.png

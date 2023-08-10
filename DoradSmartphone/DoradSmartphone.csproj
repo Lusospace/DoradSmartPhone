@@ -29,6 +29,7 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiImage Include="Resources\Images\Widgets\x_widget.png" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -75,6 +76,7 @@
 	  <None Remove="Resources\Images\Widgets\kmh.png" />
 	  <None Remove="Resources\Images\Widgets\time.png" />
 	  <None Remove="Resources\Images\Widgets\weather.png" />
+	  <None Remove="Resources\Images\Widgets\x_widget.png" />
 	</ItemGroup>
 
 	<ItemGroup>

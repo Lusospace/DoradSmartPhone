@@ -84,6 +84,5 @@ namespace DoradSmartphone.ViewModels
         {            
             Status = isConnected ? "HandleConnection" : "Disconnected";
         }
-
     }
 }

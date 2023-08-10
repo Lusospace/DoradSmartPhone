@@ -22,7 +22,23 @@ public static class CalculateWidgetPositions
         var layout = new Grid();
         var updatedWidgets = new List<Widget>();
 
+        int maxPositions = 5;
         int numWidgets = transferDTO.Widgets.Count;
+        int numPlaceholders = maxPositions - numWidgets;
+
+        for (int i = 0; i < numPlaceholders; i++)
+        {
+            // Create placeholder widgets and add them to the list
+            var placeholderWidget = new Widget() {
+                FileName = Icons.XWidget,
+                IsInvisible = true
+            };
+            updatedWidgets.Add(placeholderWidget);
+        }
+
+        // Add actual widgets to the list
+        updatedWidgets.AddRange(transferDTO.Widgets);
+
         int screenWidth = ScreenSize.Item1;
         int screenHeight = ScreenSize.Item2;
 
@@ -32,9 +48,9 @@ public static class CalculateWidgetPositions
         double targetWidth = Constants.targetWidgetWidth; // Target width in XAML
         double targetHeight = Constants.targetWidgetHeight; // Target height in XAML
 
-        for (int widgetIndex = 0; widgetIndex < numWidgets; widgetIndex++)
+        for (int widgetIndex = 0; widgetIndex < updatedWidgets.Count; widgetIndex++)
         {
-            var widget = transferDTO.Widgets[widgetIndex];
+            var widget = updatedWidgets[widgetIndex];
             var image = new Image
             {
                 Source = widget.FileName,
@@ -53,7 +69,7 @@ public static class CalculateWidgetPositions
             double xPosition;
             double yPosition;
 
-            if (widgetIndex == numWidgets - 1)
+            if (widgetIndex == maxPositions - 1)
             {
                 // Middle widget
                 xPosition = (screenWidth - scaledWidth) / 2;
@@ -70,13 +86,10 @@ public static class CalculateWidgetPositions
 
             widget.XPosition = xPosition;
             widget.YPosition = yPosition;
-
-            updatedWidgets.Add(widget);
         }
 
         CalculateRelativePositions(updatedWidgets);
         CalculateGlassesPositions(updatedWidgets);
-
         FormatPositions(updatedWidgets);
 
         widgetPage = new ContentPage
@@ -87,6 +100,81 @@ public static class CalculateWidgetPositions
 
         return updatedWidgets;
     }
+
+
+
+    //public static List<Widget> LoadAutomaticPage(TransferDTO transferDTO, out ContentPage widgetPage)
+    //{
+    //    GetScreenResolution();
+
+    //    var layout = new Grid();
+    //    var updatedWidgets = new List<Widget>();
+
+    //    int numWidgets = transferDTO.Widgets.Count;
+    //    int screenWidth = ScreenSize.Item1;
+    //    int screenHeight = ScreenSize.Item2;
+
+    //    double widgetWidth = Constants.widgetWidth; // Original width of the widget in pixels
+    //    double widgetHeight = Constants.widgetHeight; // Original height of the widget in pixels
+
+    //    double targetWidth = Constants.targetWidgetWidth; // Target width in XAML
+    //    double targetHeight = Constants.targetWidgetHeight; // Target height in XAML
+
+    //    for (int widgetIndex = 0; widgetIndex < numWidgets; widgetIndex++)
+    //    {
+    //        var widget = transferDTO.Widgets[widgetIndex];
+    //        var image = new Image
+    //        {
+    //            Source = widget.FileName,
+    //            Aspect = Aspect.AspectFit,
+    //            WidthRequest = targetWidth,
+    //            HeightRequest = targetHeight
+    //        };
+
+    //        layout.Children.Add(image);
+
+    //        // Calculate actual positions
+    //        double scale = Math.Min(targetWidth / widgetWidth, targetHeight / widgetHeight);
+    //        double scaledWidth = widgetWidth * scale;
+    //        double scaledHeight = widgetHeight * scale;
+
+    //        double xPosition;
+    //        double yPosition;
+
+    //        if (widgetIndex == numWidgets - 1)
+    //        {
+    //            // Middle widget
+    //            xPosition = (screenWidth - scaledWidth) / 2;
+    //            yPosition = (screenHeight - scaledHeight) / 2;
+    //        }
+    //        else
+    //        {
+    //            int row = (widgetIndex < 2) ? 0 : 1;
+    //            int column = (widgetIndex % 2 == 0) ? 0 : 1;
+
+    //            xPosition = column * (screenWidth - scaledWidth);
+    //            yPosition = row * (screenHeight - scaledHeight);
+    //        }
+
+    //        widget.XPosition = xPosition;
+    //        widget.YPosition = yPosition;
+
+    //        updatedWidgets.Add(widget);
+    //    }
+
+    //    CalculateRelativePositions(updatedWidgets);
+    //    CalculateGlassesPositions(updatedWidgets);
+
+    //    FormatPositions(updatedWidgets);
+
+    //    widgetPage = new ContentPage
+    //    {
+    //        Title = "Widget Configuration",
+    //        Content = layout
+    //    };
+
+    //    return updatedWidgets;
+    //}
 
 
     /// <summary>

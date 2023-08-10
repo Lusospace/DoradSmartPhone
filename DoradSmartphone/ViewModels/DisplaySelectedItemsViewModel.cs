@@ -1,24 +1,22 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using DoradSmartphone.DTO;
 using DoradSmartphone.Models;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows.Input;
 
 namespace DoradSmartphone.ViewModels
 {
     public partial class DisplaySelectedItemsViewModel : BaseViewModel, INotifyPropertyChanged
-    {        
+    {
         private TransferDTO transferDTO;
         private IBluetoothService bluetoothService;
 
         private Widget draggedItem;
         private int draggedItemIndex;
-        
+
         public ICommand DragStartedCommand => new RelayCommand<Widget>(DragStarted);
         public ICommand ItemDroppedCommand => new RelayCommand<Widget>(ItemDropped);
 
@@ -44,7 +42,7 @@ namespace DoradSmartphone.ViewModels
                     OnPropertyChanged(nameof(SelectedItems));
 
                     var reordenatedItens = new List<Widget>();
-                    
+
                     SelectedItems.ToList().ForEach(w => reordenatedItens.Add(w));
 
                     transferDTO.Widgets.Clear();
@@ -70,7 +68,7 @@ namespace DoradSmartphone.ViewModels
 
         public DisplaySelectedItemsViewModel(TransferDTO transferDTO, IBluetoothService bluetoothService)
         {
-            Title = "Configuration Type";
+            Title = "Widget Configuration";
             this.transferDTO = transferDTO;
             this.bluetoothService = bluetoothService;
             _selectedItems = new ObservableCollection<Widget>(transferDTO.Widgets);

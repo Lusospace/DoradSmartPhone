@@ -18,6 +18,7 @@ namespace DoradSmartphone.Models
         public double RelativeYPosition { get; set; }
         public double GlassXPosition { get; set; }
         public double GlassYPosition { get; set; }
+        public bool IsInvisible { get; set; }
 
         [ForeignKey(typeof(WidgetConfiguration))]
         public int WidgetConfigurationId { get; set; }

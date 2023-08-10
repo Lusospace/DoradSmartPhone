@@ -8529,6 +8529,9 @@ namespace DoradSmartphone
 			// aapt resource value: 0x7F0700FF
 			public const int weather = 2131165439;
 			
+			// aapt resource value: 0x7F070100
+			public const int x_widget = 2131165440;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
