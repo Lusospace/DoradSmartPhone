@@ -126,7 +126,7 @@ namespace DoradSmartphone.ViewModels
             glassDTO = EntityToDto.Convertion(transferDTO);
             glassDTO.WidgetConfiguration = false;
             SendOverBluetooth(glassDTO);
-            Application.Current.MainPage.Navigation.PushAsync(new GeneralPage(glassDTO));
+            Application.Current.MainPage.Navigation.PushAsync(new ControlDevicePage());
         }
 
         private void SendOverBluetooth(GlassDTO glassDTO) => bluetoothService.Write(ConvertToJsonAndBytes.Convert(glassDTO));

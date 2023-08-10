@@ -16,6 +16,12 @@ namespace DoradSmartphone.Services.Bluetooth
 
         static readonly UUID MY_UUID_SECURE = UUID.FromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
 
+        // Define the delegate type for the event
+        public delegate void DataReceivedEventHandler(string receivedData);
+
+        // Define the event using the delegate type
+        public event DataReceivedEventHandler DataReceived;
+
         BluetoothAdapter btAdapter;
         ListenerConfiguration listenerConfiguration;
         BluetoothHandlers btHandlers;
@@ -325,6 +331,7 @@ namespace DoradSmartphone.Services.Bluetooth
                         {
                             bytes = inStream.Read(buffer, 0, buffer.Length);
                             string receivedData = Encoding.UTF8.GetString(buffer, 0, bytes);
+                            service.OnDataReceived(receivedData);
                             Console.WriteLine(receivedData);
                             // Handle received data
                         }
@@ -350,6 +357,15 @@ namespace DoradSmartphone.Services.Bluetooth
                     Log.Error(TAG, "Exception during write", e);
                 }
             }
+        }
+
+        /// <summary>
+        /// Event Listener for the Received messages from bluetooth
+        /// </summary>
+        /// <param name="data"></param>
+        protected virtual void OnDataReceived(string data)
+        {
+            DataReceived?.Invoke(data); // Invoke the event
         }
     }
 }

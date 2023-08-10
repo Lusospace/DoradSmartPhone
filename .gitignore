@@ -50,4 +50,6 @@ Thumbs.db
 
 #folders
 /bin/
+/.vs/
+/obj/
 

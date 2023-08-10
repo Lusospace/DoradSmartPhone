@@ -145,7 +145,7 @@
             
             <!-- Third Grid with 12% height -->
             <Grid Grid.Row="2" Margin="10" x:Name="ButtonGrid">
-                <Button Text="Review" WidthRequest="100" CornerRadius="40" HorizontalOptions="Center" 
+                <Button Text="Send" WidthRequest="100" CornerRadius="40" HorizontalOptions="Center" 
                                 Command="{Binding ReviewPageCommand}" Margin="10" 
                                 FontSize="15"/>
             </Grid>

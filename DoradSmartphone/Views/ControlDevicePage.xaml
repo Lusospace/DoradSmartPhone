@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoradSmartphone.Views.ControlDevicePage"
+             xmlns:viewmodel ="clr-namespace:DoradSmartphone.ViewModels"  
+             xmlns:helpers="clr-namespace:DoradSmartphone.Helpers"
+             x:DataType="viewmodel:ControlDeviceViewModel"             
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LabelContainerStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="Margin" Value="20" />
+                <Setter Property="TextColor" Value="RoyalBlue" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+        <ResourceDictionary>
+            <Style x:Key="ImageContainerStyle" TargetType="Image">
+                <Setter Property="HeightRequest" Value="300" />
+                <Setter Property="WidthRequest" Value="300" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+        <ResourceDictionary>
+            <Style x:Key="ButtonContainerStyle" TargetType="Button">
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="CornerRadius" Value="20" />
+                <Setter Property="WidthRequest" Value="110" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout x:Name="MainLayout" VerticalOptions="FillAndExpand">
+                <Grid VerticalOptions="Center" HorizontalOptions="Center" RowSpacing="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Image Source="{x:Static helpers:Icons.GlassesXg}" 
+                           Grid.Row="0"
+                           Style="{StaticResource ImageContainerStyle}"/>
+
+
+                    <Button Text="Start Run" Command="{Binding StartCommand}" 
+                            Grid.Row="1" 
+                            Style="{StaticResource ButtonContainerStyle}"/>
+                    
+                    <Button Text="Stop Run" Command="{Binding StopCommand}" 
+                            Grid.Row="2" 
+                            Style="{StaticResource ButtonContainerStyle}"/>
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -12,6 +12,12 @@
             <param name="obj"></param>
             <returns></returns>
         </member>
+        <member name="M:DoradSmartphone.Services.Bluetooth.BluetoothService.OnDataReceived(System.String)">
+            <summary>
+            Event Listener for the Received messages from bluetooth
+            </summary>
+            <param name="data"></param>
+        </member>
         <member name="T:DoradSmartphone.ViewModels.AppShellViewModel">
             <inheritdoc/>
         </member>
@@ -117,27 +123,21 @@
         <member name="P:DoradSmartphone.ViewModels.ChoiceViewModel.OldRouteCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ChoiceViewModel.OldRoute"/>.</summary>
         </member>
-        <member name="T:DoradSmartphone.ViewModels.DashboardViewModel">
+        <member name="T:DoradSmartphone.ViewModels.ControlDeviceViewModel">
             <inheritdoc/>
             <inheritdoc/>
         </member>
-        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.CommStatus">
-            <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.commStatus"/>
+        <member name="F:DoradSmartphone.ViewModels.ControlDeviceViewModel.startCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ControlDeviceViewModel.StartCommand"/>.</summary>
         </member>
-        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.DeviceList">
-            <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.deviceList"/>
+        <member name="P:DoradSmartphone.ViewModels.ControlDeviceViewModel.StartCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ControlDeviceViewModel.Start"/>.</summary>
         </member>
-        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.StatusLabel">
-            <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.statusLabel"/>
+        <member name="F:DoradSmartphone.ViewModels.ControlDeviceViewModel.stopCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ControlDeviceViewModel.StopCommand"/>.</summary>
         </member>
-        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.DeviceBool">
-            <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.deviceBool"/>
-        </member>
-        <member name="F:DoradSmartphone.ViewModels.DashboardViewModel.sendSomethingCommand">
-            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.DashboardViewModel.SendSomethingCommand"/>.</summary>
-        </member>
-        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.SendSomethingCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.DashboardViewModel.SendSomething"/>.</summary>
+        <member name="P:DoradSmartphone.ViewModels.ControlDeviceViewModel.StopCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ControlDeviceViewModel.Stop"/>.</summary>
         </member>
         <member name="T:DoradSmartphone.ViewModels.DisplaySelectedItemsViewModel">
             <inheritdoc/>
@@ -361,18 +361,6 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsScanning">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsScanning" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CommStatus">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CommStatus" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DeviceList">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DeviceList" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.StatusLabel">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "StatusLabel" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DeviceBool">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DeviceBool" generated properties.</summary>
-        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FinalAddress">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FinalAddress" generated properties.</summary>
         </member>
@@ -420,18 +408,6 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsNotScanning">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsNotScanning" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CommStatus">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CommStatus" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DeviceList">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DeviceList" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.StatusLabel">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "StatusLabel" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DeviceBool">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DeviceBool" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FinalAddress">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FinalAddress" generated properties.</summary>

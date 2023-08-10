@@ -7,22 +7,6 @@
              x:DataType="viewmodel:DashboardViewModel"
              Title="{Binding Title}">
     <StackLayout>
-        <Label x:Name="StatusLabel" Text="{Binding CommStatus}" IsVisible="{Binding StatusLabel}" />
-        <ListView x:Name="DeviceListView"
-                  ItemsSource="{Binding Devices}"
-                  IsVisible="{Binding DeviceBool}">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="model:DeviceCandidate">
-                    <Frame HeightRequest="90" Margin="5">
-                        <StackLayout Padding="5" Spacing="4">
-                            <Label Text="{Binding Name}" FontAttributes="Bold" />
-                            <Label Text="{Binding Address}" FontSize="Small" />
-                            <Label Text="{Binding Id}" FontSize="Small" />
-                        </StackLayout>
-                    </Frame>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <Button Text="Seeeeeeeeeeeend" Command="{Binding SendSomethingCommand}"/>
+
     </StackLayout>
 </ContentPage>
