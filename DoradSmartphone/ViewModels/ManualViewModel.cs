@@ -149,37 +149,22 @@ namespace DoradSmartphone.ViewModels
 
             // Use the converted integer value in the switch statement
             switch (sliderValueInt)
-            {
+            {                
                 case 1:
-                    SliderLabel = "6.531645173";
-                    break;
-                case 2:
-                    SliderLabel = "3.265822586";
-                    break;
-                case 3:
-                    SliderLabel = "2.177215058";
-                    break;
-                case 4:
-                    SliderLabel = "1.632911293";
-                    break;
-                case 5:
                     SliderLabel = "1.306329035";
                     break;
-                case 6:
+                case 2:
                     SliderLabel = "1.088607529";
                     break;
-                case 7:
+                case 3:
                     SliderLabel = "0.933092168";
                     break;
-                case 8:
+                case 4:
                     SliderLabel = "0.816455647";
                     break;
-                case 9:
+                case 5:
                     SliderLabel = "0.725738353";
-                    break;
-                case 10:
-                    SliderLabel = "0.653164517";
-                    break;
+                    break;                
             }
             UpdateWidgetZPosition(sliderLabel);
         }
