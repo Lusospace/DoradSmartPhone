@@ -4,17 +4,17 @@ namespace DoradSmartphone.ViewModels
 {
     public class GeneralViewModel : BaseViewModel
     {
-        private TransferDTO transferDTO;
-        public TransferDTO TransferDTO
+        private GlassDTO glassDTO;
+        public GlassDTO GlassDTO
         {
-            get => transferDTO;
-            set => SetProperty(ref transferDTO, value);
+            get => glassDTO;
+            set => SetProperty(ref glassDTO, value);
         }
 
-        public GeneralViewModel(TransferDTO transferDTO)
+        public GeneralViewModel(GlassDTO glassDTO)
         {
             Title = "Review Page";
-            TransferDTO = transferDTO;
+            GlassDTO = glassDTO;
         }
     }
 }

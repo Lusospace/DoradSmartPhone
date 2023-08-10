@@ -4,6 +4,20 @@
         <name>DoradSmartphone</name>
     </assembly>
     <members>
+        <member name="M:DoradSmartphone.Helpers.ConvertToJsonAndBytes.Convert``1(``0)">
+            <summary>
+            Receive a T object that can be anything, serialize to string json, encode to bytes, then I add the header at the begining and the footer in the ending
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DoradSmartphone.Services.Bluetooth.BluetoothService.OnDataReceived(System.String)">
+            <summary>
+            Event Listener for the Received messages from bluetooth
+            </summary>
+            <param name="data"></param>
+        </member>
         <member name="T:DoradSmartphone.ViewModels.AppShellViewModel">
             <inheritdoc/>
         </member>
@@ -47,11 +61,52 @@
             <inheritdoc/>
             <inheritdoc/>
         </member>
+        <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.LoadImage(System.Byte[])">
+            <summary>
+            Receives the selected image in the previous page and updates 
+            the image in the Calibration Page
+            </summary>
+            <param name="photo"></param>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibration">
+            <summary>
+            Send the command to stop the calibration mode
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.SwitchImage">
+            <summary>
+            Picks another image from the device album to replace the previous one and 
+            send to the glass initializing another debuging process
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.SendImage(System.Byte[])">
+            <summary>
+            Receive the new image, check the Bluetooth connection, if it's connected, it prepare the 
+            Command DTO with the start debug command and send it over Bluetooth. If there's no connection
+            take the user back to the GlassPage
+            </summary>
+            <param name="photoData"></param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.GoToGlassPage">
+            <summary>
+            Send the User to the GlassPage 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.SendOverBluetooth(DoradSmartphone.DTO.CommandDTO)">
+            <summary>
+            Convert the CommandDTO to bytes and send using bluetooth
+            </summary>
+            <param name="command"></param>
+        </member>
         <member name="F:DoradSmartphone.ViewModels.CalibrationViewModel.stopCalibrationCommand">
             <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibrationCommand"/>.</summary>
         </member>
         <member name="P:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibrationCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibration"/>.</summary>
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibration"/>.</summary>
         </member>
         <member name="F:DoradSmartphone.ViewModels.CalibrationViewModel.switchImageCommand">
             <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.CalibrationViewModel.SwitchImageCommand"/>.</summary>
@@ -68,27 +123,37 @@
         <member name="P:DoradSmartphone.ViewModels.ChoiceViewModel.OldRouteCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ChoiceViewModel.OldRoute"/>.</summary>
         </member>
-        <member name="T:DoradSmartphone.ViewModels.DashboardViewModel">
+        <member name="T:DoradSmartphone.ViewModels.ControlDeviceViewModel">
             <inheritdoc/>
             <inheritdoc/>
         </member>
-        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.CommStatus">
-            <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.commStatus"/>
+        <member name="F:DoradSmartphone.ViewModels.ControlDeviceViewModel.startCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ControlDeviceViewModel.StartCommand"/>.</summary>
         </member>
-        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.DeviceList">
-            <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.deviceList"/>
+        <member name="P:DoradSmartphone.ViewModels.ControlDeviceViewModel.StartCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ControlDeviceViewModel.Start"/>.</summary>
         </member>
-        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.StatusLabel">
-            <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.statusLabel"/>
+        <member name="F:DoradSmartphone.ViewModels.ControlDeviceViewModel.stopCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ControlDeviceViewModel.StopCommand"/>.</summary>
         </member>
-        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.DeviceBool">
-            <inheritdoc cref="F:DoradSmartphone.ViewModels.DashboardViewModel.deviceBool"/>
+        <member name="P:DoradSmartphone.ViewModels.ControlDeviceViewModel.StopCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ControlDeviceViewModel.Stop"/>.</summary>
         </member>
-        <member name="F:DoradSmartphone.ViewModels.DashboardViewModel.sendSomethingCommand">
-            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.DashboardViewModel.SendSomethingCommand"/>.</summary>
+        <member name="T:DoradSmartphone.ViewModels.DisplaySelectedItemsViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
         </member>
-        <member name="P:DoradSmartphone.ViewModels.DashboardViewModel.SendSomethingCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.DashboardViewModel.SendSomething"/>.</summary>
+        <member name="F:DoradSmartphone.ViewModels.DisplaySelectedItemsViewModel.manualCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.DisplaySelectedItemsViewModel.ManualCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.DisplaySelectedItemsViewModel.ManualCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.DisplaySelectedItemsViewModel.Manual"/>.</summary>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.DisplaySelectedItemsViewModel.automaticCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.DisplaySelectedItemsViewModel.AutomaticCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.DisplaySelectedItemsViewModel.AutomaticCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.DisplaySelectedItemsViewModel.Automatic"/>.</summary>
         </member>
         <member name="T:DoradSmartphone.ViewModels.ExerciseViewModel">
             <inheritdoc/>
@@ -120,6 +185,33 @@
         <member name="T:DoradSmartphone.ViewModels.GlassViewModel">
             <inheritdoc/>
             <inheritdoc/>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.GlassViewModel.CheckConnection">
+            <summary>
+            Verify the status of the connection as sonn as the app starts.
+            </summary>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.GlassViewModel.Calibration">
+            <summary>
+            Check the connection status if its's connected, it picks a photo from the smartphone album, 
+            add into the commandDTO with the start debug command, send over bluetooth and go to the Calibration Page. 
+            If it's not connected then just fire a Toast message
+            </summary>
+            <returns>Nothing</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.GlassViewModel.SendOverBluetooth(DoradSmartphone.DTO.CommandDTO)">
+            <summary>
+            Receive the command DTO, send it to the method ConvertToJsonAndBytes, and send the result over bluetooth.
+            </summary>
+            <param name="command"></param>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.GlassViewModel.BluetoothService_ConnectionStatusChanged(System.Object,System.Boolean)">
+            <summary>
+            Event Listener to update the Status property based on the Bluetooth connection status
+            </summary>
+            <param name="sender"></param>
+            <param name="isConnected"></param>
         </member>
         <member name="P:DoradSmartphone.ViewModels.GlassViewModel.Battery">
             <inheritdoc cref="F:DoradSmartphone.ViewModels.GlassViewModel.battery"/>
@@ -193,6 +285,67 @@
         <member name="P:DoradSmartphone.ViewModels.WidgetViewModel.IsRefreshing">
             <inheritdoc cref="F:DoradSmartphone.ViewModels.WidgetViewModel.isRefreshing"/>
         </member>
+        <member name="M:CalculateWidgetPositions.LoadAutomaticPage(DoradSmartphone.DTO.TransferDTO,Microsoft.Maui.Controls.ContentPage@)">
+            <summary>
+            Receives the TransferDTO (Could it be only the Widget entity?!) and the ContentPage (Automatic or Manual Pages) then iterates through the widgets to calculate their position in the screen. 
+            </summary>
+            <param name="transferDTO"></param>
+            <param name="widgetPage"></param>
+            <returns>List of widgets </returns>
+        </member>
+        <member name="M:CalculateWidgetPositions.CalculateRelativePositions(System.Collections.Generic.List{DoradSmartphone.Models.Widget})">
+            <summary>
+            Calculate the relative positions of the widgets. The Calculation is based on cartesian plan (X and Y axis) divided by the screen size and multiply per 100
+            </summary>
+            <param name="widgets"></param>
+        </member>
+        <member name="M:CalculateWidgetPositions.CalculateGlassesPositions(System.Collections.Generic.List{DoradSmartphone.Models.Widget})">
+            <summary>
+            Calculate the glass position based in the relative position in the smartphone device. 
+            Taking in mind that Unity position metrics works differently from the cartesian plan, where the 0,0 position is in the middle of the screen
+            </summary>
+            <param name="widgets"></param>
+        </member>
+        <member name="M:CalculateWidgetPositions.FormatPositions(System.Collections.Generic.List{DoradSmartphone.Models.Widget})">
+            <summary>
+            Here we just format to double with two digits
+            </summary>
+            <param name="widgets"></param>
+        </member>
+        <member name="M:CalculateWidgetPositions.GetScreenResolution">
+            <summary>
+            Method to get the screen resolution of the actual device, returns a Tuple of integer in which are the heigh and width of the pixel resolution
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GoogleMapsGeocoding.GetAddressName(System.Double,System.Double)">
+            <summary>
+            Receives the latitude and longitude, then go to the google maps api in the internet to grab the full address based on the provided coordinates.
+            We use to get the starting and finishing address of the routes. It will return the image of the map later.
+            </summary>
+            <param name="latitude"></param>
+            <param name="longitude"></param>
+            <returns>The Address</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:GoogleMapsGeocoding.GetPlacePhotoUrl(System.Double,System.Double)">
+            <summary>
+            Receive the coordinates and uses google maps api to get a static image of the google maps location.
+            </summary>
+            <param name="latitude"></param>
+            <param name="longitude"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GoogleMapsGeocodingResponse">
+            <summary>
+            Class to handle the google maps api response
+            </summary>
+        </member>
+        <member name="T:GoogleMapsGeocodingResult">
+            <summary>
+            Class to handle with the result, in our case only the address
+            </summary>
+        </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
             <summary>
             A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
@@ -207,18 +360,6 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsScanning">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsScanning" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CommStatus">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CommStatus" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DeviceList">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DeviceList" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.StatusLabel">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "StatusLabel" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DeviceBool">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DeviceBool" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FinalAddress">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FinalAddress" generated properties.</summary>
@@ -267,18 +408,6 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsNotScanning">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsNotScanning" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CommStatus">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CommStatus" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DeviceList">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DeviceList" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.StatusLabel">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "StatusLabel" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DeviceBool">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DeviceBool" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FinalAddress">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FinalAddress" generated properties.</summary>

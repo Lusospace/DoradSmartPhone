@@ -14,6 +14,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
                         <Image x:Name="SelectedPhotoImage" Source="{Binding SelectedPhoto}" Style="{StaticResource ImageContainerStyle}" WidthRequest="300" 
@@ -28,10 +29,16 @@
                         <Button Text="Stop Calibration" Command="{Binding StopCalibrationCommand}"
                         Grid.Row="2" WidthRequest="200" CornerRadius="20" HorizontalOptions="Center"
                         Margin="20" FontSize="20"/>
+
+                        <!-- Add Slider to control brightness -->
+                        <Slider x:Name="BrightnessSlider"                                
+                                Maximum="1.0"
+                                Minimum="0.0"                                
+                                Grid.Row="3"
+                                Margin="20, 0, 20, 20" />
                     </Grid>
                 </StackLayout>
             </ScrollView>
         </StackLayout>
-
     </ContentPage.Content>
 </ContentPage>

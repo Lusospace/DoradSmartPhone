@@ -25,6 +25,7 @@ public class MonoPackageManager_Resources {
 		"Newtonsoft.Json.dll",
 		"Plugin.BLE.Abstractions.dll",
 		"Plugin.BLE.dll",
+		"SkiaSharp.dll",
 		"SQLite-net.dll",
 		"SQLiteNetExtensions.dll",
 		"SQLitePCLRaw.batteries_v2.dll",

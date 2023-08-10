@@ -1,41 +1,45 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoradSmartphone.Views.DisplaySelectedItemsPage"
              xmlns:model="clr-namespace:DoradSmartphone.Models"
+             xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
+             x:DataType="viewmodel:DisplaySelectedItemsViewModel"
              Title="{Binding Title}">
 
     <ContentPage.Content>
-        <StackLayout Padding="20" Spacing="10">
-            <Label Text="Selected Widgets" FontSize="20" HorizontalOptions="Center" />
-
-            <ListView ItemsSource="{Binding SelectedItems}" SelectionMode="None">
-                <ListView.ItemTemplate>
+        <StackLayout Padding="20" Spacing="50">
+            <Label Text="Reorder Widgets With Drag and Drop" FontSize="20" HorizontalOptions="Center" />
+            <CollectionView ItemsSource="{Binding SelectedItems}" SelectionMode="None">
+                <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Widget">
-                        <ViewCell>
-                            <Grid RowSpacing="30">
+                        <Frame BorderColor="Gray" Padding="5" Margin="5">
+                            <Grid ColumnSpacing="10">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.GestureRecognizers>
+                                    <DragGestureRecognizer DragStartingCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:DisplaySelectedItemsViewModel}}, Path=DragStartedCommand}" 
+                                                  DragStartingCommandParameter="{Binding .}" 
+                                                               CanDrag="True"/>
+                                    <DropGestureRecognizer DropCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:DisplaySelectedItemsViewModel}}, Path=ItemDroppedCommand}" 
+                                                  DropCommandParameter="{Binding .}" 
+                                                               AllowDrop="True"/>
+                                </Grid.GestureRecognizers>
+                                <Image Source="{Binding FileName}" WidthRequest="50" HeightRequest="50"
+                                       VerticalOptions="Center" Grid.RowSpan="2" />
 
-                                <Image Source="{Binding FileName}" 
-                           WidthRequest="40" HeightRequest="40"
-                           Margin="10, 0, 10, 0"
-                           VerticalOptions="Center"
-                           Grid.RowSpan="2" />
-
-                                <Label Text="{Binding Name}" FontSize="15"
-                           VerticalOptions="Center" 
-                           Grid.Column="1" 
-                           Grid.Row="0" />
+                                <Label Text="{Binding Name}" FontSize="15" VerticalOptions="Center" 
+                                           Grid.Column="1" Grid.Row="0" />
                             </Grid>
-                        </ViewCell>
+                        </Frame>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="10">
                 <Button Text="Manual" Command="{Binding ManualCommand}" Margin="5" />
                 <Button Text="Automatic" Command="{Binding AutomaticCommand}" Margin="5" />
             </StackLayout>

@@ -13,120 +13,11 @@ namespace DoradSmartphone.ViewModels
 {
     public partial class DashboardViewModel : BaseViewModel, INotifyPropertyChanged
     {
-        [ObservableProperty]
-        string commStatus;
-        [ObservableProperty]
-        bool deviceList;
-        [ObservableProperty]
-        bool statusLabel;
-        [ObservableProperty]
-        bool deviceBool;
-        
-        BluetoothService btService;        
-
-        bool isConnected = false;
-
-        private ObservableCollection<DeviceCandidate> devices;
-        public ObservableCollection<DeviceCandidate> Devices
-        {
-            get { return devices; }
-            set
-            {
-                devices = value;
-                OnPropertyChanged(nameof(Devices));
-                OnPropertyChanged(nameof(HasDevices));
-            }
-        }
-
-        public bool HasDevices => Devices != null && Devices.ToList().Count > 0;
 
         public DashboardViewModel()
         {
-            Title = "Welcome";
-            CommStatus = "Scanning";
-            StatusLabel = true;
-            DeviceBool = false;            
-            //ConnectedDevices();
+            Title = "Welcome";                    
         }
-
-        private async void ConnectedDevices()
-        {
-            var adapter = BluetoothAdapter.DefaultAdapter;
-            if (adapter != null && adapter.IsEnabled)
-            {
-                var pairedDevices = adapter.BondedDevices;
-                var glasses = pairedDevices.FirstOrDefault(bd => bd.Name == Constants.GLASSES_NAME);
-
-                if (glasses == null)
-                {
-                    CommStatus = "No connected devices found.";
-                    //throw new Exception("Glasses device not found.");
-                }
-                else
-                {
-                    CommStatus = "Found Device: " + glasses.Name;
-                }
-                try
-                {
-                    //btService = new BluetoothService();
-                    //btService.Start();
-                    //btService.Connect(glasses);
-                    try
-                    {
-                        //btService.Write(ConvertWidgetToJsonAndBytes());
-                        //btService.Accept();
-                    }
-                    catch (Exception ex)
-                    {
-                        // Handle write or read error
-                        CommStatus = "Error sending JSON file over Bluetooth: " + ex.Message;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    CommStatus = "Error connecting to the GATT server: " + ex.Message;
-                }
-            }
-            else
-            {
-                CommStatus = "Bluetooth is disabled.";
-            }
-        }
-
-        [RelayCommand]
-        public void SendSomething()
-        {
-            try
-            {
-                btService = new BluetoothService();
-                btService.Write(ConvertWidgetToJsonAndBytes());
-            }
-            catch (Exception ex)
-            {                
-                CommStatus = "Error sending JSON file over Bluetooth: " + ex.Message;
-            }
-            
-        }
-
-        private byte[] ConvertWidgetToJsonAndBytes()
-        {
-            Random random = new Random();
-
-            List<Widget> widgets = GetWidgets();
-
-            foreach (var widget in widgets)
-            {
-                widget.XPosition = random.Next(0, 100);
-                widget.YPosition = random.Next(0, 100);
-            }
-
-            string json = System.Text.Json.JsonSerializer.Serialize(widgets);            
-
-            byte[] byteArray = Encoding.UTF8.GetBytes(json);
-
-            return byteArray;
-        }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -135,18 +26,5 @@ namespace DoradSmartphone.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         }
-
-        public List<Widget> GetWidgets() => new List<Widget>
-        {
-            new Widget {
-            Id = 1, Name = "Battery", FileName = "Images/Widgets/battery.png"
-            },
-            new Widget {
-            Id = 2, Name = "Time", FileName = "Images/Widgets/time.png"
-            },
-            new Widget {
-            Id = 3, Name = "Route", FileName = "Images/Widgets/route.png"
-            },
-        };
     }
 }

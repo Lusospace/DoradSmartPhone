@@ -7,6 +7,17 @@
              x:DataType = "viewmodel:ManualViewModel"
              Title="{Binding Title}">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ImageContainerStyle" TargetType="Image">
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="WidthRequest" Value="80" />
+                <Setter Property="HeightRequest" Value="80" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -28,11 +39,11 @@
                 </Grid.RowDefinitions>
 
                 <Label Text="1" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="1"/>
-                <Label Text="10" Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Center" 
+                <Label Text="5" Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Center" 
                        Grid.Row="1"/>
                 <!-- Display the corresponding value from the ViewModel -->
                 <Label Text="{Binding SliderLabel}" Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Slider x:Name="slider" Grid.Column="1" Minimum="1" Maximum="10" 
+                <Slider x:Name="slider" Grid.Column="1" Minimum="1" Maximum="5" 
                         Grid.Row="1" Value="{Binding SliderValue, Mode=TwoWay}" />
             </Grid>
 
@@ -45,7 +56,8 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Image Source="{Binding Widgets[0].FileName}"
+
+                <Image Source="{Binding Widgets[0].FileName}" 
                        Aspect="AspectFit"
                        HeightRequest="80"
                        WidthRequest="80"
@@ -53,11 +65,16 @@
                        HorizontalOptions="Start"
                        VerticalOptions="Start">
                     <Image.GestureRecognizers>
-                        <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                        <DragGestureRecognizer DragStartingCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ManualViewModel}}, Path=DragStartedCommand}" 
+                                              DragStartingCommandParameter="{Binding Widgets[0]}" 
+                                              CanDrag="True"/>
+                        <DropGestureRecognizer DropCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ManualViewModel}}, Path=ItemDroppedCommand}" 
+                                              DropCommandParameter="{Binding Widgets[0]}" 
+                                              AllowDrop="True"/>
                     </Image.GestureRecognizers>
                 </Image>
 
-                <Image Source="{Binding Widgets[1].FileName}"
+                <Image Source="{Binding Widgets[1].FileName}" 
                        Aspect="AspectFit"
                        HeightRequest="80"
                        WidthRequest="80"
@@ -65,11 +82,16 @@
                        HorizontalOptions="End"
                        VerticalOptions="Start">
                     <Image.GestureRecognizers>
-                        <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                        <DragGestureRecognizer DragStartingCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ManualViewModel}}, Path=DragStartedCommand}" 
+                                              DragStartingCommandParameter="{Binding Widgets[1]}" 
+                                              CanDrag="True"/>
+                        <DropGestureRecognizer DropCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ManualViewModel}}, Path=ItemDroppedCommand}" 
+                                              DropCommandParameter="{Binding Widgets[1]}" 
+                                              AllowDrop="True"/>
                     </Image.GestureRecognizers>
                 </Image>
 
-                <Image Source="{Binding Widgets[2].FileName}"
+                <Image Source="{Binding Widgets[2].FileName}" 
                        Aspect="AspectFit"
                        HeightRequest="80"
                        WidthRequest="80"
@@ -77,11 +99,16 @@
                        HorizontalOptions="Start"
                        VerticalOptions="End">
                     <Image.GestureRecognizers>
-                        <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                        <DragGestureRecognizer DragStartingCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ManualViewModel}}, Path=DragStartedCommand}" 
+                                              DragStartingCommandParameter="{Binding Widgets[2]}" 
+                                              CanDrag="True"/>
+                        <DropGestureRecognizer DropCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ManualViewModel}}, Path=ItemDroppedCommand}" 
+                                              DropCommandParameter="{Binding Widgets[2]}" 
+                                              AllowDrop="True"/>
                     </Image.GestureRecognizers>
                 </Image>
 
-                <Image Source="{Binding Widgets[3].FileName}"
+                <Image Source="{Binding Widgets[3].FileName}" 
                        Aspect="AspectFit"
                        HeightRequest="80"
                        WidthRequest="80"
@@ -89,11 +116,16 @@
                        HorizontalOptions="End"
                        VerticalOptions="End">
                     <Image.GestureRecognizers>
-                        <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                        <DragGestureRecognizer DragStartingCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ManualViewModel}}, Path=DragStartedCommand}" 
+                                              DragStartingCommandParameter="{Binding Widgets[3]}" 
+                                              CanDrag="True"/>
+                        <DropGestureRecognizer DropCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ManualViewModel}}, Path=ItemDroppedCommand}" 
+                                              DropCommandParameter="{Binding Widgets[3]}" 
+                                              AllowDrop="True"/>
                     </Image.GestureRecognizers>
                 </Image>
 
-                <Image Source="{Binding Widgets[4].FileName}"
+                <Image Source="{Binding Widgets[4].FileName}" 
                        Aspect="AspectFit"
                        HeightRequest="80"
                        WidthRequest="80"
@@ -101,14 +133,19 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center">
                     <Image.GestureRecognizers>
-                        <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                        <DragGestureRecognizer DragStartingCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ManualViewModel}}, Path=DragStartedCommand}" 
+                                              DragStartingCommandParameter="{Binding Widgets[4]}" 
+                                              CanDrag="True"/>
+                        <DropGestureRecognizer DropCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ManualViewModel}}, Path=ItemDroppedCommand}" 
+                                              DropCommandParameter="{Binding Widgets[4]}" 
+                                              AllowDrop="True"/>
                     </Image.GestureRecognizers>
                 </Image>
             </Grid>
             
             <!-- Third Grid with 12% height -->
             <Grid Grid.Row="2" Margin="10" x:Name="ButtonGrid">
-                <Button Text="Review" WidthRequest="100" CornerRadius="40" HorizontalOptions="Center" 
+                <Button Text="Send" WidthRequest="100" CornerRadius="40" HorizontalOptions="Center" 
                                 Command="{Binding ReviewPageCommand}" Margin="10" 
                                 FontSize="15"/>
             </Grid>

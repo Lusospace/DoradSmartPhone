@@ -12,10 +12,5 @@ public class MainActivity : MauiAppCompatActivity
     protected override void OnCreate(Bundle savedInstanceState)
     {
         base.OnCreate(savedInstanceState);
-
-        if(savedInstanceState == null)
-        {
-           // bluetoothClass = new Platforms.Android.BluetoothClass();
-        }
     }
 }

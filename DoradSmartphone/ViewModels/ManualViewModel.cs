@@ -6,6 +6,7 @@ using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Input;
 
 namespace DoradSmartphone.ViewModels
 {
@@ -17,6 +18,13 @@ namespace DoradSmartphone.ViewModels
 
         private double sliderValue;
         private string sliderLabel;
+
+        private Widget draggedItem;
+        private int draggedItemIndex;
+
+        public ICommand DragStartedCommand => new RelayCommand<Widget>(DragStarted);
+        public ICommand ItemDroppedCommand => new RelayCommand<Widget>(ItemDropped);
+
 
         public double SliderValue
         {
@@ -48,8 +56,15 @@ namespace DoradSmartphone.ViewModels
         private ObservableCollection<Widget> widgets;
         public ObservableCollection<Widget> Widgets
         {
-            get => widgets;
-            set => SetProperty(ref widgets, value);
+            get { return widgets; }
+            set
+            {
+                if (widgets != value)
+                {
+                    widgets = value;
+                    OnPropertyChanged(nameof(Widgets));
+                }
+            }
         }
 
         private ContentPage manualPage;
@@ -71,24 +86,61 @@ namespace DoradSmartphone.ViewModels
             LoadAutomaticPage();
         }
 
+        private void DragStarted(Widget item)
+        {
+            draggedItem = item;
+            draggedItemIndex = Widgets.IndexOf(draggedItem);
+        }
+
+        private void ItemDropped(Widget targetItem)
+        {
+            if (draggedItem != null)
+            {
+                int targetIndex = Widgets.IndexOf(targetItem);
+                int draggedItemIndex = Widgets.IndexOf(draggedItem);
+
+                if (targetIndex != -1)
+                {
+                    Widgets[draggedItemIndex] = targetItem;
+                    Widgets[targetIndex] = draggedItem;
+                    
+
+                    // Update the UI
+                    OnPropertyChanged(nameof(Widgets));
+                    ManualPage.ForceLayout();
+
+                    var reordenatedItens = new List<Widget>();
+                    Widgets.ToList().ForEach(w => reordenatedItens.Add(w));
+
+                    // Swap the Widgets in the transferDTO.Widgets list
+                    transferDTO.Widgets.Clear();
+                    transferDTO.Widgets.AddRange(reordenatedItens);                    
+                }
+                draggedItem = null;
+            }
+        }
+
         [RelayCommand]
         public void ReviewPage()
         {
             glassDTO = EntityToDto.Convertion(transferDTO);
             glassDTO.WidgetConfiguration = false;
             SendOverBluetooth(glassDTO);
-            Application.Current.MainPage.Navigation.PushAsync(new GeneralPage(transferDTO));
+            Application.Current.MainPage.Navigation.PushAsync(new ControlDevicePage());
         }
 
         private void SendOverBluetooth(GlassDTO glassDTO) => bluetoothService.Write(ConvertToJsonAndBytes.Convert(glassDTO));
 
         private void LoadAutomaticPage()
         {
-            CalculateWidgetPositions.LoadAutomaticPage(transferDTO, out ContentPage manualPage);
+            var updatedWidgets = CalculateWidgetPositions.LoadAutomaticPage(transferDTO, out ContentPage manualPage);
             ManualPage = manualPage;
 
+            // Update the Widgets collection to match the updated list of widgets
+            Widgets = new ObservableCollection<Widget>(updatedWidgets);
+
             // Update the GlassDTO with the modified Widgets
-            transferDTO.Widgets = Widgets.ToList();
+            transferDTO.Widgets = updatedWidgets.ToList();
         }
 
         private void UpdateSliderLabel()
@@ -97,37 +149,22 @@ namespace DoradSmartphone.ViewModels
 
             // Use the converted integer value in the switch statement
             switch (sliderValueInt)
-            {
+            {                
                 case 1:
-                    SliderLabel = "6.531645173";
-                    break;
-                case 2:
-                    SliderLabel = "3.265822586";
-                    break;
-                case 3:
-                    SliderLabel = "2.177215058";
-                    break;
-                case 4:
-                    SliderLabel = "1.632911293";
-                    break;
-                case 5:
                     SliderLabel = "1.306329035";
                     break;
-                case 6:
+                case 2:
                     SliderLabel = "1.088607529";
                     break;
-                case 7:
+                case 3:
                     SliderLabel = "0.933092168";
                     break;
-                case 8:
+                case 4:
                     SliderLabel = "0.816455647";
                     break;
-                case 9:
+                case 5:
                     SliderLabel = "0.725738353";
-                    break;
-                case 10:
-                    SliderLabel = "0.653164517";
-                    break;
+                    break;                
             }
             UpdateWidgetZPosition(sliderLabel);
         }

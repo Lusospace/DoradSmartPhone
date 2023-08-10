@@ -11060,6 +11060,7 @@ public final class R {
     public static final int tooltip_frame_light=0x7f0700fd;
     public static final int user1=0x7f0700fe;
     public static final int weather=0x7f0700ff;
+    public static final int x_widget=0x7f070100;
   }
   public static final class id {
     public static final int ALT=0x7f080000;

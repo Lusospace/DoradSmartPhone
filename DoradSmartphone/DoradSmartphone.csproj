@@ -29,6 +29,7 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiImage Include="Resources\Images\Widgets\x_widget.png" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -75,6 +76,7 @@
 	  <None Remove="Resources\Images\Widgets\kmh.png" />
 	  <None Remove="Resources\Images\Widgets\time.png" />
 	  <None Remove="Resources\Images\Widgets\weather.png" />
+	  <None Remove="Resources\Images\Widgets\x_widget.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -108,6 +110,7 @@
 	  <PackageReference Include="Microsoft.Maui.Controls.Maps" Version="7.0.86" />
 	  <PackageReference Include="Microsoft.Maui.Maps" Version="7.0.86" />
 	  <PackageReference Include="Plugin.BLE" Version="2.1.3" />
+	  <PackageReference Include="SkiaSharp" Version="2.88.3" />
 	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 	  <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
 	  <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.4" />
@@ -133,6 +136,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ChoicePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ControlDevicePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\DashboardPage.xaml">

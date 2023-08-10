@@ -1,10 +1,8 @@
 ﻿using Android.Bluetooth;
 using Android.Util;
 using DoradSmartphone.Helpers;
-using GoogleGson;
 using Java.Util;
 using System.Text;
-using Timer = System.Threading.Timer;
 
 namespace DoradSmartphone.Services.Bluetooth
 {
@@ -15,26 +13,45 @@ namespace DoradSmartphone.Services.Bluetooth
         public const int STATE_CONNECTING = 2;
         public const int STATE_CONNECTED = 3;
         const string TAG = "Dorad SmartPhone App";
-        
+
         static readonly UUID MY_UUID_SECURE = UUID.FromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
 
+        // Define the delegate type for the event
+        public delegate void DataReceivedEventHandler(string receivedData);
+
+        // Define the event using the delegate type
+        public event DataReceivedEventHandler DataReceived;
+
         BluetoothAdapter btAdapter;
-        AcceptThread acceptThread;
-        ConnectedThread connectedThread;        
+        ListenerConfiguration listenerConfiguration;
+        BluetoothHandlers btHandlers;
 
         int state;
         int newState;
 
-        private Timer connectionTimer;
-        private const int ConnectionCheckInterval = 5000; // Check every 5 seconds
+        private bool isConnected;
+        public bool IsConnected
+        {
+            get => isConnected;
+            private set
+            {
+                if (isConnected != value)
+                {
+                    isConnected = value;
+                    ConnectionStatusChanged?.Invoke(this, value);
+                }
+            }
+        }
+
+        public event EventHandler<bool> ConnectionStatusChanged;
+
 
         public BluetoothService()
         {
             btAdapter = BluetoothAdapter.DefaultAdapter;
             state = STATE_NONE;
-            newState = state;            
-            Start();
-            //connectionTimer = new Timer(CheckConnectionStatus, newState, ConnectionCheckInterval, ConnectionCheckInterval);
+            newState = state;
+            _ = Start();            
         }
 
         public int GetState()
@@ -42,9 +59,9 @@ namespace DoradSmartphone.Services.Bluetooth
             return state;
         }
 
-        public void Start()
+        public async Task Start()
         {
-           if (btAdapter != null && btAdapter.IsEnabled)
+            if (btAdapter != null && btAdapter.IsEnabled)
             {
                 var pairedDevices = btAdapter.BondedDevices;
                 var glasses = pairedDevices.FirstOrDefault(bd => bd.Name == Constants.GLASSES_NAME);
@@ -60,68 +77,30 @@ namespace DoradSmartphone.Services.Bluetooth
                     //Toaster.MakeToast($"Found Device: " + glasses.Name);
                 }
                 try
-                {
-                    if (acceptThread != null)
-                    {
-                        acceptThread.Cancel();
-                        acceptThread = null;
-                    }
-
-                    if (connectedThread != null)
-                    {
-                        connectedThread.Cancel();
-                        connectedThread = null;
-                    }
-
+                {                    
                     state = STATE_LISTEN;
                     UpdateBtStatus();
 
-                    Connect(glasses);
+                    Accept();
+                    await Connect(glasses);
                 }
                 catch (Exception ex)
                 {
-                    //Toaster.MakeToast($"Error connecting to Dorad Glasses: " + ex.Message);
+                    Console.WriteLine($"Error connecting to Dorad Glasses: " + ex.Message);
                 }
             }
         }
 
         public void Accept()
         {
-            if (connectedThread != null)
-            {
-                connectedThread.Cancel();
-                connectedThread = null;
-            }
-
-            acceptThread = new AcceptThread(this);
-            acceptThread.Start();
+            listenerConfiguration = new ListenerConfiguration(this);
+            listenerConfiguration.Start();
 
             state = STATE_LISTEN;
             UpdateBtStatus();
         }
 
-        public void Connect(BluetoothDevice device)
-        {
-            if (state == STATE_CONNECTING)
-            {
-                if (connectedThread != null)
-                {
-                    connectedThread.Cancel();
-                    connectedThread = null;
-                }
-            }
-
-            // Cancel any thread currently running a connection
-            if (acceptThread != null)
-            {
-                acceptThread.Cancel();
-                acceptThread = null;
-            }
-            // Start the thread to connect with the given device
-            ConnectAsync(device);
-        }
-
-        private async Task ConnectAsync(BluetoothDevice device)
+        private async Task Connect(BluetoothDevice device)
         {
             state = STATE_CONNECTING;
             UpdateBtStatus();
@@ -135,49 +114,38 @@ namespace DoradSmartphone.Services.Bluetooth
                 socket = device.CreateRfcommSocketToServiceRecord(MY_UUID_SECURE);
                 await socket.ConnectAsync();
                 state = STATE_CONNECTED;
-                UpdateBtStatus();
+                UpdateBtStatus();                
+                if (state != STATE_CONNECTED)
+                {
+                    await ConnectionFailed();
+                }else
+                {
+                    HandleConnection(socket);
+                }
             }
-            catch (IOException e)
+            catch (Exception e)
             {
                 // Close the socket
                 try
                 {
+                    Log.Error(TAG, $"unable to connect.", e);
                     socket?.Close();
                 }
-                catch (IOException e2)
+                catch (Exception e2)
                 {
                     Log.Error(TAG, $"unable to close() socket during connection failure.", e2);
                 }
 
                 // Start the service over to restart listening mode
-                ConnectionFailed();
+                await ConnectionFailed();
                 return;
-            }
-            Connected(socket);
-        }
-
-        public void Stop()
-        {
-            if (acceptThread != null)
-            {
-                acceptThread.Cancel();
-                acceptThread = null;
-            }
-
-            if (connectedThread != null)
-            {
-                connectedThread.Cancel();
-                connectedThread = null;
-            }
-
-            state = STATE_NONE;
-            UpdateBtStatus();
+            }            
         }
 
         //Call this one to send data over BT
         public void Write(byte[] data)
-        {                       
-            // Synchronize a copy of the ConnectedThread
+        {
+            // Synchronize a copy of the BluetoothHandlers
             lock (this)
             {
                 if (state != STATE_CONNECTED)
@@ -187,73 +155,67 @@ namespace DoradSmartphone.Services.Bluetooth
                 }
                 else
                 {
-                    connectedThread.Write(data);
-                }                
-            }           
+                    btHandlers.Write(data);
+                }
+            }
         }
 
-        void UpdateBtStatus()
+        public void UpdateBtStatus()
         {
             state = GetState();
             newState = state;
+            CheckConnection();
         }
 
-        void ConnectionFailed()
+        public async Task ConnectionFailed()
         {
             state = STATE_LISTEN;
 
             // Handle connection failure
-            Start();
+            await Start();
         }
 
-        public void Connected(BluetoothSocket socket)
+        public void HandleConnection(BluetoothSocket socket)
         {
-            // Cancel the thread that completed the connection
-            if (acceptThread != null)
-            {
-                acceptThread.Cancel();
-                acceptThread = null;
-            }
-
-            // Cancel any thread currently running a connection
-            if (connectedThread != null)
-            {
-                connectedThread.Cancel();
-                connectedThread = null;
-            }
-
             // Start the thread to manage the connection and perform transmissions
-            connectedThread = new ConnectedThread(socket, this);
-            connectedThread.Start();
+            btHandlers = new BluetoothHandlers(socket, this);
+            btHandlers.Start();
 
-            state = STATE_CONNECTED;
-
-            // Handle successful connection
+            state = STATE_CONNECTED;           
         }
 
-        void ConnectionLost()
+        public async Task ConnectionLost()
         {
             // Handle lost connection            
             state = STATE_NONE;
             UpdateBtStatus();
-            Start();
+            await Start();
         }
 
-        private void CheckConnectionStatus(object state)
+        public bool CheckConnection()
         {
-            // Check the connection status here
-            if ((int)state != STATE_CONNECTED)
+            try
+            {                
+                int connectionState = GetState();
+
+                IsConnected = connectionState == STATE_CONNECTED;
+
+
+                return IsConnected;
+            }
+            catch (Exception ex)
             {
-                ConnectionLost();                
-            }            
+                Toaster.MakeToast("Error " + ex);
+                throw new Exception("Error when checking the Bluetooth status.");
+            }
         }
 
-        class AcceptThread
+        class ListenerConfiguration
         {
             private BluetoothServerSocket serverSocket;
             private BluetoothService service;
 
-            public AcceptThread(BluetoothService service)
+            public ListenerConfiguration(BluetoothService service)
             {
                 this.service = service;
                 BluetoothServerSocket tmp = null;
@@ -296,7 +258,7 @@ namespace DoradSmartphone.Services.Bluetooth
                                 {
                                     case STATE_LISTEN:
                                     case STATE_CONNECTING:
-                                        service.Connected(socket);
+                                        service.HandleConnection(socket);
                                         break;
                                     case STATE_NONE:
                                     case STATE_CONNECTED:
@@ -330,17 +292,17 @@ namespace DoradSmartphone.Services.Bluetooth
             }
         }
 
-        class ConnectedThread
+        class BluetoothHandlers
         {
-            private static readonly string TAG = "ConnectedThread";
+            private static readonly string TAG = "BluetoothHandlers";
             private BluetoothSocket socket;
             private Stream inStream;
             private Stream outStream;
             private BluetoothService service;
 
-            public ConnectedThread(BluetoothSocket socket, BluetoothService service)
+            public BluetoothHandlers(BluetoothSocket socket, BluetoothService service)
             {
-                Log.Debug(TAG, "create ConnectedThread");
+                Log.Debug(TAG, "create BluetoothHandlers");
 
                 this.socket = socket;
                 this.service = service;
@@ -369,6 +331,7 @@ namespace DoradSmartphone.Services.Bluetooth
                         {
                             bytes = inStream.Read(buffer, 0, buffer.Length);
                             string receivedData = Encoding.UTF8.GetString(buffer, 0, bytes);
+                            service.OnDataReceived(receivedData);
                             Console.WriteLine(receivedData);
                             // Handle received data
                         }
@@ -386,26 +349,23 @@ namespace DoradSmartphone.Services.Bluetooth
             public void Write(byte[] buffer)
             {
                 try
-                {                    
-                    outStream.Write(buffer);                    
+                {
+                    outStream.Write(buffer);
                 }
                 catch (IOException e)
                 {
                     Log.Error(TAG, "Exception during write", e);
                 }
             }
+        }
 
-            public void Cancel()
-            {
-                try
-                {
-                    socket.Close();
-                }
-                catch (IOException e)
-                {
-                    Log.Error(TAG, "close() of connect socket failed", e);
-                }
-            }
+        /// <summary>
+        /// Event Listener for the Received messages from bluetooth
+        /// </summary>
+        /// <param name="data"></param>
+        protected virtual void OnDataReceived(string data)
+        {
+            DataReceived?.Invoke(data); // Invoke the event
         }
     }
 }

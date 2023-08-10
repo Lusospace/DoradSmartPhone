@@ -1,13 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using DoradSmartphone.DTO;
 using DoradSmartphone.Helpers;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.Views;
+using System.ComponentModel;
 
 namespace DoradSmartphone.ViewModels
 {
-    public partial class CalibrationViewModel : BaseViewModel
+    public partial class CalibrationViewModel : BaseViewModel, INotifyPropertyChanged
     {
-        private IBluetoothService bluetoothService;        
+        private IBluetoothService bluetoothService;
 
         public CalibrationViewModel(byte[] photo, IBluetoothService bluetoothService)
         {
@@ -23,6 +25,11 @@ namespace DoradSmartphone.ViewModels
             set => SetProperty(ref _selectedPhoto, value);
         }
 
+        /// <summary>
+        /// Receives the selected image in the previous page and updates 
+        /// the image in the Calibration Page
+        /// </summary>
+        /// <param name="photo"></param>
         private void LoadImage(byte[] photo)
         {
             if (photo != null)
@@ -31,48 +38,85 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
-        [RelayCommand]
-        public async Task StopCalibration() 
-        {
-            bluetoothService.Write(ConvertToJsonAndBytes.Convert(Constants.STOP));
-            await GoToGlassPage();
-        } 
 
+        /// <summary>
+        /// Send the command to stop the calibration mode
+        /// </summary>
+        /// <returns></returns>
+        [RelayCommand]
+        public async Task StopCalibration()
+        {
+            CommandDTO command = new CommandDTO
+            {
+                Command = Constants.STOPDEBUG,
+                Image = null
+            };
+            SendOverBluetooth(command);
+            await GoToGlassPage();
+        }
+
+        /// <summary>
+        /// Picks another image from the device album to replace the previous one and 
+        /// send to the glass initializing another debuging process
+        /// </summary>
+        /// <returns></returns>
         [RelayCommand]
         public async Task SwitchImage()
-        {            
+        {
             byte[] photoData = await PhotoPickerHelper.PickPhotoAsync();
 
             if (photoData != null)
             {
-                try
-                {
-                    SelectedPhoto = ImageSource.FromStream(() => new MemoryStream(photoData));
-                    SendImage(photoData);
-                }
-                catch (Exception ex)
-                {
-                    Toaster.MakeToast("Error when sending the image via bluetooth. " + ex);
-                    throw new Exception("Error when sending the image via bluetooth");
-                }
+                SelectedPhoto = ImageSource.FromStream(() => new MemoryStream(photoData));
+                SendImage(photoData);
             }
         }
 
+        /// <summary>
+        /// Receive the new image, check the Bluetooth connection, if it's connected, it prepare the 
+        /// Command DTO with the start debug command and send it over Bluetooth. If there's no connection
+        /// take the user back to the GlassPage
+        /// </summary>
+        /// <param name="photoData"></param>
+        /// <exception cref="Exception"></exception>
         public async void SendImage(byte[] photoData)
         {
-            int connectionState = bluetoothService.GetState();
-
-            if (connectionState == BluetoothService.STATE_CONNECTED)
-            {                
-                bluetoothService.Write(photoData);            
-            }
-            else
+            try
             {
-                Toaster.MakeToast("Bluetooth connection was lost.");
-                await GoToGlassPage();
+                int connectionState = bluetoothService.GetState();
+
+                //if (connectionState == BluetoothService.STATE_CONNECTED)
+                //{
+                    CommandDTO command = new CommandDTO
+                    {
+                        Command = Constants.STARTDEBUG,
+                        Image = photoData
+                    };
+                    SendOverBluetooth(command);
+                //}
+                //else
+                //{
+                //    Toaster.MakeToast("Bluetooth connection was lost.");
+                //    await GoToGlassPage();
+                //}
+            }
+            catch (Exception ex)
+            {
+                Toaster.MakeToast("Error when sending the image via bluetooth. " + ex);
+                throw new Exception("Error when sending the image via bluetooth");
             }
         }
 
-        public async Task GoToGlassPage() => await Application.Current.MainPage.Navigation.PushAsync(new GlassPage());        
+        /// <summary>
+        /// Send the User to the GlassPage 
+        /// </summary>
+        /// <returns></returns>
+        public async Task GoToGlassPage() => await Application.Current.MainPage.Navigation.PushAsync(new GlassPage());
+
+        /// <summary>
+        /// Convert the CommandDTO to bytes and send using bluetooth
+        /// </summary>
+        /// <param name="command"></param>
+        private void SendOverBluetooth(CommandDTO command) => bluetoothService.Write(ConvertToJsonAndBytes.Convert(command));
     }
 }
