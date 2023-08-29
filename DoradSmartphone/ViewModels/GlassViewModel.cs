@@ -22,12 +22,13 @@ namespace DoradSmartphone.ViewModels
             status = "Disconnected";
             bluetoothService = ServiceLocator.Get<IBluetoothService>();            
             bluetoothService.ConnectionStatusChanged += BluetoothService_ConnectionStatusChanged;
+            CheckConnection();
         }
 
         /// <summary>
         /// Verify the status of the connection as sonn as the app starts.
         /// </summary>
-        public void CheckConnection() => Status = bluetoothService.CheckConnection() ? "HandleConnection" : "Disconnected";
+        public void CheckConnection() => Status = bluetoothService.CheckConnection() ? "Connected" : "Disconnected";
 
         /// <summary>
         /// Check the connection status if its's connected, it picks a photo from the smartphone album, 
@@ -82,7 +83,7 @@ namespace DoradSmartphone.ViewModels
         /// <param name="isConnected"></param>
         private void BluetoothService_ConnectionStatusChanged(object sender, bool isConnected)
         {            
-            Status = isConnected ? "HandleConnection" : "Disconnected";
+            Status = isConnected ? "Connected" : "Disconnected";
         }
     }
 }

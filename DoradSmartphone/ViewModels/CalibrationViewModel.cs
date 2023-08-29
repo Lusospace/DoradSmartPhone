@@ -46,13 +46,22 @@ namespace DoradSmartphone.ViewModels
         [RelayCommand]
         public async Task StopCalibration()
         {
-            CommandDTO command = new CommandDTO
+            int connectionState = bluetoothService.GetState();
+            if (connectionState == BluetoothService.STATE_CONNECTED)
             {
-                Command = Constants.STOPDEBUG,
-                Image = null
-            };
-            SendOverBluetooth(command);
-            await GoToGlassPage();
+                CommandDTO command = new CommandDTO
+                {
+                    Command = Constants.STOPDEBUG,
+                    Image = null
+                };
+                SendOverBluetooth(command);
+                await GoToGlassPage();
+            }
+            else
+            {
+                Toaster.MakeToast("Bluetooth connection was lost.");
+                await GoToGlassPage();
+            }
         }
 
         /// <summary>
@@ -87,12 +96,12 @@ namespace DoradSmartphone.ViewModels
 
                 //if (connectionState == BluetoothService.STATE_CONNECTED)
                 //{
-                    CommandDTO command = new CommandDTO
-                    {
-                        Command = Constants.STARTDEBUG,
-                        Image = photoData
-                    };
-                    SendOverBluetooth(command);
+                CommandDTO command = new CommandDTO
+                {
+                    Command = Constants.STARTDEBUG,
+                    Image = photoData
+                };
+                SendOverBluetooth(command);
                 //}
                 //else
                 //{

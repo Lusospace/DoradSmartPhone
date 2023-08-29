@@ -51,7 +51,7 @@ namespace DoradSmartphone.Services.Bluetooth
             btAdapter = BluetoothAdapter.DefaultAdapter;
             state = STATE_NONE;
             newState = state;
-            _ = Start();            
+            Start();            
         }
 
         public int GetState()
@@ -59,7 +59,7 @@ namespace DoradSmartphone.Services.Bluetooth
             return state;
         }
 
-        public async Task Start()
+        public void Start()
         {
             if (btAdapter != null && btAdapter.IsEnabled)
             {
@@ -68,21 +68,19 @@ namespace DoradSmartphone.Services.Bluetooth
 
                 if (glasses == null)
                 {
-                    Console.Write("No connected devices found.");
-                    //Toaster.MakeToast($"No connected devices found.");
+                    Console.Write("No connected devices found.");                    
                 }
                 else
                 {
-                    Console.Write("Found Device: " + glasses.Name);
-                    //Toaster.MakeToast($"Found Device: " + glasses.Name);
+                    Console.Write("Found Device: " + glasses.Name);                    
                 }
                 try
                 {                    
                     state = STATE_LISTEN;
                     UpdateBtStatus();
-
+                    
+                    Connect(glasses);
                     Accept();
-                    await Connect(glasses);
                 }
                 catch (Exception ex)
                 {
@@ -100,7 +98,7 @@ namespace DoradSmartphone.Services.Bluetooth
             UpdateBtStatus();
         }
 
-        private async Task Connect(BluetoothDevice device)
+        private void Connect(BluetoothDevice device)
         {
             state = STATE_CONNECTING;
             UpdateBtStatus();
@@ -112,12 +110,12 @@ namespace DoradSmartphone.Services.Bluetooth
                 // This is a blocking call and will only return on a
                 // successful connection or an exception
                 socket = device.CreateRfcommSocketToServiceRecord(MY_UUID_SECURE);
-                await socket.ConnectAsync();
+                socket.ConnectAsync();
                 state = STATE_CONNECTED;
                 UpdateBtStatus();                
                 if (state != STATE_CONNECTED)
                 {
-                    await ConnectionFailed();
+                    ConnectionFailed();
                 }else
                 {
                     HandleConnection(socket);
@@ -137,7 +135,7 @@ namespace DoradSmartphone.Services.Bluetooth
                 }
 
                 // Start the service over to restart listening mode
-                await ConnectionFailed();
+                ConnectionFailed();
                 return;
             }            
         }
@@ -151,6 +149,7 @@ namespace DoradSmartphone.Services.Bluetooth
                 if (state != STATE_CONNECTED)
                 {
                     Toaster.MakeToast($"No device connected to send.");
+                    ConnectionFailed();
                     return;
                 }
                 else
@@ -167,12 +166,12 @@ namespace DoradSmartphone.Services.Bluetooth
             CheckConnection();
         }
 
-        public async Task ConnectionFailed()
+        public void ConnectionFailed()
         {
             state = STATE_LISTEN;
 
             // Handle connection failure
-            await Start();
+            Start();
         }
 
         public void HandleConnection(BluetoothSocket socket)
@@ -184,12 +183,12 @@ namespace DoradSmartphone.Services.Bluetooth
             state = STATE_CONNECTED;           
         }
 
-        public async Task ConnectionLost()
+        public void ConnectionLost()
         {
             // Handle lost connection            
             state = STATE_NONE;
             UpdateBtStatus();
-            await Start();
+            Start();
         }
 
         public bool CheckConnection()
