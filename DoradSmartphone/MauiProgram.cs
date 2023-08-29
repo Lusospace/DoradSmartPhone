@@ -44,7 +44,7 @@ public static class MauiProgram
 
         builder.Services.AddTransient<UserService>();
         builder.Services.AddTransient<LoginService>();        
-        builder.Services.AddTransient<ExerciseService>();
+        builder.Services.AddTransient<ExerciseService>();        
         builder.Services.AddTransient<DashboardService>();
         
         builder.Services.AddTransient<BluetoothService>();

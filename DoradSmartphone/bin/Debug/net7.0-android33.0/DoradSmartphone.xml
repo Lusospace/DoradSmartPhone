@@ -12,6 +12,31 @@
             <param name="obj"></param>
             <returns></returns>
         </member>
+        <member name="M:DoradSmartphone.Services.Bluetooth.BluetoothService.Write(System.Byte[])">
+            <summary>
+            Method responsible to receive the data, verify the connection status and then send it
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:DoradSmartphone.Services.Bluetooth.BluetoothService.CheckConnection">
+            <summary>
+            Verify the connection status and return it
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:DoradSmartphone.Services.Bluetooth.BluetoothService.ListenerConfiguration">
+            <summary>
+            This Class can't be separated because some BT classes can't be instaciated due the protection level. 
+            To modularize it, will be necessary to refactor the entire service.
+            </summary>
+        </member>
+        <member name="T:DoradSmartphone.Services.Bluetooth.BluetoothService.BluetoothHandlers">
+            <summary>
+            This Class can't be separated because some BT classes can't be instaciated due the protection level. 
+            To modularize it, will be necessary to refactor the entire service.
+            </summary>
+        </member>
         <member name="M:DoradSmartphone.Services.Bluetooth.BluetoothService.OnDataReceived(System.String)">
             <summary>
             Event Listener for the Received messages from bluetooth

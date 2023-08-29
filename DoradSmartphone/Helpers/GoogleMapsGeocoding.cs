@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 public static class GoogleMapsGeocoding
 {

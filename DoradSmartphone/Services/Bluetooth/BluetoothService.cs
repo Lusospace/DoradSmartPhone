@@ -14,13 +14,9 @@ namespace DoradSmartphone.Services.Bluetooth
         public const int STATE_CONNECTED = 3;
         const string TAG = "Dorad SmartPhone App";
 
-        static readonly UUID MY_UUID_SECURE = UUID.FromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
+        static readonly UUID MY_UUID_SECURE = UUID.FromString("fa87c0d0-afac-11de-8a39-0800200c9a66");        
 
-        // Define the delegate type for the event
-        public delegate void DataReceivedEventHandler(string receivedData);
-
-        // Define the event using the delegate type
-        public event DataReceivedEventHandler DataReceived;
+        public event EventHandler<string> DataReceived;
 
         BluetoothAdapter btAdapter;
         ListenerConfiguration listenerConfiguration;
@@ -51,7 +47,7 @@ namespace DoradSmartphone.Services.Bluetooth
             btAdapter = BluetoothAdapter.DefaultAdapter;
             state = STATE_NONE;
             newState = state;
-            Start();            
+            Start();
         }
 
         public int GetState()
@@ -68,17 +64,17 @@ namespace DoradSmartphone.Services.Bluetooth
 
                 if (glasses == null)
                 {
-                    Console.Write("No connected devices found.");                    
+                    Console.Write("No connected devices found.");
                 }
                 else
                 {
-                    Console.Write("Found Device: " + glasses.Name);                    
+                    Console.Write("Found Device: " + glasses.Name);
                 }
                 try
-                {                    
+                {
                     state = STATE_LISTEN;
                     UpdateBtStatus();
-                    
+
                     Connect(glasses);
                     Accept();
                 }
@@ -112,11 +108,12 @@ namespace DoradSmartphone.Services.Bluetooth
                 socket = device.CreateRfcommSocketToServiceRecord(MY_UUID_SECURE);
                 socket.ConnectAsync();
                 state = STATE_CONNECTED;
-                UpdateBtStatus();                
+                UpdateBtStatus();
                 if (state != STATE_CONNECTED)
                 {
                     ConnectionFailed();
-                }else
+                }
+                else
                 {
                     HandleConnection(socket);
                 }
@@ -137,10 +134,13 @@ namespace DoradSmartphone.Services.Bluetooth
                 // Start the service over to restart listening mode
                 ConnectionFailed();
                 return;
-            }            
+            }
         }
 
-        //Call this one to send data over BT
+        /// <summary>
+        /// Method responsible to receive the data, verify the connection status and then send it
+        /// </summary>
+        /// <param name="data"></param>
         public void Write(byte[] data)
         {
             // Synchronize a copy of the BluetoothHandlers
@@ -180,7 +180,7 @@ namespace DoradSmartphone.Services.Bluetooth
             btHandlers = new BluetoothHandlers(socket, this);
             btHandlers.Start();
 
-            state = STATE_CONNECTED;           
+            state = STATE_CONNECTED;
         }
 
         public void ConnectionLost()
@@ -191,14 +191,18 @@ namespace DoradSmartphone.Services.Bluetooth
             Start();
         }
 
+        /// <summary>
+        /// Verify the connection status and return it
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public bool CheckConnection()
         {
             try
-            {                
+            {
                 int connectionState = GetState();
 
                 IsConnected = connectionState == STATE_CONNECTED;
-
 
                 return IsConnected;
             }
@@ -209,6 +213,10 @@ namespace DoradSmartphone.Services.Bluetooth
             }
         }
 
+        /// <summary>
+        /// This Class can't be separated because some BT classes can't be instaciated due the protection level. 
+        /// To modularize it, will be necessary to refactor the entire service.
+        /// </summary>
         class ListenerConfiguration
         {
             private BluetoothServerSocket serverSocket;
@@ -291,6 +299,10 @@ namespace DoradSmartphone.Services.Bluetooth
             }
         }
 
+        /// <summary>
+        /// This Class can't be separated because some BT classes can't be instaciated due the protection level. 
+        /// To modularize it, will be necessary to refactor the entire service.
+        /// </summary>
         class BluetoothHandlers
         {
             private static readonly string TAG = "BluetoothHandlers";
@@ -329,8 +341,8 @@ namespace DoradSmartphone.Services.Bluetooth
                         try
                         {
                             bytes = inStream.Read(buffer, 0, buffer.Length);
-                            string receivedData = Encoding.UTF8.GetString(buffer, 0, bytes);
-                            service.OnDataReceived(receivedData);
+                            string receivedData = Encoding.UTF8.GetString(buffer, 0, bytes);                            
+                            MessageHandler.ProcessReceivedData(receivedData);
                             Console.WriteLine(receivedData);
                             // Handle received data
                         }
@@ -364,7 +376,7 @@ namespace DoradSmartphone.Services.Bluetooth
         /// <param name="data"></param>
         protected virtual void OnDataReceived(string data)
         {
-            DataReceived?.Invoke(data); // Invoke the event
+            DataReceived?.Invoke(this, data); // Invoke the event
         }
     }
 }
