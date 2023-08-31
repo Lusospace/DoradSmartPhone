@@ -6,6 +6,16 @@
              xmlns:helpers="clr-namespace:DoradSmartphone.Helpers"
              x:DataType="viewmodel:CalibrationViewModel"             
              Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LabelContainerStyle" TargetType="Entry">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="Margin" Value="20" />
+                <Setter Property="TextColor" Value="RoyalBlue" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand">
             <ScrollView>
@@ -13,11 +23,12 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="80*" />
-                            <RowDefinition Height="20*" />
+                            <RowDefinition Height="15*" />
                         </Grid.RowDefinitions>
 
                         <Grid VerticalOptions="Center" HorizontalOptions="Center" RowSpacing="15" Grid.Row="0">
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
@@ -30,11 +41,13 @@
                                 </Image.GestureRecognizers>
                             </Image>
 
-                            <Label Text="Tap the image to select a new one" FontSize="20" TextColor="RoyalBlue" HorizontalTextAlignment="Center" Grid.Row="1" Margin="20"/>
+                            <Label Text="Tap the image to select a new one"  HorizontalTextAlignment="Center" Grid.Row="1" Style="{StaticResource LabelContainerStyle}"/>
 
-                            <Button Text="Stop Calibration" Command="{Binding StopCalibrationCommand}"
-                        Grid.Row="2" WidthRequest="200" CornerRadius="20" HorizontalOptions="Center"
+                            <Button Text="Stop Calibration" Command="{Binding StopCalibrationCommand}" Grid.Row="2" WidthRequest="200" CornerRadius="20" HorizontalOptions="Center"
                         Margin="20" FontSize="20"/>
+
+                            <Label Text="Brightness Slider" HorizontalOptions="Center" Grid.Row="3" Style="{StaticResource LabelContainerStyle}"/>
+                            
                         </Grid>
                         <Grid x:Name="SliderGrid" Margin="10" Grid.Row="1">
                             <Grid.ColumnDefinitions>
@@ -55,7 +68,7 @@
                             <Slider x:Name="BrightnessSlider" Minimum="1" Maximum="255" Grid.Column="1" Grid.Row="0"
         Value="{Binding BrightnessValue}" />
                             <Entry Text="{Binding BrightnessValue}" Grid.Column="1" Grid.Row="2" HorizontalOptions="Center" 
-                                   VerticalOptions="Center" Keyboard="Numeric" WidthRequest="45">
+                                   VerticalOptions="Center" Keyboard="Numeric" WidthRequest="40">
                                 <Entry.Behaviors>
                                     <helpers:NumericValidationBehavior MaximumValue="255" />
                                 </Entry.Behaviors>
