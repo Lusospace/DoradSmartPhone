@@ -4,11 +4,64 @@
              xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
              x:DataType="viewmodel:ChoiceViewModel"
              Title="ChoicePage">
-    <StackLayout VerticalOptions="CenterAndExpand">
-        <Label Text="Want to run an old Route or do a new one?!" HorizontalOptions="Center" Margin="0,0,0,20" />
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,0,0,20">
-            <Button x:Name="OldRoutesButton" Text="Old Routes" Command="{Binding OldRouteCommand}" Margin="10" />
-            <Button x:Name="NewRouteButton" Text="New Route" Clicked="NewRouteButton_Clicked" Margin="10" />
-        </StackLayout>
-    </StackLayout>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LabelContainerStyle" TargetType="Entry">
+                <Setter Property="Margin" Value="20" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="TextColor" Value="RoyalBlue" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+
+        <ResourceDictionary>
+            <Style x:Key="ButtonContainerStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="20" />
+                <Setter Property="Margin" Value="20" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="WidthRequest" Value="100" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid HorizontalOptions="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Label Text="Run with Avatar?" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource LabelContainerStyle}"/>
+
+        <Label Text="Yes" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0" Margin="5" />
+
+        <CheckBox x:Name="YesCheckBox" Grid.Row="1" Grid.Column="1" Margin="5" CheckedChanged="YesCheckBox_Checked" IsChecked="{Binding YesChecked}"/>
+
+        <Label Text="No" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" Grid.Column="2" Margin="5" />
+
+        <CheckBox x:Name="NoCheckBox" Grid.Row="1" Grid.Column="3" Margin="5" CheckedChanged="NoCheckBox_Checked" IsChecked="{Binding NoChecked}"/>
+
+        <Label Text="Old or New Routes?" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource LabelContainerStyle}"/>
+
+        <Label Text="Old Routes" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="3" Grid.Column="0" Margin="5" />
+
+        <CheckBox x:Name="OldCheckBox" Grid.Row="3" Grid.Column="1" Margin="5" CheckedChanged="OldCheckBox_Checked" IsChecked="{Binding OldChecked}"/>
+
+        <Label Text="New Routes" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="3" Grid.Column="2" Margin="5" />
+
+        <CheckBox x:Name="NewCheckBox" Grid.Row="3" Grid.Column="3" Margin="5" CheckedChanged="NewCheckBox_Checked" IsChecked="{Binding NewChecked}"/>
+
+        <Button x:Name="NextButton" Text="Next" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Command="{Binding NextButtonCommand}" Style="{StaticResource ButtonContainerStyle}"/>
+
+    </Grid>
+
 </ContentPage>

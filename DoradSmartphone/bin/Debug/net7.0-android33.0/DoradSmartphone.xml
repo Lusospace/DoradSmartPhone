@@ -155,11 +155,11 @@
         <member name="T:DoradSmartphone.ViewModels.ChoiceViewModel">
             <inheritdoc/>
         </member>
-        <member name="F:DoradSmartphone.ViewModels.ChoiceViewModel.oldRouteCommand">
-            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ChoiceViewModel.OldRouteCommand"/>.</summary>
+        <member name="F:DoradSmartphone.ViewModels.ChoiceViewModel.nextButtonCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ChoiceViewModel.NextButtonCommand"/>.</summary>
         </member>
-        <member name="P:DoradSmartphone.ViewModels.ChoiceViewModel.OldRouteCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ChoiceViewModel.OldRoute"/>.</summary>
+        <member name="P:DoradSmartphone.ViewModels.ChoiceViewModel.NextButtonCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ChoiceViewModel.NextButton"/>.</summary>
         </member>
         <member name="T:DoradSmartphone.ViewModels.ControlDeviceViewModel">
             <inheritdoc/>
@@ -214,11 +214,11 @@
         <member name="P:DoradSmartphone.ViewModels.ExerciseViewModel.ClearCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ExerciseViewModel.Clear"/>.</summary>
         </member>
-        <member name="F:DoradSmartphone.ViewModels.ExerciseViewModel.navigateToAvatarCommand">
-            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ExerciseViewModel.NavigateToAvatarCommand"/>.</summary>
+        <member name="F:DoradSmartphone.ViewModels.ExerciseViewModel.nextCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ExerciseViewModel.NextCommand"/>.</summary>
         </member>
-        <member name="P:DoradSmartphone.ViewModels.ExerciseViewModel.NavigateToAvatarCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ExerciseViewModel.NavigateToAvatar(DoradSmartphone.Models.Exercise)"/>.</summary>
+        <member name="P:DoradSmartphone.ViewModels.ExerciseViewModel.NextCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ExerciseViewModel.Next(DoradSmartphone.Models.Exercise)"/>.</summary>
         </member>
         <member name="T:DoradSmartphone.ViewModels.GlassViewModel">
             <inheritdoc/>

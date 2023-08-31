@@ -20,7 +20,7 @@ namespace DoradSmartphone.Services
         {
             try
             {
-                var user = await repository.RecoverUserByEmail(username);
+                var user = await repository.RecoverUserByEmail(username.Trim());
                 if (user is null)
                 {
                     await DisplayErrorMessage("No user were found!", "OK");

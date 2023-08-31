@@ -10,7 +10,7 @@ namespace DoradSmartphone.ViewModels
     public partial class AvatarViewModel : BaseViewModel, INotifyPropertyChanged
     {        
         
-        private TransferDTO transferDTO;        
+        public TransferDTO transferDTO;        
         private IBluetoothService bluetoothService;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -76,10 +76,10 @@ namespace DoradSmartphone.ViewModels
 
         public AvatarViewModel(TransferDTO transferDTO, IBluetoothService bluetoothService)
         {
-            Title = "Avatar Page";
+            Title = "Avatar Page";            
             this.transferDTO = transferDTO;            
             this.bluetoothService = bluetoothService;
-            RouteSpeed = transferDTO.Exercise.Speed.Avg;
+            RouteSpeed = transferDTO.Exercise.Speed != null ? transferDTO.Exercise.Speed.Avg : 0;
         }
 
         private void OnPropertyChanged(string propertyName)

@@ -29,7 +29,7 @@
                                 <DataTemplate x:DataType="model:Exercise">
                                     <Frame BorderColor="RoyalBlue" Padding="10" Margin="5">
                                         <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExerciseViewModel}}, Path=NavigateToAvatarCommand}
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExerciseViewModel}}, Path=NextCommand}
                                         " CommandParameter="{Binding .}" />
                                         </Frame.GestureRecognizers>
                                         <StackLayout>
