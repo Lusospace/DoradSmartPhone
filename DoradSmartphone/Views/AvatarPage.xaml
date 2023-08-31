@@ -54,12 +54,23 @@
                         </Entry.Behaviors>
                     </Entry>
 
-                    <Label Text="Type the speed percentage" Grid.Row="4" Style="{StaticResource LabelContainerStyle}"/>
+                    <Label Text="Type the speed percentage" Grid.Row="4" Style="{StaticResource LabelContainerStyle}">
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" Binding="{Binding RouteSpeed}" Value="0">
+                                <Setter Property="IsVisible" Value="False" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
                     <Entry x:Name="Percentage" Placeholder="Percentage:" Text="{Binding Percentage, Mode=TwoWay}" Grid.Row="5" Style="{StaticResource EntryContainerStyle}"
                            TextChanged="PercentageEntry_TextChanged">
                         <Entry.Behaviors>
                             <helpers:NumericValidationBehavior MaximumValue="100" />
                         </Entry.Behaviors>
+                        <Entry.Triggers>
+                            <DataTrigger TargetType="Entry" Binding="{Binding RouteSpeed}" Value="0">
+                                <Setter Property="IsVisible" Value="False" />
+                            </DataTrigger>
+                        </Entry.Triggers>
                     </Entry>
 
                     <Label Text="{Binding NewSpeed, StringFormat='The Avatar speed will be {0} km/h'}" Grid.Row="6" Style="{StaticResource LabelContainerStyle}"/>

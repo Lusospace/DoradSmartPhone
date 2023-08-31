@@ -18,6 +18,7 @@ namespace DoradSmartphone.ViewModels
         private IBluetoothService bluetoothService;
         private List<Exercise> ExercisesList;
         private readonly ExerciseService exerciseService;
+        private TransferDTO transferDTO;
 
         [ObservableProperty]
         string finalAddress;
@@ -60,11 +61,12 @@ namespace DoradSmartphone.ViewModels
 
         public ICommand RefreshCommand { get; }
 
-        public ExerciseViewModel(ExerciseService exerciseService, IBluetoothService bluetoothService)
+        public ExerciseViewModel(ExerciseService exerciseService, IBluetoothService bluetoothService, TransferDTO transferDTO)
         {
             Title = "Training Routes";            
             this.exerciseService = exerciseService;
             this.bluetoothService = bluetoothService;
+            this.transferDTO = transferDTO;
 
             RefreshCommand = new Command(async () =>
             {
@@ -133,18 +135,18 @@ namespace DoradSmartphone.ViewModels
         }
 
         [RelayCommand]
-        public void NavigateToAvatar(Exercise exercise)
+        public void Next(Exercise exercise)
         {
-            // Create the DTO object
-            var dto = new TransferDTO
-            {
-                Exercise = exercise,
-                Avatar = new AvatarDTO(),
-                Route = exercise.Route,
-                Widgets = new List<Widget>()
-            };
+            transferDTO.Exercise = exercise;
+            transferDTO.Route = exercise.Route;                        
 
-            Application.Current.MainPage.Navigation.PushAsync(new AvatarPage(dto, bluetoothService));        
+            if (transferDTO.Avatar.Active.Equals(true))
+            {                
+                Application.Current.MainPage.Navigation.PushAsync(new AvatarPage(transferDTO, bluetoothService));
+            } else
+            {
+                Application.Current.MainPage.Navigation.PushAsync(new WidgetPage(transferDTO, bluetoothService));
+            }
         }
 
         public List<Location> GetLocations(int exerciseId)
