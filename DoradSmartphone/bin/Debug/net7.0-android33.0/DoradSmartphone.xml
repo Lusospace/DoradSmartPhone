@@ -12,6 +12,31 @@
             <param name="obj"></param>
             <returns></returns>
         </member>
+        <member name="M:DoradSmartphone.Services.Bluetooth.BluetoothService.Write(System.Byte[])">
+            <summary>
+            Method responsible to receive the data, verify the connection status and then send it
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:DoradSmartphone.Services.Bluetooth.BluetoothService.CheckConnection">
+            <summary>
+            Verify the connection status and return it
+            </summary>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:DoradSmartphone.Services.Bluetooth.BluetoothService.ListenerConfiguration">
+            <summary>
+            This Class can't be separated because some BT classes can't be instaciated due the protection level. 
+            To modularize it, will be necessary to refactor the entire service.
+            </summary>
+        </member>
+        <member name="T:DoradSmartphone.Services.Bluetooth.BluetoothService.BluetoothHandlers">
+            <summary>
+            This Class can't be separated because some BT classes can't be instaciated due the protection level. 
+            To modularize it, will be necessary to refactor the entire service.
+            </summary>
+        </member>
         <member name="M:DoradSmartphone.Services.Bluetooth.BluetoothService.OnDataReceived(System.String)">
             <summary>
             Event Listener for the Received messages from bluetooth
@@ -60,6 +85,7 @@
         <member name="T:DoradSmartphone.ViewModels.CalibrationViewModel">
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.LoadImage(System.Byte[])">
             <summary>
@@ -71,6 +97,12 @@
         <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibration">
             <summary>
             Send the command to stop the calibration mode
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.SendBrightness">
+            <summary>
+            Send the command to controll the brightness
             </summary>
             <returns></returns>
         </member>
@@ -107,6 +139,12 @@
         </member>
         <member name="P:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibrationCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibration"/>.</summary>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.CalibrationViewModel.sendBrightnessCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.CalibrationViewModel.SendBrightnessCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.CalibrationViewModel.SendBrightnessCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.CalibrationViewModel.SendBrightness"/>.</summary>
         </member>
         <member name="F:DoradSmartphone.ViewModels.CalibrationViewModel.switchImageCommand">
             <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.CalibrationViewModel.SwitchImageCommand"/>.</summary>

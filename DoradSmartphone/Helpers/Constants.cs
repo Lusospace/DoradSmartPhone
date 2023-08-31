@@ -32,5 +32,6 @@ public static class Constants
     public const string STARTRUN = "StartRun";
     public const string STARTDEBUG = "StartDebug";
     public const string STOPRUN = "StopRun";
-    public const string STOPDEBUG = "StopDebug";        
+    public const string STOPDEBUG = "StopDebug";
+    public const string BRIGHTNESS = "Brightness";
 }

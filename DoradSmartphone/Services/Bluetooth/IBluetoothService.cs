@@ -5,7 +5,7 @@ namespace DoradSmartphone.Services.Bluetooth
     public interface IBluetoothService
     {
         int GetState();
-        Task Start();
+        void Start();
         void Accept();        
         void Write(byte[] data);
         bool CheckConnection();

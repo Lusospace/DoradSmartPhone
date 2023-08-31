@@ -11,6 +11,23 @@ namespace DoradSmartphone.ViewModels
     {
         private IBluetoothService bluetoothService;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        // Inside your ViewModel class
+        private int _brightnessValue;
+        public int BrightnessValue
+        {
+            get => _brightnessValue;
+            set
+            {
+                if (_brightnessValue != value)
+                {
+                    _brightnessValue = value;
+                    OnPropertyChanged(nameof(BrightnessValue));
+                }
+            }
+        }
+
         public CalibrationViewModel(byte[] photo, IBluetoothService bluetoothService)
         {
             Title = "Calibration Page";
@@ -38,7 +55,6 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
-
         /// <summary>
         /// Send the command to stop the calibration mode
         /// </summary>
@@ -46,13 +62,46 @@ namespace DoradSmartphone.ViewModels
         [RelayCommand]
         public async Task StopCalibration()
         {
-            CommandDTO command = new CommandDTO
+            int connectionState = bluetoothService.GetState();
+            if (connectionState == BluetoothService.STATE_CONNECTED)
             {
-                Command = Constants.STOPDEBUG,
-                Image = null
-            };
-            SendOverBluetooth(command);
-            await GoToGlassPage();
+                CommandDTO command = new CommandDTO
+                {
+                    Command = Constants.STOPDEBUG,
+                    Image = null
+                };
+                SendOverBluetooth(command);
+                await GoToGlassPage();
+            }
+            else
+            {
+                Toaster.MakeToast("Bluetooth connection was lost.");
+                await GoToGlassPage();
+            }
+        }
+
+        /// <summary>
+        /// Send the command to controll the brightness
+        /// </summary>
+        /// <returns></returns>
+        [RelayCommand]
+        public async Task SendBrightness()
+        {
+            int connectionState = bluetoothService.GetState();
+            if (connectionState == BluetoothService.STATE_CONNECTED)
+            {
+                CommandDTO command = new CommandDTO
+                {
+                    Command = Constants.BRIGHTNESS,
+                    Value = BrightnessValue
+                };
+                SendOverBluetooth(command);                
+            }
+            else
+            {
+                Toaster.MakeToast("Bluetooth connection was lost.");
+                await GoToGlassPage();
+            }
         }
 
         /// <summary>
@@ -87,12 +136,12 @@ namespace DoradSmartphone.ViewModels
 
                 //if (connectionState == BluetoothService.STATE_CONNECTED)
                 //{
-                    CommandDTO command = new CommandDTO
-                    {
-                        Command = Constants.STARTDEBUG,
-                        Image = photoData
-                    };
-                    SendOverBluetooth(command);
+                CommandDTO command = new CommandDTO
+                {
+                    Command = Constants.STARTDEBUG,
+                    Image = photoData
+                };
+                SendOverBluetooth(command);
                 //}
                 //else
                 //{
@@ -118,5 +167,10 @@ namespace DoradSmartphone.ViewModels
         /// </summary>
         /// <param name="command"></param>
         private void SendOverBluetooth(CommandDTO command) => bluetoothService.Write(ConvertToJsonAndBytes.Convert(command));
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

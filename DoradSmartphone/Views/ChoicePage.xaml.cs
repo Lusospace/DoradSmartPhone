@@ -8,10 +8,10 @@ namespace DoradSmartphone.Views
     {
         private ChoiceViewModel viewModel;
 
-        public ChoicePage(IBluetoothService bluetoothService, ExerciseService exerciseService)
+        public ChoicePage(ExerciseService exerciseService)
         {
             InitializeComponent();
-            viewModel = new ChoiceViewModel(bluetoothService, exerciseService);
+            viewModel = new ChoiceViewModel(exerciseService);
             BindingContext = viewModel;
         }
 

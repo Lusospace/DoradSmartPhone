@@ -15,7 +15,8 @@ This README would normally document whatever steps are necessary to get your app
 	- CommunityToolkit.Mvvm 8.2.0	
 	- SQLiteNetExtensions 2.1.0
 	- sqlite-net-pc 1.8.116
-	- SQLitePCLRaw.provider.dynamic_cdecl 2.1.4
+	- SkiaSharp 2.88.3
+	- AutoMapper 12.0.1
 	
 * Database configuration - Since we don't use any big database, none.
 * How to run tests - Download any android emulator and try it out! Bluetooth does not work in emulators and some other features like maps are unstable in emulators.

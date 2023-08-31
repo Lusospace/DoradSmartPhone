@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using DoradSmartphone.DTO;
+using DoradSmartphone.Helpers;
 using DoradSmartphone.Models;
 using DoradSmartphone.Services;
 using DoradSmartphone.Services.Bluetooth;
@@ -12,10 +13,10 @@ namespace DoradSmartphone.ViewModels
         private IBluetoothService bluetoothService;
         private ExerciseService exerciseService;
 
-        public ChoiceViewModel(IBluetoothService bluetoothService, ExerciseService exerciseService)
+        public ChoiceViewModel( ExerciseService exerciseService)
         {
-            Title = "Route Option";            
-            this.bluetoothService = bluetoothService;
+            Title = "Route Option";
+            bluetoothService = ServiceLocator.Get<IBluetoothService>();
             this.exerciseService = exerciseService;            
         }        
 
