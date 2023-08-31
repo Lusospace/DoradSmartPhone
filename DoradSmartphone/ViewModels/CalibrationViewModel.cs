@@ -11,6 +11,24 @@ namespace DoradSmartphone.ViewModels
     {
         private IBluetoothService bluetoothService;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        // Inside your ViewModel class
+        private int _brightnessValue;
+        public int BrightnessValue
+        {
+            get => _brightnessValue;
+            set
+            {
+                if (_brightnessValue != value)
+                {
+                    _brightnessValue = value;
+                    OnPropertyChanged(nameof(BrightnessValue));
+                }
+            }
+        }
+
+
         public CalibrationViewModel(byte[] photo, IBluetoothService bluetoothService)
         {
             Title = "Calibration Page";
@@ -127,5 +145,10 @@ namespace DoradSmartphone.ViewModels
         /// </summary>
         /// <param name="command"></param>
         private void SendOverBluetooth(CommandDTO command) => bluetoothService.Write(ConvertToJsonAndBytes.Convert(command));
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

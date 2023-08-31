@@ -3,39 +3,64 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoradSmartphone.Views.CalibrationPage"
              xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
+             xmlns:helpers="clr-namespace:DoradSmartphone.Helpers"
              x:DataType="viewmodel:CalibrationViewModel"             
              Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand">
             <ScrollView>
                 <StackLayout x:Name="MainLayout" VerticalOptions="Center">
-                    <Grid VerticalOptions="Center" HorizontalOptions="Center" RowSpacing="15">
+                    <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="80*" />
+                            <RowDefinition Height="20*" />
                         </Grid.RowDefinitions>
 
-                        <Image x:Name="SelectedPhotoImage" Source="{Binding SelectedPhoto}" Style="{StaticResource ImageContainerStyle}" WidthRequest="300" 
+                        <Grid VerticalOptions="Center" HorizontalOptions="Center" RowSpacing="15" Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Image x:Name="SelectedPhotoImage" Source="{Binding SelectedPhoto}" Style="{StaticResource ImageContainerStyle}" WidthRequest="300" 
                            HeightRequest="300" Margin="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding SwitchImageCommand}" />
-                            </Image.GestureRecognizers>
-                        </Image>
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SwitchImageCommand}" />
+                                </Image.GestureRecognizers>
+                            </Image>
 
-                        <Label Text="Tap the image to select a new one" FontSize="20" TextColor="RoyalBlue" HorizontalTextAlignment="Center" Grid.Row="1" Margin="20"/>
+                            <Label Text="Tap the image to select a new one" FontSize="20" TextColor="RoyalBlue" HorizontalTextAlignment="Center" Grid.Row="1" Margin="20"/>
 
-                        <Button Text="Stop Calibration" Command="{Binding StopCalibrationCommand}"
+                            <Button Text="Stop Calibration" Command="{Binding StopCalibrationCommand}"
                         Grid.Row="2" WidthRequest="200" CornerRadius="20" HorizontalOptions="Center"
                         Margin="20" FontSize="20"/>
+                        </Grid>
+                        <Grid x:Name="SliderGrid" Margin="10" Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
 
-                        <!-- Add Slider to control brightness -->
-                        <Slider x:Name="BrightnessSlider"                                
-                                Maximum="1.0"
-                                Minimum="0.0"                                
-                                Grid.Row="3"
-                                Margin="20, 0, 20, 20" />
+                            <!-- Add Slider to control brightness -->
+                            <Label Text="1" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="1"/>
+                            <Label Text="255" Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Center" 
+                       Grid.Row="1"/>
+                            <!-- Display the corresponding value from the ViewModel -->
+                            <Slider x:Name="BrightnessSlider" Minimum="1" Maximum="255" Grid.Column="1" Grid.Row="0"
+        Value="{Binding BrightnessValue}" />
+                            <Entry Text="{Binding BrightnessValue}" Grid.Column="1" Grid.Row="2" HorizontalOptions="Center" 
+                                   VerticalOptions="Center" Keyboard="Numeric" WidthRequest="45">
+                                <Entry.Behaviors>
+                                    <helpers:NumericValidationBehavior MaximumValue="255" />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </Grid>
                     </Grid>
                 </StackLayout>
             </ScrollView>

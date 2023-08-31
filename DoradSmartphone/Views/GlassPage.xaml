@@ -43,7 +43,6 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <Image Source="{x:Static helpers:Icons.GlassesXg}" 
@@ -60,10 +59,6 @@
 
                     <Label Text="{Binding Status}" 
                            Grid.Row="3"
-                           Style="{StaticResource LabelContainerStyle}"/>
-
-                    <Label Text="IDP Settings" 
-                           Grid.Row="4"
                            Style="{StaticResource LabelContainerStyle}"/>
 
                 </Grid>
