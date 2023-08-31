@@ -11,8 +11,15 @@
         <ResourceDictionary>
             <Style x:Key="LabelContainerStyle" TargetType="Entry">
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="Margin" Value="20" />
                 <Setter Property="TextColor" Value="RoyalBlue" />
+            </Style>
+        </ResourceDictionary>
+        <ResourceDictionary>
+            <Style x:Key="ButtonContainerStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="20" />
+                <Setter Property="Margin" Value="15" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="HorizontalOptions" Value="Center" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -23,7 +30,7 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="80*" />
-                            <RowDefinition Height="15*" />
+                            <RowDefinition Height="20*" />
                         </Grid.RowDefinitions>
 
                         <Grid VerticalOptions="Center" HorizontalOptions="Center" RowSpacing="15" Grid.Row="0">
@@ -35,7 +42,7 @@
                             </Grid.RowDefinitions>
 
                             <Image x:Name="SelectedPhotoImage" Source="{Binding SelectedPhoto}" Style="{StaticResource ImageContainerStyle}" WidthRequest="300" 
-                           HeightRequest="300" Margin="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
+                           HeightRequest="300" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SwitchImageCommand}" />
                                 </Image.GestureRecognizers>
@@ -43,11 +50,10 @@
 
                             <Label Text="Tap the image to select a new one"  HorizontalTextAlignment="Center" Grid.Row="1" Style="{StaticResource LabelContainerStyle}"/>
 
-                            <Button Text="Stop Calibration" Command="{Binding StopCalibrationCommand}" Grid.Row="2" WidthRequest="200" CornerRadius="20" HorizontalOptions="Center"
-                        Margin="20" FontSize="20"/>
+                            <Button Text="Stop Calibration" Command="{Binding StopCalibrationCommand}" Grid.Row="2" Style="{StaticResource ButtonContainerStyle}"/>
 
                             <Label Text="Brightness Slider" HorizontalOptions="Center" Grid.Row="3" Style="{StaticResource LabelContainerStyle}"/>
-                            
+
                         </Grid>
                         <Grid x:Name="SliderGrid" Margin="10" Grid.Row="1">
                             <Grid.ColumnDefinitions>
@@ -58,21 +64,24 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <!-- Add Slider to control brightness -->
-                            <Label Text="1" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="1"/>
-                            <Label Text="255" Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Center" 
-                       Grid.Row="1"/>
-                            <!-- Display the corresponding value from the ViewModel -->
-                            <Slider x:Name="BrightnessSlider" Minimum="1" Maximum="255" Grid.Column="1" Grid.Row="0"
-        Value="{Binding BrightnessValue}" />
-                            <Entry Text="{Binding BrightnessValue}" Grid.Column="1" Grid.Row="2" HorizontalOptions="Center" 
-                                   VerticalOptions="Center" Keyboard="Numeric" WidthRequest="40">
+                            <Label Text="1" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="0"  Grid.Column="0"/>
+
+
+                            <Slider x:Name="BrightnessSlider" Minimum="1" Maximum="255" Grid.Row="0" Grid.Column="1" Value="{Binding BrightnessValue}" />
+
+                            <Label Text="255" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="2"/>
+                            
+                            <Entry Text="{Binding BrightnessValue}" Grid.Column="1" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center" Keyboard="Numeric" WidthRequest="40">
                                 <Entry.Behaviors>
                                     <helpers:NumericValidationBehavior MaximumValue="255" />
                                 </Entry.Behaviors>
                             </Entry>
+                            
+                            <Button Text="Send Brightness" Command="{Binding SendBrightnessCommand}" Grid.Column="1" Grid.Row="3" Style="{StaticResource ButtonContainerStyle}"/>
                         </Grid>
                     </Grid>
                 </StackLayout>

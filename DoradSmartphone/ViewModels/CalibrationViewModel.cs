@@ -28,7 +28,6 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
-
         public CalibrationViewModel(byte[] photo, IBluetoothService bluetoothService)
         {
             Title = "Calibration Page";
@@ -56,7 +55,6 @@ namespace DoradSmartphone.ViewModels
             }
         }
 
-
         /// <summary>
         /// Send the command to stop the calibration mode
         /// </summary>
@@ -74,6 +72,30 @@ namespace DoradSmartphone.ViewModels
                 };
                 SendOverBluetooth(command);
                 await GoToGlassPage();
+            }
+            else
+            {
+                Toaster.MakeToast("Bluetooth connection was lost.");
+                await GoToGlassPage();
+            }
+        }
+
+        /// <summary>
+        /// Send the command to controll the brightness
+        /// </summary>
+        /// <returns></returns>
+        [RelayCommand]
+        public async Task SendBrightness()
+        {
+            int connectionState = bluetoothService.GetState();
+            if (connectionState == BluetoothService.STATE_CONNECTED)
+            {
+                CommandDTO command = new CommandDTO
+                {
+                    Command = Constants.BRIGHTNESS,
+                    Value = BrightnessValue
+                };
+                SendOverBluetooth(command);                
             }
             else
             {

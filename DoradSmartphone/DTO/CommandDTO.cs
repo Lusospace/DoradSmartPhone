@@ -4,5 +4,6 @@
     {
         public string Command { get; set; }
         public byte[] Image { get; set; }
+        public int Value { get; set; }
     }
 }

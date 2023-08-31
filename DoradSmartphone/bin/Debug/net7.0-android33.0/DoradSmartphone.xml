@@ -85,6 +85,7 @@
         <member name="T:DoradSmartphone.ViewModels.CalibrationViewModel">
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.LoadImage(System.Byte[])">
             <summary>
@@ -96,6 +97,12 @@
         <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibration">
             <summary>
             Send the command to stop the calibration mode
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DoradSmartphone.ViewModels.CalibrationViewModel.SendBrightness">
+            <summary>
+            Send the command to controll the brightness
             </summary>
             <returns></returns>
         </member>
@@ -132,6 +139,12 @@
         </member>
         <member name="P:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibrationCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.CalibrationViewModel.StopCalibration"/>.</summary>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.CalibrationViewModel.sendBrightnessCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.CalibrationViewModel.SendBrightnessCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.CalibrationViewModel.SendBrightnessCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.CalibrationViewModel.SendBrightness"/>.</summary>
         </member>
         <member name="F:DoradSmartphone.ViewModels.CalibrationViewModel.switchImageCommand">
             <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.CalibrationViewModel.SwitchImageCommand"/>.</summary>
