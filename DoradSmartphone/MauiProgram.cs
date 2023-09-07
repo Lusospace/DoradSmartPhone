@@ -1,4 +1,5 @@
 ﻿using DoradSmartphone.Data;
+using DoradSmartphone.DTO;
 using DoradSmartphone.Services;
 using DoradSmartphone.Services.Bluetooth;
 using DoradSmartphone.ViewModels;
@@ -24,6 +25,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<IRepository, DatabaseConn>();
 
         builder.Services.AddTransient<GeneralPage>();
+        builder.Services.AddTransient<TransferDTO>();
+        builder.Services.AddTransient<ExerciseVisualizer>();
 
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddTransient<UserPage>();        

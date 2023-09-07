@@ -198,6 +198,8 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:DoradSmartphone.ViewModels.ExerciseViewModel.FinalAddress">
             <inheritdoc cref="F:DoradSmartphone.ViewModels.ExerciseViewModel.finalAddress"/>
@@ -219,6 +221,18 @@
         </member>
         <member name="P:DoradSmartphone.ViewModels.ExerciseViewModel.NextCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ExerciseViewModel.Next(DoradSmartphone.Models.Exercise)"/>.</summary>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.ExerciseViewModel.deleteExerciseCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ExerciseViewModel.DeleteExerciseCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.ExerciseViewModel.DeleteExerciseCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ExerciseViewModel.DeleteExercise(DoradSmartphone.Models.Exercise)"/>.</summary>
+        </member>
+        <member name="F:DoradSmartphone.ViewModels.ExerciseViewModel.exerciseDetailsCommand">
+            <summary>The backing field for <see cref="P:DoradSmartphone.ViewModels.ExerciseViewModel.ExerciseDetailsCommand"/>.</summary>
+        </member>
+        <member name="P:DoradSmartphone.ViewModels.ExerciseViewModel.ExerciseDetailsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:DoradSmartphone.ViewModels.ExerciseViewModel.ExerciseDetails(DoradSmartphone.Models.Exercise)"/>.</summary>
         </member>
         <member name="T:DoradSmartphone.ViewModels.GlassViewModel">
             <inheritdoc/>

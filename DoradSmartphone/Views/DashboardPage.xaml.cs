@@ -3,10 +3,17 @@ using DoradSmartphone.ViewModels;
 namespace DoradSmartphone.Views;
 
 public partial class DashboardPage : ContentPage
-{    
-    public DashboardPage(DashboardViewModel viewModel)
+{
+    private ExerciseViewModel viewModel;
+    public DashboardPage(ExerciseViewModel exerciseViewModel)
     {
         InitializeComponent();
-        BindingContext = viewModel;
+        BindingContext = exerciseViewModel;
+        viewModel = exerciseViewModel;
+    }
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _ = viewModel.GetExerciseList();
     }
 }

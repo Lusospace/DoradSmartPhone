@@ -177,6 +177,11 @@ namespace DoradSmartphone.Services
             await _repository.SaveItensAsync(exercise4);
         }
 
+        public async void DeleteExerciseAsync(Exercise exercise)
+        {
+            await _repository.DeleteItemAsync(exercise);
+        }
+
         public async void ClearAll()
         {
             await _repository.DeleteAllItemsAsync<Exercise>(); // Delete all Exercise items from the table

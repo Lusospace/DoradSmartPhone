@@ -22,30 +22,4 @@ public partial class ExercisePage : ContentPage
         base.OnAppearing();
         _ = viewModel.GetExerciseList();
     }
-    
-    private void OnTapGestureRouteUpdate(object sender, EventArgs e)
-    {
-        routeMap.MapElements.Clear();
-
-        var frame = (Frame)sender;
-        var exercise = (Exercise)frame.BindingContext;
-        var exerciseId = exercise.Id;
-        var routes = viewModel.GetLocations(exerciseId);
-
-        var polyline = new Polyline
-        {
-            StrokeColor = Colors.Red,
-            StrokeWidth = 12,
-        };
-
-        foreach (var route in routes)
-        {
-            polyline.Geopath.Add(route);
-        }
-
-        routeMap.MoveToRegion(
-            MapSpan.FromCenterAndRadius(
-                routes.FirstOrDefault(), Distance.FromMiles(5)));
-        routeMap.MapElements.Add(polyline);
-    }
 }

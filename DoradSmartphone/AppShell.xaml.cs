@@ -37,9 +37,10 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(ExercisePage), typeof(ExercisePage));
         Routing.RegisterRoute(nameof(AutomaticPage), typeof(AutomaticPage));
         Routing.RegisterRoute(nameof(DashboardPage), typeof(DashboardPage));        
-        Routing.RegisterRoute(nameof(CalibrationPage), typeof(CalibrationPage));
+        Routing.RegisterRoute(nameof(CalibrationPage), typeof(CalibrationPage));        
         Routing.RegisterRoute(nameof(ControlDevicePage), typeof(ControlDevicePage));
         Routing.RegisterRoute(nameof(DisplaySelectedItemsPage), typeof(DisplaySelectedItemsPage));
+        Routing.RegisterRoute(nameof(ExerciseVisualizer), typeof(ExerciseVisualizer));
 
     }    
 }

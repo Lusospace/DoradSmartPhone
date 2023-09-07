@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoradSmartphone.Views.ExerciseVisualizer"
+             xmlns:model="clr-namespace:DoradSmartphone.Models"
+             xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+             x:DataType="viewmodel:ExerciseViewModel"
+             Title="{Binding Title}">
+
+    <Grid Padding="5" Margin="5" RowSpacing="5" ColumnSpacing="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="150"/>
+        </Grid.RowDefinitions>
+
+        <maps:Map Grid.Row="0" x:Name="routeMap" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="3" HeightRequest="400" IsZoomEnabled="True" IsEnabled="False">
+            <x:Arguments>
+                <MapSpan>
+                    <x:Arguments>
+                        <sensors:Location>
+                            <x:Arguments>
+                                <x:Double>38.744418137669875</x:Double>
+                                <x:Double>-9.128544160596851</x:Double>
+                            </x:Arguments>
+                        </sensors:Location>
+                        <x:Double>1</x:Double>
+                        <x:Double>1</x:Double>
+                    </x:Arguments>
+                </MapSpan>
+            </x:Arguments>
+        </maps:Map>
+        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}" Grid.Row="1">
+            <RefreshView.Content>
+                <StackLayout>
+                    <Label x:Name="startingDateLabel" />
+                    <Label x:Name="timeLabel" />
+                    <Label x:Name="avgSpeedLabel" />
+                    <Label x:Name="startingAddressLabel" />
+                    <Label x:Name="finishingAddressLabel" />
+                </StackLayout>
+            </RefreshView.Content>
+        </RefreshView>
+        <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"
+                               HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1"/>
+    </Grid>
+</ContentPage>
