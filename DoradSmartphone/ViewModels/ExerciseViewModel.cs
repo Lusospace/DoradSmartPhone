@@ -173,6 +173,43 @@ namespace DoradSmartphone.ViewModels
             return locations;
         }
 
+        [RelayCommand]
+        public void DeleteExercise(Exercise exercise)
+        {
+            try
+            {
+                if (ExercisesList != null && ExercisesList.Any())
+                {
+                    // Remove the exercise from the list
+                    ExercisesList.Remove(exercise);
+                    Exercises.Remove(exercise);
+                    
+                    exerciseService.DeleteExerciseAsync(exercise);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Toaster.MakeToast("Failed to delete the exercise " + ex.ToString());
+            }
+        }
+
+        [RelayCommand]
+        public void ExerciseDetails(Exercise exercise)
+        {
+            try
+            {
+                if (ExercisesList != null && ExercisesList.Any())
+                {
+                    Application.Current.MainPage.Navigation.PushAsync(new ExerciseVisualizer(this, exercise));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Toaster.MakeToast("Failed to visualize the exercise " + ex.ToString());
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

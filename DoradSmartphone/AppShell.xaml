@@ -39,11 +39,11 @@
                 x:Name="GlassShell"/>
         </Tab>
 
-        <Tab Title="Widgets" Icon="{x:Static helpers:Icons.Dashboard}">
+        <Tab Title="Dashboard" Icon="{x:Static helpers:Icons.Dashboard}">
             <ShellContent
-                Title="Widgets"
+                Title="Dashboard"
                 ContentTemplate="{DataTemplate views:DashboardPage}"
-                Route="WidgetsPage"/>
+                Route="DashboardPage"/>
         </Tab>
 
         <Tab Title="Start Run" Icon="{x:Static helpers:Icons.Avatar}">

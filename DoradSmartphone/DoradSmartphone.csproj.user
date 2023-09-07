@@ -39,6 +39,9 @@
     <MauiXaml Update="Views\ExercisePage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Views\ExerciseVisualizer.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Views\GeneralPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

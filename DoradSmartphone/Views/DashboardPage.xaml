@@ -4,9 +4,70 @@
              x:Class="DoradSmartphone.Views.DashboardPage"
              xmlns:model="clr-namespace:DoradSmartphone.Models"
              xmlns:viewmodel="clr-namespace:DoradSmartphone.ViewModels"
-             x:DataType="viewmodel:DashboardViewModel"
+             x:DataType="viewmodel:ExerciseViewModel"
              Title="{Binding Title}">
-    <StackLayout>
 
-    </StackLayout>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonContainerStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="20" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="HeightRequest" Value="40" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
+        <RefreshView.Content>
+            <ScrollView>
+                <StackLayout>
+                    <Grid VerticalOptions="Center" HorizontalOptions="Center" RowSpacing="15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <CollectionView ItemsSource="{Binding Exercises}" Grid.Row="0" Grid.ColumnSpan="2">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="model:Exercise">
+                                    <Frame BorderColor="RoyalBlue" Padding="10" Margin="5">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Row="0" Grid.Column="0">
+                                                <Label Text="{Binding StartingDate, StringFormat='Starting Date: {0:dd/MM/yyyy}'}" />
+                                                <Label Text="{Binding Time, StringFormat='Time: {0:HH:mm:ss}'}" />
+                                                <Label Text="{Binding StartingAddress, StringFormat='Address: {0}'}" />
+                                            </StackLayout>
+                                            <Button Text="Visualize" Grid.Row="0" Grid.Column="1" 
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExerciseViewModel}}, Path=ExerciseDetailsCommand}" 
+                                                    CommandParameter="{Binding .}" 
+                                                    Style="{StaticResource ButtonContainerStyle}"/>
+                                            <Button Text="Delete" Grid.Row="0" Grid.Column="2" 
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExerciseViewModel}}, Path=DeleteExerciseCommand}" 
+                                                    CommandParameter="{Binding .}" 
+                                                    BackgroundColor="Red" Style="{StaticResource ButtonContainerStyle}"/>
+                                        </Grid>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                    <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"
+                                       HorizontalOptions="Center" VerticalOptions="Center" />
+                </StackLayout>
+            </ScrollView>
+        </RefreshView.Content>
+    </RefreshView>
 </ContentPage>
