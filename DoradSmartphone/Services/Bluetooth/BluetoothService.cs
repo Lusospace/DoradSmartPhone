@@ -47,7 +47,7 @@ namespace DoradSmartphone.Services.Bluetooth
             btAdapter = BluetoothAdapter.DefaultAdapter;
             state = STATE_NONE;
             newState = state;
-            //Start();
+            Start();
         }
 
         public int GetState()
