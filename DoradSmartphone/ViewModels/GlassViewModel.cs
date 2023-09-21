@@ -20,7 +20,7 @@ namespace DoradSmartphone.ViewModels
         {
             Title = "Glasses Page";
             status = "Disconnected";
-            bluetoothService = ServiceLocator.Get<IBluetoothService>();            
+            bluetoothService = ServiceLocator.Get<IBluetoothService>();
             bluetoothService.ConnectionStatusChanged += BluetoothService_ConnectionStatusChanged;
             CheckConnection();
         }
@@ -42,32 +42,33 @@ namespace DoradSmartphone.ViewModels
         {
             var connection = bluetoothService.CheckConnection();
 
-            //if (connection)
-            //{
-            byte[] photoData = await PhotoPickerHelper.PickPhotoAsync();
-
-            if (photoData != null)
+            if (connection)
             {
-                try
+                byte[] photoData = await PhotoPickerHelper.PickPhotoAsync();
+
+                if (photoData != null)
                 {
-                    CommandDTO command = new CommandDTO
+                    try
                     {
-                        Command = Constants.STARTDEBUG,
-                        Image = photoData
-                    };
-                    SendOverBluetooth(command);
-                    _ = Application.Current.MainPage.Navigation.PushAsync(new CalibrationPage(photoData, bluetoothService));
-                }
-                catch (Exception ex)
-                {
-                    Toaster.MakeToast("Error when sending the image via bluetooth. " + ex);
-                    throw new Exception("Error when sending the image via bluetooth");
+                        CommandDTO command = new CommandDTO
+                        {
+                            Command = Constants.STARTDEBUG,
+                            Image = photoData
+                        };
+                        SendOverBluetooth(command);
+                        _ = Application.Current.MainPage.Navigation.PushAsync(new CalibrationPage(photoData, bluetoothService));
+                    }
+                    catch (Exception ex)
+                    {
+                        Toaster.MakeToast("Error when sending the image via bluetooth. " + ex);
+                        throw new Exception("Error when sending the image via bluetooth");
+                    }
                 }
             }
-            //} else
-            //{
-            //    Toaster.MakeToast("No device paried.");
-            //}
+            else
+            {
+                Toaster.MakeToast("No device paried.");
+            }
         }
 
         /// <summary>
@@ -82,7 +83,7 @@ namespace DoradSmartphone.ViewModels
         /// <param name="sender"></param>
         /// <param name="isConnected"></param>
         private void BluetoothService_ConnectionStatusChanged(object sender, bool isConnected)
-        {            
+        {
             Status = isConnected ? "Connected" : "Disconnected";
         }
     }

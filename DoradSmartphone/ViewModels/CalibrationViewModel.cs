@@ -95,7 +95,7 @@ namespace DoradSmartphone.ViewModels
                     Command = Constants.BRIGHTNESS,
                     Value = BrightnessValue
                 };
-                SendOverBluetooth(command);                
+                SendOverBluetooth(command);
             }
             else
             {
@@ -134,20 +134,20 @@ namespace DoradSmartphone.ViewModels
             {
                 int connectionState = bluetoothService.GetState();
 
-                //if (connectionState == BluetoothService.STATE_CONNECTED)
-                //{
-                CommandDTO command = new CommandDTO
+                if (connectionState == BluetoothService.STATE_CONNECTED)
                 {
-                    Command = Constants.STARTDEBUG,
-                    Image = photoData
-                };
-                SendOverBluetooth(command);
-                //}
-                //else
-                //{
-                //    Toaster.MakeToast("Bluetooth connection was lost.");
-                //    await GoToGlassPage();
-                //}
+                    CommandDTO command = new CommandDTO
+                    {
+                        Command = Constants.STARTDEBUG,
+                        Image = photoData
+                    };
+                    SendOverBluetooth(command);
+                }
+                else
+                {
+                    Toaster.MakeToast("Bluetooth connection was lost.");
+                    await GoToGlassPage();
+                }
             }
             catch (Exception ex)
             {

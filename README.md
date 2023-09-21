@@ -17,6 +17,7 @@ This README would normally document whatever steps are necessary to get your app
 	- sqlite-net-pc 1.8.116
 	- SkiaSharp 2.88.3
 	- AutoMapper 12.0.1
+	- Microcharts.Maui 1.0.0
 	
 * Database configuration - Since we don't use any big database, none.
 * How to run tests - Download any android emulator and try it out! Bluetooth does not work in emulators and some other features like maps are unstable in emulators.
@@ -29,6 +30,6 @@ This README would normally document whatever steps are necessary to get your app
 
 ### Who do I talk to? ###
 
-* Luiz started, but James should aware of everything too
+* Luiz started, but James should be aware of everything too
 * Chat GPT?!
 * Jesus knows who...
