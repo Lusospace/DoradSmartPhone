@@ -29,7 +29,4 @@ This README would normally document whatever steps are necessary to get your app
 * Icons referece <a href="https://www.flaticon.com/br/icones-gratis">Icones criados por Smashicons - Flaticon</a>
 
 ### Who do I talk to? ###
-
-* Luiz started, but James should be aware of everything too
-* Chat GPT?!
-* Jesus knows who...
+Please contact LusoSpace for more information. 
