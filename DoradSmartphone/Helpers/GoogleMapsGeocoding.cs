@@ -4,7 +4,7 @@ public static class GoogleMapsGeocoding
 {
     private const string GoogleMapsGeocodingApiBaseUrl = "https://maps.googleapis.com/maps/api/geocode/json";
     private const string GooglePlacesApiBaseUrl = "https://maps.googleapis.com/maps/api/staticmap?";
-    private const string GoogleMapsApiKey = "AIzaSyDaW6mCTLhn8sDi0yfbpjDqtBLkudQSRKA"; // --> is also in AndroidManifest
+    private const string GoogleMapsApiKey = ""; // --> is also in AndroidManifest
     private const string size = "500x500";
     private const string zoom = "15";
 
